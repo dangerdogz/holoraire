@@ -1,0 +1,9 @@
+c:\users\stud\documents\visual studio 2010\Projects\HoraireAlpha\HoraireAlpha\bin\Debug\HoraireAlpha.exe
+c:\users\stud\documents\visual studio 2010\Projects\HoraireAlpha\HoraireAlpha\bin\Debug\HoraireAlpha.pdb
+c:\users\stud\documents\visual studio 2010\Projects\HoraireAlpha\HoraireAlpha\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\stud\documents\visual studio 2010\Projects\HoraireAlpha\HoraireAlpha\obj\x86\Debug\HoraireAlpha.Horaire.resources
+c:\users\stud\documents\visual studio 2010\Projects\HoraireAlpha\HoraireAlpha\obj\x86\Debug\HoraireAlpha.Properties.Resources.resources
+c:\users\stud\documents\visual studio 2010\Projects\HoraireAlpha\HoraireAlpha\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\users\stud\documents\visual studio 2010\Projects\HoraireAlpha\HoraireAlpha\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\users\stud\documents\visual studio 2010\Projects\HoraireAlpha\HoraireAlpha\obj\x86\Debug\HoraireAlpha.exe
+c:\users\stud\documents\visual studio 2010\Projects\HoraireAlpha\HoraireAlpha\obj\x86\Debug\HoraireAlpha.pdb

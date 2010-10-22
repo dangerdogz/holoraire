@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HoraireAlpha
 {
-    class Poste
+    class Poste : Ressource
     {
 
         private string nom;

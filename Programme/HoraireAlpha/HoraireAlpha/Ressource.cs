@@ -7,7 +7,28 @@ namespace HoraireAlpha
 {
     class Ressource
     {
-        int id;
+        private int id;
+
+        public Ressource()
+        {
+
+        }
+
+        public Ressource(int id)
+        {
+            setId(id);
+        }
+
+        public void setId(int id)
+        {
+            this.id = id;
+        }
+
+        public int getId()
+        {
+            return id;
+        }
+
 
     }
 }

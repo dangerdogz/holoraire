@@ -13,6 +13,9 @@ namespace HoraireAlpha
         private string numTelephone;
         private int anciennete;
         private int heuresTravaillees;
+        private List<Poste> poste = new List<Poste>();
+
+
 
         public Profil(string prenom, string nom, string email, string numTelephone, int anciennete, int heuresTravaillees)
         {
@@ -23,7 +26,7 @@ namespace HoraireAlpha
             setNumTelephone(numTelephone);
             setAnciennete(anciennete);
             setHeuresTravaillees(heuresTravaillees);
- 
+
         }
 
 
@@ -57,6 +60,11 @@ namespace HoraireAlpha
             this.heuresTravaillees = heuresTravaillees;
         }
 
+        public void setPoste(Poste poste)
+        {
+          this.poste.Add(poste);
+        }
+
         public String getPrenom()
         {
             return prenom;
@@ -86,8 +94,13 @@ namespace HoraireAlpha
         {
             return heuresTravaillees;
         }
-        
-      
+
+        public List<Poste> getPoste() 
+        {
+         return poste;
+        }
+
+
 
     }
 }

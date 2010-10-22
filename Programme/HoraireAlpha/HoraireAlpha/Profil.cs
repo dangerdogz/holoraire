@@ -7,14 +7,24 @@ namespace HoraireAlpha
 {
     class Profil
     {
-        
- 
         private string prenom;
         private string nom;
         private string email;
         private string numTelephone;
         private int anciennete;
         private int heuresTravaillees;
+
+        public Profil(string prenom, string nom, string email, string numTelephone, int anciennete, int heuresTravaillees)
+        {
+
+            setPrenom(prenom);
+            setNom(nom);
+            setEmail(email);
+            setNumTelephone(numTelephone);
+            setAnciennete(anciennete);
+            setHeuresTravaillees(heuresTravaillees);
+ 
+        }
 
 
         public void setPrenom(string prenom)
@@ -46,6 +56,37 @@ namespace HoraireAlpha
         {
             this.heuresTravaillees = heuresTravaillees;
         }
+
+        public String getPrenom()
+        {
+            return prenom;
+        }
+
+        public String getNom()
+        {
+            return nom;
+        }
+
+        public String getEmail()
+        {
+            return email;
+        }
+
+        public String getNumTelephone()
+        {
+            return numTelephone;
+        }
+
+        public int getAnciennete()
+        {
+            return anciennete;
+        }
+
+        public int getHeuresTravaillees()
+        {
+            return heuresTravaillees;
+        }
+        
       
 
     }

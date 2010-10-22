@@ -12,7 +12,7 @@ namespace HoraireAlpha
         private Profil profil;
         private string description;
 
-        Poste (string nom, string description)
+        public Poste (string nom, string description)
         {
 
             setNom(nom);

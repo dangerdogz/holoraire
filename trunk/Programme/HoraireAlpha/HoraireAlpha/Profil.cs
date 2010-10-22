@@ -17,7 +17,7 @@ namespace HoraireAlpha
 
 
 
-        Profil(string prenom, string nom, string email, string numTelephone, int anciennete, int heuresTravaillees)
+        public Profil(string prenom, string nom, string email, string numTelephone, int anciennete, int heuresTravaillees)
         {
 
             setPrenom(prenom);

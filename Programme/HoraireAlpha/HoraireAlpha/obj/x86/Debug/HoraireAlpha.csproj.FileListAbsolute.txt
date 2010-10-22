@@ -26,3 +26,13 @@ C:\Users\Stud\Documents\Visual Studio 2010\Projects\HoraireAlpha(1)\Programme\Ho
 C:\Users\Stud\Documents\Visual Studio 2010\Projects\HoraireAlpha(1)\Programme\HoraireAlpha\HoraireAlpha\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Stud\Documents\Visual Studio 2010\Projects\HoraireAlpha(1)\Programme\HoraireAlpha\HoraireAlpha\bin\Debug\HoraireAlpha.exe
 C:\Users\Stud\Documents\Visual Studio 2010\Projects\HoraireAlpha(1)\Programme\HoraireAlpha\HoraireAlpha\bin\Debug\HoraireAlpha.pdb
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireAlpha\Programme\HoraireAlpha\HoraireAlpha\obj\x86\Debug\HoraireAlpha.exe
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireAlpha\Programme\HoraireAlpha\HoraireAlpha\obj\x86\Debug\HoraireAlpha.pdb
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireAlpha\Programme\HoraireAlpha\HoraireAlpha\bin\Debug\HoraireAlpha.exe
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireAlpha\Programme\HoraireAlpha\HoraireAlpha\bin\Debug\HoraireAlpha.pdb
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireAlpha\Programme\HoraireAlpha\HoraireAlpha\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireAlpha\Programme\HoraireAlpha\HoraireAlpha\obj\x86\Debug\HoraireAlpha.Horaire.resources
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireAlpha\Programme\HoraireAlpha\HoraireAlpha\obj\x86\Debug\HoraireAlpha.Properties.Resources.resources
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireAlpha\Programme\HoraireAlpha\HoraireAlpha\obj\x86\Debug\HoraireAlpha.UserControl1.resources
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireAlpha\Programme\HoraireAlpha\HoraireAlpha\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireAlpha\Programme\HoraireAlpha\HoraireAlpha\obj\x86\Debug\GenerateResource.write.1.tlog

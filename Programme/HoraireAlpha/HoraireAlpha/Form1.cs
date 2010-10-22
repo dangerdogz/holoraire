@@ -20,25 +20,25 @@ namespace HoraireAlpha
         private void buttonHoraire_Click(object sender, EventArgs e)
         {
             panelGauche.BackColor = Color.Green;
-            panelCentral.BackColor = Color.Green; 
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             panelGauche.BackColor = Color.Red;
-            panelCentral.BackColor = Color.Red; 
+           
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             panelGauche.BackColor = Color.Blue;
-            panelCentral.BackColor = Color.Blue; 
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             panelGauche.BackColor = Color.White;
-            panelCentral.BackColor = Color.White; 
+            
         }
 
         private void panelCentral_Paint(object sender, PaintEventArgs e)
@@ -53,6 +53,16 @@ namespace HoraireAlpha
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+
+        }
+
+        private void userControl11_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
         {
 
         }

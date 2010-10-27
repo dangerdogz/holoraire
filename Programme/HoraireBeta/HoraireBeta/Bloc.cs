@@ -14,7 +14,7 @@ namespace HoraireAlpha
         public int nbAffectee;
     }
 
-    class Bloc
+    public class Bloc
     {
 
 

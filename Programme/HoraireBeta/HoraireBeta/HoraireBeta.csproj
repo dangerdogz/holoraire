@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bloc.cs" />
+    <Compile Include="Loader.cs" />
     <Compile Include="Equipe.cs" />
     <Compile Include="HoraireBeta.cs">
       <SubType>Form</SubType>

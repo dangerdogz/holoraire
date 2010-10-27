@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HoraireAlpha
 {
-    class dbConnector
+    public class dbConnector
     {
         void ajouterProfil(String profilPrenom, String profilNom, String profilPhoneNumber, int profilHeureMax, int profilHeureMin, String profilEmail)
         {
@@ -122,6 +122,7 @@ namespace HoraireAlpha
             String requete;
             requete = "INSERT INTO Preset(beginDate, endDate, nom) VALUES(" + beginDate + "," + endDate + "," + nom + ")";
         }
+
 
 
     }

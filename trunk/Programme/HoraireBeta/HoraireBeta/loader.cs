@@ -2,42 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Data.OleDb;
-using System.Data.SqlClient;
+using System.Data;
 
 
 namespace HoraireBeta
 {
     public class Loader
     {
-        Procedure proc = new Procedure();
+        DBConnector proc = new DBConnector();
 
-        public void LoadProfil()
+        public List<Profil> LoadProfil()
         {
-            string SQL = proc.getProfil();
 
-            string ConnectionString = "server=(local)\\SQLEXPRESS;database=MyDatabase;Integrated Security=SSPI;";
-            SqlConnection conn = new SqlConnection(ConnectionString);
+            List<Profil> profilCharge = new List<Profil>();
+            DataTable rs;
 
-            SqlCommand cmd = new SqlCommand(SQL, conn);
-
-            conn.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-            try
+            int i=0;
+            rs = proc.getProfil(0);
+            while (i != rs.Rows.Count)
             {
-                while (reader.Read())
-                {
-                    Console.Write("ID:" + reader.GetInt32(0).ToString());
-                    Console.Write(" ,");
-                    Console.WriteLine("Name:" + reader.GetString(1).ToString());
-                }
+                Profil newprof = new Profil(rs.Rows[i]["prenom"].ToString(), rs.Rows[i]["nom"].ToString(), rs.Rows[i]["email"].ToString(), rs.Rows[i]["numTelephone"].ToString(), Convert.ToInt32(rs.Rows[i]["ancienete"].ToString()), 0);
+                profilCharge.Add(newprof);
             }
-            finally
-            {
-                reader.Close();
-                conn.Close();
-            }
-
+            return (profilCharge);
         }
     }
 }

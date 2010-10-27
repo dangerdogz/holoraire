@@ -5,11 +5,12 @@ using System.Text;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 
+
 namespace HoraireBeta
 {
     public class Loader
     {
-        dbConnector proc = new dbConnector();
+        Procedure proc = new Procedure();
 
         public void LoadProfil()
         {

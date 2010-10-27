@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HoraireAlpha
+namespace HoraireBeta
 {
-    public class dbConnector
+    public class Procedure
     {
         void ajouterProfil(String profilPrenom, String profilNom, String profilPhoneNumber, int profilHeureMax, int profilHeureMin, String profilEmail)
         {

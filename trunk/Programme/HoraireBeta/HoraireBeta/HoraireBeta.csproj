@@ -56,7 +56,7 @@
       <DependentUpon>HoraireBeta.cs</DependentUpon>
     </Compile>
     <Compile Include="Poste.cs" />
-    <Compile Include="Procedures.cs" />
+    <Compile Include="Procedure.cs" />
     <Compile Include="Profil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

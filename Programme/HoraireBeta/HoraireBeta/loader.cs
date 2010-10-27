@@ -9,7 +9,7 @@ namespace HoraireBeta
 {
     public class Loader
     {
-        Procedure proc = new Procedure();
+        DBConnect proc = new DBConnect();
 
        /* public List<Profil> LoadProfil()
         {

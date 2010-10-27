@@ -10,11 +10,11 @@ using System.IO;
 
 namespace HoraireBeta
 {
-    public class Procedure
+    public class DBConnect
     {
         private SQLiteConnection sqlite;
 
-       public Procedure()
+       public DBConnect()
         {
             //This part killed me in the beginning.  I was specifying "DataSource"
             //instead of "Data Source"

@@ -9,9 +9,9 @@ namespace HoraireBeta
 {
     public class Loader
     {
-        DBConnector proc = new DBConnector();
+        Procedure proc = new Procedure();
 
-        /*public List<Profil> LoadProfil()
+        public List<Profil> LoadProfil()
         {
 
             List<Profil> profilCharge = new List<Profil>();
@@ -25,6 +25,6 @@ namespace HoraireBeta
                 profilCharge.Add(newprof);
             }
             return (profilCharge);
-        }*/
+        }
     }
 }

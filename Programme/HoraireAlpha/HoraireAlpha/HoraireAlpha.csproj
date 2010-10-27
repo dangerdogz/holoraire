@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Equipe.cs" />
     <Compile Include="Poste.cs" />
+    <Compile Include="Procedures.cs" />
     <Compile Include="Profil.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

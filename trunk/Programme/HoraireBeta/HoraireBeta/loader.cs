@@ -14,7 +14,7 @@ namespace HoraireBeta
 
         public void LoadProfil()
         {
-            string SQL = proc.getProfil;
+            string SQL = proc.getProfil();
 
             string ConnectionString = "server=(local)\\SQLEXPRESS;database=MyDatabase;Integrated Security=SSPI;";
             SqlConnection conn = new SqlConnection(ConnectionString);

@@ -17,7 +17,7 @@ namespace HoraireBeta
 
 
 
-        public Profil(Poste poste, string prenom, string nom, string email, string numTelephone, int anciennete, int heuresTravaillees)
+        public Profil(Poste poste, string prenom, string nom, string email, string numTelephone, int anciennete)
         {
 
             setPrenom(prenom);
@@ -25,7 +25,6 @@ namespace HoraireBeta
             setEmail(email);
             setNumTelephone(numTelephone);
             setAnciennete(anciennete);
-            setHeuresTravaillees(heuresTravaillees);
             this.poste.Add(poste);
 
         }

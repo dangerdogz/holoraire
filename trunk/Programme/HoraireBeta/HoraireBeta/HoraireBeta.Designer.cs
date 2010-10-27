@@ -81,6 +81,9 @@ namespace HoraireBeta
             this.panelCentral_Horaire.Name = "panelCentral_Horaire";
             this.panelCentral_Horaire.Size = new System.Drawing.Size(665, 515);
             this.panelCentral_Horaire.TabIndex = 1;
+            this.panelCentral_Horaire.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
+            this.panelCentral_Horaire.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
+            
             // 
             // panelGauche_Horaire
             // 
@@ -91,6 +94,9 @@ namespace HoraireBeta
             this.panelGauche_Horaire.Size = new System.Drawing.Size(189, 515);
             this.panelGauche_Horaire.TabIndex = 0;
             this.panelGauche_Horaire.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panelGauche_Horaire.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
+            this.panelGauche_Horaire.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
+            
             // 
             // employe
             // 
@@ -104,6 +110,7 @@ namespace HoraireBeta
             this.employe.TabIndex = 1;
             this.employe.Text = "Employé";
             this.employe.Click += new System.EventHandler(this.employe_Click);
+            
             // 
             // panelCentral_Employe
             // 
@@ -114,7 +121,9 @@ namespace HoraireBeta
             this.panelCentral_Employe.Size = new System.Drawing.Size(664, 514);
             this.panelCentral_Employe.TabIndex = 3;
             this.panelCentral_Employe.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
-          //  this.panelCentral_Employe.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MouseEvent);
+            this.panelCentral_Employe.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Employe_OnMouseEvent);
+            this.panelCentral_Employe.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pCentral_Employe_OnMouseEvent);
+            
             // 
             // panelGauche_Employe
             // 
@@ -125,6 +134,8 @@ namespace HoraireBeta
             this.panelGauche_Employe.Size = new System.Drawing.Size(189, 514);
             this.panelGauche_Employe.TabIndex = 2;
             this.panelGauche_Employe.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
+            this.panelGauche_Employe.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pGauche_Employe_OnMouseEvent);
+            this.panelGauche_Employe.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pGauche_Employe_OnMouseEvent);
             // 
             // parametre
             // 
@@ -147,6 +158,9 @@ namespace HoraireBeta
             this.panelCentral_Parametre.Size = new System.Drawing.Size(664, 514);
             this.panelCentral_Parametre.TabIndex = 3;
             this.panelCentral_Parametre.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
+            this.panelCentral_Parametre.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Parametre_OnMouseEvent);
+            this.panelCentral_Parametre.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pCentral_Parametre_OnMouseEvent);
+            
             // 
             // panelGauche_Parametre
             // 
@@ -156,6 +170,9 @@ namespace HoraireBeta
             this.panelGauche_Parametre.Name = "panelGauche_Parametre";
             this.panelGauche_Parametre.Size = new System.Drawing.Size(189, 514);
             this.panelGauche_Parametre.TabIndex = 2;
+            this.panelGauche_Parametre.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Parametre_OnMouseEvent);
+            this.panelGauche_Parametre.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pCentral_Parametre_OnMouseEvent);
+            
             // 
             // HoraireBeta
             // 

@@ -23,7 +23,7 @@ namespace HoraireBeta
 
         }
 
-        private void panel4_Paint(object sender, PaintEventArgs e)
+        private void pGauche_Employe_Paint(object sender, PaintEventArgs e)
         {
           
         }
@@ -33,12 +33,12 @@ namespace HoraireBeta
 
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void pCentral_Horaire_Paint(object sender, PaintEventArgs e)
         {
         
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
+        private void pCentral_Employe_Paint(object sender, PaintEventArgs e)
         {
 
         }
@@ -48,7 +48,7 @@ namespace HoraireBeta
 
         }
 
-        private void panel5_Paint(object sender, PaintEventArgs e)
+        private void parametre_Paint(object sender, PaintEventArgs e)
         {
 
         }

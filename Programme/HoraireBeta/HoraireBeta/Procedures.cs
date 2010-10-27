@@ -63,7 +63,7 @@ namespace HoraireBeta
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show(query, "Failed");
+                MessageBox.Show(ex.Message, query);
             }
             sqlite.Close();
            
@@ -97,10 +97,11 @@ namespace HoraireBeta
             String requete;
             requete = "DELETE * FROM Profil WHERE idProfil = " +idProfil;
         }
-        void showAllPoste()
+        DataTable showAllPoste()
         {
             String requete;
             requete = "SELECT * FROM Poste";
+            return getResult(requete);
         }
         void addPoste(String nom, String description)
         {
@@ -177,10 +178,11 @@ namespace HoraireBeta
             String requete;
             requete = "DELETE * FROM Preset WHERE idPreset=" + idPreset;
         }
-        void getPreset(int idPreset)
+        DataTable getPreset(int idPreset)
         {
             String requete;
             requete = "SELECT * FROM Preset WHERE idPreset=" + idPreset;
+            return getResult(requete);
         }
         void addRessource(int idBlock, int idPoste, int idTeam)
         {

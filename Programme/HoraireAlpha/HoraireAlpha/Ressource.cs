@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HoraireAlpha
 {
-    class Ressource
+    public class Ressource
     {
         private int id;
 

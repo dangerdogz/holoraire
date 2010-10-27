@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bloc.cs" />
     <Compile Include="Equipe.cs" />
     <Compile Include="Poste.cs" />
     <Compile Include="Procedures.cs" />

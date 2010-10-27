@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HoraireAlpha
 {
-    class Profil : Ressource
+    public class Profil : Ressource
     {
         private string prenom;
         private string nom;
@@ -17,7 +17,7 @@ namespace HoraireAlpha
 
 
 
-        public Profil(string prenom, string nom, string email, string numTelephone, int anciennete, int heuresTravaillees)
+        public Profil(Poste poste, string prenom, string nom, string email, string numTelephone, int anciennete, int heuresTravaillees)
         {
 
             setPrenom(prenom);
@@ -26,6 +26,7 @@ namespace HoraireAlpha
             setNumTelephone(numTelephone);
             setAnciennete(anciennete);
             setHeuresTravaillees(heuresTravaillees);
+            this.poste.Add(poste);
 
         }
 
@@ -95,9 +96,14 @@ namespace HoraireAlpha
             return heuresTravaillees;
         }
 
-        public List<Poste> getPoste() 
+        public Poste getPoste(int num) 
         {
-         return poste;
+         return (poste[num]);
+        }
+
+        public List<Poste> getPoste()
+        {
+            return poste;
         }
 
 

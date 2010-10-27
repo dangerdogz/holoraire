@@ -126,7 +126,7 @@ namespace HoraireBeta
         {
 
         }
-        Procedure dbc;
+        DBConnect dbc;
 
         private void resultDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -140,7 +140,7 @@ namespace HoraireBeta
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dbc = new Procedure();// enabling the DB conection
+            dbc = new DBConnect();// enabling the DB conection
             button2.Enabled = true;
             MessageBox.Show(this, "connecté");
         }

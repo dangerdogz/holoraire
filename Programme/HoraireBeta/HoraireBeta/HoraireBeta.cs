@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using HoraireBeta;
 
 namespace HoraireBeta
 {
@@ -39,11 +40,6 @@ namespace HoraireBeta
         }
 
         private void pCentral_Employe_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
         {
 
         }
@@ -124,6 +120,35 @@ namespace HoraireBeta
 
                     break;
             }
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        Procedure dbc;
+
+        private void resultDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void sqlTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dbc = new Procedure();// enabling the DB conection
+            button2.Enabled = true;
+            MessageBox.Show(this, "connecté");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            resultDataGrid.DataSource = dbc.selectQuery(sqlTextBox.Text);
+            resultDataGrid.Refresh();
         }
     }
 }

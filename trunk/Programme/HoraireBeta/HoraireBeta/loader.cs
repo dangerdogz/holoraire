@@ -42,8 +42,8 @@ namespace HoraireBeta
             for (int i = 0; i > rsEquipe.Rows.Count; i++)
             {
                 rsEquipeProfil = proc.getTeamProfile(i);
-                //Equipe newEquipe = new Equipe(Convert.ToInt32(rsEquipe.Rows[i]["idTeam"].ToString()), rsEquipe.Rows[i]["nom"].ToString(), rsEquipe.Rows[i]["description"].ToString());
-               // equipe.Add(newEquipe);
+                Equipe newEquipe = new Equipe(Convert.ToInt32(rsEquipe.Rows[i]["idTeam"].ToString()), rsEquipe.Rows[i]["nom"].ToString(), rsEquipe.Rows[i]["description"].ToString());
+                equipe.Add(newEquipe);
                 for (int j = 0; j > rsEquipeProfil.Rows.Count; j++)
                 {
                     int id = Convert.ToInt32(rsEquipeProfil.Rows[j]["idProfil"].ToString());

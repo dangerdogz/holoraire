@@ -105,7 +105,7 @@ namespace HoraireBeta
             String requete;
             requete = "DELETE * FROM Profil WHERE idProfil = " +idProfil+"";
         }
-        public DataTable showAllPoste()
+        public DataTable getAllPoste()
         {
             String requete;
             requete = "SELECT * FROM Poste";
@@ -120,6 +120,12 @@ namespace HoraireBeta
         {
             String requete;
             requete = "DELETE * FROM Poste WHERE idPoste = " + idPoste+"";
+        }
+        public DataTable getPoste(int idPoste)
+        {
+            String requete;
+            requete = "SELECT * FROM Poste WHERE idPoste = "+idPoste+"";
+            return getResult(requete);
         }
         public void addBlock(String debut, String fin, int idType)
         {
@@ -148,20 +154,29 @@ namespace HoraireBeta
             requete = "SELECT * FROM Block";
             return getResult(requete);
         }
-        public void getBlockType()
+        public DataTable getAllBlockType()
         {
             String requete;
             requete = "SELECT * FROM BlockType";
+            return getResult(requete);
         }
-        public void getErreur(int idErreur)
+        public DataTable getErreur(int idErreur)
         {
             String requete;
             requete = "SELECT * FROM Erreur WHERE idErreur = "+idErreur+"";
+            return getResult(requete);
         }
-        public void getParametre(int idParametre)
+        public DataTable getParametre(int idParametre)
         {
             String requete;
             requete = "SELECT * FROM Parametre WHERE idParametre = " + idParametre+"";
+            return getResult(requete);
+        }
+        public DataTable getAllParametre()
+        {
+            String requete;
+            requete = "SELECT * FROM Parametre";
+            return getResult(requete);
         }
         public void addPlage(String debut, String fin, int day)
         {
@@ -178,10 +193,17 @@ namespace HoraireBeta
             String requete;
             requete = "DELETE * FROM Plage WHERE idPlage=" + idPlage+"";
         }
-        public void getPlage(int idPlage)
+        public DataTable getPlage(int idPlage)
         {
             String requete;
             requete = "SELECT * FROM Plage WHERE idPlage = " + idPlage+"";
+            return getResult(requete);
+        }
+        public DataTable getAllPlage()
+        {
+            String requete;
+            requete = "SELECT * FROM Plage";
+            return getResult(requete);
         }
         public void addPreset(String beginDate, String endDate, String nom)
         {
@@ -202,6 +224,12 @@ namespace HoraireBeta
         {
             String requete;
             requete = "SELECT * FROM Preset WHERE idPreset=" + idPreset+"";
+            return getResult(requete);
+        }
+        public DataTable getAllPreset()
+        {
+            String requete;
+            requete = "SELECT * FROM Preset";
             return getResult(requete);
         }
         public void addRessource(int idBlock, int idPoste, int idTeam)
@@ -225,6 +253,12 @@ namespace HoraireBeta
             requete = "SELECT * FROM Ressource WHERE idBlock = " + idBlock + "";
             return getResult(requete);
         }
+        public DataTable getAllRessource()
+        {
+            String requete;
+            requete = "SELECT * FROM Ressource";
+            return getResult(requete);
+        }
         public void addTeam(String nom, String description)
         {
             String requete;
@@ -246,6 +280,12 @@ namespace HoraireBeta
             requete = "SELECT * FROM Team WHERE idTeam = " + idTeam + "";
             return getResult(requete);
         }
+        public DataTable getAllTeam()
+        {
+            String requete;
+            requete = "SELECT * FROM Team";
+            return getResult(requete);
+        }
         public void addTeamProfile(int idTeam, int idProfil, int idPoste)
         {
             String requete;
@@ -265,6 +305,12 @@ namespace HoraireBeta
         {
             String requete;
             requete = "SELECT * FROM Team_Profil WHERE idTeam = " + idTeam + "";
+            return getResult(requete);
+        }
+        public DataTable getAllTeamProfile()
+        {
+            String requete;
+            requete = "SELECT * FROM Team_Profil";
             return getResult(requete);
         }
 

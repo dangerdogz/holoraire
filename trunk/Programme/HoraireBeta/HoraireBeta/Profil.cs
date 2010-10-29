@@ -29,6 +29,17 @@ namespace HoraireBeta
 
         }
 
+        public Profil(string prenom, string nom, string email, string numTelephone, int anciennete)
+        {
+
+            setPrenom(prenom);
+            setNom(nom);
+            setEmail(email);
+            setNumTelephone(numTelephone);
+            setAnciennete(anciennete);
+
+        }
+
 
         public void setPrenom(string prenom)
         {

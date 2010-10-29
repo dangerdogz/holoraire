@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using HoraireBeta;
-using Draw_Rectangle;
+//using Draw_Rectangle;
 
 
 namespace HoraireBeta

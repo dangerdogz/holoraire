@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ChilkatDotNet2">
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Chilkat Software Inc\Chilkat.NET-v2.0-v3.5-Frameworks\ChilkatDotNet2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86" />
@@ -49,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bloc.cs" />
+    <Compile Include="GrilleHoraire.cs" />
+    <Compile Include="GrilleJour.cs" />
     <Compile Include="Loader.cs" />
     <Compile Include="Equipe.cs" />
     <Compile Include="HoraireBeta.cs">
@@ -63,6 +68,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ressource.cs" />
+    <Compile Include="xml.cs" />
     <EmbeddedResource Include="HoraireBeta.resx">
       <DependentUpon>HoraireBeta.cs</DependentUpon>
     </EmbeddedResource>

@@ -20,6 +20,14 @@ namespace HoraireBeta
             
         }
 
+        public Poste(int id, string nom, string description)
+        {
+            setId(id);
+            setNom(nom);
+            setDescription(description);
+
+        }
+
         public void setNom(string nom)
         {
             this.nom = nom;

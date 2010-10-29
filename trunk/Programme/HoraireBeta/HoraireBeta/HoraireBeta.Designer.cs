@@ -103,6 +103,9 @@ namespace HoraireBeta
             // 
             // panelCentral_Horaire
             // 
+            this.panelCentral_Horaire.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.panelCentral_Horaire.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panelCentral_Horaire.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelCentral_Horaire.Controls.Add(this.tabConflits);
@@ -279,7 +282,7 @@ namespace HoraireBeta
             // 
             this.button_genere.Location = new System.Drawing.Point(3, 3);
             this.button_genere.Name = "button_genere";
-            this.button_genere.Size = new System.Drawing.Size(181, 29);
+            this.button_genere.Size = new System.Drawing.Size(230, 29);
             this.button_genere.TabIndex = 0;
             this.button_genere.Text = "Générer";
             this.button_genere.UseVisualStyleBackColor = true;
@@ -288,7 +291,7 @@ namespace HoraireBeta
             // 
             this.button_imprime.Location = new System.Drawing.Point(3, 38);
             this.button_imprime.Name = "button_imprime";
-            this.button_imprime.Size = new System.Drawing.Size(181, 29);
+            this.button_imprime.Size = new System.Drawing.Size(230, 29);
             this.button_imprime.TabIndex = 1;
             this.button_imprime.Text = "Imprimer";
             this.button_imprime.UseVisualStyleBackColor = true;
@@ -297,7 +300,7 @@ namespace HoraireBeta
             // 
             this.button_exporter.Location = new System.Drawing.Point(3, 73);
             this.button_exporter.Name = "button_exporter";
-            this.button_exporter.Size = new System.Drawing.Size(181, 29);
+            this.button_exporter.Size = new System.Drawing.Size(230, 29);
             this.button_exporter.TabIndex = 2;
             this.button_exporter.Text = "Exporter";
             this.button_exporter.UseVisualStyleBackColor = true;
@@ -324,18 +327,18 @@ namespace HoraireBeta
             // 
             this.textBox1.Location = new System.Drawing.Point(6, 305);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(172, 20);
+            this.textBox1.Size = new System.Drawing.Size(227, 20);
             this.textBox1.TabIndex = 5;
             // 
             // Presets
             // 
             this.Presets.Controls.Add(this.tab_Presets);
             this.Presets.Controls.Add(this.tab_Ressources);
-            this.Presets.ItemSize = new System.Drawing.Size(85, 18);
+            this.Presets.ItemSize = new System.Drawing.Size(112, 18);
             this.Presets.Location = new System.Drawing.Point(6, 335);
             this.Presets.Name = "Presets";
             this.Presets.SelectedIndex = 0;
-            this.Presets.Size = new System.Drawing.Size(178, 175);
+            this.Presets.Size = new System.Drawing.Size(229, 354);
             this.Presets.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.Presets.TabIndex = 6;
             // 
@@ -344,7 +347,7 @@ namespace HoraireBeta
             this.tab_Presets.Location = new System.Drawing.Point(4, 22);
             this.tab_Presets.Name = "tab_Presets";
             this.tab_Presets.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Presets.Size = new System.Drawing.Size(170, 149);
+            this.tab_Presets.Size = new System.Drawing.Size(221, 328);
             this.tab_Presets.TabIndex = 0;
             this.tab_Presets.Text = "Presets";
             this.tab_Presets.UseVisualStyleBackColor = true;
@@ -366,7 +369,7 @@ namespace HoraireBeta
             this.tab_Conflits.Location = new System.Drawing.Point(4, 22);
             this.tab_Conflits.Name = "tab_Conflits";
             this.tab_Conflits.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Conflits.Size = new System.Drawing.Size(464, 119);
+            this.tab_Conflits.Size = new System.Drawing.Size(442, 127);
             this.tab_Conflits.TabIndex = 0;
             this.tab_Conflits.Text = "Conflits";
             this.tab_Conflits.UseVisualStyleBackColor = true;
@@ -374,10 +377,10 @@ namespace HoraireBeta
             // tabConflits
             // 
             this.tabConflits.Controls.Add(this.tab_Conflits);
-            this.tabConflits.Location = new System.Drawing.Point(269, 544);
+            this.tabConflits.Location = new System.Drawing.Point(291, 536);
             this.tabConflits.Name = "tabConflits";
             this.tabConflits.SelectedIndex = 0;
-            this.tabConflits.Size = new System.Drawing.Size(472, 145);
+            this.tabConflits.Size = new System.Drawing.Size(450, 153);
             this.tabConflits.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabConflits.TabIndex = 0;
             // 

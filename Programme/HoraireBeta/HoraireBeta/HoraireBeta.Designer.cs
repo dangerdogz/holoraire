@@ -48,13 +48,30 @@ namespace HoraireBeta
             this.bouton_requete = new System.Windows.Forms.Button();
             this.bouton_connecter = new System.Windows.Forms.Button();
             this.admin_gauche = new System.Windows.Forms.Panel();
+            this.button_genere = new System.Windows.Forms.Button();
+            this.button_imprime = new System.Windows.Forms.Button();
+            this.button_exporter = new System.Windows.Forms.Button();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.label_recherche = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Presets = new System.Windows.Forms.TabControl();
+            this.tab_Presets = new System.Windows.Forms.TabPage();
+            this.tab_Ressources = new System.Windows.Forms.TabPage();
+            this.tab_Conflits = new System.Windows.Forms.TabPage();
+            this.tabConflits = new System.Windows.Forms.TabControl();
+            this.text_Conflits = new System.Windows.Forms.RichTextBox();
             this.Admin.SuspendLayout();
             this.horaire.SuspendLayout();
+            this.panelCentral_Horaire.SuspendLayout();
+            this.panelGauche_Horaire.SuspendLayout();
             this.employe.SuspendLayout();
             this.parametre.SuspendLayout();
             this.admin_table.SuspendLayout();
             this.admin_central.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultDataGrid)).BeginInit();
+            this.Presets.SuspendLayout();
+            this.tab_Conflits.SuspendLayout();
+            this.tabConflits.SuspendLayout();
             this.SuspendLayout();
             // 
             // Admin
@@ -67,7 +84,7 @@ namespace HoraireBeta
             this.Admin.Location = new System.Drawing.Point(0, 0);
             this.Admin.Name = "Admin";
             this.Admin.SelectedIndex = 0;
-            this.Admin.Size = new System.Drawing.Size(885, 561);
+            this.Admin.Size = new System.Drawing.Size(1013, 736);
             this.Admin.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.Admin.TabIndex = 0;
             // 
@@ -79,7 +96,7 @@ namespace HoraireBeta
             this.horaire.Location = new System.Drawing.Point(4, 25);
             this.horaire.Name = "horaire";
             this.horaire.Padding = new System.Windows.Forms.Padding(3);
-            this.horaire.Size = new System.Drawing.Size(877, 532);
+            this.horaire.Size = new System.Drawing.Size(1005, 707);
             this.horaire.TabIndex = 0;
             this.horaire.Text = "Horaire";
             this.horaire.Click += new System.EventHandler(this.horaire_Click);
@@ -88,9 +105,10 @@ namespace HoraireBeta
             // 
             this.panelCentral_Horaire.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panelCentral_Horaire.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelCentral_Horaire.Location = new System.Drawing.Point(203, 7);
+            this.panelCentral_Horaire.Controls.Add(this.tabConflits);
+            this.panelCentral_Horaire.Location = new System.Drawing.Point(253, 7);
             this.panelCentral_Horaire.Name = "panelCentral_Horaire";
-            this.panelCentral_Horaire.Size = new System.Drawing.Size(665, 515);
+            this.panelCentral_Horaire.Size = new System.Drawing.Size(746, 694);
             this.panelCentral_Horaire.TabIndex = 1;
             this.panelCentral_Horaire.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
             this.panelCentral_Horaire.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
@@ -99,9 +117,16 @@ namespace HoraireBeta
             // 
             this.panelGauche_Horaire.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panelGauche_Horaire.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelGauche_Horaire.Controls.Add(this.Presets);
+            this.panelGauche_Horaire.Controls.Add(this.textBox1);
+            this.panelGauche_Horaire.Controls.Add(this.label_recherche);
+            this.panelGauche_Horaire.Controls.Add(this.monthCalendar1);
+            this.panelGauche_Horaire.Controls.Add(this.button_exporter);
+            this.panelGauche_Horaire.Controls.Add(this.button_imprime);
+            this.panelGauche_Horaire.Controls.Add(this.button_genere);
             this.panelGauche_Horaire.Location = new System.Drawing.Point(7, 7);
             this.panelGauche_Horaire.Name = "panelGauche_Horaire";
-            this.panelGauche_Horaire.Size = new System.Drawing.Size(189, 515);
+            this.panelGauche_Horaire.Size = new System.Drawing.Size(240, 694);
             this.panelGauche_Horaire.TabIndex = 0;
             this.panelGauche_Horaire.Paint += new System.Windows.Forms.PaintEventHandler(this.pCentral_Horaire_Paint);
             this.panelGauche_Horaire.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pGauche_Horaire_OnMouseEvent);
@@ -115,7 +140,7 @@ namespace HoraireBeta
             this.employe.Location = new System.Drawing.Point(4, 25);
             this.employe.Name = "employe";
             this.employe.Padding = new System.Windows.Forms.Padding(3);
-            this.employe.Size = new System.Drawing.Size(877, 532);
+            this.employe.Size = new System.Drawing.Size(1005, 707);
             this.employe.TabIndex = 1;
             this.employe.Text = "Employé";
             this.employe.Click += new System.EventHandler(this.employe_Click);
@@ -124,9 +149,9 @@ namespace HoraireBeta
             // 
             this.panelCentral_Employe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panelCentral_Employe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelCentral_Employe.Location = new System.Drawing.Point(204, 8);
+            this.panelCentral_Employe.Location = new System.Drawing.Point(253, 7);
             this.panelCentral_Employe.Name = "panelCentral_Employe";
-            this.panelCentral_Employe.Size = new System.Drawing.Size(664, 514);
+            this.panelCentral_Employe.Size = new System.Drawing.Size(746, 694);
             this.panelCentral_Employe.TabIndex = 3;
             this.panelCentral_Employe.Paint += new System.Windows.Forms.PaintEventHandler(this.pCentral_Employe_Paint);
             this.panelCentral_Employe.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pCentral_Employe_OnMouseEvent);
@@ -138,7 +163,7 @@ namespace HoraireBeta
             this.panelGauche_Employe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelGauche_Employe.Location = new System.Drawing.Point(8, 8);
             this.panelGauche_Employe.Name = "panelGauche_Employe";
-            this.panelGauche_Employe.Size = new System.Drawing.Size(189, 514);
+            this.panelGauche_Employe.Size = new System.Drawing.Size(240, 694);
             this.panelGauche_Employe.TabIndex = 2;
             this.panelGauche_Employe.Paint += new System.Windows.Forms.PaintEventHandler(this.pGauche_Employe_Paint);
             this.panelGauche_Employe.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pGauche_Employe_OnMouseEvent);
@@ -152,7 +177,7 @@ namespace HoraireBeta
             this.parametre.Location = new System.Drawing.Point(4, 25);
             this.parametre.Name = "parametre";
             this.parametre.Padding = new System.Windows.Forms.Padding(3);
-            this.parametre.Size = new System.Drawing.Size(877, 532);
+            this.parametre.Size = new System.Drawing.Size(1005, 707);
             this.parametre.TabIndex = 2;
             this.parametre.Text = "Paramètre";
             // 
@@ -160,9 +185,9 @@ namespace HoraireBeta
             // 
             this.panelCentral_Parametre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panelCentral_Parametre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelCentral_Parametre.Location = new System.Drawing.Point(204, 8);
+            this.panelCentral_Parametre.Location = new System.Drawing.Point(253, 7);
             this.panelCentral_Parametre.Name = "panelCentral_Parametre";
-            this.panelCentral_Parametre.Size = new System.Drawing.Size(664, 514);
+            this.panelCentral_Parametre.Size = new System.Drawing.Size(746, 694);
             this.panelCentral_Parametre.TabIndex = 3;
             this.panelCentral_Parametre.Paint += new System.Windows.Forms.PaintEventHandler(this.parametre_Paint);
             this.panelCentral_Parametre.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pCentral_Parametre_OnMouseEvent);
@@ -174,7 +199,7 @@ namespace HoraireBeta
             this.panelGauche_Parametre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelGauche_Parametre.Location = new System.Drawing.Point(8, 8);
             this.panelGauche_Parametre.Name = "panelGauche_Parametre";
-            this.panelGauche_Parametre.Size = new System.Drawing.Size(189, 514);
+            this.panelGauche_Parametre.Size = new System.Drawing.Size(240, 694);
             this.panelGauche_Parametre.TabIndex = 2;
             this.panelGauche_Parametre.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pGauche_Parametre_OnMouseEvent);
             this.panelGauche_Parametre.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pGauche_Parametre_OnMouseEvent);
@@ -187,7 +212,7 @@ namespace HoraireBeta
             this.admin_table.Location = new System.Drawing.Point(4, 25);
             this.admin_table.Name = "admin_table";
             this.admin_table.Padding = new System.Windows.Forms.Padding(3);
-            this.admin_table.Size = new System.Drawing.Size(877, 532);
+            this.admin_table.Size = new System.Drawing.Size(1005, 707);
             this.admin_table.TabIndex = 3;
             this.admin_table.Text = "Admin";
             // 
@@ -198,9 +223,9 @@ namespace HoraireBeta
             this.admin_central.Controls.Add(this.sqlTextBox);
             this.admin_central.Controls.Add(this.bouton_requete);
             this.admin_central.Controls.Add(this.bouton_connecter);
-            this.admin_central.Location = new System.Drawing.Point(204, 9);
+            this.admin_central.Location = new System.Drawing.Point(253, 7);
             this.admin_central.Name = "admin_central";
-            this.admin_central.Size = new System.Drawing.Size(664, 514);
+            this.admin_central.Size = new System.Drawing.Size(746, 694);
             this.admin_central.TabIndex = 1;
             this.admin_central.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -246,26 +271,146 @@ namespace HoraireBeta
             this.admin_gauche.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.admin_gauche.Location = new System.Drawing.Point(8, 9);
             this.admin_gauche.Name = "admin_gauche";
-            this.admin_gauche.Size = new System.Drawing.Size(189, 514);
+            this.admin_gauche.Size = new System.Drawing.Size(240, 694);
             this.admin_gauche.TabIndex = 0;
             this.admin_gauche.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // button_genere
+            // 
+            this.button_genere.Location = new System.Drawing.Point(3, 3);
+            this.button_genere.Name = "button_genere";
+            this.button_genere.Size = new System.Drawing.Size(181, 29);
+            this.button_genere.TabIndex = 0;
+            this.button_genere.Text = "Générer";
+            this.button_genere.UseVisualStyleBackColor = true;
+            // 
+            // button_imprime
+            // 
+            this.button_imprime.Location = new System.Drawing.Point(3, 38);
+            this.button_imprime.Name = "button_imprime";
+            this.button_imprime.Size = new System.Drawing.Size(181, 29);
+            this.button_imprime.TabIndex = 1;
+            this.button_imprime.Text = "Imprimer";
+            this.button_imprime.UseVisualStyleBackColor = true;
+            // 
+            // button_exporter
+            // 
+            this.button_exporter.Location = new System.Drawing.Point(3, 73);
+            this.button_exporter.Name = "button_exporter";
+            this.button_exporter.Size = new System.Drawing.Size(181, 29);
+            this.button_exporter.TabIndex = 2;
+            this.button_exporter.Text = "Exporter";
+            this.button_exporter.UseVisualStyleBackColor = true;
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(6, 114);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 3;
+            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            // 
+            // label_recherche
+            // 
+            this.label_recherche.AutoSize = true;
+            this.label_recherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_recherche.Location = new System.Drawing.Point(3, 285);
+            this.label_recherche.Name = "label_recherche";
+            this.label_recherche.Size = new System.Drawing.Size(77, 17);
+            this.label_recherche.TabIndex = 4;
+            this.label_recherche.Text = "Recherche";
+            this.label_recherche.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(6, 305);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(172, 20);
+            this.textBox1.TabIndex = 5;
+            // 
+            // Presets
+            // 
+            this.Presets.Controls.Add(this.tab_Presets);
+            this.Presets.Controls.Add(this.tab_Ressources);
+            this.Presets.ItemSize = new System.Drawing.Size(85, 18);
+            this.Presets.Location = new System.Drawing.Point(6, 335);
+            this.Presets.Name = "Presets";
+            this.Presets.SelectedIndex = 0;
+            this.Presets.Size = new System.Drawing.Size(178, 175);
+            this.Presets.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.Presets.TabIndex = 6;
+            // 
+            // tab_Presets
+            // 
+            this.tab_Presets.Location = new System.Drawing.Point(4, 22);
+            this.tab_Presets.Name = "tab_Presets";
+            this.tab_Presets.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Presets.Size = new System.Drawing.Size(170, 149);
+            this.tab_Presets.TabIndex = 0;
+            this.tab_Presets.Text = "Presets";
+            this.tab_Presets.UseVisualStyleBackColor = true;
+            // 
+            // tab_Ressources
+            // 
+            this.tab_Ressources.Location = new System.Drawing.Point(4, 22);
+            this.tab_Ressources.Name = "tab_Ressources";
+            this.tab_Ressources.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Ressources.Size = new System.Drawing.Size(170, 149);
+            this.tab_Ressources.TabIndex = 1;
+            this.tab_Ressources.Text = "Ressources";
+            this.tab_Ressources.UseVisualStyleBackColor = true;
+            // 
+            // tab_Conflits
+            // 
+            this.tab_Conflits.Controls.Add(this.text_Conflits);
+            this.tab_Conflits.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.tab_Conflits.Location = new System.Drawing.Point(4, 22);
+            this.tab_Conflits.Name = "tab_Conflits";
+            this.tab_Conflits.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Conflits.Size = new System.Drawing.Size(464, 119);
+            this.tab_Conflits.TabIndex = 0;
+            this.tab_Conflits.Text = "Conflits";
+            this.tab_Conflits.UseVisualStyleBackColor = true;
+            // 
+            // tabConflits
+            // 
+            this.tabConflits.Controls.Add(this.tab_Conflits);
+            this.tabConflits.Location = new System.Drawing.Point(269, 544);
+            this.tabConflits.Name = "tabConflits";
+            this.tabConflits.SelectedIndex = 0;
+            this.tabConflits.Size = new System.Drawing.Size(472, 145);
+            this.tabConflits.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabConflits.TabIndex = 0;
+            // 
+            // text_Conflits
+            // 
+            this.text_Conflits.Location = new System.Drawing.Point(3, 3);
+            this.text_Conflits.Name = "text_Conflits";
+            this.text_Conflits.Size = new System.Drawing.Size(455, 113);
+            this.text_Conflits.TabIndex = 0;
+            this.text_Conflits.Text = "";
             // 
             // HoraireBeta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 559);
+            this.ClientSize = new System.Drawing.Size(1008, 730);
             this.Controls.Add(this.Admin);
             this.Name = "HoraireBeta";
             this.Text = "Form1";
             this.Admin.ResumeLayout(false);
             this.horaire.ResumeLayout(false);
+            this.panelCentral_Horaire.ResumeLayout(false);
+            this.panelGauche_Horaire.ResumeLayout(false);
+            this.panelGauche_Horaire.PerformLayout();
             this.employe.ResumeLayout(false);
             this.parametre.ResumeLayout(false);
             this.admin_table.ResumeLayout(false);
             this.admin_central.ResumeLayout(false);
             this.admin_central.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultDataGrid)).EndInit();
+            this.Presets.ResumeLayout(false);
+            this.tab_Conflits.ResumeLayout(false);
+            this.tabConflits.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -289,6 +434,18 @@ namespace HoraireBeta
         private TextBox sqlTextBox;
         private Button bouton_requete;
         private Button bouton_connecter;
+        private Button button_exporter;
+        private Button button_imprime;
+        private Button button_genere;
+        private MonthCalendar monthCalendar1;
+        private Label label_recherche;
+        private TextBox textBox1;
+        private TabControl Presets;
+        private TabPage tab_Presets;
+        private TabPage tab_Ressources;
+        private TabControl tabConflits;
+        private TabPage tab_Conflits;
+        private RichTextBox text_Conflits;
     }
 }
 

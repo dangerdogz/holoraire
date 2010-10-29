@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using HoraireBeta;
+using Draw_Rectangle;
+
 
 namespace HoraireBeta
 {
@@ -147,7 +149,7 @@ namespace HoraireBeta
 
         private void button2_Click(object sender, EventArgs e)
         {
-            resultDataGrid.DataSource = dbc.selectQuery(sqlTextBox.Text);
+            resultDataGrid.DataSource = dbc.getResult(sqlTextBox.Text);
             resultDataGrid.Refresh();
         }
 

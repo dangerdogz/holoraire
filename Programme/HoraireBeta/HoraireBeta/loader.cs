@@ -11,12 +11,12 @@ namespace HoraireBeta
     public class Loader
     {
 
-        List<Poste> posteCharge = new List<Poste>();
+        public List<Poste> posteCharge = new List<Poste>();
 
 
-        List<Profil> profilCharge = new List<Profil>();
-        List<Equipe> equipe = new List<Equipe>();
-        List<Bloc> bloc = new List<Bloc>();
+        public List<Profil> profilCharge = new List<Profil>();
+        public List<Equipe> equipe = new List<Equipe>();
+        public List<Bloc> bloc = new List<Bloc>();
 
 
         DBConnect proc = new DBConnect();
@@ -66,6 +66,7 @@ namespace HoraireBeta
             {
                 Poste newposte = new Poste(Convert.ToInt32(rs.Rows[i]["idPoste"].ToString()), rs.Rows[i]["nom"].ToString(), rs.Rows[i]["description"].ToString());
                 posteCharge.Add(newposte);
+                i++;
             }
 
             return (posteCharge);

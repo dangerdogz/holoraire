@@ -105,21 +105,21 @@ namespace HoraireBeta
         {
             String requete;
             requete = "UPDATE Profil SET prenom=" + profilPrenom + ", nom=" + profilNom + ", phoneNumber=" + profilPhoneNumber +
-                      ", quotaHeureMax=" + profilHeureMax + ", quotaHeureMin=" + profilHeureMin + ", email=" + profilEmail + " WHERE idProfil=" + idProfil;
+                      ", quotaHeureMax=" + profilHeureMax + ", quotaHeureMin=" + profilHeureMin + ", email=" + profilEmail + " WHERE idProfil=" + idProfil+"";
 
         }
         public DataTable getProfil(int idProfil)
         {
             String requete;
             requete = "SELECT idProfil, profilPrenom, profilNom, profilPhoneNumber, profilHeureMax, profilHeureMin, email" +
-                      "FROM Profil WHERE idProfil=" + idProfil;
+                      "FROM Profil WHERE idProfil=" + idProfil+"";
             return getResult(requete);
            
         }
         public void deleteProfil(int idProfil)
         {
             String requete;
-            requete = "DELETE * FROM Profil WHERE idProfil = " +idProfil;
+            requete = "DELETE * FROM Profil WHERE idProfil = " +idProfil+"";
         }
         public DataTable showAllPoste()
         {
@@ -135,7 +135,7 @@ namespace HoraireBeta
         public void deletePoste(int idPoste)
         {
             String requete;
-            requete = "DELETE * FROM Poste WHERE idPoste = " + idPoste;
+            requete = "DELETE * FROM Poste WHERE idPoste = " + idPoste+"";
         }
         public void addBlock(String debut, String fin, int idType)
         {
@@ -145,12 +145,12 @@ namespace HoraireBeta
         public void deleteBlock(int idBlock)
         {
             String requete;
-            requete = "DELETE * FROM Block WHERE idBlock = "+idBlock;
+            requete = "DELETE * FROM Block WHERE idBlock = "+idBlock+"";
         }
         public void modifyBlock(String debut, String fin, int idBlock)
         {
             String requete;
-            requete = "UPDATE Block SET debut = "+debut+", "+fin+" WHERE idBlock="+idBlock;
+            requete = "UPDATE Block SET debut = "+debut+", "+fin+" WHERE idBlock="+idBlock+"";
         }
         public void getBlockType()
         {
@@ -160,12 +160,12 @@ namespace HoraireBeta
         public void getErreur(int idErreur)
         {
             String requete;
-            requete = "SELECT * FROM Erreur WHERE idErreur = "+idErreur;
+            requete = "SELECT * FROM Erreur WHERE idErreur = "+idErreur+"";
         }
         public void getParametre(int idParametre)
         {
             String requete;
-            requete = "SELECT * FROM Parametre WHERE idParametre = " + idParametre;
+            requete = "SELECT * FROM Parametre WHERE idParametre = " + idParametre+"";
         }
         public void addPlage(String debut, String fin, int day)
         {
@@ -175,17 +175,17 @@ namespace HoraireBeta
         public void modifyPlage(String debut, String fin, int day)
         {
             String requete;
-            requete = "UPDATE Plage SET debut="+debut+", fin="+fin+", day="+day;
+            requete = "UPDATE Plage SET debut="+debut+", fin="+fin+", day="+day+"";
         }
         public void deletePlage(int idPlage)
         {
             String requete;
-            requete = "DELETE * FROM Plage WHERE idPlage=" + idPlage;
+            requete = "DELETE * FROM Plage WHERE idPlage=" + idPlage+"";
         }
         public void getPlage(int idPlage)
         {
             String requete;
-            requete = "SELECT * FROM Plage WHERE idPlage = " + idPlage;
+            requete = "SELECT * FROM Plage WHERE idPlage = " + idPlage+"";
         }
         public void addPreset(String beginDate, String endDate, String nom)
         {
@@ -195,17 +195,17 @@ namespace HoraireBeta
         public void modifyPreset(String beginDate, String endDate, String nom)
         {
             String requete;
-            requete = "UPDATE Preset SET beginDate=" + beginDate + ", endDate=" + endDate + ", nom=" + nom;
+            requete = "UPDATE Preset SET beginDate=" + beginDate + ", endDate=" + endDate + ", nom=" + nom+"";
         }
         public void deletePreset(int idPreset)
         {
             String requete;
-            requete = "DELETE * FROM Preset WHERE idPreset=" + idPreset;
+            requete = "DELETE * FROM Preset WHERE idPreset=" + idPreset+"";
         }
         public DataTable getPreset(int idPreset)
         {
             String requete;
-            requete = "SELECT * FROM Preset WHERE idPreset=" + idPreset;
+            requete = "SELECT * FROM Preset WHERE idPreset=" + idPreset+"";
             return getResult(requete);
         }
         public void addRessource(int idBlock, int idPoste, int idTeam)
@@ -216,8 +216,61 @@ namespace HoraireBeta
         public void modifyRessource(int idBlock, int idPoste, int idTeam)
         {
             String requete;
-            requete = "UPDATE Ressource SET idBlock="+idBlock+", idPoste = "+idPoste+", idTeam = "+idTeam;
-        } 
+            requete = "UPDATE Ressource SET idBlock="+idBlock+", idPoste = "+idPoste+", idTeam = "+idTeam+"";
+        }
+        public void deleteRessource(int idBlock)
+        {
+            String requete;
+            requete = "DELETE * FROM Ressource WHERE idBlock=" + idBlock + "";
+        }
+        public DataTable getRessource(int idBlock)
+        {
+            String requete;
+            requete = "SELECT * FROM Ressource WHERE idBlock = " + idBlock + "";
+            return getResult(requete);
+        }
+        public void addTeam(String nom, String description)
+        {
+            String requete;
+            requete = "INSERT INTO Team(nom, description) VALUES("+nom+", "+description+")";
+        }
+        public void modifyTeam(String nom, String description)
+        {
+            String requete;
+            requete = "UPDATE Team SET nom=" + nom + ", description = " + description + "";
+        }
+        public void deleteTeam(int idTeam)
+        {
+            String requete;
+            requete = "DELETE * FROM Team WHERE idTeam=" + idTeam + "";
+        }
+        public DataTable getTeam(int idTeam)
+        {
+            String requete;
+            requete = "SELECT * FROM Team WHERE idTeam = " + idTeam + "";
+            return getResult(requete);
+        }
+        public void addTeamProfile(int idTeam, int idProfil, int idPoste)
+        {
+            String requete;
+            requete = "INSERT INTO Team_Profil(idTeam, idProfil, idPoste) VALUES(" + idTeam + ", " + idProfil + ", " + idPoste + ")";
+        }
+        public void modifyTeamProfile(int idTeam, int idProfil, int idPoste)
+        {
+            String requete;
+            requete = "UPDATE Team_Profil SET idTeam=" + idTeam + ", idProfil = " + idProfil + ", idPoste = " + idPoste + "";
+        }
+        public void deleteTeamProfile(int idTeam)
+        {
+            String requete;
+            requete = "DELETE * FROM Team_Profil WHERE idTeam=" + idTeam + "";
+        }
+        public DataTable getTeamProfile(int idTeam)
+        {
+            String requete;
+            requete = "SELECT * FROM Team_Profil WHERE idTeam = " + idTeam + "";
+            return getResult(requete);
+        }
 
 
     }

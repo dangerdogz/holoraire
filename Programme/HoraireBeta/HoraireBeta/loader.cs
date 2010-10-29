@@ -11,7 +11,7 @@ namespace HoraireBeta
     {
         DBConnect proc = new DBConnect();
 
-       /* public List<Profil> LoadProfil()
+        public List<Profil> LoadProfil()
         {
 
             List<Profil> profilCharge = new List<Profil>();
@@ -21,10 +21,10 @@ namespace HoraireBeta
             rs = proc.getProfil(0);
             while (i != rs.Rows.Count)
             {
-                Profil newprof = new Profil(rs.Rows[i]["prenom"].ToString(), rs.Rows[i]["nom"].ToString(), rs.Rows[i]["email"].ToString(), rs.Rows[i]["numTelephone"].ToString(), Convert.ToInt32(rs.Rows[i]["ancienete"].ToString()), 0);
+                Profil newprof = new Profil(rs.Rows[i]["prenom"].ToString(), rs.Rows[i]["nom"].ToString(), rs.Rows[i]["email"].ToString(), rs.Rows[i]["numTelephone"].ToString(), Convert.ToInt32(rs.Rows[i]["ancienete"].ToString()));
                 profilCharge.Add(newprof);
             }
             return (profilCharge);
-        }*/
+        }
     }
 }

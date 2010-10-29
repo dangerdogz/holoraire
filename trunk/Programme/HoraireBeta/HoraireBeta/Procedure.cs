@@ -95,7 +95,7 @@ namespace HoraireBeta
         public DataTable getAllProfil()
         {
             String requete;
-            requete = "SELECT idProfil, prenom, nom, phoneNumber, quotaHeureMax, quotaHeureMin, email" +
+            requete = "SELECT idProfil, prenom, nom, phoneNumber, quotaHeureMax, quotaHeureMin, email, seniority" +
                       " FROM Profil";
             return getResult(requete);
 

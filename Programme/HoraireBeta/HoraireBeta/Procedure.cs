@@ -40,7 +40,7 @@ namespace HoraireBeta
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show(ex.Message, "ovaires");
+                MessageBox.Show(ex.Message+" "+query, "ovaires");
             }
             sqlite.Close();
             return dt;
@@ -96,7 +96,7 @@ namespace HoraireBeta
         {
             String requete;
             requete = "SELECT idProfil, prenom, nom, phoneNumber, quotaHeureMax, quotaHeureMin, email" +
-                      "FROM Profil";
+                      " FROM Profil";
             return getResult(requete);
 
         }

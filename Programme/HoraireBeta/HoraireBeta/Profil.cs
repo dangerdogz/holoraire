@@ -31,7 +31,6 @@ namespace HoraireBeta
 
         public Profil(string prenom, string nom, string email, string numTelephone, int anciennete)
         {
-
             setPrenom(prenom);
             setNom(nom);
             setEmail(email);
@@ -40,6 +39,16 @@ namespace HoraireBeta
 
         }
 
+        public Profil(int id, string prenom, string nom, string email, string numTelephone, int anciennete)
+        {
+            setId(id);
+            setPrenom(prenom);
+            setNom(nom);
+            setEmail(email);
+            setNumTelephone(numTelephone);
+            setAnciennete(anciennete);
+
+        }
 
         public void setPrenom(string prenom)
         {

@@ -313,6 +313,24 @@ namespace HoraireBeta
             requete = "SELECT * FROM Team_Profil";
             return getResult(requete);
         }
+        public DataTable getPosteProfil(int idPoste)
+        {
+            String requete;
+            requete = "SELECT * FROM Poste_Profil WHERE idPoste = " + idPoste + "";
+            return getResult(requete);
+        }
+        public DataTable getProfilPoste(int idProfil)
+        {
+            String requete;
+            requete = "SELECT * FROM Poste_Profil WHERE idPoste = " + idProfil + "";
+            return getResult(requete);
+        }
+        public DataTable getAllProfilPoste()
+        {
+            String requete;
+            requete = "SELECT * FROM Poste_Profil";
+            return getResult(requete);
+        }
 
 
     }

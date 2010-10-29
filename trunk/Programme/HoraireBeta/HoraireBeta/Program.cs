@@ -13,8 +13,8 @@ namespace HoraireBeta
         [STAThread]
         static void Main()
         {
-            CreateXml testXml = new CreateXml();
-            testXml.CreateXml_Click();
+            CreateXml xml = new CreateXml();
+            xml.CreateProfileXml();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new HoraireBeta());

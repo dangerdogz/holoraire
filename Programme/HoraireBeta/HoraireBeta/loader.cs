@@ -33,8 +33,8 @@ namespace HoraireBeta
             rs = proc.getAllProfil();
             while (i < rs.Rows.Count)
             {
-                Profil newprof = new Profil(rs.Rows[i]["prenom"].ToString(), rs.Rows[i]["nom"].ToString(), rs.Rows[i]["email"].ToString(), rs.Rows[i]["numTelephone"].ToString(), Convert.ToInt32(rs.Rows[i]["ancienete"].ToString()));
-                newprof.setId(Convert.ToInt32(rs.Rows[i]["ancienete"].ToString()));
+                Profil newprof = new Profil(rs.Rows[i]["prenom"].ToString(), rs.Rows[i]["nom"].ToString(), rs.Rows[i]["email"].ToString(), rs.Rows[i]["phoneNumber"].ToString(), Convert.ToInt32(rs.Rows[i]["seniority"].ToString()));
+                newprof.setId(Convert.ToInt32(rs.Rows[i]["idProfil"].ToString()));
 
                 if (posteCharge[0] != null)
                 {
@@ -45,7 +45,7 @@ namespace HoraireBeta
                     for (int j = 0; j < rs2.Rows.Count; j++)
                     {
                         int k=0;
-                        while (Convert.ToInt32(rs2.Rows[j]["Poste"].ToString()) != posteCharge[k++].getId()) ;
+                        while (Convert.ToInt32(rs2.Rows[j]["idPoste"].ToString()) != posteCharge[k++].getId()) ;
                         newprof.setPoste(posteCharge[--k]);
                     }
 
@@ -64,7 +64,7 @@ namespace HoraireBeta
             int i =0;
             while (i != rs.Rows.Count)
             {
-                Poste newposte = new Poste(rs.Rows[i]["nom"].ToString(), rs.Rows[i]["description"].ToString());
+                Poste newposte = new Poste(Convert.ToInt32(rs.Rows[i]["idPoste"].ToString()), rs.Rows[i]["nom"].ToString(), rs.Rows[i]["description"].ToString());
                 posteCharge.Add(newposte);
             }
 

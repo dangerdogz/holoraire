@@ -41,19 +41,19 @@ namespace HoraireBeta
             this.parametre = new System.Windows.Forms.TabPage();
             this.panelCentral_Parametre = new System.Windows.Forms.Panel();
             this.panelGauche_Parametre = new System.Windows.Forms.Panel();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.admin_table = new System.Windows.Forms.TabPage();
+            this.admin_central = new System.Windows.Forms.Panel();
             this.resultDataGrid = new System.Windows.Forms.DataGridView();
             this.sqlTextBox = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bouton_requete = new System.Windows.Forms.Button();
+            this.bouton_connecter = new System.Windows.Forms.Button();
+            this.admin_gauche = new System.Windows.Forms.Panel();
             this.Admin.SuspendLayout();
             this.horaire.SuspendLayout();
             this.employe.SuspendLayout();
             this.parametre.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.admin_table.SuspendLayout();
+            this.admin_central.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +63,7 @@ namespace HoraireBeta
             this.Admin.Controls.Add(this.horaire);
             this.Admin.Controls.Add(this.employe);
             this.Admin.Controls.Add(this.parametre);
-            this.Admin.Controls.Add(this.tabPage1);
+            this.Admin.Controls.Add(this.admin_table);
             this.Admin.Location = new System.Drawing.Point(0, 0);
             this.Admin.Name = "Admin";
             this.Admin.SelectedIndex = 0;
@@ -179,38 +179,30 @@ namespace HoraireBeta
             this.panelGauche_Parametre.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pGauche_Parametre_OnMouseEvent);
             this.panelGauche_Parametre.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pGauche_Parametre_OnMouseEvent);
             // 
-            // tabPage1
+            // admin_table
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.Green;
-            this.tabPage1.Controls.Add(this.panel2);
-            this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(877, 532);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "Admin";
+            this.admin_table.BackColor = System.Drawing.Color.Green;
+            this.admin_table.Controls.Add(this.admin_central);
+            this.admin_table.Controls.Add(this.admin_gauche);
+            this.admin_table.Location = new System.Drawing.Point(4, 25);
+            this.admin_table.Name = "admin_table";
+            this.admin_table.Padding = new System.Windows.Forms.Padding(3);
+            this.admin_table.Size = new System.Drawing.Size(877, 532);
+            this.admin_table.TabIndex = 3;
+            this.admin_table.Text = "Admin";
             // 
-            // panel1
+            // admin_central
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.panel1.Location = new System.Drawing.Point(8, 9);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(189, 514);
-            this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.panel2.Controls.Add(this.resultDataGrid);
-            this.panel2.Controls.Add(this.sqlTextBox);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Location = new System.Drawing.Point(204, 9);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(664, 514);
-            this.panel2.TabIndex = 1;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            this.admin_central.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.admin_central.Controls.Add(this.resultDataGrid);
+            this.admin_central.Controls.Add(this.sqlTextBox);
+            this.admin_central.Controls.Add(this.bouton_requete);
+            this.admin_central.Controls.Add(this.bouton_connecter);
+            this.admin_central.Location = new System.Drawing.Point(204, 9);
+            this.admin_central.Name = "admin_central";
+            this.admin_central.Size = new System.Drawing.Size(664, 514);
+            this.admin_central.TabIndex = 1;
+            this.admin_central.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // resultDataGrid
             // 
@@ -229,25 +221,34 @@ namespace HoraireBeta
             this.sqlTextBox.TabIndex = 6;
             this.sqlTextBox.TextChanged += new System.EventHandler(this.sqlTextBox_TextChanged);
             // 
-            // button2
+            // bouton_requete
             // 
-            this.button2.Location = new System.Drawing.Point(387, 346);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.bouton_requete.Location = new System.Drawing.Point(387, 346);
+            this.bouton_requete.Name = "bouton_requete";
+            this.bouton_requete.Size = new System.Drawing.Size(75, 23);
+            this.bouton_requete.TabIndex = 5;
+            this.bouton_requete.Text = "requete";
+            this.bouton_requete.UseVisualStyleBackColor = true;
+            this.bouton_requete.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // bouton_connecter
             // 
-            this.button1.Location = new System.Drawing.Point(202, 346);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bouton_connecter.Location = new System.Drawing.Point(202, 346);
+            this.bouton_connecter.Name = "bouton_connecter";
+            this.bouton_connecter.Size = new System.Drawing.Size(75, 23);
+            this.bouton_connecter.TabIndex = 4;
+            this.bouton_connecter.Text = "connecter";
+            this.bouton_connecter.UseVisualStyleBackColor = true;
+            this.bouton_connecter.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // admin_gauche
+            // 
+            this.admin_gauche.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.admin_gauche.Location = new System.Drawing.Point(8, 9);
+            this.admin_gauche.Name = "admin_gauche";
+            this.admin_gauche.Size = new System.Drawing.Size(189, 514);
+            this.admin_gauche.TabIndex = 0;
+            this.admin_gauche.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // HoraireBeta
             // 
@@ -261,9 +262,9 @@ namespace HoraireBeta
             this.horaire.ResumeLayout(false);
             this.employe.ResumeLayout(false);
             this.parametre.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.admin_table.ResumeLayout(false);
+            this.admin_central.ResumeLayout(false);
+            this.admin_central.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultDataGrid)).EndInit();
             this.ResumeLayout(false);
 
@@ -281,13 +282,13 @@ namespace HoraireBeta
         private System.Windows.Forms.Panel panelGauche_Employe;
         private System.Windows.Forms.Panel panelCentral_Parametre;
         private System.Windows.Forms.Panel panelGauche_Parametre;
-        private TabPage tabPage1;
-        private Panel panel2;
-        private Panel panel1;
+        private TabPage admin_table;
+        private Panel admin_central;
+        private Panel admin_gauche;
         private DataGridView resultDataGrid;
         private TextBox sqlTextBox;
-        private Button button2;
-        private Button button1;
+        private Button bouton_requete;
+        private Button bouton_connecter;
     }
 }
 

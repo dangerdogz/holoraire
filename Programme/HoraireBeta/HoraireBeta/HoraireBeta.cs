@@ -141,7 +141,7 @@ namespace HoraireBeta
         private void button1_Click(object sender, EventArgs e)
         {
             dbc = new DBConnect();// enabling the DB conection
-            button2.Enabled = true;
+            bouton_requete.Enabled = true;
             MessageBox.Show(this, "connecté");
         }
 
@@ -149,6 +149,11 @@ namespace HoraireBeta
         {
             resultDataGrid.DataSource = dbc.selectQuery(sqlTextBox.Text);
             resultDataGrid.Refresh();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -9,12 +9,17 @@ namespace HoraireBeta
 {
     public class Loader
     {
+
+        List<Profil> profilCharge = new List<Profil>();
+        List<Equipe> equipe = new List<Equipe>();
+        List<Bloc> bloc = new List<Bloc>();
+
         DBConnect proc = new DBConnect();
 
         public List<Profil> LoadProfil()
         {
 
-            List<Profil> profilCharge = new List<Profil>();
+          
             DataTable rs;
 
             int i=0;
@@ -26,5 +31,33 @@ namespace HoraireBeta
             }
             return (profilCharge);
         }
+
+        public List<Equipe> LoadEquipe()
+        {
+            DataTable rsEquipe;
+            DataTable rsEquipeProfil;
+            rsEquipe = proc.getAllTeam();
+            int k = 0;
+
+            for (int i = 0; i > rsEquipe.Rows.Count; i++)
+            {
+                rsEquipeProfil = proc.getTeamProfile(i);
+                //Equipe newEquipe = new Equipe(Convert.ToInt32(rsEquipe.Rows[i]["idTeam"].ToString()), rsEquipe.Rows[i]["nom"].ToString(), rsEquipe.Rows[i]["description"].ToString());
+               // equipe.Add(newEquipe);
+                for (int j = 0; j > rsEquipeProfil.Rows.Count; j++)
+                {
+                    int id = Convert.ToInt32(rsEquipeProfil.Rows[j]["idProfil"].ToString());
+
+                    while (id != profilCharge[k++].getId()) ;
+                    equipe[i].setEmploye(profilCharge[--k]);
+                    
+
+                }
+            }
+
+            return equipe;
+
+        }
+
     }
 }

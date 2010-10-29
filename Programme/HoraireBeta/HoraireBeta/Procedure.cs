@@ -22,31 +22,7 @@ namespace HoraireBeta
 
         }
 
-       public DataTable selectQuery(string query)
-       {
-           SQLiteDataAdapter ad;
-           DataTable dt = new DataTable();
-
-           try
-           {
-               SQLiteCommand cmd;
-               sqlite.Open();  //Initiate connection to the db
-               cmd = sqlite.CreateCommand();
-               cmd.CommandText = query;  //set the passed query
-               ad = new SQLiteDataAdapter(cmd);
-               MessageBox.Show("WindowsFormsApplication3", "uterus");
-               ad.Fill(dt); //fill the datasource
-               MessageBox.Show("WindowsFormsApplication3", "tompe de faloppe");
-           }
-           catch (SQLiteException ex)
-           {
-               MessageBox.Show(ex.Message, "ovaires");
-           }
-           sqlite.Close();
-           return dt;
-       }
-
-        private DataTable getResult(string query)
+        public DataTable getResult(string query)
         {
             SQLiteDataAdapter ad;
             DataTable dt = new DataTable();
@@ -69,7 +45,7 @@ namespace HoraireBeta
             sqlite.Close();
             return dt;
         }
-        private void doQuery(string query)
+        public void doQuery(string query)
         {
             SQLiteDataAdapter ad;
             DataTable dt = new DataTable();
@@ -111,10 +87,18 @@ namespace HoraireBeta
         public DataTable getProfil(int idProfil)
         {
             String requete;
-            requete = "SELECT idProfil, profilPrenom, profilNom, profilPhoneNumber, profilHeureMax, profilHeureMin, email" +
+            requete = "SELECT idProfil, prenom, nom, phoneNumber, quotaHeureMax, quotaHeureMin, email" +
                       "FROM Profil WHERE idProfil=" + idProfil+"";
             return getResult(requete);
            
+        }
+        public DataTable getAllProfil()
+        {
+            String requete;
+            requete = "SELECT idProfil, prenom, nom, phoneNumber, quotaHeureMax, quotaHeureMin, email" +
+                      "FROM Profil";
+            return getResult(requete);
+
         }
         public void deleteProfil(int idProfil)
         {
@@ -151,6 +135,18 @@ namespace HoraireBeta
         {
             String requete;
             requete = "UPDATE Block SET debut = "+debut+", "+fin+" WHERE idBlock="+idBlock+"";
+        }
+        public DataTable getBlock(int idBlock)
+        {
+            String requete;
+            requete = "SELECT * FROM Block WHERE idBlock = " + idBlock + "";
+            return getResult(requete);
+        }
+        public DataTable getAllBlock()
+        {
+            String requete;
+            requete = "SELECT * FROM Block";
+            return getResult(requete);
         }
         public void getBlockType()
         {

@@ -5,20 +5,29 @@ using System.Text;
 
 namespace HoraireBeta
 {
-    class Equipe : Ressource
+    public class Equipe : Ressource
     {
         private List<Profil> profils = new List<Profil>();
         private String nom;
+        private String description;
 
-        Equipe(string nom)
+        Equipe(int id, string nom, string description)
         {
+            setId(id);
             setNom(nom);
+            setDescription(description);
         }
         
         public void setNom(string nom)
         {
             this.nom = nom;
         }
+
+        public void setDescription(string description)
+        {
+            this.description = description;
+        }
+
 
         public void setEmploye(Profil profil)
         {

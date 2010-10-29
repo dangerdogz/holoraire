@@ -9,7 +9,7 @@ namespace HoraireBeta
     public struct RessourceEntree
     {
         //struct qui sert a rentrer toutes les variables dans une liste   
-        public Poste voulue;
+        public Ressource voulue;
         public int nbVoulue;
         public int nbAffectee;
     }
@@ -27,7 +27,7 @@ namespace HoraireBeta
         
         System.Globalization.CultureInfo info = new System.Globalization.CultureInfo("en-US", false);
 
-        List<Profil> ressourcesAffectes = new List<Profil>();
+        List<Ressource> ressourcesAffectes = new List<Ressource>();
         List<RessourceEntree> ressourcesVoulus = new List<RessourceEntree>();
 
         public Bloc(DateTime debut, DateTime fin, int type)
@@ -51,7 +51,7 @@ namespace HoraireBeta
         }
 
 
-        public void addRessourceVoulue(int nbvoulue, Poste voulue)
+        public void addRessourceVoulue(int nbvoulue, Ressource voulue)
         {
             //nom pas tant hot
             
@@ -65,7 +65,7 @@ namespace HoraireBeta
 
 
 
-        public void addEmployee(Profil newEmp)
+        public void addRessource(Profil newEmp)
         {
             
 
@@ -81,7 +81,7 @@ namespace HoraireBeta
                 {
                     //trie l'employé dès son ajout
                     int coun = 0;
-                    while (coun < ressourcesAffectes.Count && ressourcesAffectes[coun].getAnciennete() <= newEmp.getAnciennete())
+                    while (coun < ressourcesAffectes.Count && ((Profil)ressourcesAffectes[coun]).getAnciennete() <= newEmp.getAnciennete())
                     {
                         coun++;
                     }
@@ -93,6 +93,7 @@ namespace HoraireBeta
                 }
                 int i=0;
                 int j = 0;
+                //parse la liste des ressources voulues et ensuite la liste des poste de l'employé pour essayer de trouver un match
                 while (i < ressourcesVoulus.Count() && ressourcesVoulus[i].voulue != newEmp.getPoste(j))
                 {
                     
@@ -116,18 +117,38 @@ namespace HoraireBeta
 
         }
 
+        public void addRessource(Equipe newEquipe)
+        {
+           ressourcesAffectes.Add(newEquipe);
+
+            
+            int i = 0;
+            while (i < ressourcesVoulus.Count() && ressourcesVoulus[i++].voulue != newEquipe) ;
+                
+
+            if (i < ressourcesVoulus.Count())
+            {
+                RessourceEntree ressourceAdded = ressourcesVoulus[--i];
+                ressourceAdded.nbAffectee++;
+                ressourcesVoulus[i] = ressourceAdded;
+            }
+        
+        checkCompletion();
+
+        }
+
         public void removeEmplNouv()
         {
             //enlève l'employé le plus noob
             int i = 0;
             int j = 0;
-            while (i < ressourcesVoulus.Count() && ressourcesVoulus[i].voulue != ressourcesAffectes[0].getPoste(j))
+            while (i < ressourcesVoulus.Count() && ressourcesVoulus[i].voulue != ((Profil)ressourcesAffectes[0]).getPoste(j))
                 {
                     
                     j = 0;
-                    while(j<ressourcesAffectes[0].getPoste().Count && ressourcesVoulus[i].voulue !=ressourcesAffectes[0].getPoste(j++));
+                    while (j < ((Profil)ressourcesAffectes[0]).getPoste().Count && ressourcesVoulus[i].voulue != ((Profil)ressourcesAffectes[0]).getPoste(j++)) ;
                     j--;
-                    if(ressourcesVoulus[i].voulue != ressourcesAffectes[0].getPoste(j))
+                    if (ressourcesVoulus[i].voulue != ((Profil)ressourcesAffectes[0]).getPoste(j))
                        i++;
                 }
 
@@ -144,13 +165,13 @@ namespace HoraireBeta
         {
             int j = 0;
             int i = 0;
-            while (i < ressourcesVoulus.Count() && ressourcesVoulus[i].voulue != ressourcesAffectes[position].getPoste(j))
+            while (i < ressourcesVoulus.Count() && ressourcesVoulus[i].voulue != ((Profil)ressourcesAffectes[position]).getPoste(j))
             {
 
                 j = 0;
-                while (j < ressourcesAffectes[position].getPoste().Count && ressourcesVoulus[i].voulue != ressourcesAffectes[position].getPoste(j++)) ;
+                while (j < ((Profil)ressourcesAffectes[position]).getPoste().Count && ressourcesVoulus[i].voulue != ((Profil)ressourcesAffectes[position]).getPoste(j++)) ;
                 j--;
-                if (ressourcesVoulus[i].voulue != ressourcesAffectes[position].getPoste(j))
+                if (ressourcesVoulus[i].voulue != ((Profil)ressourcesAffectes[position]).getPoste(j))
                     i++;
             };
 
@@ -187,7 +208,7 @@ namespace HoraireBeta
         {
             if (position < ressourcesAffectes.Count)
             {
-                return ressourcesAffectes[position];
+                return ((Profil)ressourcesAffectes[position]);
             }
             else
                 return null;

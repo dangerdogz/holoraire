@@ -11,7 +11,7 @@ namespace HoraireBeta
         private String nom;
         private String description;
 
-        Equipe(int id, string nom, string description)
+        public Equipe(int id, string nom, string description)
         {
             setId(id);
             setNom(nom);

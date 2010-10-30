@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Windows.Forms;
 
 
 namespace HoraireBeta
@@ -33,24 +34,30 @@ namespace HoraireBeta
             rs = proc.getAllProfil();
             while (i < rs.Rows.Count)
             {
-                Profil newprof = new Profil(rs.Rows[i]["prenom"].ToString(), rs.Rows[i]["nom"].ToString(), rs.Rows[i]["email"].ToString(), rs.Rows[i]["phoneNumber"].ToString(), Convert.ToInt32(rs.Rows[i]["seniority"].ToString()));
-                newprof.setId(Convert.ToInt32(rs.Rows[i]["idProfil"].ToString()));
-
-                if (posteCharge[0] != null)
+                
+                if (rs.Rows[i]["prenom"].ToString() != "")
                 {
-                    
+                    Profil newprof = new Profil(rs.Rows[i]["prenom"].ToString(), rs.Rows[i]["nom"].ToString(), rs.Rows[i]["email"].ToString(), rs.Rows[i]["phoneNumber"].ToString(), Convert.ToInt32(rs.Rows[i]["seniority"].ToString()));
+                    newprof.setId(Convert.ToInt32(rs.Rows[i]["idProfil"].ToString()));
 
-                    rs2 = proc.getProfilPoste(newprof.getId());
-
-                    for (int j = 0; j < rs2.Rows.Count; j++)
+                    if (posteCharge[0] != null)
                     {
-                        int k=0;
-                        while (Convert.ToInt32(rs2.Rows[j]["idPoste"].ToString()) != posteCharge[k++].getId()) ;
-                        newprof.setPoste(posteCharge[--k]);
-                    }
 
+
+                        rs2 = proc.getProfilPoste(newprof.getId());
+
+                        for (int j = 0; j < rs2.Rows.Count; j++)
+                        {
+                            int k = 0;
+                            while (Convert.ToInt32(rs2.Rows[j]["idPoste"].ToString()) != posteCharge[k++].getId()) ;
+                            newprof.setPoste(posteCharge[--k]);
+                        }
+
+                    }
+                    profilCharge.Add(newprof);
                 }
-                profilCharge.Add(newprof);
+                i++;
+
 
             }
 
@@ -81,16 +88,17 @@ namespace HoraireBeta
             rsEquipe = proc.getAllTeam();
             int k = 0;
 
-            for (int i = 0; i > rsEquipe.Rows.Count; i++)
+            for (int i = 0; i < rsEquipe.Rows.Count; i++)
             {
-                rsEquipeProfil = proc.getTeamProfile(i);
+                
                 Equipe newEquipe = new Equipe(Convert.ToInt32(rsEquipe.Rows[i]["idTeam"].ToString()), rsEquipe.Rows[i]["nom"].ToString(), rsEquipe.Rows[i]["description"].ToString());
                 equipe.Add(newEquipe);
-                for (int j = 0; j > rsEquipeProfil.Rows.Count; j++)
+                rsEquipeProfil = proc.getTeamProfile(equipe[i].getId());
+                for (int j = 0; j < rsEquipeProfil.Rows.Count; j++)
                 {
                     int id = Convert.ToInt32(rsEquipeProfil.Rows[j]["idProfil"].ToString());
-
-                    while (id != profilCharge[k++].getId()) ;
+                    k = 0;
+                    while (k < profilCharge.Count && id != profilCharge[k++].getId()) ;
                     equipe[i].setEmploye(profilCharge[--k]);
                     
 

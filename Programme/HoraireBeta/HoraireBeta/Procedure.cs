@@ -36,7 +36,6 @@ namespace HoraireBeta
                 ad = new SQLiteDataAdapter(cmd);
                 
                 ad.Fill(dt); //fill the datasource
-                MessageBox.Show(dt.Rows[0][1].ToString(), "tompe de faloppe");
             }
             catch (SQLiteException ex)
             {

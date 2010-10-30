@@ -62,10 +62,10 @@
     <Compile Include="HoraireBeta.Designer.cs">
       <DependentUpon>HoraireBeta.cs</DependentUpon>
     </Compile>
+    <Compile Include="mainthefuck.cs" />
     <Compile Include="Poste.cs" />
     <Compile Include="Procedure.cs" />
     <Compile Include="Profil.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ressource.cs" />
     <Compile Include="xml.cs" />

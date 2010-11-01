@@ -153,5 +153,46 @@ namespace HoraireBeta
             resultDataGrid.Refresh();
         }
 
+        private void modifier_button_Click(object sender, EventArgs e)
+        {
+            ajprofemp_label.Text = "Modifier un profil d'employé";
+            numemp_textbox.Text = "";
+            nom_textbox.Text = "";
+            prenom_textbox.Text = "";
+            courriel_textbox.Text = "";
+            telephone_textbox.Text = "";
+
+        }
+
+        private void numemp_textbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nom_textbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void prenom_textbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void courriel_textbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void telephone_textbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ajouter_button_Click(object sender, EventArgs e)
+        {
+            ajprofemp_label.Text = "Ajouter un profil d'employé";
+        }
+
     }
 }

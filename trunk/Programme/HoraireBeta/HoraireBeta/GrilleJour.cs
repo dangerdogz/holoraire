@@ -29,7 +29,11 @@ namespace HoraireBeta
                 //Lors de l'ajout du bloc par defaut on ajoute 1hr
                 // debut +1
             
-               // blocs[indexBlocs++] = new Bloc(date,date,0);
+
+                //blocs[indexBlocs++] = new Bloc(date,date,0);
+
+              
+
                 
             }
 

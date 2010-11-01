@@ -24,13 +24,14 @@ namespace HoraireBeta
         private int typeBloc;
         private bool erreurExiste;
         private bool estComplet;
+        private int id;
         
         System.Globalization.CultureInfo info = new System.Globalization.CultureInfo("en-US", false);
 
         List<Ressource> ressourcesAffectes = new List<Ressource>();
         List<RessourceEntree> ressourcesVoulus = new List<RessourceEntree>();
 
-        public Bloc(DateTime debut, DateTime fin, int type)
+        public Bloc(DateTime debut, DateTime fin, int type, int id)
         {
 
 
@@ -38,6 +39,7 @@ namespace HoraireBeta
             this.debut = debut;
             this.fin = fin;
             this.typeBloc = type;
+            this.id = id;
 
 
             erreurExiste = false;
@@ -197,6 +199,15 @@ namespace HoraireBeta
             return fin;
         }
 
+        public int getId()
+        {
+            return id;
+        }
+
+        public void setId(int id)
+        {
+            this.id = id;
+        }
 
 
         public RessourceEntree getRessourceVoulus(int position)

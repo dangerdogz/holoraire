@@ -188,6 +188,18 @@ namespace HoraireBeta
             
         }
 
+        public Boolean estVoulue(Ressource ress)
+        {
+            Boolean oui = false;
+            for (int i = 0; i<ressourcesVoulus.Count; i++){
+                
+
+                    if (ress == ((Poste)ressourcesVoulus[i].voulue))
+                        oui = true;
+                }
+            
+            return oui;
+        }
 
         public DateTime getDebut()
         {
@@ -213,6 +225,11 @@ namespace HoraireBeta
         public RessourceEntree getRessourceVoulus(int position)
         {
             return ressourcesVoulus[position];
+        }
+
+        public List<RessourceEntree> getRessourceVoulus()
+        {
+            return ressourcesVoulus;
         }
 
         public Profil getRessourceAffecte(int position) 

@@ -94,8 +94,8 @@ namespace HoraireBeta
             switch (e.Button)
             {
                 case MouseButtons.Left:
-                    MessageBox.Show(this, "PanelCentral Horaire: Vous avez appuyez sur gauche en : " + e.X + " , " + e.Y);
-
+                    //MessageBox.Show(this, "PanelCentral Horaire: Vous avez appuyez sur gauche en : " + e.X + " , " + e.Y);
+                    grille.passeClique(e.X, e.Y);
                     break;
             }
         }
@@ -186,6 +186,13 @@ namespace HoraireBeta
         }
 
 
+        private void panelCentral_Horaire_Paint(object sender, PaintEventArgs e)
+        {
+            this.grille.activer();   
+        }
+
+
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -206,6 +213,7 @@ namespace HoraireBeta
         {
             ajprofemp_label.Text = "Ajouter un profil d'employé";
         }
+
 
 
     }

@@ -40,7 +40,7 @@ namespace HoraireBeta
                 
                 if (rs.Rows[i]["prenom"].ToString() != "")
                 {
-                    Profil newprof = new Profil(rs.Rows[i]["prenom"].ToString(), rs.Rows[i]["nom"].ToString(), rs.Rows[i]["email"].ToString(), rs.Rows[i]["phoneNumber"].ToString(), Convert.ToInt32(rs.Rows[i]["seniority"].ToString()));
+                    Profil newprof = new Profil(rs.Rows[i]["prenom"].ToString(), rs.Rows[i]["nom"].ToString(), rs.Rows[i]["email"].ToString(), rs.Rows[i]["phoneNumber"].ToString(), Convert.ToInt32(rs.Rows[i]["seniority"].ToString()), Convert.ToInt32(rs.Rows[i]["quotaHeureMax"].ToString()));
                     newprof.setId(Convert.ToInt32(rs.Rows[i]["idProfil"].ToString()));
 
                     if (posteCharge[0] != null)
@@ -63,13 +63,13 @@ namespace HoraireBeta
 
                     for (int j = 0; j < rs3.Rows.Count; j++)
                     {
-                        Bloc newBloc = new Bloc(Convert.ToDateTime(rs3.Rows[i]["debut"].ToString()), Convert.ToDateTime(rs3.Rows[i]["fin"].ToString()), 0, Convert.ToInt32(rs2.Rows[j]["idPlage"].ToString()));
+                        Bloc newBloc = new Bloc(Convert.ToDateTime(rs3.Rows[i]["debut"].ToString()), Convert.ToDateTime(rs3.Rows[i]["fin"].ToString()), 0, Convert.ToInt32(rs3.Rows[j]["idPlage"].ToString()));
                         newprof.addDispo(newBloc);
                     }
 
                     for (int j = 0; j < rs4.Rows.Count; j++)
                     {
-                        Bloc newBloc = new Bloc(Convert.ToDateTime(rs3.Rows[i]["debut"].ToString()), Convert.ToDateTime(rs3.Rows[i]["fin"].ToString()), 0, Convert.ToInt32(rs2.Rows[j]["idPlage"].ToString()));
+                        Bloc newBloc = new Bloc(Convert.ToDateTime(rs3.Rows[i]["debut"].ToString()), Convert.ToDateTime(rs3.Rows[i]["fin"].ToString()), 0, Convert.ToInt32(rs3.Rows[j]["idPlage"].ToString()));
                         newprof.addPref(newBloc);
                     }
 

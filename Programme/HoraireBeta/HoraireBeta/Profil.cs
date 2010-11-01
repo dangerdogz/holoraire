@@ -19,7 +19,7 @@ namespace HoraireBeta
         private List<Bloc> disponibilite = new List<Bloc>();
 
 
-        public Profil(Poste poste, string prenom, string nom, string email,int heureMax, string numTelephone, int anciennete)
+        public Profil(Poste poste, string prenom, string nom, string email, int heureMax, string numTelephone, int anciennete)
         {
 
             setPrenom(prenom);
@@ -27,9 +27,22 @@ namespace HoraireBeta
             setEmail(email);
             setNumTelephone(numTelephone);
             setAnciennete(anciennete);
+            setHeuresMax(heureMax);
             this.poste.Add(poste);
 
         }
+
+        public Profil(string prenom, string nom, string email, string numTelephone, int anciennete, int heureMax)
+        {
+            setPrenom(prenom);
+            setNom(nom);
+            setEmail(email);
+            setNumTelephone(numTelephone);
+            setAnciennete(anciennete);
+            setHeuresMax(heureMax);
+
+        }
+
 
         public Profil(string prenom, string nom, string email, string numTelephone, int anciennete)
         {

@@ -49,6 +49,9 @@ namespace HoraireBeta
             this.button_genere = new System.Windows.Forms.Button();
             this.employe = new System.Windows.Forms.TabPage();
             this.panelCentral_Employe = new System.Windows.Forms.Panel();
+            this.treeView_postdispo = new System.Windows.Forms.TreeView();
+            this.treeView_postechoisi = new System.Windows.Forms.TreeView();
+            this.button2 = new System.Windows.Forms.Button();
             this.buttondroit = new System.Windows.Forms.Button();
             this.postchoisi_label = new System.Windows.Forms.Label();
             this.postedisp_label = new System.Windows.Forms.Label();
@@ -79,6 +82,8 @@ namespace HoraireBeta
             this.parametre = new System.Windows.Forms.TabPage();
             this.panelCentral_Parametre = new System.Windows.Forms.Panel();
             this.panelGauche_Parametre = new System.Windows.Forms.Panel();
+            this.button_generaux = new System.Windows.Forms.Button();
+            this.parametre_label = new System.Windows.Forms.Label();
             this.admin_table = new System.Windows.Forms.TabPage();
             this.admin_central = new System.Windows.Forms.Panel();
             this.resultDataGrid = new System.Windows.Forms.DataGridView();
@@ -86,10 +91,17 @@ namespace HoraireBeta
             this.bouton_requete = new System.Windows.Forms.Button();
             this.bouton_connecter = new System.Windows.Forms.Button();
             this.admin_gauche = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.treeView_postechoisi = new System.Windows.Forms.TreeView();
-            this.treeView_postdispo = new System.Windows.Forms.TreeView();
-            this.parametre_label = new System.Windows.Forms.Label();
+            this.button_presets = new System.Windows.Forms.Button();
+            this.button_ressource = new System.Windows.Forms.Button();
+            this.label_heurest = new System.Windows.Forms.Label();
+            this.label_horaire = new System.Windows.Forms.Label();
+            this.label_quotajour = new System.Windows.Forms.Label();
+            this.label_quotasemaine = new System.Windows.Forms.Label();
+            this.label_graduation = new System.Windows.Forms.Label();
+            this.textBox_qtheurejou = new System.Windows.Forms.TextBox();
+            this.textBox_quotasemaine = new System.Windows.Forms.TextBox();
+            this.textBox_graduation = new System.Windows.Forms.TextBox();
+            this.label_partexte = new System.Windows.Forms.Label();
             this.Admin.SuspendLayout();
             this.horaire.SuspendLayout();
             this.panelCentral_Horaire.SuspendLayout();
@@ -101,6 +113,7 @@ namespace HoraireBeta
             this.panelCentral_Employe.SuspendLayout();
             this.panelGauche_Employe.SuspendLayout();
             this.parametre.SuspendLayout();
+            this.panelCentral_Parametre.SuspendLayout();
             this.panelGauche_Parametre.SuspendLayout();
             this.admin_table.SuspendLayout();
             this.admin_central.SuspendLayout();
@@ -329,6 +342,30 @@ namespace HoraireBeta
             this.panelCentral_Employe.Paint += new System.Windows.Forms.PaintEventHandler(this.pCentral_Employe_Paint);
             this.panelCentral_Employe.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pCentral_Employe_OnMouseEvent);
             this.panelCentral_Employe.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Employe_OnMouseEvent);
+            // 
+            // treeView_postdispo
+            // 
+            this.treeView_postdispo.Location = new System.Drawing.Point(373, 329);
+            this.treeView_postdispo.Name = "treeView_postdispo";
+            this.treeView_postdispo.Size = new System.Drawing.Size(161, 264);
+            this.treeView_postdispo.TabIndex = 25;
+            // 
+            // treeView_postechoisi
+            // 
+            this.treeView_postechoisi.Location = new System.Drawing.Point(580, 329);
+            this.treeView_postechoisi.Name = "treeView_postechoisi";
+            this.treeView_postechoisi.Size = new System.Drawing.Size(161, 264);
+            this.treeView_postechoisi.TabIndex = 24;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(542, 452);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(32, 32);
+            this.button2.TabIndex = 22;
+            this.button2.Text = "<";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // buttondroit
             // 
@@ -609,6 +646,15 @@ namespace HoraireBeta
             // 
             this.panelCentral_Parametre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panelCentral_Parametre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCentral_Parametre.Controls.Add(this.label_partexte);
+            this.panelCentral_Parametre.Controls.Add(this.textBox_graduation);
+            this.panelCentral_Parametre.Controls.Add(this.textBox_quotasemaine);
+            this.panelCentral_Parametre.Controls.Add(this.textBox_qtheurejou);
+            this.panelCentral_Parametre.Controls.Add(this.label_graduation);
+            this.panelCentral_Parametre.Controls.Add(this.label_quotasemaine);
+            this.panelCentral_Parametre.Controls.Add(this.label_quotajour);
+            this.panelCentral_Parametre.Controls.Add(this.label_horaire);
+            this.panelCentral_Parametre.Controls.Add(this.label_heurest);
             this.panelCentral_Parametre.Location = new System.Drawing.Point(253, 7);
             this.panelCentral_Parametre.Name = "panelCentral_Parametre";
             this.panelCentral_Parametre.Size = new System.Drawing.Size(746, 694);
@@ -621,6 +667,9 @@ namespace HoraireBeta
             // 
             this.panelGauche_Parametre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panelGauche_Parametre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelGauche_Parametre.Controls.Add(this.button_ressource);
+            this.panelGauche_Parametre.Controls.Add(this.button_presets);
+            this.panelGauche_Parametre.Controls.Add(this.button_generaux);
             this.panelGauche_Parametre.Controls.Add(this.parametre_label);
             this.panelGauche_Parametre.Location = new System.Drawing.Point(8, 8);
             this.panelGauche_Parametre.Name = "panelGauche_Parametre";
@@ -628,6 +677,26 @@ namespace HoraireBeta
             this.panelGauche_Parametre.TabIndex = 2;
             this.panelGauche_Parametre.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pGauche_Parametre_OnMouseEvent);
             this.panelGauche_Parametre.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pGauche_Parametre_OnMouseEvent);
+            // 
+            // button_generaux
+            // 
+            this.button_generaux.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_generaux.Location = new System.Drawing.Point(3, 32);
+            this.button_generaux.Name = "button_generaux";
+            this.button_generaux.Size = new System.Drawing.Size(232, 29);
+            this.button_generaux.TabIndex = 1;
+            this.button_generaux.Text = "Généraux";
+            this.button_generaux.UseVisualStyleBackColor = true;
+            // 
+            // parametre_label
+            // 
+            this.parametre_label.AutoSize = true;
+            this.parametre_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.parametre_label.Location = new System.Drawing.Point(77, 9);
+            this.parametre_label.Name = "parametre_label";
+            this.parametre_label.Size = new System.Drawing.Size(91, 20);
+            this.parametre_label.TabIndex = 0;
+            this.parametre_label.Text = "Paramètres";
             // 
             // admin_table
             // 
@@ -699,39 +768,105 @@ namespace HoraireBeta
             this.admin_gauche.Size = new System.Drawing.Size(240, 694);
             this.admin_gauche.TabIndex = 0;
             // 
-            // button2
+            // button_presets
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(542, 452);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(32, 32);
-            this.button2.TabIndex = 22;
-            this.button2.Text = "<";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button_presets.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_presets.Location = new System.Drawing.Point(3, 102);
+            this.button_presets.Name = "button_presets";
+            this.button_presets.Size = new System.Drawing.Size(232, 29);
+            this.button_presets.TabIndex = 2;
+            this.button_presets.Text = "Presets";
+            this.button_presets.UseVisualStyleBackColor = true;
             // 
-            // treeView_postechoisi
+            // button_ressource
             // 
-            this.treeView_postechoisi.Location = new System.Drawing.Point(580, 329);
-            this.treeView_postechoisi.Name = "treeView_postechoisi";
-            this.treeView_postechoisi.Size = new System.Drawing.Size(161, 264);
-            this.treeView_postechoisi.TabIndex = 24;
+            this.button_ressource.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_ressource.Location = new System.Drawing.Point(3, 67);
+            this.button_ressource.Name = "button_ressource";
+            this.button_ressource.Size = new System.Drawing.Size(232, 29);
+            this.button_ressource.TabIndex = 3;
+            this.button_ressource.Text = "Ressources";
+            this.button_ressource.UseVisualStyleBackColor = true;
             // 
-            // treeView_postdispo
+            // label_heurest
             // 
-            this.treeView_postdispo.Location = new System.Drawing.Point(373, 329);
-            this.treeView_postdispo.Name = "treeView_postdispo";
-            this.treeView_postdispo.Size = new System.Drawing.Size(161, 264);
-            this.treeView_postdispo.TabIndex = 25;
+            this.label_heurest.AutoSize = true;
+            this.label_heurest.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_heurest.Location = new System.Drawing.Point(9, 10);
+            this.label_heurest.Name = "label_heurest";
+            this.label_heurest.Size = new System.Drawing.Size(118, 18);
+            this.label_heurest.TabIndex = 0;
+            this.label_heurest.Text = "Heures de travail";
             // 
-            // parametre_label
+            // label_horaire
             // 
-            this.parametre_label.AutoSize = true;
-            this.parametre_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.parametre_label.Location = new System.Drawing.Point(68, 9);
-            this.parametre_label.Name = "parametre_label";
-            this.parametre_label.Size = new System.Drawing.Size(91, 20);
-            this.parametre_label.TabIndex = 0;
-            this.parametre_label.Text = "Paramètres";
+            this.label_horaire.AutoSize = true;
+            this.label_horaire.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_horaire.Location = new System.Drawing.Point(9, 103);
+            this.label_horaire.Name = "label_horaire";
+            this.label_horaire.Size = new System.Drawing.Size(57, 18);
+            this.label_horaire.TabIndex = 1;
+            this.label_horaire.Text = "Horaire\r\n";
+            // 
+            // label_quotajour
+            // 
+            this.label_quotajour.AutoSize = true;
+            this.label_quotajour.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_quotajour.Location = new System.Drawing.Point(46, 32);
+            this.label_quotajour.Name = "label_quotajour";
+            this.label_quotajour.Size = new System.Drawing.Size(145, 15);
+            this.label_quotajour.TabIndex = 2;
+            this.label_quotajour.Text = "Quota d\'heures par jour : ";
+            // 
+            // label_quotasemaine
+            // 
+            this.label_quotasemaine.AutoSize = true;
+            this.label_quotasemaine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_quotasemaine.Location = new System.Drawing.Point(46, 56);
+            this.label_quotasemaine.Name = "label_quotasemaine";
+            this.label_quotasemaine.Size = new System.Drawing.Size(172, 15);
+            this.label_quotasemaine.TabIndex = 3;
+            this.label_quotasemaine.Text = "Quota d\'heures par semaine : ";
+            // 
+            // label_graduation
+            // 
+            this.label_graduation.AutoSize = true;
+            this.label_graduation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_graduation.Location = new System.Drawing.Point(46, 130);
+            this.label_graduation.Name = "label_graduation";
+            this.label_graduation.Size = new System.Drawing.Size(156, 15);
+            this.label_graduation.TabIndex = 4;
+            this.label_graduation.Text = "Graduation d\'une journée : ";
+            // 
+            // textBox_qtheurejou
+            // 
+            this.textBox_qtheurejou.Location = new System.Drawing.Point(197, 33);
+            this.textBox_qtheurejou.Name = "textBox_qtheurejou";
+            this.textBox_qtheurejou.Size = new System.Drawing.Size(269, 20);
+            this.textBox_qtheurejou.TabIndex = 5;
+            // 
+            // textBox_quotasemaine
+            // 
+            this.textBox_quotasemaine.Location = new System.Drawing.Point(220, 59);
+            this.textBox_quotasemaine.Name = "textBox_quotasemaine";
+            this.textBox_quotasemaine.Size = new System.Drawing.Size(245, 20);
+            this.textBox_quotasemaine.TabIndex = 6;
+            // 
+            // textBox_graduation
+            // 
+            this.textBox_graduation.Location = new System.Drawing.Point(204, 130);
+            this.textBox_graduation.Name = "textBox_graduation";
+            this.textBox_graduation.Size = new System.Drawing.Size(261, 20);
+            this.textBox_graduation.TabIndex = 7;
+            // 
+            // label_partexte
+            // 
+            this.label_partexte.AutoSize = true;
+            this.label_partexte.Location = new System.Drawing.Point(17, 166);
+            this.label_partexte.Name = "label_partexte";
+            this.label_partexte.Size = new System.Drawing.Size(285, 13);
+            this.label_partexte.TabIndex = 8;
+            this.label_partexte.Text = "* L\'espace restant est disponible pour de futurs paramètres.";
             // 
             // HoraireBeta
             // 
@@ -755,6 +890,8 @@ namespace HoraireBeta
             this.panelGauche_Employe.ResumeLayout(false);
             this.panelGauche_Employe.PerformLayout();
             this.parametre.ResumeLayout(false);
+            this.panelCentral_Parametre.ResumeLayout(false);
+            this.panelCentral_Parametre.PerformLayout();
             this.panelGauche_Parametre.ResumeLayout(false);
             this.panelGauche_Parametre.PerformLayout();
             this.admin_table.ResumeLayout(false);
@@ -826,6 +963,18 @@ namespace HoraireBeta
         private TreeView treeView_postechoisi;
         private Button button2;
         private Label parametre_label;
+        private Button button_generaux;
+        private Button button_ressource;
+        private Button button_presets;
+        private TextBox textBox_graduation;
+        private TextBox textBox_quotasemaine;
+        private TextBox textBox_qtheurejou;
+        private Label label_graduation;
+        private Label label_quotasemaine;
+        private Label label_quotajour;
+        private Label label_horaire;
+        private Label label_heurest;
+        private Label label_partexte;
     }
 }
 

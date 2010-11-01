@@ -70,6 +70,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ressource.cs" />
+    <Compile Include="TabSchedule.cs" />
     <Compile Include="xml.cs" />
     <EmbeddedResource Include="HoraireBeta.resx">
       <DependentUpon>HoraireBeta.cs</DependentUpon>

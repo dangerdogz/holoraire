@@ -87,8 +87,9 @@ namespace HoraireBeta
             this.bouton_connecter = new System.Windows.Forms.Button();
             this.admin_gauche = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
-            this.treeView2 = new System.Windows.Forms.TreeView();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.treeView_postechoisi = new System.Windows.Forms.TreeView();
+            this.treeView_postdispo = new System.Windows.Forms.TreeView();
+            this.parametre_label = new System.Windows.Forms.Label();
             this.Admin.SuspendLayout();
             this.horaire.SuspendLayout();
             this.panelCentral_Horaire.SuspendLayout();
@@ -100,6 +101,7 @@ namespace HoraireBeta
             this.panelCentral_Employe.SuspendLayout();
             this.panelGauche_Employe.SuspendLayout();
             this.parametre.SuspendLayout();
+            this.panelGauche_Parametre.SuspendLayout();
             this.admin_table.SuspendLayout();
             this.admin_central.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultDataGrid)).BeginInit();
@@ -295,8 +297,8 @@ namespace HoraireBeta
             // 
             this.panelCentral_Employe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panelCentral_Employe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelCentral_Employe.Controls.Add(this.treeView1);
-            this.panelCentral_Employe.Controls.Add(this.treeView2);
+            this.panelCentral_Employe.Controls.Add(this.treeView_postdispo);
+            this.panelCentral_Employe.Controls.Add(this.treeView_postechoisi);
             this.panelCentral_Employe.Controls.Add(this.button2);
             this.panelCentral_Employe.Controls.Add(this.buttondroit);
             this.panelCentral_Employe.Controls.Add(this.postchoisi_label);
@@ -619,6 +621,7 @@ namespace HoraireBeta
             // 
             this.panelGauche_Parametre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panelGauche_Parametre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelGauche_Parametre.Controls.Add(this.parametre_label);
             this.panelGauche_Parametre.Location = new System.Drawing.Point(8, 8);
             this.panelGauche_Parametre.Name = "panelGauche_Parametre";
             this.panelGauche_Parametre.Size = new System.Drawing.Size(240, 694);
@@ -706,19 +709,29 @@ namespace HoraireBeta
             this.button2.Text = "<";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // treeView2
+            // treeView_postechoisi
             // 
-            this.treeView2.Location = new System.Drawing.Point(580, 329);
-            this.treeView2.Name = "treeView2";
-            this.treeView2.Size = new System.Drawing.Size(161, 264);
-            this.treeView2.TabIndex = 24;
+            this.treeView_postechoisi.Location = new System.Drawing.Point(580, 329);
+            this.treeView_postechoisi.Name = "treeView_postechoisi";
+            this.treeView_postechoisi.Size = new System.Drawing.Size(161, 264);
+            this.treeView_postechoisi.TabIndex = 24;
             // 
-            // treeView1
+            // treeView_postdispo
             // 
-            this.treeView1.Location = new System.Drawing.Point(373, 329);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(161, 264);
-            this.treeView1.TabIndex = 25;
+            this.treeView_postdispo.Location = new System.Drawing.Point(373, 329);
+            this.treeView_postdispo.Name = "treeView_postdispo";
+            this.treeView_postdispo.Size = new System.Drawing.Size(161, 264);
+            this.treeView_postdispo.TabIndex = 25;
+            // 
+            // parametre_label
+            // 
+            this.parametre_label.AutoSize = true;
+            this.parametre_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.parametre_label.Location = new System.Drawing.Point(68, 9);
+            this.parametre_label.Name = "parametre_label";
+            this.parametre_label.Size = new System.Drawing.Size(91, 20);
+            this.parametre_label.TabIndex = 0;
+            this.parametre_label.Text = "Paramètres";
             // 
             // HoraireBeta
             // 
@@ -742,6 +755,8 @@ namespace HoraireBeta
             this.panelGauche_Employe.ResumeLayout(false);
             this.panelGauche_Employe.PerformLayout();
             this.parametre.ResumeLayout(false);
+            this.panelGauche_Parametre.ResumeLayout(false);
+            this.panelGauche_Parametre.PerformLayout();
             this.admin_table.ResumeLayout(false);
             this.admin_central.ResumeLayout(false);
             this.admin_central.PerformLayout();
@@ -807,9 +822,10 @@ namespace HoraireBeta
         private Button buttondroit;
         private Label postchoisi_label;
         private Label postedisp_label;
-        private TreeView treeView1;
-        private TreeView treeView2;
+        private TreeView treeView_postdispo;
+        private TreeView treeView_postechoisi;
         private Button button2;
+        private Label parametre_label;
     }
 }
 

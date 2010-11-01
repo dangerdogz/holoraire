@@ -28,10 +28,13 @@ namespace HoraireBeta
           
             DataTable rs;
             DataTable rs2;
+            DataTable rs3;
+            DataTable rs4;
 
 
             int i=0;
             rs = proc.getAllProfil();
+            
             while (i < rs.Rows.Count)
             {
                 
@@ -54,7 +57,24 @@ namespace HoraireBeta
                         }
 
                     }
-                    profilCharge.Add(newprof);
+
+                    rs3 = proc.getProfilDispo(newprof.getId());
+                    rs4 = proc.getProfilPreference(newprof.getId());
+
+                    for (int j = 0; j < rs3.Rows.Count; j++)
+                    {
+                        Bloc newBloc = new Bloc(Convert.ToDateTime(rs3.Rows[i]["debut"].ToString()), Convert.ToDateTime(rs3.Rows[i]["fin"].ToString()), 0, Convert.ToInt32(rs2.Rows[j]["idPlage"].ToString()));
+                        newprof.addDispo(newBloc);
+                    }
+
+                    for (int j = 0; j < rs4.Rows.Count; j++)
+                    {
+                        Bloc newBloc = new Bloc(Convert.ToDateTime(rs3.Rows[i]["debut"].ToString()), Convert.ToDateTime(rs3.Rows[i]["fin"].ToString()), 0, Convert.ToInt32(rs2.Rows[j]["idPlage"].ToString()));
+                        newprof.addPref(newBloc);
+                    }
+
+                    profilCharge.Add(newprof);             
+
                 }
                 i++;
 

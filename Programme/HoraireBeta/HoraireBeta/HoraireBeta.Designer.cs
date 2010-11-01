@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using System.Drawing;
+using System.Windows;
 using System.Linq;
 using System.Text;
 using System.Data;
@@ -34,11 +35,15 @@ namespace HoraireBeta
         /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas
         /// le contenu de cette méthode avec l'éditeur de code.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
+
+            
+
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Employé");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Équipe");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Postes");
+
             this.Admin = new System.Windows.Forms.TabControl();
             this.horaire = new System.Windows.Forms.TabPage();
             this.panelCentral_Horaire = new System.Windows.Forms.Panel();
@@ -169,6 +174,7 @@ namespace HoraireBeta
             this.panelCentral_Horaire.Name = "panelCentral_Horaire";
             this.panelCentral_Horaire.Size = new System.Drawing.Size(746, 694);
             this.panelCentral_Horaire.TabIndex = 1;
+            this.panelCentral_Horaire.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCentral_Horaire_Paint);
             this.panelCentral_Horaire.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
             this.panelCentral_Horaire.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
             // 
@@ -937,7 +943,15 @@ namespace HoraireBeta
             this.admin_central.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultDataGrid)).EndInit();
             this.ResumeLayout(false);
+           
+              
+            Graphics grfx = panelCentral_Horaire.CreateGraphics();
+            Pen blackPen = new Pen(Color.Black);
+            
 
+
+            this.grille = new GrilleHoraire(grfx,blackPen);
+            
         }
 
         #endregion
@@ -971,6 +985,14 @@ namespace HoraireBeta
         private TabControl tabConflits;
         private TabPage tab_Conflits;
         private RichTextBox text_Conflits;
+
+        private GrilleHoraire grille;
+
+
+        
+        
+
+
 
         private TreeView RessourceTree;
         private TreeView treeView_postdispo;
@@ -1069,6 +1091,7 @@ namespace HoraireBeta
         private Label label_horaire;
         private Label label_heurest;
         private Label label_partexte;
+
 
     }
 }

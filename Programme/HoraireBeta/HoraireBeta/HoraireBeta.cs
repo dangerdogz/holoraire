@@ -18,6 +18,7 @@ namespace HoraireBeta
         public HoraireBeta()
         {
             InitializeComponent();
+            initInterface();
         }
 
         private void horaire_Click(object sender, EventArgs e)
@@ -184,6 +185,18 @@ namespace HoraireBeta
 
         }
 
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+
         private void telephone_textbox_TextChanged(object sender, EventArgs e)
         {
 
@@ -193,6 +206,7 @@ namespace HoraireBeta
         {
             ajprofemp_label.Text = "Ajouter un profil d'employé";
         }
+
 
     }
 }

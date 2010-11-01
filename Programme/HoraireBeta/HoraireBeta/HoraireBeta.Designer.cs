@@ -1,5 +1,10 @@
 ﻿using System.Windows.Forms;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Data;
+using System;
+using System.Collections.Generic;
 
 namespace HoraireBeta
 {
@@ -31,6 +36,9 @@ namespace HoraireBeta
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Employé");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Équipe");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Postes");
             this.Admin = new System.Windows.Forms.TabControl();
             this.horaire = new System.Windows.Forms.TabPage();
             this.panelCentral_Horaire = new System.Windows.Forms.Panel();
@@ -41,6 +49,7 @@ namespace HoraireBeta
             this.Presets = new System.Windows.Forms.TabControl();
             this.tab_Presets = new System.Windows.Forms.TabPage();
             this.tab_Ressources = new System.Windows.Forms.TabPage();
+            this.RessourceTree = new System.Windows.Forms.TreeView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label_recherche = new System.Windows.Forms.Label();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
@@ -109,6 +118,7 @@ namespace HoraireBeta
             this.tab_Conflits.SuspendLayout();
             this.panelGauche_Horaire.SuspendLayout();
             this.Presets.SuspendLayout();
+            this.tab_Ressources.SuspendLayout();
             this.employe.SuspendLayout();
             this.panelCentral_Employe.SuspendLayout();
             this.panelGauche_Employe.SuspendLayout();
@@ -235,6 +245,7 @@ namespace HoraireBeta
             // 
             // tab_Ressources
             // 
+            this.tab_Ressources.Controls.Add(this.RessourceTree);
             this.tab_Ressources.Location = new System.Drawing.Point(4, 22);
             this.tab_Ressources.Name = "tab_Ressources";
             this.tab_Ressources.Padding = new System.Windows.Forms.Padding(3);
@@ -242,6 +253,25 @@ namespace HoraireBeta
             this.tab_Ressources.TabIndex = 1;
             this.tab_Ressources.Text = "Ressources";
             this.tab_Ressources.UseVisualStyleBackColor = true;
+            // 
+            // RessourceTree
+            // 
+            this.RessourceTree.BackColor = System.Drawing.SystemColors.Window;
+            this.RessourceTree.Location = new System.Drawing.Point(7, 6);
+            this.RessourceTree.Name = "RessourceTree";
+            treeNode1.Name = "Employe";
+            treeNode1.Text = "Employé";
+            treeNode2.Name = "Equipe";
+            treeNode2.Text = "Équipe";
+            treeNode3.Name = "Postes";
+            treeNode3.Text = "Postes";
+            this.RessourceTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3});
+            this.RessourceTree.Size = new System.Drawing.Size(208, 316);
+            this.RessourceTree.TabIndex = 0;
+            this.RessourceTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // textBox1
             // 
@@ -891,6 +921,7 @@ namespace HoraireBeta
             this.panelGauche_Horaire.ResumeLayout(false);
             this.panelGauche_Horaire.PerformLayout();
             this.Presets.ResumeLayout(false);
+            this.tab_Ressources.ResumeLayout(false);
             this.employe.ResumeLayout(false);
             this.panelCentral_Employe.ResumeLayout(false);
             this.panelCentral_Employe.PerformLayout();
@@ -940,6 +971,61 @@ namespace HoraireBeta
         private TabControl tabConflits;
         private TabPage tab_Conflits;
         private RichTextBox text_Conflits;
+
+        private TreeView RessourceTree;
+        private TreeView treeView_postdispo;
+        private Loader loader;
+        private List<Profil> profilCharge = new List<Profil>();
+        private List<Equipe> equipe = new List<Equipe>();
+        public List<Poste> posteCharge = new List<Poste>();
+
+        public void initInterface()
+        {
+            
+            loader = new Loader();
+            profilCharge = loader.LoadProfil();
+            posteCharge = loader.loadPoste();
+            equipe = loader.LoadEquipe();
+            
+            //Rempli l'interface Horaire
+            System.Windows.Forms.TreeNode[] nodeArray = new System.Windows.Forms.TreeNode[profilCharge.Count()];
+            System.Windows.Forms.TreeNode[] nodeArray2 = new System.Windows.Forms.TreeNode[profilCharge.Count()];
+
+            for (int i = 0; i < profilCharge.Count(); i++)
+            {
+               nodeArray[i] = new System.Windows.Forms.TreeNode(profilCharge.ElementAt(i).getNom()+", "+profilCharge.ElementAt(i).getPrenom());
+            }
+
+            RessourceTree.GetNodeAt(0, 0).Nodes.AddRange(nodeArray);
+            
+
+            nodeArray = new System.Windows.Forms.TreeNode[posteCharge.Count()];
+            nodeArray2 = new System.Windows.Forms.TreeNode[posteCharge.Count()];
+
+            for (int i = 0; i < posteCharge.Count(); i++)
+            {
+               nodeArray[i] = new System.Windows.Forms.TreeNode(posteCharge.ElementAt(i).getNom());
+               nodeArray2[i] = new System.Windows.Forms.TreeNode(posteCharge.ElementAt(i).getNom());
+            }
+
+            RessourceTree.GetNodeAt(0,0).Nodes.AddRange(nodeArray);
+            treeView_postdispo.Nodes.AddRange(nodeArray2);
+
+            nodeArray = new System.Windows.Forms.TreeNode[equipe.Count()];
+
+            for (int i = 0; i < equipe.Count(); i++)
+            {
+                nodeArray[i] = new System.Windows.Forms.TreeNode(equipe.ElementAt(i).getNom());
+            }
+
+            RessourceTree.GetNodeAt(0,0).Nodes.AddRange(nodeArray);
+            //Fin du remplissage de l'interface Horaire
+
+            //Début du remplissage de profil
+           
+            
+        }
+
         private Label label1;
         private Button ajouter_button;
         private Label ajprofemp_label;
@@ -966,7 +1052,7 @@ namespace HoraireBeta
         private Button buttondroit;
         private Label postchoisi_label;
         private Label postedisp_label;
-        private TreeView treeView_postdispo;
+        
         private TreeView treeView_postechoisi;
         private Button button2;
         private Label parametre_label;
@@ -982,6 +1068,6 @@ namespace HoraireBeta
         private Label label_horaire;
         private Label label_heurest;
         private Label label_partexte;
+
     }
 }
-

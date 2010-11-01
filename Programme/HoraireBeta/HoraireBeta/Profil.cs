@@ -13,12 +13,13 @@ namespace HoraireBeta
         private string numTelephone;
         private int anciennete;
         private int heuresTravaillees;
+        private int heuresMax;
         private List<Poste> poste = new List<Poste>();
         private List<Bloc> preference = new List<Bloc>();
         private List<Bloc> disponibilite = new List<Bloc>();
 
 
-        public Profil(Poste poste, string prenom, string nom, string email, string numTelephone, int anciennete)
+        public Profil(Poste poste, string prenom, string nom, string email,int heureMax, string numTelephone, int anciennete)
         {
 
             setPrenom(prenom);
@@ -81,6 +82,17 @@ namespace HoraireBeta
             this.heuresTravaillees = heuresTravaillees;
         }
 
+        
+
+        public int getHeuresMax()
+        {
+
+            return (heuresMax);
+        }
+
+        public void setHeuresMax(int heuresMax) {
+            this.heuresMax = heuresMax;
+        }
         public void setPoste(Poste poste)
         {
           this.poste.Add(poste);

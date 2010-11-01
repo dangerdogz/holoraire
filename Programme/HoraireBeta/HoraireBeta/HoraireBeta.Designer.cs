@@ -989,6 +989,7 @@ namespace HoraireBeta
             
             //Rempli l'interface Horaire
             System.Windows.Forms.TreeNode[] nodeArray = new System.Windows.Forms.TreeNode[profilCharge.Count()];
+            //Rempli l'interface 
             System.Windows.Forms.TreeNode[] nodeArray2 = new System.Windows.Forms.TreeNode[profilCharge.Count()];
 
             for (int i = 0; i < profilCharge.Count(); i++)
@@ -1021,7 +1022,7 @@ namespace HoraireBeta
             RessourceTree.GetNodeAt(0,0).Nodes.AddRange(nodeArray);
             //Fin du remplissage de l'interface Horaire
 
-            //Début du remplissage de profil
+           
            
             
         }

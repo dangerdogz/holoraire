@@ -109,6 +109,45 @@ namespace HoraireBeta
 
         }
 
+        public List<Bloc> loadBloc()
+        {
+            DataTable rsBloc;
+            DataTable rsRessource;
+            rsBloc = proc.getAllBlock();
+            int k = 0;
+
+            for (int i = 0; i < rsBloc.Rows.Count; i++)
+            {
+
+                Bloc newBloc = new Bloc(Convert.ToDateTime(rsBloc.Rows[i]["debut"].ToString()), Convert.ToDateTime(rsBloc.Rows[i]["fin"].ToString()), Convert.ToInt32(rsBloc.Rows[i]["description"].ToString()), Convert.ToInt32(rsBloc.Rows[i]["id"].ToString()));
+                bloc.Add(newBloc);
+                rsRessource = proc.getRessource(bloc[i].getId());
+                for (int j = 0; j < rsRessource.Rows.Count; j++)
+                {
+                    if (rsRessource.Rows[j]["idPoste"] == null)
+                    {
+
+                        int id = Convert.ToInt32(rsRessource.Rows[j]["idPoste"].ToString());
+                        k = 0;
+                        while (k < profilCharge.Count && id != profilCharge[k++].getId()) ;
+                        bloc[i].addRessourceVoulue(Convert.ToInt32(rsRessource.Rows[j]["number"]), posteCharge[--k]);
+                    }
+                    else
+                    {
+                        int id = Convert.ToInt32(rsRessource.Rows[j]["idTeam"].ToString());
+                        k = 0;
+                        while (k < equipe.Count && id != equipe[k++].getId()) ;
+                        bloc[i].addRessourceVoulue(Convert.ToInt32(rsRessource.Rows[j]["number"]), equipe[--k]);
+                    }
+                    
+
+
+                }
+            }
+
+            return (bloc);
+        }
+
 
     }
 }

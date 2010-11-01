@@ -333,13 +333,13 @@ namespace HoraireBeta
         public DataTable getProfilDispo(int id)
         {
             String requete;
-            requete = "SELECT * FROM Plage, Profil_Dispo WHERE Profil_Dispo.idProfil = " + id + "AND Profil_Dispo.idPlage = Plage.idPlage";
+            requete = "SELECT idPlage, debut, fin, day FROM Plage, Profil_Dispo WHERE Profil_Dispo.idProfil = " + id + "AND Profil_Dispo.idPlage = Plage.idPlage";
             return getResult(requete);
         }
         public DataTable getProfilPreference(int id)
         {
             String requete;
-            requete = "SELECT * FROM Plage, Profil_Preference WHERE Profil_Preference.idProfil = " + id + "AND Profil_Preference.idPlage = Plage.idPlage";
+            requete = "SELECT idPlage, debut, fin, day FROM Plage, Profil_Preference WHERE Profil_Preference.idProfil = " + id + "AND Profil_Preference.idPlage = Plage.idPlage";
             return getResult(requete);
         }
 

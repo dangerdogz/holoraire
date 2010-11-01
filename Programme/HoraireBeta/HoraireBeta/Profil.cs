@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +14,8 @@ namespace HoraireBeta
         private int anciennete;
         private int heuresTravaillees;
         private List<Poste> poste = new List<Poste>();
-
+        private List<Bloc> preference = new List<Bloc>();
+        private List<Bloc> disponibilite = new List<Bloc>();
 
 
         public Profil(Poste poste, string prenom, string nom, string email, string numTelephone, int anciennete)
@@ -123,6 +124,25 @@ namespace HoraireBeta
         public List<Poste> getPoste()
         {
             return poste;
+        }
+
+        public void addDispo(Bloc dispo)
+        {
+            disponibilite.Add(dispo);
+        }
+
+        public void addPref(Bloc pref)
+        {
+            preference.Add(pref);
+        }
+
+        public List<Bloc> getPref(){
+            return (preference);
+        }
+
+        public List<Bloc> getDispo()
+        {
+            return (disponibilite);
         }
 
 

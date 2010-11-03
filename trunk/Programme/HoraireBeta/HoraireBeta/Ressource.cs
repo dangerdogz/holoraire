@@ -8,6 +8,8 @@ namespace HoraireBeta
     public class Ressource
     {
         private int id;
+        private int heuresMax = 0;
+        private int heuresTravaillees = 0;
 
         public Ressource()
         {
@@ -28,6 +30,30 @@ namespace HoraireBeta
         {
             return id;
         }
+
+        public List<Bloc> getPref()
+        {
+            return (new List<Bloc>());
+        }
+
+        public List<Bloc> getDispo()
+        {
+            return (new List<Bloc>());
+        }
+
+        public int getHeuresMax()
+        {
+
+            return heuresMax;
+        }
+
+        public int getHeuresTravaillees()
+        {
+
+            return heuresTravaillees;
+        }
+
+
 
 
     }

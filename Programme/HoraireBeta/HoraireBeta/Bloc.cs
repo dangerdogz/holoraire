@@ -243,10 +243,12 @@ namespace HoraireBeta
             
         }
 
-        public void checkCompletion()
+        public bool checkCompletion()
         {
             int i = -1;
-            estComplet=true;
+
+            estComplet=false;
+
             while (++i != ressourcesVoulus.Count)
             {
                 if (ressourcesVoulus[i].nbVoulue>=ressourcesVoulus[i].nbAffectee)
@@ -254,6 +256,8 @@ namespace HoraireBeta
                     estComplet = true;
                 }
             }
+
+            return estComplet;
         }
 
     }

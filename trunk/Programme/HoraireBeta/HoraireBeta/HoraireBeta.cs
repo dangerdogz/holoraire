@@ -214,7 +214,24 @@ namespace HoraireBeta
             ajprofemp_label.Text = "Ajouter un profil d'employé";
         }
 
+        private void buttondroit_Click(object sender, EventArgs e)
+        {
+            if (this.treeView_postdispo.SelectedNode.IsSelected == true)
+            {
+                System.Windows.Forms.TreeNode name;
+                name = new System.Windows.Forms.TreeNode(this.treeView_postdispo.SelectedNode.Text);
+              
+                this.treeView_postechoisi.Nodes.Add(name);
+                this.treeView_postdispo.SelectedNode.Remove();
+            }
+
+<<<<<<< .mine
+
+        }
 
 
+=======
+
+>>>>>>> .r124
     }
 }

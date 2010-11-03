@@ -412,6 +412,7 @@ namespace HoraireBeta
             this.buttondroit.TabIndex = 21;
             this.buttondroit.Text = ">";
             this.buttondroit.UseVisualStyleBackColor = true;
+            this.buttondroit.Click += new System.EventHandler(this.buttondroit_Click);
             // 
             // postchoisi_label
             // 

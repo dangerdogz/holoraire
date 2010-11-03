@@ -231,6 +231,8 @@ namespace HoraireBeta
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            String lol;
+            lol = this.textBox1.Text.Clone().ToString();
             
         }
 

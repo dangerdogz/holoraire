@@ -225,13 +225,13 @@ namespace HoraireBeta
                 this.treeView_postdispo.SelectedNode.Remove();
             }
 
-<<<<<<< .mine
+
 
         }
 
 
-=======
 
->>>>>>> .r124
+
+
     }
 }

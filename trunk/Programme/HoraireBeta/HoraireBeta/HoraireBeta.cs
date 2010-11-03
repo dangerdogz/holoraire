@@ -71,6 +71,7 @@ namespace HoraireBeta
             {
                 case MouseButtons.Left:
                     MessageBox.Show(this, "PanelCentral Employé: Vous avez appuyez sur gauche en : " + e.X + " , " + e.Y);
+                    
 
                     break;
             }
@@ -95,6 +96,7 @@ namespace HoraireBeta
             {
                 case MouseButtons.Left:
                     //MessageBox.Show(this, "PanelCentral Horaire: Vous avez appuyez sur gauche en : " + e.X + " , " + e.Y);
+                    createBlock();
                     grille.passeClique(e.X, e.Y);
                     break;
             }
@@ -229,12 +231,23 @@ namespace HoraireBeta
 
         }
 
+
+        private void createBlock(/*int x, int y, DateTime hd, DateTime hf*/)
+        {
+            CreationBloc creationbloc = new CreationBloc();
+            creationbloc.ShowDialog();
+            loader.bloc.Add(new Bloc(new DateTime(2010, 11, 03, Convert.ToInt32(creationbloc.getHd()), 0, 0), new DateTime(2010, 11, 03, Convert.ToInt32(creationbloc.getHf()), 0, 0), 0, 0));
+            creationbloc.Dispose();
+            //Application.Run(creationbloc);
+        }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             String lol;
             lol = this.textBox1.Text.Clone().ToString();
             
         }
+
 
 
 

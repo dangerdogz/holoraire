@@ -243,8 +243,59 @@ namespace HoraireBeta
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            String lol;
-            lol = this.textBox1.Text.Clone().ToString();
+            String textInForm;           
+            
+            textInForm = this.textBox1.Text.Clone().ToString();
+            foreach (TreeNode ressource in RessourceTree.Nodes)
+            {
+                foreach (TreeNode childs in ressource.Nodes)
+                {
+                    //MessageBox.Show(childs.Text, "lol");
+                    if (!childs.Text.Contains(textInForm))
+                    {
+                       // childs.Remove();
+                    }
+                }
+            }
+
+
+            foreach (TreeNode tree in RessourceTree.Nodes[0].Nodes)
+            {
+                tree.Remove();
+            }
+            foreach (TreeNode tree in RessourceTree.Nodes[1].Nodes)
+            {
+                tree.Remove();
+            } 
+            foreach (TreeNode tree in RessourceTree.Nodes[2].Nodes)
+            {
+                tree.Remove();
+            }
+
+            foreach (Profil profil in profilCharge)
+            {
+                if (profil.getNom().Contains(textInForm))
+                {
+                    RessourceTree.Nodes[0].Nodes.Add(new System.Windows.Forms.TreeNode(profil.getNom() + ", " + profil.getPrenom()));
+                }
+            }
+           foreach (Poste poste in posteCharge)
+            {
+                if (poste.getNom().Contains(textInForm))
+                {
+                    RessourceTree.Nodes[1].Nodes.Add(new System.Windows.Forms.TreeNode(poste.getNom()));
+                }
+                
+            }
+            foreach (Equipe team in equipe)
+            {
+                if (team.getNom().Contains(textInForm))
+                {
+                    RessourceTree.Nodes[2].Nodes.Add(new System.Windows.Forms.TreeNode(team.getNom()));
+                }
+
+            }
+            
             
         }
 
@@ -254,4 +305,10 @@ namespace HoraireBeta
 
 
     }
-}
+} 
+           
+
+          
+
+
+            

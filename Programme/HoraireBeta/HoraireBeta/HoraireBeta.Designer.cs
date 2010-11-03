@@ -37,13 +37,9 @@ namespace HoraireBeta
         /// </summary>
         public void InitializeComponent()
         {
-
-            
-
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Employé");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Équipe");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Postes");
-
             this.Admin = new System.Windows.Forms.TabControl();
             this.horaire = new System.Windows.Forms.TabPage();
             this.panelCentral_Horaire = new System.Windows.Forms.Panel();
@@ -285,6 +281,7 @@ namespace HoraireBeta
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(227, 20);
             this.textBox1.TabIndex = 5;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label_recherche
             // 
@@ -944,15 +941,7 @@ namespace HoraireBeta
             this.admin_central.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultDataGrid)).EndInit();
             this.ResumeLayout(false);
-           
-              
-            Graphics grfx = panelCentral_Horaire.CreateGraphics();
-            Pen blackPen = new Pen(Color.Black);
-            
 
-
-            this.grille = new GrilleHoraire(grfx,blackPen);
-            
         }
 
         #endregion

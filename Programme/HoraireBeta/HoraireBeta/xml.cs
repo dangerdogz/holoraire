@@ -13,15 +13,20 @@ namespace HoraireBeta
         public void CreateProfileXml()
         {
             DBConnect proc = new DBConnect();
+            DataTable rs3;
+            DataTable rs2;
             DataTable rs;
             int i = 0;
+            int j = 0;
+            int k = 0;
             rs = proc.getAllProfil();
-
+            rs2 = proc.getAllPoste();
+            rs3 = proc.getAllTeam();
             // Create the root node of a new XML document.
             Chilkat.Xml xml = new Chilkat.Xml();
 
             // This is going to be a collection of contacts.
-            xml.Tag = "profiles";
+            xml.Tag = "infos";
 
             // Create a child node to hold a contact record.
             // Our "xml" object will now reference the new node.
@@ -45,7 +50,24 @@ namespace HoraireBeta
                 xml.GetParent2();
                 i++;
             }
-
+            while (j < rs2.Rows.Count)
+            {
+                xml = xml.NewChild("poste", "");
+                xml.NewChild2("id", Convert.ToString(rs2.Rows[j]["idPoste"]));
+                xml.NewChild2("nom", rs2.Rows[j]["nom"].ToString());
+                xml.NewChild2("description", rs2.Rows[j]["description"].ToString());
+                xml.GetParent2();
+                j++;
+            }
+            while (k < rs3.Rows.Count)
+            {
+                xml = xml.NewChild("team", "");
+                xml.NewChild2("id", Convert.ToString(rs3.Rows[k]["idTeam"]));
+                xml.NewChild2("nom", rs3.Rows[k]["nom"].ToString());
+                xml.NewChild2("description", rs3.Rows[k]["description"].ToString());
+                xml.GetParent2();
+                k++;
+            }
             // We can always get back to the root by calling GetRoot (or GetRoot2)
             xml.GetRoot2();
 

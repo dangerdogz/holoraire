@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel;
+using System.Drawing;
+
 
 namespace HoraireBeta
 {
@@ -14,7 +17,7 @@ namespace HoraireBeta
         public int nbAffectee;
     }
 
-    public class Bloc
+    public class Bloc : IComponent 
     {
 
 
@@ -25,7 +28,11 @@ namespace HoraireBeta
         private bool erreurExiste;
         private bool estComplet;
         private int id;
-        
+        private int x;
+        private int y;
+        private int haut;
+
+
         System.Globalization.CultureInfo info = new System.Globalization.CultureInfo("en-US", false);
 
         List<Ressource> ressourcesAffectes = new List<Ressource>();
@@ -40,6 +47,34 @@ namespace HoraireBeta
             this.fin = fin;
             this.typeBloc = type;
             this.id = id;
+
+            y = Convert.ToInt32(debut.ToString("HH")) * 20 + Convert.ToInt32(debut.ToString("MM"))/20;
+
+            x = (Loader.SemaineToInt(debut) - 1) * 100;
+            haut = (Convert.ToInt32(fin.ToString("HH")) * 20 + Convert.ToInt32(fin.ToString("MM")) / 20)-y;
+
+
+            erreurExiste = false;
+            estComplet = false;
+
+        }
+
+        public Bloc(int debutY, int finY, String jour, int type, int id)
+        {
+
+
+            System.Globalization.Calendar calendar = info.Calendar;
+            
+            this.typeBloc = type;
+            this.id = id;
+            int hh = debutY / 20;
+            int mm = (debutY%20)*3;
+            DateTime.ParseExact(jour+"/"+hh+"/"+mm, "ddd/HH/mm", null);
+
+            y = debutY;
+
+            x = (Loader.SemaineToInt(debut) - 1) * 100;
+            haut = finY-debutY;
 
 
             erreurExiste = false;
@@ -258,6 +293,16 @@ namespace HoraireBeta
             }
 
             return estComplet;
+        }
+
+        public void draw(Graphics gfx)
+        {
+            Pen pen = new Pen(Color.Cyan);
+            SolidBrush brush = new SolidBrush(Color.Cyan);
+            gfx.DrawRectangle(pen, x, y, 100, haut);
+            gfx.FillRectangle(brush, x-1, y-1, 100-2, haut-2);
+
+
         }
 
     }

@@ -168,6 +168,35 @@ namespace HoraireBeta
             return (bloc);
         }
 
+        public static int SemaineToInt(DateTime entree) {
+            int jour=0;
+            switch (entree.ToString("ddd"))
+            {
+                case "mon": 
+                    jour = 1;
+                    break;
+                case "tue": 
+                    jour = 2;
+                    break;
+                case "wen":
+                    jour = 3;
+                    break;
+                case "thu" :
+                    jour = 4;
+                    break;
+                case "fri" :
+                    jour = 5;
+                    break;
+                case "sat" :
+                    jour = 6;
+                    break;
+                case "sun" :
+                    jour = 7;
+                    break;
+            }
+        return jour;
+            }
+
 
     }
 }

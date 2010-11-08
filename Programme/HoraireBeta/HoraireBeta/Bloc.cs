@@ -331,24 +331,5 @@ namespace HoraireBeta
 
         #endregion
 
-
-        public event EventHandler Disposed;
-
-        public ISite Site
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

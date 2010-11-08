@@ -173,6 +173,12 @@ namespace HoraireBeta
             this.panelCentral_Horaire.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCentral_Horaire_Paint);
             this.panelCentral_Horaire.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
             this.panelCentral_Horaire.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
+
+            Graphics grfx = this.panelCentral_Horaire.CreateGraphics();
+
+            grille = new GrilleHoraire(grfx);
+            
+            
             // 
             // tabConflits
             // 

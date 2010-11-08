@@ -5,7 +5,6 @@ using System.Text;
 using System.ComponentModel;
 using System.Drawing;
 
-
 namespace HoraireBeta
 {
 
@@ -304,6 +303,33 @@ namespace HoraireBeta
 
 
         }
+
+        #region IComponent Membres
+
+        public event EventHandler Disposed;
+
+        public ISite Site
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        #endregion
+
+        #region IDisposable Membres
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
 
 
         public event EventHandler Disposed;

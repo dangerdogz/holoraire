@@ -993,7 +993,7 @@ namespace HoraireBeta
         private TreeView RessourceTree;
         private TreeView treeView_postdispo;
         private Loader loader;
-        private List<Profil> profilCharge = new List<Profil>();
+        private List<Ressource> profilCharge = new List<Ressource>();
         private List<Equipe> equipe = new List<Equipe>();
         public List<Poste> posteCharge = new List<Poste>();
 
@@ -1001,8 +1001,8 @@ namespace HoraireBeta
         {
             
             loader = new Loader();
-            profilCharge = loader.LoadProfil();
             posteCharge = loader.loadPoste();
+            profilCharge = loader.LoadProfil();
             equipe = loader.LoadEquipe();
             
             //Rempli l'interface Horaire
@@ -1012,7 +1012,7 @@ namespace HoraireBeta
 
             for (int i = 0; i < profilCharge.Count(); i++)
             {
-               nodeArray[i] = new System.Windows.Forms.TreeNode(profilCharge.ElementAt(i).getNom()+", "+profilCharge.ElementAt(i).getPrenom());
+               nodeArray[i] = new System.Windows.Forms.TreeNode((((Profil)(profilCharge.ElementAt(i))).getNom()+", "+((Profil)(profilCharge.ElementAt(i))).getPrenom()));
             }
 
             RessourceTree.GetNodeAt(0, 0).Nodes.AddRange(nodeArray);

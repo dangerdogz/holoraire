@@ -50,3 +50,17 @@ C:\Users\Dave\Documents\Visual Studio 2010\Projects\HoraireBeta(11)\Programme\Ho
 C:\Users\Dave\Documents\Visual Studio 2010\Projects\HoraireBeta(11)\Programme\HoraireBeta\HoraireBeta\obj\x86\Debug\ResGen.read.1.tlog
 C:\Users\Dave\Documents\Visual Studio 2010\Projects\HoraireBeta(11)\Programme\HoraireBeta\HoraireBeta\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Dave\Documents\Visual Studio 2010\Projects\HoraireBeta(11)\Programme\HoraireBeta\HoraireBeta\obj\x86\Debug\ResGen.write.1.tlog
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireBeta(4)\Programme\HoraireBeta\HoraireBeta\bin\Debug\HoraireBeta.exe.config
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireBeta(4)\Programme\HoraireBeta\HoraireBeta\obj\x86\Debug\HoraireBeta.exe
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireBeta(4)\Programme\HoraireBeta\HoraireBeta\obj\x86\Debug\HoraireBeta.pdb
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireBeta(4)\Programme\HoraireBeta\HoraireBeta\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireBeta(4)\Programme\HoraireBeta\HoraireBeta\obj\x86\Debug\HoraireBeta.CreationBloc.resources
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireBeta(4)\Programme\HoraireBeta\HoraireBeta\obj\x86\Debug\HoraireBeta.HoraireBeta.resources
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireBeta(4)\Programme\HoraireBeta\HoraireBeta\obj\x86\Debug\HoraireBeta.Properties.Resources.resources
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireBeta(4)\Programme\HoraireBeta\HoraireBeta\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireBeta(4)\Programme\HoraireBeta\HoraireBeta\obj\x86\Debug\ResGen.read.1.tlog
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireBeta(4)\Programme\HoraireBeta\HoraireBeta\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireBeta(4)\Programme\HoraireBeta\HoraireBeta\obj\x86\Debug\ResGen.write.1.tlog
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireBeta(4)\Programme\HoraireBeta\HoraireBeta\bin\Debug\HoraireBeta.exe
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireBeta(4)\Programme\HoraireBeta\HoraireBeta\bin\Debug\HoraireBeta.pdb
+C:\Users\HP\Documents\Visual Studio 2010\Projects\HoraireBeta(4)\Programme\HoraireBeta\HoraireBeta\bin\Debug\ChilkatDotNet2.dll

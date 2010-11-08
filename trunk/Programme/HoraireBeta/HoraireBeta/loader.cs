@@ -15,14 +15,14 @@ namespace HoraireBeta
         public List<Poste> posteCharge = new List<Poste>();
 
 
-        public List<Profil> profilCharge = new List<Profil>();
+        public List<Ressource> profilCharge = new List<Ressource>();
         public List<Equipe> equipe = new List<Equipe>();
         public List<Bloc> bloc = new List<Bloc>();
 
 
         DBConnect proc = new DBConnect();
 
-        public List<Profil> LoadProfil()
+        public List<Ressource> LoadProfil()
         {
 
           
@@ -139,7 +139,8 @@ namespace HoraireBeta
             for (int i = 0; i < rsBloc.Rows.Count; i++)
             {
 
-                Bloc newBloc = new Bloc(Convert.ToDateTime(rsBloc.Rows[i]["debut"].ToString()), Convert.ToDateTime(rsBloc.Rows[i]["fin"].ToString()), Convert.ToInt32(rsBloc.Rows[i]["description"].ToString()), Convert.ToInt32(rsBloc.Rows[i]["id"].ToString()));
+                Bloc newBloc = new Bloc(DateTime.ParseExact(rsBloc.Rows[i]["debut"].ToString(), "yyyy-MM-dd HH:mm:ss", null), DateTime.ParseExact(rsBloc.Rows[i]["fin"].ToString(), "yyyy-MM-dd HH:mm:ss", null), Convert.ToInt32(rsBloc.Rows[i]["idType"].ToString()), Convert.ToInt32(rsBloc.Rows[i]["idBlock"].ToString()));
+
                 bloc.Add(newBloc);
                 rsRessource = proc.getRessource(bloc[i].getId());
                 for (int j = 0; j < rsRessource.Rows.Count; j++)

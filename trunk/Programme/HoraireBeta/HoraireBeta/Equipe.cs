@@ -7,7 +7,7 @@ namespace HoraireBeta
 {
     public class Equipe : Ressource
     {
-        private List<Profil> profils = new List<Profil>();
+        private List<Ressource> profils = new List<Ressource>();
         private String nom;
         private String description;
 
@@ -29,7 +29,7 @@ namespace HoraireBeta
         }
 
 
-        public void setEmploye(Profil profil)
+        public void setEmploye(Ressource profil)
         {
             profils.Add(profil);
         }
@@ -38,7 +38,7 @@ namespace HoraireBeta
         {
             return nom;
         }
-        public List<Profil> getProfils() 
+        public List<Ressource> getProfils() 
         {
          return profils;
         }

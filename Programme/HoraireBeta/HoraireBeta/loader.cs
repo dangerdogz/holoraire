@@ -74,7 +74,7 @@ namespace HoraireBeta
 
                     for (int j = 0; j < rs4.Rows.Count; j++)
                     {
-                        Bloc newBloc = new Bloc(Convert.ToDateTime(rs4.Rows[i]["debut"].ToString()), Convert.ToDateTime(rs4.Rows[i]["fin"].ToString()), 0, Convert.ToInt32(rs4.Rows[j]["idPlage"].ToString()));
+                        Bloc newBloc = new Bloc(DateTime.ParseExact(rs4.Rows[i]["debut"].ToString(), "yyyy-MM-dd HH:mm:ss", null), Convert.ToDateTime(rs4.Rows[i]["fin"].ToString()), 0, Convert.ToInt32(rs4.Rows[j]["idPlage"].ToString()));
                         newprof.addPref(newBloc);
                     }
 

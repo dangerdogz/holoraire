@@ -63,17 +63,23 @@ namespace HoraireBeta
 
                     for (int j = 0; j < rs3.Rows.Count; j++)
                     {
-                        Bloc newBloc = new Bloc(Convert.ToDateTime(rs3.Rows[i]["debut"].ToString()), Convert.ToDateTime(rs3.Rows[i]["fin"].ToString()), 0, Convert.ToInt32(rs3.Rows[j]["idPlage"].ToString()));
+                        Bloc newBloc = new Bloc(DateTime.ParseExact(rs3.Rows[i]["debut"].ToString(), "yyyy-MM-dd HH:mm:ss", null), DateTime.ParseExact(rs3.Rows[i]["fin"].ToString(), "yyyy-MM-dd HH:mm:ss", null), 0, Convert.ToInt32(rs3.Rows[j]["idPlage"].ToString()));
                         newprof.addDispo(newBloc);
+                
+                            
+              
+                       
+
                     }
 
                     for (int j = 0; j < rs4.Rows.Count; j++)
                     {
-                        Bloc newBloc = new Bloc(Convert.ToDateTime(rs3.Rows[i]["debut"].ToString()), Convert.ToDateTime(rs3.Rows[i]["fin"].ToString()), 0, Convert.ToInt32(rs3.Rows[j]["idPlage"].ToString()));
+                        Bloc newBloc = new Bloc(Convert.ToDateTime(rs4.Rows[i]["debut"].ToString()), Convert.ToDateTime(rs4.Rows[i]["fin"].ToString()), 0, Convert.ToInt32(rs4.Rows[j]["idPlage"].ToString()));
                         newprof.addPref(newBloc);
                     }
 
-                    profilCharge.Add(newprof);             
+                    profilCharge.Add(newprof);
+            
 
                 }
                 i++;

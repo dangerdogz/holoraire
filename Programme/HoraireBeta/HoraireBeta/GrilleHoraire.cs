@@ -5,30 +5,32 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 
+
 namespace HoraireBeta
 {
     class GrilleHoraire
     {
         //Variables Locales
-        GrilleJour[] jours = new GrilleJour[7];
-        
+        public GrilleJour[] jours = new GrilleJour[7];
 
-        public GrilleHoraire(Graphics grfx, Pen bPen)
+
+        public GrilleHoraire(Graphics grfx)
         {
             //Création des jours - ajouter les blocs existants
-            jours[0] = new GrilleJour("Lundi", 40, 20, grfx, bPen);
-            jours[1] = new GrilleJour("Mardi", 140, 20, grfx, bPen);
-            jours[2] = new GrilleJour("Mercredi", 240, 20, grfx, bPen);
-            jours[3] = new GrilleJour("Jeudi", 340, 20, grfx, bPen);
-            jours[4] = new GrilleJour("Vendredi", 440, 20, grfx, bPen);
-            jours[5] = new GrilleJour("Samedi", 540, 20, grfx, bPen);
-            jours[6] = new GrilleJour("Dimanche", 640, 20, grfx, bPen);
+            jours[0] = new GrilleJour("Lundi", 40, 20, grfx);
+            jours[1] = new GrilleJour("Mardi", 140, 20, grfx);
+            jours[2] = new GrilleJour("Mercredi", 240, 20, grfx);
+            jours[3] = new GrilleJour("Jeudi", 340, 20, grfx);
+            jours[4] = new GrilleJour("Vendredi", 440, 20, grfx);
+            jours[5] = new GrilleJour("Samedi", 540, 20, grfx);
+            jours[6] = new GrilleJour("Dimanche", 640, 20, grfx);
 
-           
-        
+
+
         }
 
-        public void activer() {
+        public void activer()
+        {
             jours[0].activer();
             jours[1].activer();
             jours[2].activer();
@@ -39,12 +41,28 @@ namespace HoraireBeta
 
         }
 
-        public void passeClique(int x,int y) {
+        public void passeClique(int x, int y)
+        {
             for (int i = 0; i < 7; i++)
-                {
-                    jours[i].passeClique(x, y);
-                }
-        
+            {
+                jours[i].passeClique(x, y);
+            }
+
         }
+
+        public void passeClique(MouseEventArgs e)
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                jours[i].passeClique(e);
+            }
+
+        }
+
+
+
+
+
+     
     }
 }

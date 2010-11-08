@@ -246,7 +246,17 @@ namespace HoraireBeta
             String textInForm;           
             
             textInForm = this.textBox1.Text.Clone().ToString();
-            foreach (TreeNode ressource in RessourceTree.Nodes)
+            Chilkat.Xml xml = new Chilkat.Xml();
+            Chilkat.Xml xmlProfiles = new Chilkat.Xml();
+            Chilkat.Xml xmlPostes = new Chilkat.Xml();
+            Chilkat.Xml xmlTeams = new Chilkat.Xml();
+            xmlProfiles.LoadXmlFile("profiles.xml");
+            xmlPostes.LoadXmlFile("postes.xml");
+            xmlTeams.LoadXmlFile("teams.xml");
+            
+
+            
+            /*foreach (TreeNode ressource in RessourceTree.Nodes)
             {
                 foreach (TreeNode childs in ressource.Nodes)
                 {
@@ -256,9 +266,9 @@ namespace HoraireBeta
                        // childs.Remove();
                     }
                 }
-            }
-
-
+            }*/
+           
+            
             foreach (TreeNode tree in RessourceTree.Nodes[0].Nodes)
             {
                 tree.Remove();
@@ -271,15 +281,71 @@ namespace HoraireBeta
             {
                 tree.Remove();
             }
+            xml = xmlProfiles;
+                // Navigate to the first company record.
+                xml.FirstChild2();
 
-            foreach (Profil profil in profilCharge)
-            {
-                if (profil.getNom().Contains(textInForm))
+                while (xml != null)
                 {
-                    RessourceTree.Nodes[0].Nodes.Add(new System.Windows.Forms.TreeNode(profil.getNom() + ", " + profil.getPrenom()));
+                    // FindNextRecord *will* return the current record if it
+                    // matches the criteria. 
+                    xml = xml.FindNextRecord("nom", textInForm.ToLower()+"*");
+                    if (xml != null)
+                    {
+                        // Add the company name to the listbox.
+                        
+                        RessourceTree.Nodes[0].Nodes.Add(new System.Windows.Forms.TreeNode(xml.GetChildContent("nom") + ", "+ xml.GetChildContent("prenom")));
+                        
+
+                        // Advance past this record.
+                        xml = xml.NextSibling();
+                    }
+
                 }
-            }
-           foreach (Poste poste in posteCharge)
+                xml = xmlPostes;
+                // Navigate to the first company record.
+                xml.FirstChild2();
+
+                while (xml != null)
+                {
+                    // FindNextRecord *will* return the current record if it
+                    // matches the criteria. 
+                    xml = xml.FindNextRecord("nom", textInForm.ToLower() + "*");
+                    if (xml != null)
+                    {
+                        // Add the company name to the listbox.
+
+                        RessourceTree.Nodes[1].Nodes.Add(new System.Windows.Forms.TreeNode(xml.GetChildContent("nom")));
+
+
+                        // Advance past this record.
+                        xml = xml.NextSibling();
+                    }
+
+                }
+                xml = xmlTeams;
+                // Navigate to the first company record.
+                xml.FirstChild2();
+
+                while (xml != null)
+                {
+                    // FindNextRecord *will* return the current record if it
+                    // matches the criteria. 
+                    xml = xml.FindNextRecord("nom", textInForm.ToLower() + "*");
+                    if (xml != null)
+                    {
+                        // Add the company name to the listbox.
+
+                        RessourceTree.Nodes[2].Nodes.Add(new System.Windows.Forms.TreeNode(xml.GetChildContent("nom")));
+
+
+                        // Advance past this record.
+                        xml = xml.NextSibling();
+                    }
+
+                }
+    
+           /*foreach (Poste poste in posteCharge)
             {
                 if (poste.getNom().Contains(textInForm))
                 {
@@ -294,7 +360,7 @@ namespace HoraireBeta
                     RessourceTree.Nodes[2].Nodes.Add(new System.Windows.Forms.TreeNode(team.getNom()));
                 }
 
-            }
+            }*/
             
             
         }

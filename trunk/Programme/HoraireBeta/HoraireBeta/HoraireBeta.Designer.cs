@@ -1015,7 +1015,7 @@ namespace HoraireBeta
                nodeArray[i] = new System.Windows.Forms.TreeNode((((Profil)(profilCharge.ElementAt(i))).getNom()+", "+((Profil)(profilCharge.ElementAt(i))).getPrenom()));
             }
 
-            RessourceTree.GetNodeAt(0, 0).Nodes.AddRange(nodeArray);
+            RessourceTree.Nodes[0].Nodes.AddRange(nodeArray);
             
 
             nodeArray = new System.Windows.Forms.TreeNode[posteCharge.Count()];
@@ -1027,7 +1027,7 @@ namespace HoraireBeta
                nodeArray2[i] = new System.Windows.Forms.TreeNode(posteCharge.ElementAt(i).getNom());
             }
 
-            RessourceTree.GetNodeAt(0,0).Nodes.AddRange(nodeArray);
+            RessourceTree.Nodes[1].Nodes.AddRange(nodeArray);
             //treeView_postdispo.Nodes.AddRange(nodeArray2);
 
             nodeArray = new System.Windows.Forms.TreeNode[equipe.Count()];
@@ -1036,8 +1036,8 @@ namespace HoraireBeta
             {
                 nodeArray[i] = new System.Windows.Forms.TreeNode(equipe.ElementAt(i).getNom());
             }
-            
-            RessourceTree.GetNodeAt(0,0).Nodes.AddRange(nodeArray);
+
+            RessourceTree.Nodes[2].Nodes.AddRange(nodeArray);
             //Fin du remplissage de l'interface Horaire
 
            

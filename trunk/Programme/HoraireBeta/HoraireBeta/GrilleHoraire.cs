@@ -14,7 +14,11 @@ namespace HoraireBeta
         public GrilleJour[] jours = new GrilleJour[7];
 
 
+        
+
+
         public GrilleHoraire(Graphics grfx)
+
         {
             //Création des jours - ajouter les blocs existants
             jours[0] = new GrilleJour("Lundi", 40, 20, grfx);

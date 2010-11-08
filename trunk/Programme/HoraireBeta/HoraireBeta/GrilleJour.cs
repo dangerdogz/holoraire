@@ -44,8 +44,8 @@ namespace HoraireBeta
 
             this.grfx = grfx;
 
-            blocs[0] = new Bloc(posY, posY + 30, "mon", 1, 1);
-            blocs[0].draw(grfx);
+          //  blocs[0] = new Bloc(posY, posY + 30, "mon", 1, 1);
+         //   blocs[0].draw(grfx);
         }
 
         public void activer()

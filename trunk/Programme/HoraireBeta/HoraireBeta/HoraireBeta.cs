@@ -17,8 +17,9 @@ namespace HoraireBeta
        
         public HoraireBeta()
         {
+           
             InitializeComponent();
-            initInterface();
+            
         }
 
         private void horaire_Click(object sender, EventArgs e)
@@ -89,6 +90,30 @@ namespace HoraireBeta
             }
         }
 
+        private void pCentral_Horaire_OnMouseDown(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+                {
+                case MouseButtons.Left:
+                    grille.passeClique(e,"MouseDown");
+                    break;
+                }   
+
+
+        }
+
+        private void pCentral_Horaire_OnMouseUp(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    grille.passeClique(e,"MouseUp");
+                    break;
+            }
+
+
+        }
+
         private void pCentral_Horaire_OnMouseEvent(object sender, MouseEventArgs e)
         {
 
@@ -96,8 +121,10 @@ namespace HoraireBeta
             {
                 case MouseButtons.Left:
                     //MessageBox.Show(this, "PanelCentral Horaire: Vous avez appuyez sur gauche en : " + e.X + " , " + e.Y);
-                    createBlock();
-                    grille.passeClique(e.X, e.Y);
+                   // createBlock();
+                   // grille.passeClique(e.X, e.Y);
+                    //grille.passeClique(e);
+
                     break;
             }
         }
@@ -176,10 +203,10 @@ namespace HoraireBeta
 
         private void popPostWindow(/*int x, int y, DateTime hd, DateTime hf*/)
         {
-            AjouterPoste ajouterposte = new AjouterPoste();
+        /*    AjouterPoste ajouterposte = new AjouterPoste();
             ajouterposte.ShowDialog();
            
-            ajouterposte.Dispose();
+            ajouterposte.Dispose();*/
         }
 
 
@@ -257,6 +284,8 @@ namespace HoraireBeta
             creationbloc.Dispose();
             //Application.Run(creationbloc);
         }
+
+        
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {

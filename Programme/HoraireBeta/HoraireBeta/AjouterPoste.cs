@@ -12,6 +12,8 @@ namespace HoraireBeta
 {
     public partial class AjouterPoste : Form
     {
+        String pname;
+        String pdesc;
         public AjouterPoste()
         {
             InitializeComponent();
@@ -24,7 +26,34 @@ namespace HoraireBeta
 
         private void button_aj_post_confirm_Click(object sender, EventArgs e)
         {
+            setPoste();
+            
+        }
 
+        private void textBox_nomposte_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox_descposte_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public void setPoste()
+        {
+            pname = textBox_nomposte.Text;
+            pdesc = richTextBox_descposte.Text;
+        }
+
+        public String getpName()
+        {
+            return pname;
+        }
+
+        public String getpDesc()
+        {
+            return pdesc;
         }
     }
 }

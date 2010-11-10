@@ -63,6 +63,7 @@
             this.textBox_nomposte.Name = "textBox_nomposte";
             this.textBox_nomposte.Size = new System.Drawing.Size(221, 20);
             this.textBox_nomposte.TabIndex = 2;
+            this.textBox_nomposte.TextChanged += new System.EventHandler(this.textBox_nomposte_TextChanged);
             // 
             // label_descripposte
             // 
@@ -81,6 +82,7 @@
             this.richTextBox_descposte.Size = new System.Drawing.Size(221, 84);
             this.richTextBox_descposte.TabIndex = 4;
             this.richTextBox_descposte.Text = "";
+            this.richTextBox_descposte.TextChanged += new System.EventHandler(this.richTextBox_descposte_TextChanged);
             // 
             // button_aj_post_confirm
             // 

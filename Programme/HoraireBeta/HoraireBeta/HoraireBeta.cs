@@ -14,7 +14,7 @@ namespace HoraireBeta
 {
     public partial class HoraireBeta : Form
     {
-       
+        AjouterPoste ajouterposte = new AjouterPoste();
         public HoraireBeta()
         {
            
@@ -203,10 +203,10 @@ namespace HoraireBeta
 
         private void popPostWindow(/*int x, int y, DateTime hd, DateTime hf*/)
         {
-        /*    AjouterPoste ajouterposte = new AjouterPoste();
+
+            AjouterPoste ajouterposte = new AjouterPoste();
             ajouterposte.ShowDialog();
-           
-            ajouterposte.Dispose();*/
+            ajouterposte.Dispose();
         }
 
 
@@ -285,7 +285,18 @@ namespace HoraireBeta
             //Application.Run(creationbloc);
         }
 
-        
+        public void ajoutposteBD()
+        {
+            MessageBox.Show(this, "1");
+            loader.posteCharge.Add(new Poste(ajouterposte.getpName(), ajouterposte.getpDesc()));
+            MessageBox.Show(this, "2");
+            CreateXml xml = new CreateXml();
+            MessageBox.Show(this, "3");
+            xml.CreateProfileXml();
+            MessageBox.Show(this, "4");
+            AjouterPoste.ActiveForm.Dispose();
+            MessageBox.Show(this, "5");
+        }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -411,11 +422,12 @@ namespace HoraireBeta
             
         }
 
-<<<<<<< .mine
-        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
-        {
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e){
+        
             //MessageBox.Show(monthCalendar1.SelectionStart.Date.ToString(), "lol");
-=======
+        }
+
         private void button_generaux_Click(object sender, EventArgs e)
         {
             this.panelCentral_Parametre.Controls.Remove(this.label_postaffect);
@@ -437,9 +449,7 @@ namespace HoraireBeta
             this.panelCentral_Parametre.Controls.Remove(this.button_supprimer);
             this.panelCentral_Parametre.Controls.Remove(this.button_ajouter_PG);
             this.panelCentral_Parametre.Controls.Remove(this.label_postgeneral);
->>>>>>> .r160
 
-<<<<<<< .mine
             DateTime selectedDate = monthCalendar1.SelectionStart.Date;
            
             String dow = monthCalendar1.SelectionStart.DayOfWeek.ToString();
@@ -499,7 +509,7 @@ namespace HoraireBeta
                     break;
             }
             //MessageBox.Show(dow, "lol");
-=======
+
             this.panelCentral_Parametre.Controls.Add(this.label_partexte);
             this.panelCentral_Parametre.Controls.Add(this.textBox_graduation);
             this.panelCentral_Parametre.Controls.Add(this.textBox_quotasemaine);
@@ -510,11 +520,8 @@ namespace HoraireBeta
             this.panelCentral_Parametre.Controls.Add(this.label_horaire);
             this.panelCentral_Parametre.Controls.Add(this.label_heurest);
         }
->>>>>>> .r160
-
-<<<<<<< .mine
         }
-=======
+
         private void button_ressource_Click(object sender, EventArgs e)
         {
             this.panelCentral_Parametre.Controls.Remove(this.label_partexte);

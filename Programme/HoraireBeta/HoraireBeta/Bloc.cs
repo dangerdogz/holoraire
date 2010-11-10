@@ -16,7 +16,7 @@ namespace HoraireBeta
         public int nbAffectee;
     }
 
-    public class Bloc : IComponent 
+    public class Bloc
     {
 
 
@@ -47,10 +47,10 @@ namespace HoraireBeta
             this.typeBloc = type;
             this.id = id;
 
-            y = Convert.ToInt32(debut.ToString("HH")) * 20 + Convert.ToInt32(debut.ToString("MM"))/20;
+            y = Convert.ToInt32(debut.ToString("HH")) * 20 + Convert.ToInt32(debut.ToString("MM")) / 20;
 
             x = (Loader.SemaineToInt(debut) - 1) * 100;
-            haut = (Convert.ToInt32(fin.ToString("HH")) * 20 + Convert.ToInt32(fin.ToString("MM")) / 20)-y;
+            haut = (Convert.ToInt32(fin.ToString("HH")) * 20 + Convert.ToInt32(fin.ToString("MM")) / 20) - y;
 
 
             erreurExiste = false;
@@ -63,17 +63,17 @@ namespace HoraireBeta
 
 
             System.Globalization.Calendar calendar = info.Calendar;
-            
+
             this.typeBloc = type;
             this.id = id;
             int hh = debutY / 20;
-            int mm = (debutY%20)*3;
-            DateTime.ParseExact(jour+"/"+hh+"/"+mm, "ddd/HH/mm", null);
+            int mm = (debutY % 20) * 3;
+            //DateTime.ParseExact(jour + "/" + hh + "/" + mm, "ddd/HH/mm", null);
 
             y = debutY;
 
             x = (Loader.SemaineToInt(debut) - 1) * 100;
-            haut = finY-debutY;
+            haut = finY - debutY;
 
 
             erreurExiste = false;
@@ -90,7 +90,7 @@ namespace HoraireBeta
         public void addRessourceVoulue(int nbvoulue, Ressource voulue)
         {
             //nom pas tant hot
-            
+
             RessourceEntree ressourceToAdd;
             ressourceToAdd.voulue = voulue;
             ressourceToAdd.nbVoulue = nbvoulue;
@@ -103,9 +103,9 @@ namespace HoraireBeta
 
         public void addRessource(Profil newEmp)
         {
-            
 
-            if (ressourcesVoulus.Count!=0)
+
+            if (ressourcesVoulus.Count != 0)
             {
 
                 if (ressourcesAffectes.Count == 0)
@@ -121,23 +121,23 @@ namespace HoraireBeta
                     {
                         coun++;
                     }
-                    
-                   
-                    
+
+
+
                     ressourcesAffectes.Insert(coun, newEmp);
-                    
+
                 }
-                int i=0;
+                int i = 0;
                 int j = 0;
                 //parse la liste des ressources voulues et ensuite la liste des poste de l'employé pour essayer de trouver un match
                 while (i < ressourcesVoulus.Count() && ressourcesVoulus[i].voulue != newEmp.getPoste(j))
                 {
-                    
+
                     j = 0;
-                    while(j<newEmp.getPoste().Count && ressourcesVoulus[i].voulue != newEmp.getPoste(j++));
+                    while (j < newEmp.getPoste().Count && ressourcesVoulus[i].voulue != newEmp.getPoste(j++)) ;
                     j--;
-                    if(ressourcesVoulus[i].voulue != newEmp.getPoste(j))
-                       i++;
+                    if (ressourcesVoulus[i].voulue != newEmp.getPoste(j))
+                        i++;
                 }
 
                 if (i < ressourcesVoulus.Count())
@@ -155,12 +155,12 @@ namespace HoraireBeta
 
         public void addRessource(Equipe newEquipe)
         {
-           ressourcesAffectes.Add(newEquipe);
+            ressourcesAffectes.Add(newEquipe);
 
-            
+
             int i = 0;
             while (i < ressourcesVoulus.Count() && ressourcesVoulus[i++].voulue != newEquipe) ;
-                
+
 
             if (i < ressourcesVoulus.Count())
             {
@@ -168,8 +168,8 @@ namespace HoraireBeta
                 ressourceAdded.nbAffectee++;
                 ressourcesVoulus[i] = ressourceAdded;
             }
-        
-        checkCompletion();
+
+            checkCompletion();
 
         }
 
@@ -179,14 +179,14 @@ namespace HoraireBeta
             int i = 0;
             int j = 0;
             while (i < ressourcesVoulus.Count() && ressourcesVoulus[i].voulue != ((Profil)ressourcesAffectes[0]).getPoste(j))
-                {
-                    
-                    j = 0;
-                    while (j < ((Profil)ressourcesAffectes[0]).getPoste().Count && ressourcesVoulus[i].voulue != ((Profil)ressourcesAffectes[0]).getPoste(j++)) ;
-                    j--;
-                    if (ressourcesVoulus[i].voulue != ((Profil)ressourcesAffectes[0]).getPoste(j))
-                       i++;
-                }
+            {
+
+                j = 0;
+                while (j < ((Profil)ressourcesAffectes[0]).getPoste().Count && ressourcesVoulus[i].voulue != ((Profil)ressourcesAffectes[0]).getPoste(j++)) ;
+                j--;
+                if (ressourcesVoulus[i].voulue != ((Profil)ressourcesAffectes[0]).getPoste(j))
+                    i++;
+            }
 
             RessourceEntree ressourceAdded = ressourcesVoulus[i];
             ressourceAdded.nbAffectee--;
@@ -194,7 +194,7 @@ namespace HoraireBeta
 
             ressourcesAffectes.RemoveAt(0);
             checkCompletion();
-            
+
         }
 
         public void removeEmpl(int position)
@@ -215,23 +215,24 @@ namespace HoraireBeta
             ressourceAdded.nbAffectee--;
             ressourcesVoulus[i] = ressourceAdded;
 
-            
+
 
             ressourcesAffectes.RemoveAt(position);
             checkCompletion();
-            
+
         }
 
         public Boolean estVoulue(Ressource ress)
         {
             Boolean oui = false;
-            for (int i = 0; i<ressourcesVoulus.Count; i++){
-                
+            for (int i = 0; i < ressourcesVoulus.Count; i++)
+            {
 
-                    if (ress == ((Poste)ressourcesVoulus[i].voulue))
-                        oui = true;
-                }
-            
+
+                if (ress == ((Poste)ressourcesVoulus[i].voulue))
+                    oui = true;
+            }
+
             return oui;
         }
 
@@ -266,7 +267,7 @@ namespace HoraireBeta
             return ressourcesVoulus;
         }
 
-        public Profil getRessourceAffecte(int position) 
+        public Profil getRessourceAffecte(int position)
         {
             if (position < ressourcesAffectes.Count)
             {
@@ -274,18 +275,18 @@ namespace HoraireBeta
             }
             else
                 return null;
-            
+
         }
 
         public bool checkCompletion()
         {
             int i = -1;
 
-            estComplet=false;
+            estComplet = false;
 
             while (++i != ressourcesVoulus.Count)
             {
-                if (ressourcesVoulus[i].nbVoulue>=ressourcesVoulus[i].nbAffectee)
+                if (ressourcesVoulus[i].nbVoulue >= ressourcesVoulus[i].nbAffectee)
                 {
                     estComplet = true;
                 }
@@ -299,7 +300,7 @@ namespace HoraireBeta
             Pen pen = new Pen(Color.Cyan);
             SolidBrush brush = new SolidBrush(Color.Cyan);
             gfx.DrawRectangle(pen, x, y, 100, haut);
-            gfx.FillRectangle(brush, x-1, y-1, 100-2, haut-2);
+            gfx.FillRectangle(brush, x - 1, y - 1, 100 - 2, haut - 2);
 
 
         }

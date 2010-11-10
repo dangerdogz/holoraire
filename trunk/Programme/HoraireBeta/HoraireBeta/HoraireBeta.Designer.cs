@@ -37,9 +37,9 @@ namespace HoraireBeta
         /// </summary>
         public void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Employé");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Équipe");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Postes");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Employé");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Équipe");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Postes");
             this.Admin = new System.Windows.Forms.TabControl();
             this.horaire = new System.Windows.Forms.TabPage();
             this.panelCentral_Horaire = new System.Windows.Forms.Panel();
@@ -105,6 +105,27 @@ namespace HoraireBeta
             this.button_presets = new System.Windows.Forms.Button();
             this.button_generaux = new System.Windows.Forms.Button();
             this.parametre_label = new System.Windows.Forms.Label();
+
+            this.label_postaffect = new System.Windows.Forms.Label();
+            this.treeView_postaaffectgauche = new System.Windows.Forms.TreeView();
+            this.treeView_postaaffectdroite = new System.Windows.Forms.TreeView();
+            this.button_postaaffectgauche = new System.Windows.Forms.Button();
+            this.button_postaaffectdroit = new System.Windows.Forms.Button();
+            this.button_affecter = new System.Windows.Forms.Button();
+            this.treeView_postspec2 = new System.Windows.Forms.TreeView();
+            this.label_postspec = new System.Windows.Forms.Label();
+            this.treeView_postspec = new System.Windows.Forms.TreeView();
+            this.button_del_postspec = new System.Windows.Forms.Button();
+            this.button_aj_postspec = new System.Windows.Forms.Button();
+            this.label_equipes = new System.Windows.Forms.Label();
+            this.treeView_equipe = new System.Windows.Forms.TreeView();
+            this.button_del_equipe = new System.Windows.Forms.Button();
+            this.button_aj_equipe = new System.Windows.Forms.Button();
+            this.treeView_postgen = new System.Windows.Forms.TreeView();
+            this.button_supprimer = new System.Windows.Forms.Button();
+            this.button_ajouter_PG = new System.Windows.Forms.Button();
+            this.label_postgeneral = new System.Windows.Forms.Label();
+
             this.admin_table = new System.Windows.Forms.TabPage();
             this.admin_central = new System.Windows.Forms.Panel();
             this.resultDataGrid = new System.Windows.Forms.DataGridView();
@@ -173,12 +194,6 @@ namespace HoraireBeta
             this.panelCentral_Horaire.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCentral_Horaire_Paint);
             this.panelCentral_Horaire.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
             this.panelCentral_Horaire.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
-
-            Graphics grfx = this.panelCentral_Horaire.CreateGraphics();
-
-            grille = new GrilleHoraire(grfx);
-            
-            
             // 
             // tabConflits
             // 
@@ -267,16 +282,16 @@ namespace HoraireBeta
             this.RessourceTree.BackColor = System.Drawing.SystemColors.Window;
             this.RessourceTree.Location = new System.Drawing.Point(7, 6);
             this.RessourceTree.Name = "RessourceTree";
-            treeNode1.Name = "Employe";
-            treeNode1.Text = "Employé";
-            treeNode2.Name = "Equipe";
-            treeNode2.Text = "Équipe";
-            treeNode3.Name = "Postes";
-            treeNode3.Text = "Postes";
+            treeNode4.Name = "Employe";
+            treeNode4.Text = "Employé";
+            treeNode5.Name = "Equipe";
+            treeNode5.Text = "Équipe";
+            treeNode6.Name = "Postes";
+            treeNode6.Text = "Postes";
             this.RessourceTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
+            treeNode4,
+            treeNode5,
+            treeNode6});
             this.RessourceTree.Size = new System.Drawing.Size(208, 316);
             this.RessourceTree.TabIndex = 0;
             this.RessourceTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -790,6 +805,179 @@ namespace HoraireBeta
             this.label_heurest.TabIndex = 0;
             this.label_heurest.Text = "Heures de travail";
             // 
+            // label_postaffect
+            // 
+            this.label_postaffect.AutoSize = true;
+            this.label_postaffect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_postaffect.Location = new System.Drawing.Point(460, 400);
+            this.label_postaffect.Name = "label_postaffect";
+            this.label_postaffect.Size = new System.Drawing.Size(130, 20);
+            this.label_postaffect.TabIndex = 30;
+            this.label_postaffect.Text = "Postes à affecter";
+            // 
+            // treeView_postaaffectgauche
+            // 
+            this.treeView_postaaffectgauche.Location = new System.Drawing.Point(308, 430);
+            this.treeView_postaaffectgauche.Name = "treeView_postaaffectgauche";
+            this.treeView_postaaffectgauche.Size = new System.Drawing.Size(192, 259);
+            this.treeView_postaaffectgauche.TabIndex = 29;
+            // 
+            // treeView_postaaffectdroite
+            // 
+            this.treeView_postaaffectdroite.Location = new System.Drawing.Point(544, 430);
+            this.treeView_postaaffectdroite.Name = "treeView_postaaffectdroite";
+            this.treeView_postaaffectdroite.Size = new System.Drawing.Size(192, 259);
+            this.treeView_postaaffectdroite.TabIndex = 28;
+            // 
+            // button_postaaffectgauche
+            // 
+            this.button_postaaffectgauche.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_postaaffectgauche.Location = new System.Drawing.Point(506, 557);
+            this.button_postaaffectgauche.Name = "button_postaaffectgauche";
+            this.button_postaaffectgauche.Size = new System.Drawing.Size(32, 32);
+            this.button_postaaffectgauche.TabIndex = 27;
+            this.button_postaaffectgauche.Text = "<";
+            this.button_postaaffectgauche.UseVisualStyleBackColor = true;
+            // 
+            // button_postaaffectdroit
+            // 
+            this.button_postaaffectdroit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_postaaffectdroit.Location = new System.Drawing.Point(506, 519);
+            this.button_postaaffectdroit.Name = "button_postaaffectdroit";
+            this.button_postaaffectdroit.Size = new System.Drawing.Size(32, 32);
+            this.button_postaaffectdroit.TabIndex = 26;
+            this.button_postaaffectdroit.Text = ">";
+            this.button_postaaffectdroit.UseVisualStyleBackColor = true;
+            // 
+            // button_affecter
+            // 
+            this.button_affecter.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_affecter.Location = new System.Drawing.Point(571, 38);
+            this.button_affecter.Name = "button_affecter";
+            this.button_affecter.Size = new System.Drawing.Size(112, 34);
+            this.button_affecter.TabIndex = 13;
+            this.button_affecter.Text = "Affecter";
+            this.button_affecter.UseVisualStyleBackColor = true;
+            // 
+            // treeView_postspec2
+            // 
+            this.treeView_postspec2.Location = new System.Drawing.Point(506, 75);
+            this.treeView_postspec2.Name = "treeView_postspec2";
+            this.treeView_postspec2.Size = new System.Drawing.Size(230, 259);
+            this.treeView_postspec2.TabIndex = 12;
+            // 
+            // label_postspec
+            // 
+            this.label_postspec.AutoSize = true;
+            this.label_postspec.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_postspec.Location = new System.Drawing.Point(448, 15);
+            this.label_postspec.Name = "label_postspec";
+            this.label_postspec.Size = new System.Drawing.Size(142, 20);
+            this.label_postspec.TabIndex = 11;
+            this.label_postspec.Text = "Postes spécifiques";
+            // 
+            // treeView_postspec
+            // 
+            this.treeView_postspec.Location = new System.Drawing.Point(270, 75);
+            this.treeView_postspec.Name = "treeView_postspec";
+            this.treeView_postspec.Size = new System.Drawing.Size(230, 259);
+            this.treeView_postspec.TabIndex = 10;
+            // 
+            // button_del_postspec
+            // 
+            this.button_del_postspec.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_del_postspec.Location = new System.Drawing.Point(388, 38);
+            this.button_del_postspec.Name = "button_del_postspec";
+            this.button_del_postspec.Size = new System.Drawing.Size(112, 34);
+            this.button_del_postspec.TabIndex = 9;
+            this.button_del_postspec.Text = "Supprimer";
+            this.button_del_postspec.UseVisualStyleBackColor = true;
+            // 
+            // button_aj_postspec
+            // 
+            this.button_aj_postspec.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_aj_postspec.Location = new System.Drawing.Point(270, 38);
+            this.button_aj_postspec.Name = "button_aj_postspec";
+            this.button_aj_postspec.Size = new System.Drawing.Size(112, 34);
+            this.button_aj_postspec.TabIndex = 8;
+            this.button_aj_postspec.Text = "Ajouter";
+            this.button_aj_postspec.UseVisualStyleBackColor = true;
+            // 
+            // label_equipes
+            // 
+            this.label_equipes.AutoSize = true;
+            this.label_equipes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_equipes.Location = new System.Drawing.Point(103, 359);
+            this.label_equipes.Name = "label_equipes";
+            this.label_equipes.Size = new System.Drawing.Size(67, 20);
+            this.label_equipes.TabIndex = 7;
+            this.label_equipes.Text = "Équipes";
+            // 
+            // treeView_equipe
+            // 
+            this.treeView_equipe.Location = new System.Drawing.Point(19, 430);
+            this.treeView_equipe.Name = "treeView_equipe";
+            this.treeView_equipe.Size = new System.Drawing.Size(230, 259);
+            this.treeView_equipe.TabIndex = 6;
+            // 
+            // button_del_equipe
+            // 
+            this.button_del_equipe.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_del_equipe.Location = new System.Drawing.Point(137, 393);
+            this.button_del_equipe.Name = "button_del_equipe";
+            this.button_del_equipe.Size = new System.Drawing.Size(112, 34);
+            this.button_del_equipe.TabIndex = 5;
+            this.button_del_equipe.Text = "Supprimer";
+            this.button_del_equipe.UseVisualStyleBackColor = true;
+            // 
+            // button_aj_equipe
+            // 
+            this.button_aj_equipe.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_aj_equipe.Location = new System.Drawing.Point(19, 393);
+            this.button_aj_equipe.Name = "button_aj_equipe";
+            this.button_aj_equipe.Size = new System.Drawing.Size(112, 34);
+            this.button_aj_equipe.TabIndex = 4;
+            this.button_aj_equipe.Text = "Ajouter";
+            this.button_aj_equipe.UseVisualStyleBackColor = true;
+            // 
+            // treeView_postgen
+            // 
+            this.treeView_postgen.Location = new System.Drawing.Point(19, 75);
+            this.treeView_postgen.Name = "treeView_postgen";
+            this.treeView_postgen.Size = new System.Drawing.Size(230, 259);
+            this.treeView_postgen.TabIndex = 3;
+            // 
+            // button_supprimer
+            // 
+            this.button_supprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_supprimer.Location = new System.Drawing.Point(137, 38);
+            this.button_supprimer.Name = "button_supprimer";
+            this.button_supprimer.Size = new System.Drawing.Size(112, 34);
+            this.button_supprimer.TabIndex = 2;
+            this.button_supprimer.Text = "Supprimer";
+            this.button_supprimer.UseVisualStyleBackColor = true;
+            // 
+            // button_ajouter_PG
+            // 
+            this.button_ajouter_PG.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_ajouter_PG.Location = new System.Drawing.Point(19, 38);
+            this.button_ajouter_PG.Name = "button_ajouter_PG";
+            this.button_ajouter_PG.Size = new System.Drawing.Size(112, 34);
+            this.button_ajouter_PG.TabIndex = 1;
+            this.button_ajouter_PG.Text = "Ajouter";
+            this.button_ajouter_PG.UseVisualStyleBackColor = true;
+            // 
+            // label_postgeneral
+            // 
+            this.label_postgeneral.AutoSize = true;
+            this.label_postgeneral.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_postgeneral.Location = new System.Drawing.Point(75, 10);
+            this.label_postgeneral.Name = "label_postgeneral";
+            this.label_postgeneral.Size = new System.Drawing.Size(119, 20);
+            this.label_postgeneral.TabIndex = 0;
+            this.label_postgeneral.Text = "Postes Général";
+           // this.label_postgeneral.Click += new System.EventHandler(this.label3_Click);
+            // 
             // panelGauche_Parametre
             // 
             this.panelGauche_Parametre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
@@ -814,6 +1002,7 @@ namespace HoraireBeta
             this.button_ressource.TabIndex = 3;
             this.button_ressource.Text = "Ressources";
             this.button_ressource.UseVisualStyleBackColor = true;
+            this.button_ressource.Click += new System.EventHandler(this.button_ressource_Click);
             // 
             // button_presets
             // 
@@ -834,6 +1023,7 @@ namespace HoraireBeta
             this.button_generaux.TabIndex = 1;
             this.button_generaux.Text = "Généraux";
             this.button_generaux.UseVisualStyleBackColor = true;
+            this.button_generaux.Click += new System.EventHandler(this.button_generaux_Click);
             // 
             // parametre_label
             // 
@@ -1087,6 +1277,25 @@ namespace HoraireBeta
         private Label label_horaire;
         private Label label_heurest;
         private Label label_partexte;
+        private Label label_postgeneral;
+        private Label label_postspec;
+        private TreeView treeView_postspec;
+        private Button button_del_postspec;
+        private Button button_aj_postspec;
+        private Label label_equipes;
+        private TreeView treeView_equipe;
+        private Button button_del_equipe;
+        private Button button_aj_equipe;
+        private TreeView treeView_postgen;
+        private Button button_supprimer;
+        private Button button_ajouter_PG;
+        private Label label_postaffect;
+        private TreeView treeView_postaaffectgauche;
+        private TreeView treeView_postaaffectdroite;
+        private Button button_postaaffectgauche;
+        private Button button_postaaffectdroit;
+        private Button button_affecter;
+        private TreeView treeView_postspec2;
 
 
     }

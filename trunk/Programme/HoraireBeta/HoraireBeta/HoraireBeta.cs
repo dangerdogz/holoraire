@@ -365,6 +365,72 @@ namespace HoraireBeta
             
         }
 
+        private void button_generaux_Click(object sender, EventArgs e)
+        {
+            this.panelCentral_Parametre.Controls.Remove(this.label_postaffect);
+            this.panelCentral_Parametre.Controls.Remove(this.treeView_postaaffectgauche);
+            this.panelCentral_Parametre.Controls.Remove(this.treeView_postaaffectdroite);
+            this.panelCentral_Parametre.Controls.Remove(this.button_postaaffectgauche);
+            this.panelCentral_Parametre.Controls.Remove(this.button_postaaffectdroit);
+            this.panelCentral_Parametre.Controls.Remove(this.button_affecter);
+            this.panelCentral_Parametre.Controls.Remove(this.treeView_postspec2);
+            this.panelCentral_Parametre.Controls.Remove(this.label_postspec);
+            this.panelCentral_Parametre.Controls.Remove(this.treeView_postspec);
+            this.panelCentral_Parametre.Controls.Remove(this.button_del_postspec);
+            this.panelCentral_Parametre.Controls.Remove(this.button_aj_postspec);
+            this.panelCentral_Parametre.Controls.Remove(this.label_equipes);
+            this.panelCentral_Parametre.Controls.Remove(this.treeView_equipe);
+            this.panelCentral_Parametre.Controls.Remove(this.button_del_equipe);
+            this.panelCentral_Parametre.Controls.Remove(this.button_aj_equipe);
+            this.panelCentral_Parametre.Controls.Remove(this.treeView_postgen);
+            this.panelCentral_Parametre.Controls.Remove(this.button_supprimer);
+            this.panelCentral_Parametre.Controls.Remove(this.button_ajouter_PG);
+            this.panelCentral_Parametre.Controls.Remove(this.label_postgeneral);
+
+            this.panelCentral_Parametre.Controls.Add(this.label_partexte);
+            this.panelCentral_Parametre.Controls.Add(this.textBox_graduation);
+            this.panelCentral_Parametre.Controls.Add(this.textBox_quotasemaine);
+            this.panelCentral_Parametre.Controls.Add(this.textBox_qtheurejou);
+            this.panelCentral_Parametre.Controls.Add(this.label_graduation);
+            this.panelCentral_Parametre.Controls.Add(this.label_quotasemaine);
+            this.panelCentral_Parametre.Controls.Add(this.label_quotajour);
+            this.panelCentral_Parametre.Controls.Add(this.label_horaire);
+            this.panelCentral_Parametre.Controls.Add(this.label_heurest);
+        }
+
+        private void button_ressource_Click(object sender, EventArgs e)
+        {
+            this.panelCentral_Parametre.Controls.Remove(this.label_partexte);
+            this.panelCentral_Parametre.Controls.Remove(this.textBox_graduation);
+            this.panelCentral_Parametre.Controls.Remove(this.textBox_quotasemaine);
+            this.panelCentral_Parametre.Controls.Remove(this.textBox_qtheurejou);
+            this.panelCentral_Parametre.Controls.Remove(this.label_graduation);
+            this.panelCentral_Parametre.Controls.Remove(this.label_quotasemaine);
+            this.panelCentral_Parametre.Controls.Remove(this.label_quotajour);
+            this.panelCentral_Parametre.Controls.Remove(this.label_horaire);
+            this.panelCentral_Parametre.Controls.Remove(this.label_heurest);
+
+            this.panelCentral_Parametre.Controls.Add(this.label_postaffect);
+            this.panelCentral_Parametre.Controls.Add(this.treeView_postaaffectgauche);
+            this.panelCentral_Parametre.Controls.Add(this.treeView_postaaffectdroite);
+            this.panelCentral_Parametre.Controls.Add(this.button_postaaffectgauche);
+            this.panelCentral_Parametre.Controls.Add(this.button_postaaffectdroit);
+            this.panelCentral_Parametre.Controls.Add(this.button_affecter);
+            this.panelCentral_Parametre.Controls.Add(this.treeView_postspec2);
+            this.panelCentral_Parametre.Controls.Add(this.label_postspec);
+            this.panelCentral_Parametre.Controls.Add(this.treeView_postspec);
+            this.panelCentral_Parametre.Controls.Add(this.button_del_postspec);
+            this.panelCentral_Parametre.Controls.Add(this.button_aj_postspec);
+            this.panelCentral_Parametre.Controls.Add(this.label_equipes);
+            this.panelCentral_Parametre.Controls.Add(this.treeView_equipe);
+            this.panelCentral_Parametre.Controls.Add(this.button_del_equipe);
+            this.panelCentral_Parametre.Controls.Add(this.button_aj_equipe);
+            this.panelCentral_Parametre.Controls.Add(this.treeView_postgen);
+            this.panelCentral_Parametre.Controls.Add(this.button_supprimer);
+            this.panelCentral_Parametre.Controls.Add(this.button_ajouter_PG);
+            this.panelCentral_Parametre.Controls.Add(this.label_postgeneral);
+        }
+
 
 
 

@@ -102,6 +102,8 @@ namespace HoraireBeta
             }
         }
 
+        
+
 
         private void pGauche_Parametre_OnMouseEvent(object sender, MouseEventArgs e)
         {
@@ -166,6 +168,21 @@ namespace HoraireBeta
             telephone_textbox.Text = "";
 
         }
+
+        private void button_ajouter_PG_Click(object sender, EventArgs e)
+        {
+            popPostWindow();
+        }
+
+        private void popPostWindow(/*int x, int y, DateTime hd, DateTime hf*/)
+        {
+            AjouterPoste ajouterposte = new AjouterPoste();
+            ajouterposte.ShowDialog();
+           
+            ajouterposte.Dispose();
+        }
+
+
 
         private void numemp_textbox_TextChanged(object sender, EventArgs e)
         {

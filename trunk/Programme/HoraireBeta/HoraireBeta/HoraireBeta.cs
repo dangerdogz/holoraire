@@ -203,9 +203,12 @@ namespace HoraireBeta
 
         private void popPostWindow(/*int x, int y, DateTime hd, DateTime hf*/)
         {
-
             AjouterPoste ajouterposte = new AjouterPoste();
             ajouterposte.ShowDialog();
+            loader.posteCharge.Add(new Poste(ajouterposte.getpName(), ajouterposte.getpDesc()));
+            MessageBox.Show(loader.posteCharge.Last().getNom());
+          /*  CreateXml xml = new CreateXml();
+            xml.CreateProfileXml();*/
             ajouterposte.Dispose();
         }
 
@@ -287,15 +290,15 @@ namespace HoraireBeta
 
         public void ajoutposteBD()
         {
-            MessageBox.Show(this, "1");
+
             loader.posteCharge.Add(new Poste(ajouterposte.getpName(), ajouterposte.getpDesc()));
-            MessageBox.Show(this, "2");
+   
             CreateXml xml = new CreateXml();
-            MessageBox.Show(this, "3");
+  
             xml.CreateProfileXml();
-            MessageBox.Show(this, "4");
+ 
             AjouterPoste.ActiveForm.Dispose();
-            MessageBox.Show(this, "5");
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

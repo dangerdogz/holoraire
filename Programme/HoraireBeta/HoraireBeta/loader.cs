@@ -13,9 +13,7 @@ namespace HoraireBeta
     {
 
         public List<Poste> posteCharge = new List<Poste>();
-
-
-        public List<Ressource> profilCharge = new List<Ressource>();
+         public List<Ressource> profilCharge = new List<Ressource>();
         public List<Equipe> equipe = new List<Equipe>();
         public List<Bloc> bloc = new List<Bloc>();
 

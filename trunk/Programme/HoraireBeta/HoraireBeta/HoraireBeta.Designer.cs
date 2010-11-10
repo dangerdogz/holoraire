@@ -978,6 +978,7 @@ namespace HoraireBeta
             this.button_ajouter_PG.TabIndex = 1;
             this.button_ajouter_PG.Text = "Ajouter";
             this.button_ajouter_PG.UseVisualStyleBackColor = true;
+            this.button_ajouter_PG.Click += new System.EventHandler(this.button_ajouter_PG_Click);
             // 
             // label_postgeneral
             // 

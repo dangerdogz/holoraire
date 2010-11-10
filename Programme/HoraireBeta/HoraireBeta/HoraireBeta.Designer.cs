@@ -915,10 +915,16 @@ namespace HoraireBeta
             // 
             // treeView_equipe
             // 
+            this.treeView_equipe.BackColor = System.Drawing.SystemColors.Window;
             this.treeView_equipe.Location = new System.Drawing.Point(19, 430);
             this.treeView_equipe.Name = "treeView_equipe";
             this.treeView_equipe.Size = new System.Drawing.Size(230, 259);
             this.treeView_equipe.TabIndex = 6;
+            treeNode5.Name = "Equipe";
+            treeNode5.Text = "Equipe";
+            this.treeView_equipe.Nodes.AddRange(new System.Windows.Forms.TreeNode[] { treeNode5 });
+            this.treeView_equipe.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+
             // 
             // button_del_equipe
             // 
@@ -942,10 +948,16 @@ namespace HoraireBeta
             // 
             // treeView_postgen
             // 
+            this.treeView_postgen.BackColor = System.Drawing.SystemColors.Window;
             this.treeView_postgen.Location = new System.Drawing.Point(19, 75);
             this.treeView_postgen.Name = "treeView_postgen";
             this.treeView_postgen.Size = new System.Drawing.Size(230, 259);
             this.treeView_postgen.TabIndex = 3;
+            treeNode6.Name = "Postes";
+            treeNode6.Text = "Postes";
+            this.treeView_postgen.Nodes.AddRange(new System.Windows.Forms.TreeNode[] { treeNode6 });
+            this.treeView_postgen.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            
             // 
             // button_supprimer
             // 
@@ -1206,6 +1218,7 @@ namespace HoraireBeta
             }
 
             RessourceTree.Nodes[0].Nodes.AddRange(nodeArray);
+           
             
 
             nodeArray = new System.Windows.Forms.TreeNode[posteCharge.Count()];
@@ -1218,16 +1231,20 @@ namespace HoraireBeta
             }
 
             RessourceTree.Nodes[1].Nodes.AddRange(nodeArray);
+            treeView_postgen.Nodes.AddRange(nodeArray2);
             //treeView_postdispo.Nodes.AddRange(nodeArray2);
 
             nodeArray = new System.Windows.Forms.TreeNode[equipe.Count()];
+            nodeArray2 = new System.Windows.Forms.TreeNode[equipe.Count()];
 
             for (int i = 0; i < equipe.Count(); i++)
             {
                 nodeArray[i] = new System.Windows.Forms.TreeNode(equipe.ElementAt(i).getNom());
+                nodeArray2[i] = new System.Windows.Forms.TreeNode(equipe.ElementAt(i).getNom());
             }
 
             RessourceTree.Nodes[2].Nodes.AddRange(nodeArray);
+            treeView_equipe.Nodes.AddRange(nodeArray2);
             //Fin du remplissage de l'interface Horaire
 
            

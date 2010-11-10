@@ -411,6 +411,11 @@ namespace HoraireBeta
             
         }
 
+<<<<<<< .mine
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            //MessageBox.Show(monthCalendar1.SelectionStart.Date.ToString(), "lol");
+=======
         private void button_generaux_Click(object sender, EventArgs e)
         {
             this.panelCentral_Parametre.Controls.Remove(this.label_postaffect);
@@ -432,7 +437,69 @@ namespace HoraireBeta
             this.panelCentral_Parametre.Controls.Remove(this.button_supprimer);
             this.panelCentral_Parametre.Controls.Remove(this.button_ajouter_PG);
             this.panelCentral_Parametre.Controls.Remove(this.label_postgeneral);
+>>>>>>> .r160
 
+<<<<<<< .mine
+            DateTime selectedDate = monthCalendar1.SelectionStart.Date;
+           
+            String dow = monthCalendar1.SelectionStart.DayOfWeek.ToString();
+     
+            switch (dow)
+            {
+                case "Sunday":
+                    TimeSpan toSubstract = TimeSpan.FromDays(7);
+                    DateTime lol = selectedDate.Subtract(toSubstract);
+                    MessageBox.Show(lol.ToString(), "lol");
+                    break;
+                case "Monday":
+                    MessageBox.Show(monthCalendar1.SelectionStart.Date.ToString(), "lol");
+                    TimeSpan toAdd = TimeSpan.FromDays(-6);
+                    DateTime returnSunday = selectedDate.Subtract(toAdd);
+                    MessageBox.Show(returnSunday.ToString(), "lol");
+                    break;
+                case "Tuesday":
+                    toSubstract = TimeSpan.FromDays(1);
+                    lol = selectedDate.Subtract(toSubstract);
+                    toAdd = TimeSpan.FromDays(-5);
+                    returnSunday = selectedDate.Subtract(toAdd);
+                    MessageBox.Show(lol.ToString(), "lol");
+                    MessageBox.Show(returnSunday.ToString(), "lol");
+                    break;
+                case "Wednesday":
+                    toSubstract = TimeSpan.FromDays(2);
+                    lol = selectedDate.Subtract(toSubstract);
+                    toAdd = TimeSpan.FromDays(-4);
+                    returnSunday = selectedDate.Subtract(toAdd);
+                    MessageBox.Show(lol.ToString(), "lol");
+                    MessageBox.Show(returnSunday.ToString(), "lol");
+                    break;
+                case "Thursday":
+                    toSubstract = TimeSpan.FromDays(3);
+                    lol = selectedDate.Subtract(toSubstract);
+                    toAdd = TimeSpan.FromDays(-3);
+                    returnSunday = selectedDate.Subtract(toAdd);
+                    MessageBox.Show(lol.ToString(), "lol");
+                    MessageBox.Show(returnSunday.ToString(), "lol");
+                    break;
+                case "Friday":
+                    toSubstract = TimeSpan.FromDays(4);
+                    lol = selectedDate.Subtract(toSubstract);
+                    toAdd = TimeSpan.FromDays(-2);
+                    returnSunday = selectedDate.Subtract(toAdd);
+                    MessageBox.Show(lol.ToString(), "lol");
+                    MessageBox.Show(returnSunday.ToString(), "lol");
+                    break;
+                case "Saturday":
+                    toSubstract = TimeSpan.FromDays(5);
+                    lol = selectedDate.Subtract(toSubstract);
+                    toAdd = TimeSpan.FromDays(-1);
+                    returnSunday = selectedDate.Subtract(toAdd);
+                    MessageBox.Show(lol.ToString(), "lol");
+                    MessageBox.Show(returnSunday.ToString(), "lol");
+                    break;
+            }
+            //MessageBox.Show(dow, "lol");
+=======
             this.panelCentral_Parametre.Controls.Add(this.label_partexte);
             this.panelCentral_Parametre.Controls.Add(this.textBox_graduation);
             this.panelCentral_Parametre.Controls.Add(this.textBox_quotasemaine);
@@ -443,7 +510,11 @@ namespace HoraireBeta
             this.panelCentral_Parametre.Controls.Add(this.label_horaire);
             this.panelCentral_Parametre.Controls.Add(this.label_heurest);
         }
+>>>>>>> .r160
 
+<<<<<<< .mine
+        }
+=======
         private void button_ressource_Click(object sender, EventArgs e)
         {
             this.panelCentral_Parametre.Controls.Remove(this.label_partexte);
@@ -455,6 +526,7 @@ namespace HoraireBeta
             this.panelCentral_Parametre.Controls.Remove(this.label_quotajour);
             this.panelCentral_Parametre.Controls.Remove(this.label_horaire);
             this.panelCentral_Parametre.Controls.Remove(this.label_heurest);
+>>>>>>> .r160
 
             this.panelCentral_Parametre.Controls.Add(this.label_postaffect);
             this.panelCentral_Parametre.Controls.Add(this.treeView_postaaffectgauche);
@@ -478,10 +550,16 @@ namespace HoraireBeta
         }
 
 
+<<<<<<< .mine
+
+
+
+=======
 
 
 
 
+>>>>>>> .r160
     }
 } 
            

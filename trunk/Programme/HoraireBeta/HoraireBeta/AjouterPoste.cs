@@ -27,7 +27,7 @@ namespace HoraireBeta
         private void button_aj_post_confirm_Click(object sender, EventArgs e)
         {
             setPoste();
-            
+            this.Hide();
         }
 
         private void textBox_nomposte_TextChanged(object sender, EventArgs e)

@@ -194,6 +194,14 @@ namespace HoraireBeta
             this.panelCentral_Horaire.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCentral_Horaire_Paint);
             this.panelCentral_Horaire.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
             this.panelCentral_Horaire.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
+
+            this.panelCentral_Horaire.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseDown);
+            this.panelCentral_Horaire.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseUp);
+            Graphics grfx = this.panelCentral_Horaire.CreateGraphics();
+
+            
+
+            
             // 
             // tabConflits
             // 
@@ -1149,6 +1157,10 @@ namespace HoraireBeta
             this.admin_central.ResumeLayout(false);
             this.admin_central.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultDataGrid)).EndInit();
+
+            initInterface();
+            grille = new GrilleHoraire(grfx, loader);
+
             this.ResumeLayout(false);
 
         }
@@ -1184,7 +1196,7 @@ namespace HoraireBeta
         private TabControl tabConflits;
         private TabPage tab_Conflits;
         private RichTextBox text_Conflits;
-
+        public Loader loader;
         private GrilleHoraire grille;
 
 
@@ -1195,7 +1207,7 @@ namespace HoraireBeta
 
         private TreeView RessourceTree;
         private TreeView treeView_postdispo;
-        private Loader loader;
+        
         private List<Ressource> profilCharge = new List<Ressource>();
         private List<Equipe> equipe = new List<Equipe>();
         public List<Poste> posteCharge = new List<Poste>();
@@ -1252,6 +1264,8 @@ namespace HoraireBeta
            
             
         }
+
+        
 
         private Label label1;
         private Button ajouter_button;

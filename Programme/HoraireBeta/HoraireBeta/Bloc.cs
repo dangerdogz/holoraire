@@ -30,6 +30,7 @@ namespace HoraireBeta
         private int x;
         private int y;
         private int haut;
+        private Boolean isdrawn=false;
 
 
         System.Globalization.CultureInfo info = new System.Globalization.CultureInfo("en-US", false);
@@ -256,6 +257,17 @@ namespace HoraireBeta
             this.id = id;
         }
 
+        public Boolean isMyclick(int clickx,int clicky) {
+            if (isdrawn)
+            {
+                if (clickx < this.x && clicky < this.y)
+                    return (true);
+                else return (false);
+            }
+            else return (false);
+        
+        }
+
 
         public RessourceEntree getRessourceVoulus(int position)
         {
@@ -301,8 +313,14 @@ namespace HoraireBeta
             SolidBrush brush = new SolidBrush(Color.Cyan);
             gfx.DrawRectangle(pen, x, y, 100, haut);
             gfx.FillRectangle(brush, x - 1, y - 1, 100 - 2, haut - 2);
+            isdrawn = true;
 
 
+        }
+
+        public void undraw()
+        {
+            isdrawn = false;
         }
 
         #region IComponent Membres

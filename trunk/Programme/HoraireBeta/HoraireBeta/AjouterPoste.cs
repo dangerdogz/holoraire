@@ -21,5 +21,10 @@ namespace HoraireBeta
         {
             AjouterPoste.ActiveForm.Dispose();
         }
+
+        private void button_aj_post_confirm_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

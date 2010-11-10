@@ -426,31 +426,7 @@ namespace HoraireBeta
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e){
         
             //MessageBox.Show(monthCalendar1.SelectionStart.Date.ToString(), "lol");
-        }
-
-        private void button_generaux_Click(object sender, EventArgs e)
-        {
-            this.panelCentral_Parametre.Controls.Remove(this.label_postaffect);
-            this.panelCentral_Parametre.Controls.Remove(this.treeView_postaaffectgauche);
-            this.panelCentral_Parametre.Controls.Remove(this.treeView_postaaffectdroite);
-            this.panelCentral_Parametre.Controls.Remove(this.button_postaaffectgauche);
-            this.panelCentral_Parametre.Controls.Remove(this.button_postaaffectdroit);
-            this.panelCentral_Parametre.Controls.Remove(this.button_affecter);
-            this.panelCentral_Parametre.Controls.Remove(this.treeView_postspec2);
-            this.panelCentral_Parametre.Controls.Remove(this.label_postspec);
-            this.panelCentral_Parametre.Controls.Remove(this.treeView_postspec);
-            this.panelCentral_Parametre.Controls.Remove(this.button_del_postspec);
-            this.panelCentral_Parametre.Controls.Remove(this.button_aj_postspec);
-            this.panelCentral_Parametre.Controls.Remove(this.label_equipes);
-            this.panelCentral_Parametre.Controls.Remove(this.treeView_equipe);
-            this.panelCentral_Parametre.Controls.Remove(this.button_del_equipe);
-            this.panelCentral_Parametre.Controls.Remove(this.button_aj_equipe);
-            this.panelCentral_Parametre.Controls.Remove(this.treeView_postgen);
-            this.panelCentral_Parametre.Controls.Remove(this.button_supprimer);
-            this.panelCentral_Parametre.Controls.Remove(this.button_ajouter_PG);
-            this.panelCentral_Parametre.Controls.Remove(this.label_postgeneral);
-
-            DateTime selectedDate = monthCalendar1.SelectionStart.Date;
+             DateTime selectedDate = monthCalendar1.SelectionStart.Date;
            
             String dow = monthCalendar1.SelectionStart.DayOfWeek.ToString();
      
@@ -509,6 +485,31 @@ namespace HoraireBeta
                     break;
             }
             //MessageBox.Show(dow, "lol");
+        }
+
+        private void button_generaux_Click(object sender, EventArgs e)
+        {
+            this.panelCentral_Parametre.Controls.Remove(this.label_postaffect);
+            this.panelCentral_Parametre.Controls.Remove(this.treeView_postaaffectgauche);
+            this.panelCentral_Parametre.Controls.Remove(this.treeView_postaaffectdroite);
+            this.panelCentral_Parametre.Controls.Remove(this.button_postaaffectgauche);
+            this.panelCentral_Parametre.Controls.Remove(this.button_postaaffectdroit);
+            this.panelCentral_Parametre.Controls.Remove(this.button_affecter);
+            this.panelCentral_Parametre.Controls.Remove(this.treeView_postspec2);
+            this.panelCentral_Parametre.Controls.Remove(this.label_postspec);
+            this.panelCentral_Parametre.Controls.Remove(this.treeView_postspec);
+            this.panelCentral_Parametre.Controls.Remove(this.button_del_postspec);
+            this.panelCentral_Parametre.Controls.Remove(this.button_aj_postspec);
+            this.panelCentral_Parametre.Controls.Remove(this.label_equipes);
+            this.panelCentral_Parametre.Controls.Remove(this.treeView_equipe);
+            this.panelCentral_Parametre.Controls.Remove(this.button_del_equipe);
+            this.panelCentral_Parametre.Controls.Remove(this.button_aj_equipe);
+            this.panelCentral_Parametre.Controls.Remove(this.treeView_postgen);
+            this.panelCentral_Parametre.Controls.Remove(this.button_supprimer);
+            this.panelCentral_Parametre.Controls.Remove(this.button_ajouter_PG);
+            this.panelCentral_Parametre.Controls.Remove(this.label_postgeneral);
+
+           
 
             this.panelCentral_Parametre.Controls.Add(this.label_partexte);
             this.panelCentral_Parametre.Controls.Add(this.textBox_graduation);
@@ -520,7 +521,7 @@ namespace HoraireBeta
             this.panelCentral_Parametre.Controls.Add(this.label_horaire);
             this.panelCentral_Parametre.Controls.Add(this.label_heurest);
         }
-        }
+        
 
         private void button_ressource_Click(object sender, EventArgs e)
         {
@@ -533,7 +534,6 @@ namespace HoraireBeta
             this.panelCentral_Parametre.Controls.Remove(this.label_quotajour);
             this.panelCentral_Parametre.Controls.Remove(this.label_horaire);
             this.panelCentral_Parametre.Controls.Remove(this.label_heurest);
->>>>>>> .r160
 
             this.panelCentral_Parametre.Controls.Add(this.label_postaffect);
             this.panelCentral_Parametre.Controls.Add(this.treeView_postaaffectgauche);
@@ -555,18 +555,6 @@ namespace HoraireBeta
             this.panelCentral_Parametre.Controls.Add(this.button_ajouter_PG);
             this.panelCentral_Parametre.Controls.Add(this.label_postgeneral);
         }
-
-
-<<<<<<< .mine
-
-
-
-=======
-
-
-
-
->>>>>>> .r160
     }
 } 
            

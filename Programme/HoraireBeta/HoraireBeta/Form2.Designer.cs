@@ -91,6 +91,7 @@
             this.button_aj_post_confirm.TabIndex = 5;
             this.button_aj_post_confirm.Text = "Ajouter";
             this.button_aj_post_confirm.UseVisualStyleBackColor = true;
+            this.button_aj_post_confirm.Click += new System.EventHandler(this.button_aj_post_confirm_Click);
             // 
             // button_annul_aj_post
             // 

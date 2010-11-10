@@ -41,17 +41,16 @@ namespace HoraireBeta
 
            for (int i = 0; i < blocs.Count; i++)
            {
-               for (int j = 0; i < blocs[i].getRessourceVoulus().Count; j++)
+               for (int j = 0; j < blocs[i].getRessourceVoulus().Count; j++)
                {
                     if (blocs[i].getRessourceVoulus(j).nbVoulue < blocs[i].getRessourceVoulus(j).nbAffectee)
                    {
 
                        blocs[i].removeEmplNouv();
-
+                       j--;
                    }
 
-                   j--;
-               }
+                 }
             }
      
 
@@ -86,20 +85,24 @@ namespace HoraireBeta
            for (int i = 0; i < blocs.Count; i++)
            {
                if (!(blocs[i].checkCompletion()))
+               {
                    MessageBox.Show("erreur 1", "LOL");
 
-               valide = 1;
+                   valide = 1;
+               }
            }
 
 
            for (int i = 0; i < blocs.Count; i++)
            {
-               for (int j = 0; i < blocs[i].getRessourceVoulus().Count; j++)
+               for (int j = 0; j < blocs[i].getRessourceVoulus().Count; j++)
                {
 
                    if (blocs[i].getRessourceVoulus(j).nbAffectee == 0)
-                              MessageBox.Show("erreur 1", "LOL");
-                   valide = 1;
+                   {
+                       MessageBox.Show("erreur 1", "LOL");
+                       valide = 1;
+                   }
                }
            }
 

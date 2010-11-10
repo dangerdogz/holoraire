@@ -12,7 +12,11 @@ namespace HoraireBeta
     class GrilleJour
     {
         //Variables locales
-        String jour = "null";
+        DateTime laDate;
+        DateTime dateFin = new DateTime(2010, 11, 12);
+        bool mousepush=false;
+        int jour;
+        String jourText;
         Bloc[] blocs = new Bloc[10];
         int indexBlocs = 0;
         DateTime dateDuJour;
@@ -20,11 +24,13 @@ namespace HoraireBeta
         private int posY;
         private int width;
         private int height;
+        Loader loader;
         Graphics grfx;
         Font laFont = new Font("Arial", 12);
         SolidBrush myBrush = new SolidBrush(Color.Black);
         SolidBrush myWhiteBrush = new SolidBrush(Color.White);
         SolidBrush myBlackBrush = new SolidBrush(Color.Black);
+        SolidBrush myBlueBrush = new SolidBrush(Color.Blue);
         Pen bPen = new Pen(Color.Black);
 
         //Petit rectangle
@@ -33,19 +39,28 @@ namespace HoraireBeta
 
 
         //Constructeur
-        public GrilleJour(String jour, int posx, int posy, Graphics grfx)
+        public GrilleJour(String jourText,DateTime laDate, int jour, int posx, int posy, Graphics grfx, Loader loader)
         {
+            this.jourText = jourText;
             this.jour = jour;
-            dateDuJour = new DateTime();
+            dateDuJour = laDate;
             posX = posx;
             posY = posy;
             width = 100;
             height = 500;
-
+            this.loader = loader;
             this.grfx = grfx;
+
+            
+            
+                                                    //Fin des Y custom
+           // blocs[0] = new Bloc(jourText,posX,posY + 20, posY + 50, jour, 1, 1);
+            
+
 
           //  blocs[0] = new Bloc(posY, posY + 30, "mon", 1, 1);
          //   blocs[0].draw(grfx);
+
         }
 
         public void activer()
@@ -55,7 +70,7 @@ namespace HoraireBeta
 
             //En-tête du jour
             grfx.DrawRectangle(bPen, posX, posY, width, 20);
-            grfx.DrawString(jour, laFont, myBrush, posX + 8, posY);
+            grfx.DrawString(jourText, laFont, myBrush, posX + 8, posY);
 
             //BG des jours
             grfx.FillRectangle(myBlackBrush, posX + 1, posY + 20, width - 1, height - 20);
@@ -70,6 +85,7 @@ namespace HoraireBeta
 
         }
 
+         
 
 
 
@@ -89,19 +105,23 @@ namespace HoraireBeta
 
         }
 
-        public void passeClique(MouseEventArgs e)
+        public void passeClique(MouseEventArgs e,String mouse)
         {
-            if (e.Clicks == 1)
+            
+            
+            if (mouse == "MouseDown")
             {
                 if ((e.X >= posX) && (e.X < posX + 100))
                 {
+                    
                     //Détecteur de bloc
-                    if ((e.Y > 20) && (e.Y < 40))
+                    if ((e.Y > 40) && (e.Y < 60))
                     {
-                        grfx.FillRectangle(myBlackBrush, e.X + 1, e.Y, width - 1, heightHeure);
-                        // MessageBox.Show("Créer un bloc");
+                    // grfx.FillRectangle(myBlueBrush, posX + 1, e.Y, width - 1, heightHeure);
 
-
+                    dateDuJour = new DateTime(dateDuJour.Year, dateDuJour.Month, dateDuJour.Day, 1, 0, 0);
+                    
+                    createBlock(posX, 20,dateDuJour,dateFin);
                     }
 
                 }
@@ -109,37 +129,43 @@ namespace HoraireBeta
 
 
             }
+
+            if (mouse == "MouseUp")
+                {
+                if (mousepush)
+                    { 
+                    
+                
+                    }
+            
+                }
+
         }
 
-        public void passeClique(int x, int y)
+        
+        
+
+        private void createBlock(int x, int y,DateTime debut,DateTime fin)
         {
-            if ((x >= posX) && (x < posX + 100))
-            {
-                //Détecteur de bloc
-                if ((y > 20) && (y < 40))
-
-
-
-                    // MessageBox.Show("Jour " + jour + " en position (" + x + "," + y+")");
-
-                    grfx.DrawLine(bPen, posX, posY, x, y);
-
-                // grfx.DrawRectangle(bPen, this.posX, this.posY, this.posX + 99, this.posY + 99);
-                //grfx.dispose();
-                //grfx.Clear(Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))));
-                //activer();
-
-            }
-        }
-
-        public void MouseEvent(MouseEventArgs e)
-            {
-            MessageBox.Show("Click Jour");
-            }
+           
+                CreationBloc creationbloc = new CreationBloc();
+                creationbloc.ShowDialog();
+                //loader.bloc.Add(new Bloc(new DateTime(2010, 11, 03, Convert.ToInt32(creationbloc.getHd()), 0, 0), new DateTime(2010, 11, 03, Convert.ToInt32(creationbloc.getHf()), 0, 0), 0, 0));
+                // loader.bloc.Add(new Bloc(jourText, x, y, y + 16, jour, 0, 0));
+                Bloc tempBloc = new Bloc(debut, fin, 0, 0);
+                tempBloc.draw(grfx);
+                loader.bloc.Add(tempBloc);
+                
+                creationbloc.Dispose();
+                //Application.Run(creationbloc);
+          }
+       
+    
+    }
 
     
 
 
 
-    }
-}
+   }
+

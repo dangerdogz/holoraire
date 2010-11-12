@@ -58,7 +58,7 @@ namespace HoraireBeta
 
             x = (Loader.SemaineToInt(debut) - 1) * 100;
 
-            MessageBox.Show(Loader.SemaineToInt(debut)+"||"+(debut.ToString("ddd")));
+            //MessageBox.Show(Loader.SemaineToInt(debut)+"||"+(debut.ToString("ddd")));
             haut = (Convert.ToInt32(fin.ToString("HH")) * 20 + Convert.ToInt32(fin.ToString("MM")) / 20)-y;
 
             haut = (Convert.ToInt32(fin.ToString("HH")) * 20 + Convert.ToInt32(fin.ToString("MM")) / 20) - y;
@@ -342,7 +342,7 @@ namespace HoraireBeta
             isdrawn = true;
 
 
-            MessageBox.Show("Bloc dessiné Date début :"+debut+ " | fin :"+fin);
+          //  MessageBox.Show("Bloc dessiné Date début :"+debut+ " | fin :"+fin);
         }
 
         public void undraw()

@@ -286,6 +286,12 @@ namespace HoraireBeta
             this.id = id;
         }
 
+        public int getX()
+        { return x; }
+
+        public int getY()
+        { return y; }
+
         public Boolean isMyclick(int clickx,int clicky) {
             if (isdrawn)
             {
@@ -349,8 +355,15 @@ namespace HoraireBeta
 
             isdrawn = true;
 
+            
 
           //  MessageBox.Show("Bloc dessiné Date début :"+debut+ " | fin :"+fin);
+
+            for (int i = 0; i < ressourcesAffectes.Count; i++)
+            {
+               if (i*40<this.haut)
+                ((Profil)(ressourcesAffectes[i])).draw(this, i, gfx);
+            }
         }
 
         public void undraw()

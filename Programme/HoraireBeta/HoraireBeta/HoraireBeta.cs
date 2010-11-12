@@ -15,9 +15,9 @@ namespace HoraireBeta
     public partial class HoraireBeta : Form
     {
         AjouterPoste ajouterposte = new AjouterPoste();
-        public HoraireBeta()
+        public HoraireBeta(Loader loader)
         {
-           
+            this.loader = loader;
             InitializeComponent();
             
         }

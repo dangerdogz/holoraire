@@ -367,7 +367,7 @@ namespace HoraireBeta
             return estComplet;
         }
 
-        public void draw(int positionX, int laWidth, Graphics gfx)
+        public void draw(int laWidth, Graphics gfx)
         {
             Font laFont = new Font("Arial", 16);
             Pen pen = new Pen(Color.Cyan);

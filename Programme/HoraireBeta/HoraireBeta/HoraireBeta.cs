@@ -426,68 +426,49 @@ namespace HoraireBeta
         }
 
 
-        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e){
-        
-            //MessageBox.Show(monthCalendar1.SelectionStart.Date.ToString(), "lol");
-             DateTime selectedDate = monthCalendar1.SelectionStart.Date;
-           
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            DateTime debutSemaine = getDebutSemaine();
+            MessageBox.Show(debutSemaine.ToString(), "lol");
+        }
+        public DateTime getDebutSemaine()
+        {
+            
+            DateTime selectedDate = monthCalendar1.SelectionStart.Date;
+
             String dow = monthCalendar1.SelectionStart.DayOfWeek.ToString();
-     
+
             switch (dow)
             {
                 case "Sunday":
-                    TimeSpan toSubstract = TimeSpan.FromDays(7);
-                    DateTime lol = selectedDate.Subtract(toSubstract);
-                    MessageBox.Show(lol.ToString(), "lol");
-                    break;
+                    TimeSpan toSubstract = TimeSpan.FromDays(6);
+                    DateTime monday = selectedDate.Subtract(toSubstract);
+                    return monday;
                 case "Monday":
-                    MessageBox.Show(monthCalendar1.SelectionStart.Date.ToString(), "lol");
-                    TimeSpan toAdd = TimeSpan.FromDays(-6);
-                    DateTime returnSunday = selectedDate.Subtract(toAdd);
-                    MessageBox.Show(returnSunday.ToString(), "lol");
-                    break;
+                    monday = monthCalendar1.SelectionStart.Date;
+                    return monday;
                 case "Tuesday":
                     toSubstract = TimeSpan.FromDays(1);
-                    lol = selectedDate.Subtract(toSubstract);
-                    toAdd = TimeSpan.FromDays(-5);
-                    returnSunday = selectedDate.Subtract(toAdd);
-                    MessageBox.Show(lol.ToString(), "lol");
-                    MessageBox.Show(returnSunday.ToString(), "lol");
-                    break;
+                    monday = selectedDate.Subtract(toSubstract);
+                    return monday;
                 case "Wednesday":
                     toSubstract = TimeSpan.FromDays(2);
-                    lol = selectedDate.Subtract(toSubstract);
-                    toAdd = TimeSpan.FromDays(-4);
-                    returnSunday = selectedDate.Subtract(toAdd);
-                    MessageBox.Show(lol.ToString(), "lol");
-                    MessageBox.Show(returnSunday.ToString(), "lol");
-                    break;
+                    monday = selectedDate.Subtract(toSubstract);
+                    return monday;
                 case "Thursday":
                     toSubstract = TimeSpan.FromDays(3);
-                    lol = selectedDate.Subtract(toSubstract);
-                    toAdd = TimeSpan.FromDays(-3);
-                    returnSunday = selectedDate.Subtract(toAdd);
-                    MessageBox.Show(lol.ToString(), "lol");
-                    MessageBox.Show(returnSunday.ToString(), "lol");
-                    break;
+                    monday = selectedDate.Subtract(toSubstract);
+                    return monday;
                 case "Friday":
                     toSubstract = TimeSpan.FromDays(4);
-                    lol = selectedDate.Subtract(toSubstract);
-                    toAdd = TimeSpan.FromDays(-2);
-                    returnSunday = selectedDate.Subtract(toAdd);
-                    MessageBox.Show(lol.ToString(), "lol");
-                    MessageBox.Show(returnSunday.ToString(), "lol");
-                    break;
+                    monday = selectedDate.Subtract(toSubstract);
+                    return monday;
                 case "Saturday":
                     toSubstract = TimeSpan.FromDays(5);
-                    lol = selectedDate.Subtract(toSubstract);
-                    toAdd = TimeSpan.FromDays(-1);
-                    returnSunday = selectedDate.Subtract(toAdd);
-                    MessageBox.Show(lol.ToString(), "lol");
-                    MessageBox.Show(returnSunday.ToString(), "lol");
-                    break;
+                    monday = selectedDate.Subtract(toSubstract);
+                    return monday;
             }
-            //MessageBox.Show(dow, "lol");
+            return selectedDate;
         }
 
         private void button_generaux_Click(object sender, EventArgs e)

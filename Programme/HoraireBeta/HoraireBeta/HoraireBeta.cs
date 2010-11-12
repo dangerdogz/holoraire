@@ -15,6 +15,7 @@ namespace HoraireBeta
     public partial class HoraireBeta : Form
     {
         AjouterPoste ajouterposte = new AjouterPoste();
+        AjouterEquipe ajouterequipe = new AjouterEquipe();
         public HoraireBeta(Loader loader)
         {
             this.loader = loader;
@@ -201,6 +202,11 @@ namespace HoraireBeta
             popPostWindow();
         }
 
+        private void button_aj_equipe_Click(object sender, EventArgs e)
+        {
+            popEquipeWindow();
+        }
+
         private void popPostWindow(/*int x, int y, DateTime hd, DateTime hf*/)
         {
             AjouterPoste ajouterposte = new AjouterPoste();
@@ -210,6 +216,17 @@ namespace HoraireBeta
           /*  CreateXml xml = new CreateXml();
             xml.CreateProfileXml();*/
             ajouterposte.Dispose();
+        }
+
+        private void popEquipeWindow(/*int x, int y, DateTime hd, DateTime hf*/)
+        {
+            AjouterEquipe ajouterequipe = new AjouterEquipe();
+            ajouterequipe.ShowDialog();
+            loader.equipe.Add(new Equipe(-1, ajouterequipe.geteName(), ajouterequipe.geteDesc()));
+            MessageBox.Show(loader.equipe.Last().getNom());
+            /*  CreateXml xml = new CreateXml();
+              xml.CreateProfileXml();*/
+            ajouterequipe.Dispose();
         }
 
 
@@ -288,7 +305,7 @@ namespace HoraireBeta
             //Application.Run(creationbloc);
         }
 
-        public void ajoutposteBD()
+       /* public void ajoutposteBD()
         {
 
             loader.posteCharge.Add(new Poste(ajouterposte.getpName(), ajouterposte.getpDesc()));
@@ -300,6 +317,19 @@ namespace HoraireBeta
             AjouterPoste.ActiveForm.Dispose();
 
         }
+
+        public void ajoutequipeBD()
+        {
+
+            loader.equipe.Add(new Equipe(-1, ajouterequipe.geteName(), ajouterequipe.geteDesc()));
+
+            CreateXml xml = new CreateXml();
+
+            xml.CreateProfileXml();
+
+            AjouterEquipe.ActiveForm.Dispose();
+
+        }*/
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {

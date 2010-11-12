@@ -956,6 +956,7 @@ namespace HoraireBeta
             this.button_aj_equipe.TabIndex = 4;
             this.button_aj_equipe.Text = "Ajouter";
             this.button_aj_equipe.UseVisualStyleBackColor = true;
+            this.button_aj_equipe.Click += new System.EventHandler(this.button_aj_equipe_Click);
             // 
             // treeView_postgen
             // 

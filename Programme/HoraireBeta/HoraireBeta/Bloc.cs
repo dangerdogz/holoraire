@@ -6,6 +6,8 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
+
+
 namespace HoraireBeta
 {
 
@@ -16,6 +18,7 @@ namespace HoraireBeta
         public int nbVoulue;
         public int nbAffectee;
     }
+
 
     public class Bloc
     {
@@ -68,7 +71,12 @@ namespace HoraireBeta
            
         }
 
+
+
+        //public Bloc(int debutY, int finY, String jour, int type, int id);
+
         public Bloc(String jourText,int posX, int debutY, int finY, int jour, int type, int id)
+
         {
 
 
@@ -106,7 +114,8 @@ namespace HoraireBeta
         {
             return typeBloc;
         }
-
+        
+        
 
         public void addRessourceVoulue(int nbvoulue, Ressource voulue)
         {

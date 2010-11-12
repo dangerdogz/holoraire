@@ -53,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AjouterEquipe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AjouterEquipe.Designer.cs">
+      <DependentUpon>AjouterEquipe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bloc.cs" />
     <Compile Include="CreationBloc.cs">
       <SubType>Form</SubType>
@@ -84,6 +90,9 @@
     <Compile Include="Ressource.cs" />
     <Compile Include="TabSchedule.cs" />
     <Compile Include="xml.cs" />
+    <EmbeddedResource Include="AjouterEquipe.resx">
+      <DependentUpon>AjouterEquipe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreationBloc.resx">
       <DependentUpon>CreationBloc.cs</DependentUpon>
       <SubType>Designer</SubType>

@@ -18,10 +18,10 @@ namespace HoraireBeta
         public GrilleHoraire(Graphics grfx,Loader loader)
 
         {
-            //DateTime hardcoded
+            //DateTime renvoyer par la fonction getweekrange()
             DateTime laDate = new DateTime(2010, 10, 12, 9, 0,0);
 
-            //DateTime bidon
+            //DateTime et une addition de timespan
             DateTime lundi      = new DateTime(2010, 11, 8);
             DateTime mardi      = new DateTime(2010, 11, 9);
             DateTime mercredi   = new DateTime(2010, 11, 10);

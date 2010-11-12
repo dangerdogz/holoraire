@@ -1218,10 +1218,10 @@ namespace HoraireBeta
 
         public void initInterface()
         {
-            profilCharge = loader.LoadProfil();
-            equipe = loader.LoadEquipe();
-            posteCharge = loader.loadPoste();
-       
+            this.profilCharge = loader.profilCharge;
+            this.equipe = loader.equipe;
+            this.posteCharge = loader.posteCharge;
+            MessageBox.Show("InitInterface");
             
             //Rempli l'interface Horaire
             System.Windows.Forms.TreeNode[] nodeArray = new System.Windows.Forms.TreeNode[profilCharge.Count()];
@@ -1242,6 +1242,7 @@ namespace HoraireBeta
 
             for (int i = 0; i < posteCharge.Count(); i++)
             {
+                MessageBox.Show("poste" + i);
                nodeArray[i] = new System.Windows.Forms.TreeNode(posteCharge.ElementAt(i).getNom());
                nodeArray2[i] = new System.Windows.Forms.TreeNode(posteCharge.ElementAt(i).getNom());
             }

@@ -19,16 +19,16 @@ namespace HoraireBeta
 
         {
             //DateTime renvoyer par la fonction getweekrange()
-            DateTime laDate = new DateTime(2010, 10, 12, 9, 0,0);
+            DateTime laDate = new DateTime(2010, 11, 8);
 
             //DateTime et une addition de timespan
-            DateTime lundi      = new DateTime(2010, 11, 8);
-            DateTime mardi      = new DateTime(2010, 11, 9);
-            DateTime mercredi   = new DateTime(2010, 11, 10);
-            DateTime jeudi      = new DateTime(2010, 11, 11);
-            DateTime vendredi   = new DateTime(2010, 11, 12);
-            DateTime samedi     = new DateTime(2010, 11, 13);
-            DateTime dimanche   = new DateTime(2010, 11, 14);
+            DateTime lundi      = laDate;
+            DateTime mardi      = laDate.Add(new TimeSpan(24,0,0));
+            DateTime mercredi   = laDate.Add(new TimeSpan(48, 0, 0));
+            DateTime jeudi      = laDate.Add(new TimeSpan(96, 0, 0));
+            DateTime vendredi   = laDate.Add(new TimeSpan(120, 0, 0));
+            DateTime samedi     = laDate.Add(new TimeSpan(144, 0, 0));
+            DateTime dimanche   = laDate.Add(new TimeSpan(168, 0, 0));
 
             //Création des jours - ajouter les blocs existants
             jours[0] = new GrilleJour("Lundi",lundi,1, 40, 20, grfx,loader);

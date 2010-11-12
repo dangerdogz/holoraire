@@ -13,11 +13,12 @@ namespace HoraireBeta
     {
         //Variables locales
         DateTime laDate;
-        DateTime dateFin = new DateTime(2010, 11, 12);
+        DateTime dateFin;
         bool mousepush=false;
         int jour;
         String jourText;
-        Bloc[] blocs = new Bloc[10];
+        //Bloc[] blocs = new Bloc[10];
+        List<Bloc> blocs = new List<Bloc>(); 
         int indexBlocs = 0;
         DateTime dateDuJour;
         private int posX;
@@ -82,7 +83,17 @@ namespace HoraireBeta
 
             }
 
+            //Charge les blocs du jours
+            blocs = loader.getBlocFromDate(laDate);
+            if (blocs != null)
+                {
+                for (int i = 0; i < blocs.Count; i++)
+                    {
+                    blocs.ElementAt(i).draw(posX, width, grfx);
 
+                    }
+                    
+                }
         }
 
          
@@ -120,8 +131,8 @@ namespace HoraireBeta
                     // grfx.FillRectangle(myBlueBrush, posX + 1, e.Y, width - 1, heightHeure);
 
                     dateDuJour = new DateTime(dateDuJour.Year, dateDuJour.Month, dateDuJour.Day, 1, 0, 0);
-                    
-                    createBlock(posX, 20,dateDuJour,dateFin);
+                    dateFin = new DateTime(dateDuJour.Year, dateDuJour.Month, dateDuJour.Day, 2, 0, 0);
+                    createBlock(posX, 40,dateDuJour,dateFin);
                     }
 
                 }
@@ -153,7 +164,7 @@ namespace HoraireBeta
                 //loader.bloc.Add(new Bloc(new DateTime(2010, 11, 03, Convert.ToInt32(creationbloc.getHd()), 0, 0), new DateTime(2010, 11, 03, Convert.ToInt32(creationbloc.getHf()), 0, 0), 0, 0));
                 // loader.bloc.Add(new Bloc(jourText, x, y, y + 16, jour, 0, 0));
                 Bloc tempBloc = new Bloc(debut, fin, 0, 0);
-                tempBloc.draw(grfx);
+               // tempBloc.draw(grfx);
                 loader.bloc.Add(tempBloc);
                 
                 creationbloc.Dispose();

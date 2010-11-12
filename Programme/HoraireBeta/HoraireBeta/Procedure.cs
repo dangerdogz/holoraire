@@ -39,7 +39,7 @@ namespace HoraireBeta
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show(ex.Message+" "+query, "ovaires");
+                MessageBox.Show(ex.Message+" "+query, "SQL Lite Error : "+ex.ToString());
             }
             sqlite.Close();
             return dt;

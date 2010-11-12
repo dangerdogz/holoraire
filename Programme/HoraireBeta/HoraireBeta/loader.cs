@@ -177,25 +177,29 @@ namespace HoraireBeta
             int jour=0;
             switch (entree.ToString("ddd"))
             {
-                case "mon": 
+                case "lun": 
                     jour = 1;
                     break;
-                case "tue": 
+                case "mar": 
                     jour = 2;
                     break;
-                case "wen":
+                case "mer":
                     jour = 3;
                     break;
-                case "thu" :
+                case "jeu" :
                     jour = 4;
                     break;
-                case "fri" :
+                case "ven" :
                     jour = 5;
                     break;
+
+                case "sam" :
+
                 case "sat": 
+
                     jour = 6;
                     break;
-                case "sun" :
+                case "dim" :
                     jour = 7;
                     break;
             }
@@ -209,7 +213,9 @@ namespace HoraireBeta
             {
                 for (int i = 0; i < bloc.Count; i++)
                 {
+                    
                     DateTime datebloc = bloc.ElementAt(i).getDebut();
+                    MessageBox.Show(day.ToString() + " , " + datebloc);
                     if (datebloc.DayOfYear == day.DayOfYear && datebloc.Month == day.Month && datebloc.Year == day.Year)
                     {
                         temp.Add(bloc.ElementAt(i));

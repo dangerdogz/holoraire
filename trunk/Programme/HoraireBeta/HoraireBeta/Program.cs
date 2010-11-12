@@ -13,11 +13,19 @@ namespace HoraireBeta
         [STAThread]
         static void Main()
         {
+
+            Loader loader = new Loader();
+
+            loader.LoadProfil();
+            loader.loadPoste();
+            loader.LoadEquipe();
+            loader.loadBloc();
+
              CreateXml xml = new CreateXml();
             xml.CreateProfileXml();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HoraireBeta());
+            Application.Run(new HoraireBeta(loader));
 
            /* Loader l = new Loader();
 

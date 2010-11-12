@@ -71,6 +71,31 @@ namespace HoraireBeta
            
         }
 
+        public Bloc(DateTime debut, DateTime fin, int x, int type, int id)
+        {
+
+
+            System.Globalization.Calendar calendar = info.Calendar;
+            this.debut = debut;
+            this.fin = fin;
+            this.typeBloc = type;
+            this.id = id;
+
+            y = (Convert.ToInt32(debut.ToString("HH")) * 20 + Convert.ToInt32(debut.ToString("MM")) / 20) + 20;
+
+            this.x = x;
+
+            //MessageBox.Show(Loader.SemaineToInt(debut)+"||"+(debut.ToString("ddd")));
+
+            haut = ((Convert.ToInt32(fin.ToString("HH")) * 20 + Convert.ToInt32(fin.ToString("MM")) / 20) - y) + 20;
+
+
+            erreurExiste = false;
+            estComplet = false;
+
+        }
+
+
 
 
         //public Bloc(int debutY, int finY, String jour, int type, int id);
@@ -361,8 +386,8 @@ namespace HoraireBeta
 
             for (int i = 0; i < ressourcesAffectes.Count; i++)
             {
-               if (i*40<this.haut)
-                ((Profil)(ressourcesAffectes[i])).draw(this, i, gfx);
+               if (i*20<this.haut)
+                ((ressourcesAffectes[i])).draw(this, i, gfx);
             }
         }
 

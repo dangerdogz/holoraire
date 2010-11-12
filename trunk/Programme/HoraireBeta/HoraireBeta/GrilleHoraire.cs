@@ -12,12 +12,13 @@ namespace HoraireBeta
     {
         //Variables Locales
         public GrilleJour[] jours = new GrilleJour[7];
-       
+        Graphics gfx;
 
 
         public GrilleHoraire(Graphics grfx,Loader loader)
 
         {
+            gfx = grfx;
             //DateTime renvoyer par la fonction getweekrange()
             DateTime laDate = new DateTime(2010, 11, 8);
 
@@ -56,6 +57,17 @@ namespace HoraireBeta
             
         }
 
+        public void refresh() {
+            
+            gfx.Clear(Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))));
+            jours[0].activer();
+            jours[1].activer();
+            jours[2].activer();
+            jours[3].activer();
+            jours[4].activer();
+            jours[5].activer();
+            jours[6].activer();
+        }
 
         
 

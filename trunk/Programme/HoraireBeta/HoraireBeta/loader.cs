@@ -215,7 +215,6 @@ namespace HoraireBeta
                 {
                     
                     DateTime datebloc = bloc.ElementAt(i).getDebut();
-                    MessageBox.Show(day.ToString() + " , " + datebloc);
                     if (datebloc.DayOfYear == day.DayOfYear && datebloc.Month == day.Month && datebloc.Year == day.Year)
                     {
                         temp.Add(bloc.ElementAt(i));

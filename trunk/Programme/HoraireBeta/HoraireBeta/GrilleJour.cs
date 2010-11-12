@@ -84,7 +84,7 @@ namespace HoraireBeta
             }
 
             //Charge les blocs du jours
-            blocs = loader.getBlocFromDate(laDate);
+            blocs = loader.getBlocFromDate(dateDuJour);
             if (blocs != null)
                 {
                 for (int i = 0; i < blocs.Count; i++)

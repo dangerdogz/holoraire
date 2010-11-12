@@ -374,9 +374,9 @@ namespace HoraireBeta
             SolidBrush brush = new SolidBrush(Color.Cyan);
 
             
-            gfx.DrawRectangle(pen, positionX, y, laWidth, haut);
-            gfx.FillRectangle(brush, positionX+2, y+2, laWidth-4, haut-4);
-            gfx.DrawString("("+id+")", laFont, brush, positionX + 8, y+8);
+            gfx.DrawRectangle(pen, x, y, laWidth, haut);
+            gfx.FillRectangle(brush, x+2, y+2, laWidth-4, haut-4);
+            gfx.DrawString("("+id+")", laFont, brush, x + 8, y+8);
 
             isdrawn = true;
 

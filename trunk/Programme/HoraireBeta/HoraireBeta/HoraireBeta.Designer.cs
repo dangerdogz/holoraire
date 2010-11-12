@@ -6,7 +6,7 @@ using System.Text;
 using System.Data;
 using System;
 using System.Collections.Generic;
-
+//using COCKFAGS;
 namespace HoraireBeta
 {
     partial class HoraireBeta
@@ -1217,11 +1217,10 @@ namespace HoraireBeta
 
         public void initInterface()
         {
-            
-            loader = new Loader();
-            posteCharge = loader.loadPoste();
             profilCharge = loader.LoadProfil();
             equipe = loader.LoadEquipe();
+            posteCharge = loader.loadPoste();
+       
             
             //Rempli l'interface Horaire
             System.Windows.Forms.TreeNode[] nodeArray = new System.Windows.Forms.TreeNode[profilCharge.Count()];

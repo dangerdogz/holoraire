@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace HoraireBeta
 {
@@ -41,6 +44,21 @@ namespace HoraireBeta
         public List<Ressource> getProfils() 
         {
          return profils;
+        }
+
+        public void draw(Bloc bloc, int i, Graphics gfx)
+        {
+            Font laFont = new Font("Arial", 16);
+            SolidBrush brush = new SolidBrush(Color.Red);
+
+
+            int x = bloc.getX();
+            int y = bloc.getY() + (i * 20) + 20;
+
+            Point coin = new Point(x, y);
+
+            gfx.DrawString(nom, laFont, brush, coin);
+
         }
 
 

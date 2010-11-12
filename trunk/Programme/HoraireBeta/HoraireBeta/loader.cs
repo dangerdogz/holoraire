@@ -192,7 +192,7 @@ namespace HoraireBeta
                 case "fri" :
                     jour = 5;
                     break;
-                case "sat" :
+                case "sat": 
                     jour = 6;
                     break;
                 case "sun" :
@@ -201,6 +201,24 @@ namespace HoraireBeta
             }
         return jour;
             }
+
+        public List<Bloc> getBlocFromDate(DateTime day)
+        {
+            List<Bloc> temp = new List<Bloc>();
+            if(bloc.Count !=0)
+            {
+                for (int i = 0; i < bloc.Count; i++)
+                {
+                    DateTime datebloc = bloc.ElementAt(i).getDebut();
+                    if (datebloc.DayOfYear == day.DayOfYear && datebloc.Month == day.Month && datebloc.Year == day.Year)
+                    {
+                        temp.Add(bloc.ElementAt(i));
+                        
+                    }
+                }
+            }
+            return temp;
+        }
 
 
     }

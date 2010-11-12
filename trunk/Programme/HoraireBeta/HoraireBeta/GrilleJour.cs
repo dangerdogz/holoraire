@@ -163,8 +163,8 @@ namespace HoraireBeta
                 creationbloc.ShowDialog();
                 //loader.bloc.Add(new Bloc(new DateTime(2010, 11, 03, Convert.ToInt32(creationbloc.getHd()), 0, 0), new DateTime(2010, 11, 03, Convert.ToInt32(creationbloc.getHf()), 0, 0), 0, 0));
                 // loader.bloc.Add(new Bloc(jourText, x, y, y + 16, jour, 0, 0));
-                Bloc tempBloc = new Bloc(debut, fin, 0, 0);
-               // tempBloc.draw(grfx);
+                Bloc tempBloc = new Bloc(debut, fin,x, 0, 0);
+                tempBloc.draw(width,grfx);
                 loader.bloc.Add(tempBloc);
                 
                 creationbloc.Dispose();

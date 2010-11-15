@@ -57,7 +57,7 @@ namespace HoraireBeta
             
         }
 
-        ~GrilleJour() { 
+        ~GrilleJour() { //Destructeur Décoratif! Made by Simon Brassard
            
 
             

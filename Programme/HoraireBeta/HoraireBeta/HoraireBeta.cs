@@ -20,6 +20,7 @@ namespace HoraireBeta
         {
             this.loader = loader;
             InitializeComponent();
+            FillInterface();
             
         }
 
@@ -367,8 +368,8 @@ namespace HoraireBeta
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            String textInForm;           
-            
+            String textInForm;
+
             textInForm = this.textBox1.Text.Clone().ToString();
             Chilkat.Xml xml = new Chilkat.Xml();
             Chilkat.Xml xmlProfiles = new Chilkat.Xml();
@@ -377,9 +378,9 @@ namespace HoraireBeta
             xmlProfiles.LoadXmlFile("profiles.xml");
             xmlPostes.LoadXmlFile("postes.xml");
             xmlTeams.LoadXmlFile("teams.xml");
-            
 
-            
+
+
             /*foreach (TreeNode ressource in RessourceTree.Nodes)
             {
                 foreach (TreeNode childs in ressource.Nodes)
@@ -391,8 +392,8 @@ namespace HoraireBeta
                     }
                 }
             }*/
-           
-            
+
+
             foreach (TreeNode tree in RessourceTree.Nodes[0].Nodes)
             {
                 tree.Remove();
@@ -400,95 +401,131 @@ namespace HoraireBeta
             foreach (TreeNode tree in RessourceTree.Nodes[1].Nodes)
             {
                 tree.Remove();
-            } 
+            }
             foreach (TreeNode tree in RessourceTree.Nodes[2].Nodes)
             {
                 tree.Remove();
             }
             xml = xmlProfiles;
-                // Navigate to the first company record.
-                xml.FirstChild2();
+            // Navigate to the first company record.
+            xml.FirstChild2();
 
-                while (xml != null)
-                {
-                    // FindNextRecord *will* return the current record if it
-                    // matches the criteria. 
-                    xml = xml.FindNextRecord("nom", textInForm.ToLower()+"*");
-                    if (xml != null)
-                    {
-                        // Add the company name to the listbox.
-                        
-                        RessourceTree.Nodes[0].Nodes.Add(new System.Windows.Forms.TreeNode(xml.GetChildContent("nom") + ", "+ xml.GetChildContent("prenom")));
-                        
-
-                        // Advance past this record.
-                        xml = xml.NextSibling();
-                    }
-
-                }
-                xml = xmlPostes;
-                // Navigate to the first company record.
-                xml.FirstChild2();
-
-                while (xml != null)
-                {
-                    // FindNextRecord *will* return the current record if it
-                    // matches the criteria. 
-                    xml = xml.FindNextRecord("nom", textInForm.ToLower() + "*");
-                    if (xml != null)
-                    {
-                        // Add the company name to the listbox.
-
-                        RessourceTree.Nodes[1].Nodes.Add(new System.Windows.Forms.TreeNode(xml.GetChildContent("nom")));
-
-
-                        // Advance past this record.
-                        xml = xml.NextSibling();
-                    }
-
-                }
-                xml = xmlTeams;
-                // Navigate to the first company record.
-                xml.FirstChild2();
-
-                while (xml != null)
-                {
-                    // FindNextRecord *will* return the current record if it
-                    // matches the criteria. 
-                    xml = xml.FindNextRecord("nom", textInForm.ToLower() + "*");
-                    if (xml != null)
-                    {
-                        // Add the company name to the listbox.
-
-                        RessourceTree.Nodes[2].Nodes.Add(new System.Windows.Forms.TreeNode(xml.GetChildContent("nom")));
-
-
-                        // Advance past this record.
-                        xml = xml.NextSibling();
-                    }
-
-                }
-    
-           /*foreach (Poste poste in posteCharge)
+            while (xml != null)
             {
-                if (poste.getNom().Contains(textInForm))
+                // FindNextRecord *will* return the current record if it
+                // matches the criteria. 
+                xml = xml.FindNextRecord("nom", textInForm.ToLower() + "*");
+                if (xml != null)
                 {
-                    RessourceTree.Nodes[1].Nodes.Add(new System.Windows.Forms.TreeNode(poste.getNom()));
+                    // Add the company name to the listbox.
+
+                    RessourceTree.Nodes[0].Nodes.Add(new System.Windows.Forms.TreeNode(xml.GetChildContent("nom") + ", " + xml.GetChildContent("prenom")));
+
+
+                    // Advance past this record.
+                    xml = xml.NextSibling();
                 }
-                
+
             }
-            foreach (Equipe team in equipe)
+            xml = xmlPostes;
+            // Navigate to the first company record.
+            xml.FirstChild2();
+
+            while (xml != null)
             {
-                if (team.getNom().Contains(textInForm))
+                // FindNextRecord *will* return the current record if it
+                // matches the criteria. 
+                xml = xml.FindNextRecord("nom", textInForm.ToLower() + "*");
+                if (xml != null)
                 {
-                    RessourceTree.Nodes[2].Nodes.Add(new System.Windows.Forms.TreeNode(team.getNom()));
+                    // Add the company name to the listbox.
+
+                    RessourceTree.Nodes[1].Nodes.Add(new System.Windows.Forms.TreeNode(xml.GetChildContent("nom")));
+
+
+                    // Advance past this record.
+                    xml = xml.NextSibling();
                 }
 
-            }*/
-            
-            
-        }
+            }
+            xml = xmlTeams;
+            // Navigate to the first company record.
+            xml.FirstChild2();
 
+            while (xml != null)
+            {
+                // FindNextRecord *will* return the current record if it
+                // matches the criteria. 
+                xml = xml.FindNextRecord("nom", textInForm.ToLower() + "*");
+                if (xml != null)
+                {
+                    // Add the company name to the listbox.
+
+                    RessourceTree.Nodes[2].Nodes.Add(new System.Windows.Forms.TreeNode(xml.GetChildContent("nom")));
+
+
+                    // Advance past this record.
+                    xml = xml.NextSibling();
+                }
+
+            }
+
+            /*foreach (Poste poste in posteCharge)
+             {
+                 if (poste.getNom().Contains(textInForm))
+                 {
+                     RessourceTree.Nodes[1].Nodes.Add(new System.Windows.Forms.TreeNode(poste.getNom()));
+                 }
+                
+             }
+             foreach (Equipe team in equipe)
+             {
+                 if (team.getNom().Contains(textInForm))
+                 {
+                     RessourceTree.Nodes[2].Nodes.Add(new System.Windows.Forms.TreeNode(team.getNom()));
+                 }
+
+             }*/
+
+
+        }
+        private void FillInterface()
+        {
+            CreateXml.CreateProfileXml();
+            Chilkat.Xml xml = new Chilkat.Xml();
+            Chilkat.Xml xmlProfiles = new Chilkat.Xml();
+            Chilkat.Xml xmlPostes = new Chilkat.Xml();
+            Chilkat.Xml xmlTeams = new Chilkat.Xml();
+            xmlProfiles.LoadXmlFile("profiles.xml");
+            xmlPostes.LoadXmlFile("postes.xml");
+            xmlTeams.LoadXmlFile("teams.xml");
+
+            FillTree(RessourceTree.Nodes[0].Nodes, xmlProfiles);
+            FillTree(RessourceTree.Nodes[1].Nodes, xmlPostes);
+            FillTree(RessourceTree.Nodes[2].Nodes, xmlTeams);
+            FillTree(treeView_postdispo.Nodes, xmlPostes);
+            FillTree(treeView_postaaffectgauche.Nodes, xmlPostes);
+            
+
+        }
+        public void FillTree(TreeNodeCollection treeNodes, Chilkat.Xml xml)
+        {
+            foreach (TreeNode tree in treeNodes)
+            {
+                tree.Remove();
+            }
+            
+            // Navigate to the first xml record.
+            xml.FirstChild2();
+
+            while (xml != null && xml.GetChildContent("nom") != "")
+            {
+               treeNodes.Add(new TreeNode(xml.GetChildContent("nom")));
+               MessageBox.Show(xml.GetChildContent("nom"));
+                // Advance past this record.
+                xml = xml.NextSibling();
+            }
+        }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {

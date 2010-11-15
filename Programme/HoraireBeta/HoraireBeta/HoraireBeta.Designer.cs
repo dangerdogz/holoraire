@@ -1210,55 +1210,7 @@ namespace HoraireBeta
 
         public void initInterface()
         {
-            this.profilCharge = loader.profilCharge;
-            this.equipe = loader.equipe;
-            this.posteCharge = loader.posteCharge;
-            MessageBox.Show("InitInterface");
-            
-            //Rempli l'interface Horaire
-            System.Windows.Forms.TreeNode[] nodeArray = new System.Windows.Forms.TreeNode[profilCharge.Count()];
-            //Rempli l'interface 
-            System.Windows.Forms.TreeNode[] nodeArray2 = new System.Windows.Forms.TreeNode[profilCharge.Count()];
-
-            for (int i = 0; i < profilCharge.Count(); i++)
-            {
-               nodeArray[i] = new System.Windows.Forms.TreeNode((((Profil)(profilCharge.ElementAt(i))).getNom()+", "+((Profil)(profilCharge.ElementAt(i))).getPrenom()));
-            }
-
-            RessourceTree.Nodes[0].Nodes.AddRange(nodeArray);
-           
-            
-
-            nodeArray = new System.Windows.Forms.TreeNode[posteCharge.Count()];
-            nodeArray2 = new System.Windows.Forms.TreeNode[posteCharge.Count()];
-
-            for (int i = 0; i < posteCharge.Count(); i++)
-            {
-                MessageBox.Show("poste" + i);
-               nodeArray[i] = new System.Windows.Forms.TreeNode(posteCharge.ElementAt(i).getNom());
-               nodeArray2[i] = new System.Windows.Forms.TreeNode(posteCharge.ElementAt(i).getNom());
-            }
-
-            RessourceTree.Nodes[1].Nodes.AddRange(nodeArray);
-            treeView_postgen.Nodes.AddRange(nodeArray2);
-            //treeView_postdispo.Nodes.AddRange(nodeArray2);
-
-            nodeArray = new System.Windows.Forms.TreeNode[equipe.Count()];
-            nodeArray2 = new System.Windows.Forms.TreeNode[equipe.Count()];
-
-            for (int i = 0; i < equipe.Count(); i++)
-            {
-                nodeArray[i] = new System.Windows.Forms.TreeNode(equipe.ElementAt(i).getNom());
-                nodeArray2[i] = new System.Windows.Forms.TreeNode(equipe.ElementAt(i).getNom());
-            }
-
-            RessourceTree.Nodes[2].Nodes.AddRange(nodeArray);
-            treeView_equipe.Nodes.AddRange(nodeArray2);
-            //Fin du remplissage de l'interface Horaire
-
-           
-           
-            
+            FillInterface();            
         }
 
         

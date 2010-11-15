@@ -8,9 +8,9 @@ using Chilkat;
 
 namespace HoraireBeta
 {
-    public class CreateXml
+    public static class CreateXml
     {
-        public void CreateProfileXml()
+        public static void CreateProfileXml()
         {
             DBConnect proc = new DBConnect();
             DataTable rs3;
@@ -38,8 +38,7 @@ namespace HoraireBeta
 
                 // Create a "company" record.  NewChild2 does not return the child node that is created
                 xml.NewChild2("id", Convert.ToString(rs.Rows[i]["idProfil"]));
-                xml.NewChild2("prenom", rs.Rows[i]["prenom"].ToString().ToLower());
-                xml.NewChild2("nom", rs.Rows[i]["nom"].ToString().ToLower());
+                xml.NewChild2("nom", rs.Rows[i]["nom"].ToString().ToLower()+", "+rs.Rows[i]["prenom"].ToString().ToLower());
                 xml.NewChild2("email", rs.Rows[i]["email"].ToString().ToLower());
                 xml.NewChild2("phone", rs.Rows[i]["phoneNumber"].ToString());
                 xml.NewChild2("seniority", Convert.ToString(rs.Rows[i]["seniority"]));

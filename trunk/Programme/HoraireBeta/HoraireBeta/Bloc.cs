@@ -367,6 +367,32 @@ namespace HoraireBeta
             return estComplet;
         }
 
+        public void save()
+        {
+            DBConnect proc = new DBConnect();
+            if (this.id < 0)
+            {
+                proc.addBlock(debut.ToString("yyyy-MM-dd HH:mm:ss"), fin.ToString("yyyy-MM-dd HH:mm:ss"), typeBloc);
+                id = Convert.ToInt32(proc.getLastStuff("Block").Rows[0]["idBlock"].ToString());
+            }
+            else
+            {
+                proc.modifyBlock(debut.ToString("yyyy-MM-dd HH:mm:ss"), fin.ToString("yyyy-MM-dd HH:mm:ss"), id);
+
+                proc.deleteRessource(id);
+
+            }
+            foreach (Ressource lui in ressourcesAffectes)
+            {
+                if (lui is Equipe)
+                    proc.addRessource(id, 0, lui.getId());
+                else
+                    proc.addRessource(id, lui.getId(), 0);
+            }
+            
+
+        }
+
         public void draw(int laWidth, Graphics gfx)
         {
             Font laFont = new Font("Arial", 16);

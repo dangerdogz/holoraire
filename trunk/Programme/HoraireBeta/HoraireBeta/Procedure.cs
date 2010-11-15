@@ -174,6 +174,12 @@ namespace HoraireBeta
             requete = "SELECT * FROM Erreur WHERE idErreur = "+idErreur+"";
             return getResult(requete);
         }
+        public DataTable getAllErreur()
+        {
+            String requete;
+            requete = "SELECT * FROM Erreur";
+            return getResult(requete);
+        }
         public DataTable getParametre(int idParametre)
         {
             String requete;

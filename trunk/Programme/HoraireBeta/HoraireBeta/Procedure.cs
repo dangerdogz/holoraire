@@ -81,7 +81,7 @@ namespace HoraireBeta
             String requete;
             requete = "UPDATE Profil SET prenom=" + profilPrenom + ", nom=" + profilNom + ", phoneNumber=" + profilPhoneNumber +
                       ", quotaHeureMax=" + profilHeureMax + ", quotaHeureMin=" + profilHeureMin + ", email=" + profilEmail + ", seniority = "+seniority+" WHERE idProfil=" + idProfil+"";
-
+            
         }
         public DataTable getProfil(int idProfil)
         {
@@ -91,6 +91,13 @@ namespace HoraireBeta
             return getResult(requete);
            
         }
+        public DataTable getLastStuff(String quoi)
+        {
+            string requete;
+            requete = "SELECT id" + quoi + " FROM " + quoi + " WHERE id" + quoi + " = @@identity";
+            return getResult(requete);
+        }
+
         public DataTable getAllProfil()
         {
             String requete;
@@ -104,6 +111,8 @@ namespace HoraireBeta
             String requete;
             requete = "DELETE * FROM Profil WHERE idProfil = " +idProfil+"";
         }
+
+
         public DataTable getAllPoste()
         {
             String requete;

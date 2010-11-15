@@ -51,7 +51,7 @@ namespace HoraireBeta
             if (this.id < 0)
             {
                 proc.addTeam(nom, description);
-                id = Convert.ToInt32(proc.getLastStuff("Team").Rows[0]["idTeam"].ToString());
+                id = Convert.ToInt32(proc.getLastStuff("Team").Rows[0]["last_insert_rowid()"].ToString());
             }
             else
             {

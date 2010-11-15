@@ -493,7 +493,6 @@ namespace HoraireBeta
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
             DateTime debutSemaine = getDebutSemaine();
-            MessageBox.Show(debutSemaine.ToString(), "lol");
             grille.changeSemaine(debutSemaine);
         }
         public DateTime getDebutSemaine()
@@ -603,6 +602,20 @@ namespace HoraireBeta
             this.panelCentral_Parametre.Controls.Add(this.button_supprimer);
             this.panelCentral_Parametre.Controls.Add(this.button_ajouter_PG);
             this.panelCentral_Parametre.Controls.Add(this.label_postgeneral);
+        }
+
+        private void Sauvegarder_button_Click(object sender, EventArgs e)
+        {
+        Profil profil = new Profil(nom_textbox.Text, prenom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0);
+        loader.profilCharge.Add(profil);
+        profil.save();
+        numemp_textbox.Text = "";
+        nom_textbox.Text = "";
+        prenom_textbox.Text = "";
+
+        courriel_textbox.Text = "";
+        telephone_textbox.Text = "";
+
         }
     }
 } 

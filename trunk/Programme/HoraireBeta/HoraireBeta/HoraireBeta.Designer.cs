@@ -194,10 +194,8 @@ namespace HoraireBeta
             this.panelCentral_Horaire.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseDown);
             this.panelCentral_Horaire.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
             this.panelCentral_Horaire.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseUp);
-            
+
             Graphics grfx = this.panelCentral_Horaire.CreateGraphics();
-
-
             
             // 
             // tabConflits
@@ -478,6 +476,7 @@ namespace HoraireBeta
             this.Sauvegarder_button.TabIndex = 17;
             this.Sauvegarder_button.Text = "Sauvegarder";
             this.Sauvegarder_button.UseVisualStyleBackColor = true;
+            this.Sauvegarder_button.Click += new System.EventHandler(this.Sauvegarder_button_Click);
             // 
             // button_Valider
             // 
@@ -1156,14 +1155,10 @@ namespace HoraireBeta
             this.admin_central.ResumeLayout(false);
             this.admin_central.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultDataGrid)).EndInit();
-
-            initInterface();
-            grille = new GrilleHoraire(grfx, loader, getDebutSemaine());
-
-
-
             this.ResumeLayout(false);
 
+
+            grille = new GrilleHoraire(grfx, loader, getDebutSemaine());
         }
 
         #endregion

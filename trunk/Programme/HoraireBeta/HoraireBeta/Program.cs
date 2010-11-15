@@ -39,6 +39,10 @@ namespace HoraireBeta
             l.loadErreurs();
             l.bloc.ElementAt(0).addRessourceVoulue(1, l.posteCharge.ElementAt(0));
 
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new HoraireBeta(l));
+
            // TabSchedule t = new TabSchedule();
             //t.generate(l.bloc, l.profilCharge);
 

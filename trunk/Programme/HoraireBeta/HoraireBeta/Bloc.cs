@@ -405,7 +405,7 @@ namespace HoraireBeta
         public void draw(int laWidth, Graphics gfx)
         {
             Font laFont = new Font("Arial", 16);
-            Pen pen = new Pen(Color.Cyan);
+            Pen pen = new Pen(Color.Black);
             SolidBrush brush = new SolidBrush(Color.Cyan);
             SolidBrush selectedBrush = new SolidBrush(Color.Green);
 

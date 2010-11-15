@@ -12,22 +12,23 @@ namespace HoraireBeta
     class GrilleJour
     {
         //Variables locales
-        DateTime laDate;
+       
         DateTime dateFin;
         bool mousepush=false;
         int jour;
-        String jourText;
+        public String jourText;
         //Bloc[] blocs = new Bloc[10];
         List<Bloc> blocs = new List<Bloc>();
         Bloc selectionEnCours;
         int indexBlocs = 0;
-        DateTime dateDuJour;
+        public DateTime dateDuJour;
         private int posX;
         private int posY;
         private int width;
         private int height;
         Loader loader;
         Graphics grfx;
+        GrilleHoraire laGrille;
         Font laFont = new Font("Arial", 12);
         SolidBrush myBrush = new SolidBrush(Color.Black);
         SolidBrush myWhiteBrush = new SolidBrush(Color.White);
@@ -52,7 +53,7 @@ namespace HoraireBeta
             height = 500;
             this.loader = loader;
             this.grfx = grfx;
-            
+            laGrille = grilleH;
             
         }
 
@@ -60,6 +61,15 @@ namespace HoraireBeta
            
 
             
+        }
+
+        public int getX(){
+            return posX;
+        }
+
+        public int getXFin()
+        {
+            return posX+width;
         }
 
         public void activer()
@@ -96,11 +106,31 @@ namespace HoraireBeta
 
         public void changeDate(DateTime nouvelleDate)
             {
-                laDate = nouvelleDate;
+                dateDuJour = nouvelleDate;
         
             }
 
+        public Bloc selectionneUnBloc(int lesY) 
+            {
+            //Vérifis si le clique touche un bloc
+            // blocs = loader.getBlocFromDate(dateDuJour);
+            if (blocs != null)
+            {
+                for (int i = 0; i < blocs.Count; i++)
+                {
+                    //Vérifis les Y des blocs
+                    if ((lesY > blocs.ElementAt(i).getY()) && (lesY < blocs.ElementAt(i).getYFin()))
+                    {
+                    return blocs.ElementAt(i);
+                        
+                    }
+                }
+            
+            }
+            return null;
+            }
 
+       
 
         public void ajouterBloc(int heureDebut)
         {
@@ -118,15 +148,19 @@ namespace HoraireBeta
 
         }
 
+        public Bloc getBloc(int i) {
+            return blocs.ElementAt(i);
+        }
+
         public void passeClique(MouseEventArgs e,String mouse)
         {
             
             
             if (mouse == "MouseDown")
             {
-                if ((e.X >= posX) && (e.X < posX + 100))
+                if ((e.X >= posX) && (e.X < (posX + 100)))
                 {
-
+                    /*
                     //Vérifis si le clique touche un bloc
                    // blocs = loader.getBlocFromDate(dateDuJour);
                     if (blocs != null)
@@ -134,7 +168,7 @@ namespace HoraireBeta
                         for (int i = 0; i < blocs.Count; i++)
                         {
                             //Vérifis les Y des blocs
-                            if(e.Y >blocs.ElementAt(i).getY() && e.Y < blocs.ElementAt(i).getYFin())
+                            if((e.Y >= blocs.ElementAt(i).getY()) && (e.Y <= blocs.ElementAt(i).getYFin()))
                                 {
                                 //Si je sélectionne déjàs un bloc
                                 if (selectionEnCours != null)
@@ -144,13 +178,13 @@ namespace HoraireBeta
                                 //Affectation du nouveau Bloc
                                 blocs.ElementAt(i).selectIt();
                                 selectionEnCours = blocs.ElementAt(i);
-                                MessageBox.Show("Block sélectionné");
-                               
+                                //MessageBox.Show("Block sélectionné");
+                                laGrille.refresh();
                                 }
                         }
-
+                    */
                     }
-                    
+                    /*
                     //Détecteur de bloc
                     if ((e.Y > 40) && (e.Y < 60))
                     {
@@ -160,12 +194,12 @@ namespace HoraireBeta
                     dateFin = new DateTime(dateDuJour.Year, dateDuJour.Month, dateDuJour.Day, 2, 0, 0);
                     createBlock(posX, 40,dateDuJour,dateFin);
                     }
-
+                    */
                 }
 
 
 
-            }
+            
 
             if (mouse == "MouseUp")
                 {

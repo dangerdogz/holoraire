@@ -7,13 +7,21 @@ using System.Windows.Forms;
 
 
 namespace HoraireBeta
-
 {
+
+    public struct Erreur
+    {
+        public int id;
+        public String nom;
+        public String description;
+    }
+
     public class Loader
     {
-
+       
+        public List<Erreur> erreur = new List<Erreur>();
         public List<Poste> posteCharge = new List<Poste>();
-         public List<Ressource> profilCharge = new List<Ressource>();
+        public List<Ressource> profilCharge = new List<Ressource>();
         public List<Equipe> equipe = new List<Equipe>();
         public List<Bloc> bloc = new List<Bloc>();
 
@@ -197,6 +205,41 @@ namespace HoraireBeta
             return temp;
         }
 
+        public List<Erreur> loadErreurs()
+        {
+           DataTable rs = proc.getAllErreur();
+           int i = 0;
+           while (i != rs.Rows.Count)
+           {
+               Erreur e = new Erreur();
+               e.id = Convert.ToInt32(rs.Rows[i]["idErreur"].ToString());
+               e.nom= rs.Rows[i]["nom"].ToString();
+               e.description = rs.Rows[i]["description"].ToString();
+
+               erreur.Add(e);
+               i++;
+           }
+
+           erreur.Sort(delegate(Erreur p1, Erreur p2) { return p1.id.CompareTo(p2.id); });
+
+           return erreur;
+
+        }
+
+        public void returnErreur(int id)
+        {
+            int i = 0;
+
+            while (id != erreur.ElementAt(i).id)
+            {
+                i++;
+            }
+
+            MessageBox.Show("Erreur : " + erreur.ElementAt(i).nom + "\n" + "Description : " + erreur.ElementAt(i).description + "\n", "Erreur #" + erreur.ElementAt(i).id.ToString());
+
+        }
+
+        
 
     }
 }

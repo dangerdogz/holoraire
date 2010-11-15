@@ -35,7 +35,7 @@ namespace HoraireBeta
         private int x;
         private int y;
         private int haut;
-
+        private bool isSelected=false;
        
 
         private Boolean isdrawn=false;
@@ -317,6 +317,15 @@ namespace HoraireBeta
         public int getY()
         { return y; }
 
+        public int getYFin()
+        { return y+haut; }
+
+        public void selectIt()
+        { isSelected = true;}
+
+        public void unSelectIt()
+        { isSelected = false; }
+
         public Boolean isMyclick(int clickx,int clicky) {
             if (isdrawn)
             {
@@ -398,12 +407,21 @@ namespace HoraireBeta
             Font laFont = new Font("Arial", 16);
             Pen pen = new Pen(Color.Cyan);
             SolidBrush brush = new SolidBrush(Color.Cyan);
+            SolidBrush selectedBrush = new SolidBrush(Color.Green);
 
-            
-            gfx.DrawRectangle(pen, x, y, laWidth, haut);
-            gfx.FillRectangle(brush, x+2, y+2, laWidth-4, haut-4);
-            gfx.DrawString("("+id+")", laFont, brush, x + 8, y+8);
+            if (isSelected == true)
+                {
+                gfx.DrawRectangle(pen, x, y, laWidth, haut);
+                gfx.FillRectangle(selectedBrush, x + 2, y + 2, laWidth - 4, haut - 4);
+                gfx.DrawString("(" + id + ")", laFont, brush, x + 8, y + 8);
+                }
 
+            else
+                {
+                gfx.DrawRectangle(pen, x, y, laWidth, haut);
+                gfx.FillRectangle(brush, x + 2, y + 2, laWidth - 4, haut - 4);
+                gfx.DrawString("(" + id + ")", laFont, brush, x + 8, y + 8);
+                }
             isdrawn = true;
 
             

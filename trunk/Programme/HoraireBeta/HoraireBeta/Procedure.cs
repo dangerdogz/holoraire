@@ -132,7 +132,7 @@ namespace HoraireBeta
         public void modifyPoste(int idPoste, String nom, String description)
         {
             String requete;
-            requete = "UPDATE Poste SET nom=" + nom + ", description=" + description + "";
+            requete = "UPDATE Poste SET nom=" + nom + ", description=" + description + " where idPoste = "+idPoste+"";
         }
         public DataTable getPoste(int idPoste)
         {
@@ -283,10 +283,10 @@ namespace HoraireBeta
             String requete;
             requete = "INSERT INTO Team(nom, description) VALUES("+nom+", "+description+")";
         }
-        public void modifyTeam(String nom, String description)
+        public void modifyTeam(int id, String nom, String description)
         {
             String requete;
-            requete = "UPDATE Team SET nom=" + nom + ", description = " + description + "";
+            requete = "UPDATE Team SET nom=" + nom + ", description = " + description + " where idTeam ="+id+"";
         }
         public void deleteTeam(int idTeam)
         {

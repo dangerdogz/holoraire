@@ -18,7 +18,8 @@ namespace HoraireBeta
         int jour;
         String jourText;
         //Bloc[] blocs = new Bloc[10];
-        List<Bloc> blocs = new List<Bloc>(); 
+        List<Bloc> blocs = new List<Bloc>();
+        Bloc selectionEnCours;
         int indexBlocs = 0;
         DateTime dateDuJour;
         private int posX;
@@ -40,7 +41,7 @@ namespace HoraireBeta
 
 
         //Constructeur
-        public GrilleJour(String jourText,DateTime laDate, int jour, int posx, int posy, Graphics grfx, Loader loader)
+        public GrilleJour(String jourText,DateTime laDate, int jour, int posx, int posy, Graphics grfx, Loader loader,GrilleHoraire grilleH)
         {
             this.jourText = jourText;
             this.jour = jour;
@@ -51,7 +52,7 @@ namespace HoraireBeta
             height = 500;
             this.loader = loader;
             this.grfx = grfx;
-
+            
             
         }
 
@@ -125,6 +126,30 @@ namespace HoraireBeta
             {
                 if ((e.X >= posX) && (e.X < posX + 100))
                 {
+
+                    //Vérifis si le clique touche un bloc
+                   // blocs = loader.getBlocFromDate(dateDuJour);
+                    if (blocs != null)
+                    {
+                        for (int i = 0; i < blocs.Count; i++)
+                        {
+                            //Vérifis les Y des blocs
+                            if(e.Y >blocs.ElementAt(i).getY() && e.Y < blocs.ElementAt(i).getYFin())
+                                {
+                                //Si je sélectionne déjàs un bloc
+                                if (selectionEnCours != null)
+                                    {
+                                    selectionEnCours.unSelectIt();
+                                    }
+                                //Affectation du nouveau Bloc
+                                blocs.ElementAt(i).selectIt();
+                                selectionEnCours = blocs.ElementAt(i);
+                                MessageBox.Show("Block sélectionné");
+                               
+                                }
+                        }
+
+                    }
                     
                     //Détecteur de bloc
                     if ((e.Y > 40) && (e.Y < 60))

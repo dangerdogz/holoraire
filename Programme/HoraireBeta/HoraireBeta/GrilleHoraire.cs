@@ -17,13 +17,13 @@ namespace HoraireBeta
         DateTime laDate; 
 
 
-        public GrilleHoraire(Graphics grfx,Loader loader)
+        public GrilleHoraire(Graphics grfx,Loader loader,DateTime date)
 
         {
             gfx = grfx;
             this.loader = loader;
             //DateTime renvoyer par la fonction getweekrange()
-            laDate = new DateTime(2010, 11, 8);
+            laDate = date;
 
             //DateTime et une addition de timespan
             DateTime lundi      = laDate;
@@ -35,13 +35,13 @@ namespace HoraireBeta
             DateTime dimanche   = laDate.Subtract(new TimeSpan(24,0,0));
 
             //Création des jours - ajouter les blocs existants
-            jours[6] = new GrilleJour("Dimanche", dimanche, 1, 40, 20, grfx, loader);
-            jours[0] = new GrilleJour("Lundi",lundi,2, 140, 20, grfx,loader);
-            jours[1] = new GrilleJour("Mardi", mardi, 3, 240, 20, grfx, loader);
-            jours[2] = new GrilleJour("Mercredi",mercredi, 4, 340, 20, grfx, loader);
-            jours[3] = new GrilleJour("Jeudi", jeudi, 5, 440, 20, grfx, loader);
-            jours[4] = new GrilleJour("Vendredi", vendredi, 6, 540, 20, grfx, loader);
-            jours[5] = new GrilleJour("Samedi", samedi, 7, 640, 20, grfx, loader);
+            jours[6] = new GrilleJour("Dimanche", dimanche, 1, 40, 20, grfx, loader,this);
+            jours[0] = new GrilleJour("Lundi",lundi,2, 140, 20, grfx,loader,this);
+            jours[1] = new GrilleJour("Mardi", mardi, 3, 240, 20, grfx, loader,this);
+            jours[2] = new GrilleJour("Mercredi",mercredi, 4, 340, 20, grfx, loader,this);
+            jours[3] = new GrilleJour("Jeudi", jeudi, 5, 440, 20, grfx, loader,this);
+            jours[4] = new GrilleJour("Vendredi", vendredi, 6, 540, 20, grfx, loader,this);
+            jours[5] = new GrilleJour("Samedi", samedi, 7, 640, 20, grfx, loader,this);
            
 
            
@@ -87,13 +87,13 @@ namespace HoraireBeta
 
             
             //Création des jours - ajouter les blocs existants
-            jours[6] = new GrilleJour("Dimanche", dimanche, 1, 40, 20, gfx, loader);
-            jours[0] = new GrilleJour("Lundi", lundi, 2, 140, 20, gfx, loader);
-            jours[1] = new GrilleJour("Mardi", mardi, 3, 240, 20, gfx, loader);
-            jours[2] = new GrilleJour("Mercredi", mercredi, 4, 340, 20, gfx, loader);
-            jours[3] = new GrilleJour("Jeudi", jeudi, 5, 440, 20, gfx, loader);
-            jours[4] = new GrilleJour("Vendredi", vendredi, 6, 540, 20, gfx, loader);
-            jours[5] = new GrilleJour("Samedi", samedi, 7, 640, 20, gfx, loader);
+            jours[6] = new GrilleJour("Dimanche", dimanche, 1, 40, 20, gfx, loader,this);
+            jours[0] = new GrilleJour("Lundi", lundi, 2, 140, 20, gfx, loader,this);
+            jours[1] = new GrilleJour("Mardi", mardi, 3, 240, 20, gfx, loader,this);
+            jours[2] = new GrilleJour("Mercredi", mercredi, 4, 340, 20, gfx, loader,this);
+            jours[3] = new GrilleJour("Jeudi", jeudi, 5, 440, 20, gfx, loader,this);
+            jours[4] = new GrilleJour("Vendredi", vendredi, 6, 540, 20, gfx, loader,this);
+            jours[5] = new GrilleJour("Samedi", samedi, 7, 640, 20, gfx, loader,this);
 
 
             refresh();

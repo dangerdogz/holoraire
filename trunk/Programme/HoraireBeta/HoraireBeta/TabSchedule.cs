@@ -9,8 +9,12 @@ using System.IO;
 
 namespace HoraireBeta
 {
-    public class TabSchedule
-    {
+
+       public class TabSchedule
+         {
+
+        Loader l = new Loader();
+
         public int generate(List<Bloc> blocs, List<Ressource> employee)
         {
 
@@ -85,13 +89,14 @@ namespace HoraireBeta
                }
            }
 
+            
            for (int i = 0; i < blocs.Count; i++)
            {
                if (!(blocs[i].checkCompletion()))
                {
-                   MessageBox.Show("erreur 1", "LOL");
 
-                   valide = 1;
+                   l.returnErreur(1);
+
                }
            }
 
@@ -103,8 +108,9 @@ namespace HoraireBeta
 
                    if (blocs[i].getRessourceVoulus(j).nbAffectee == 0)
                    {
-                       MessageBox.Show("erreur 1", "LOL");
-                       valide = 1;
+
+                       l.returnErreur(2);
+
                    }
                }
            }

@@ -59,8 +59,8 @@ namespace HoraireBeta
 
             y = (Convert.ToInt32(debut.ToString("HH")) * 20 + Convert.ToInt32(debut.ToString("MM")) / 20)+20;
 
-            x = (Loader.SemaineToInt(debut) - 1) * 100;
-
+            x = ((Loader.SemaineToInt(debut)-1) * 100)+40;
+            
             //MessageBox.Show(Loader.SemaineToInt(debut)+"||"+(debut.ToString("ddd")));
 
             haut = ((Convert.ToInt32(fin.ToString("HH")) * 20 + Convert.ToInt32(fin.ToString("MM")) / 20) - y) + 20;

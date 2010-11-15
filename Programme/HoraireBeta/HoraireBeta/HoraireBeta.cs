@@ -460,6 +460,7 @@ namespace HoraireBeta
         {
             DateTime debutSemaine = getDebutSemaine();
             MessageBox.Show(debutSemaine.ToString(), "lol");
+            grille.changeSemaine(debutSemaine);
         }
         public DateTime getDebutSemaine()
         {

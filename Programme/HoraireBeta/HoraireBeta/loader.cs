@@ -177,29 +177,25 @@ namespace HoraireBeta
             int jour=0;
             switch (entree.ToString("ddd"))
             {
-                case "lun": 
+                case "lun.": 
                     jour = 1;
                     break;
-                case "mar": 
+                case "mar.": 
                     jour = 2;
                     break;
-                case "mer":
+                case "mer.":
                     jour = 3;
                     break;
-                case "jeu" :
+                case "jeu." :
                     jour = 4;
                     break;
-                case "ven" :
+                case "ven." :
                     jour = 5;
                     break;
-
-                case "sam" :
-
-                case "sat": 
-
+                case "sam." :
                     jour = 6;
                     break;
-                case "dim" :
+                case "dim." :
                     jour = 7;
                     break;
             }

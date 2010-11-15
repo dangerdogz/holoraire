@@ -72,9 +72,11 @@ namespace HoraireBeta
         public void ajouterProfil(String profilPrenom, String profilNom, String profilPhoneNumber, int profilHeureMax, int profilHeureMin, String profilEmail, int seniority)
         {
             String requete;
+            
             requete = "INSERT INTO Profil(prenom, nom, phoneNumber, quotaHeureMax, quotaHeureMin, email, seniority)" +
-                      " VALUES(" + profilPrenom + ", " + profilNom + ", " + profilPhoneNumber + ", " + profilHeureMax +
-                      ", " + profilHeureMin + ", " + profilEmail + ", " +seniority+")";
+                      " VALUES(\"" + profilPrenom + "\", \"" + profilNom + "\", \"" + profilPhoneNumber + "\", " + profilHeureMax +
+                      ", " + profilHeureMin + ", \"" + profilEmail + "\", " + seniority + ")";
+            getResult(requete);
         }
         public void modifierProfil(int idProfil, String profilPrenom, String profilNom, String profilPhoneNumber, int profilHeureMax, int profilHeureMin, String profilEmail, int seniority)
         {
@@ -94,8 +96,10 @@ namespace HoraireBeta
         public DataTable getLastStuff(String quoi)
         {
             string requete;
-            requete = "SELECT id" + quoi + " FROM " + quoi + " WHERE id" + quoi + " = @@identity";
+            requete = "SELECT DISTINCT last_insert_rowid() FROM "+quoi+";";
+            MessageBox.Show(requete);
             return getResult(requete);
+
         }
 
         public DataTable getAllProfil()

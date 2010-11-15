@@ -193,14 +193,15 @@ namespace HoraireBeta
                
                 proc.addPosteProfil(id, lui.getId());
             }
-            proc.deletePref(id);
+            proc.deleteProfilPreference(id);
             
             foreach (Bloc pref in preference)
             {
-                proc.addPlage(pref.getDebut().ToString("yyyy-MM-dd HH:mm:ss"), pref.getFin().ToString("yyyy-MM-dd HH:mm:ss"), Loader.SemaineToInt(pref.getFin()));
+                if (pref.getId()<0)
+                    proc.addPlage(pref.getDebut().ToString("yyyy-MM-dd HH:mm:ss"), pref.getFin().ToString("yyyy-MM-dd HH:mm:ss"), Loader.SemaineToInt(pref.getFin()));
                 proc.addProfilPreference(id, Convert.ToInt32(proc.getLastStuff("Plage").Rows[0]["idPlage"].ToString()));
             }
-            proc.deleteDispo(id);
+            proc.deleteProfilDispo(id);
 
             foreach (Bloc dispo in disponibilite)
             {

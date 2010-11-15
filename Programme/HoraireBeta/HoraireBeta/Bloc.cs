@@ -382,7 +382,7 @@ namespace HoraireBeta
             if (this.id < 0)
             {
                 proc.addBlock(debut.ToString("yyyy-MM-dd HH:mm:ss"), fin.ToString("yyyy-MM-dd HH:mm:ss"), typeBloc);
-                id = Convert.ToInt32(proc.getLastStuff("Block").Rows[0]["idBlock"].ToString());
+                id = Convert.ToInt32(proc.getLastStuff("Block").Rows[0]["last_insert_rowid()"].ToString());
             }
             else
             {

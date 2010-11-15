@@ -53,15 +53,12 @@ namespace HoraireBeta
             this.grfx = grfx;
 
             
+        }
+
+        ~GrilleJour() { 
+           
+
             
-                                                    //Fin des Y custom
-           // blocs[0] = new Bloc(jourText,posX,posY + 20, posY + 50, jour, 1, 1);
-            
-
-
-          //  blocs[0] = new Bloc(posY, posY + 30, "mon", 1, 1);
-         //   blocs[0].draw(grfx);
-
         }
 
         public void activer()
@@ -96,7 +93,11 @@ namespace HoraireBeta
                 }
         }
 
-         
+        public void changeDate(DateTime nouvelleDate)
+            {
+                laDate = nouvelleDate;
+        
+            }
 
 
 

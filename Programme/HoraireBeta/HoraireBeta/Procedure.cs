@@ -129,6 +129,11 @@ namespace HoraireBeta
             String requete;
             requete = "DELETE * FROM Poste WHERE idPoste = " + idPoste+"";
         }
+        public void modifyPoste(int idPoste, String nom, String description)
+        {
+            String requete;
+            requete = "UPDATE Poste SET nom=" + nom + ", description=" + description + "";
+        }
         public DataTable getPoste(int idPoste)
         {
             String requete;

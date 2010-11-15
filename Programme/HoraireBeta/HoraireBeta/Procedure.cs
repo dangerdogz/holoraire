@@ -361,13 +361,32 @@ namespace HoraireBeta
             requete = "SELECT Plage.idPlage, debut, fin, day FROM Plage, Profil_Dispo WHERE Profil_Dispo.idProfil = " + id + " AND Profil_Dispo.idPlage = Plage.idPlage";
             return getResult(requete);
         }
-        public DataTable getProfilPreference(int id)
+        public void addProfilDispo(int idProfil, int idPlage)
+        {
+            String requete;
+            requete = "INSERT INTO Profil_Dispo(idProfil, idPlage) VALUES(" + idProfil + ", " + idPlage + ")";
+        }
+        public void deleteProfilDispo(int idProfil)
+        {
+            String requete;
+            requete = "DELETE * FROM Profil_Dispo WHERE idProfil = " + idProfil + "";
+        }
+        public DataTable getProfilPreference(int idProfil)
         {
             String requete;
             requete = "SELECT Plage.idPlage, debut, fin, day FROM Plage, Profil_Preference WHERE Profil_Preference.idProfil = " + id + " AND Profil_Preference.idPlage = Plage.idPlage";
             return getResult(requete);
         }
-
+        public void addProfilPreference(int idProfil, int idPreference)
+        {
+            String requete;
+            requete = "INSERT INTO Profil_Preference(idProfil, idPreference) VALUES(" + idProfil + ", " + idPreference + ")";
+        }
+        public void deleteProfilPreference(int idProfil)
+        {
+            String requete;
+            requete = "DELETE * FROM Profil_Preference WHERE idProfil = " + idProfil + "";
+        }
 
     }
 }

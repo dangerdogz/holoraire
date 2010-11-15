@@ -89,7 +89,7 @@ namespace HoraireBeta
                 {
                 for (int i = 0; i < blocs.Count; i++)
                     {
-                    blocs.ElementAt(i).draw(posX, width, grfx);
+                    blocs.ElementAt(i).draw(width, grfx);
 
                     }
                     

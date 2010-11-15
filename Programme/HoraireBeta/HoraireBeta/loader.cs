@@ -183,7 +183,7 @@ namespace HoraireBeta
 
         public static int SemaineToInt(DateTime entree) {
            
-        return (int)entree.DayOfWeek;
+        return (int)entree.DayOfWeek+1;
             }
 
         public List<Bloc> getBlocFromDate(DateTime day)

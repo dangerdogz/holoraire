@@ -14,8 +14,8 @@ namespace HoraireBeta
         public GrilleJour[] jours = new GrilleJour[7];
         Graphics gfx;
         Loader loader;
-        DateTime laDate; 
-
+        DateTime laDate;
+        Bloc selectionEnCours;
 
         public GrilleHoraire(Graphics grfx,Loader loader,DateTime date)
 
@@ -35,13 +35,13 @@ namespace HoraireBeta
             DateTime dimanche   = laDate.Subtract(new TimeSpan(24,0,0));
 
             //Création des jours - ajouter les blocs existants
-            jours[6] = new GrilleJour("Dimanche", dimanche, 1, 40, 20, grfx, loader,this);
-            jours[0] = new GrilleJour("Lundi",lundi,2, 140, 20, grfx,loader,this);
-            jours[1] = new GrilleJour("Mardi", mardi, 3, 240, 20, grfx, loader,this);
-            jours[2] = new GrilleJour("Mercredi",mercredi, 4, 340, 20, grfx, loader,this);
-            jours[3] = new GrilleJour("Jeudi", jeudi, 5, 440, 20, grfx, loader,this);
-            jours[4] = new GrilleJour("Vendredi", vendredi, 6, 540, 20, grfx, loader,this);
-            jours[5] = new GrilleJour("Samedi", samedi, 7, 640, 20, grfx, loader,this);
+            jours[0] = new GrilleJour("Dimanche", dimanche, 1, 40, 20, grfx, loader,this);
+            jours[1] = new GrilleJour("Lundi",lundi,2, 140, 20, grfx,loader,this);
+            jours[2] = new GrilleJour("Mardi", mardi, 3, 240, 20, grfx, loader,this);
+            jours[3] = new GrilleJour("Mercredi",mercredi, 4, 340, 20, grfx, loader,this);
+            jours[4] = new GrilleJour("Jeudi", jeudi, 5, 440, 20, grfx, loader,this);
+            jours[5] = new GrilleJour("Vendredi", vendredi, 6, 540, 20, grfx, loader,this);
+            jours[6] = new GrilleJour("Samedi", samedi, 7, 640, 20, grfx, loader,this);
            
 
            
@@ -87,13 +87,13 @@ namespace HoraireBeta
 
             
             //Création des jours - ajouter les blocs existants
-            jours[6] = new GrilleJour("Dimanche", dimanche, 1, 40, 20, gfx, loader,this);
-            jours[0] = new GrilleJour("Lundi", lundi, 2, 140, 20, gfx, loader,this);
-            jours[1] = new GrilleJour("Mardi", mardi, 3, 240, 20, gfx, loader,this);
-            jours[2] = new GrilleJour("Mercredi", mercredi, 4, 340, 20, gfx, loader,this);
-            jours[3] = new GrilleJour("Jeudi", jeudi, 5, 440, 20, gfx, loader,this);
-            jours[4] = new GrilleJour("Vendredi", vendredi, 6, 540, 20, gfx, loader,this);
-            jours[5] = new GrilleJour("Samedi", samedi, 7, 640, 20, gfx, loader,this);
+            jours[0] = new GrilleJour("Dimanche", dimanche, 1, 40, 20, gfx, loader,this);
+            jours[1] = new GrilleJour("Lundi", lundi, 2, 140, 20, gfx, loader,this);
+            jours[2] = new GrilleJour("Mardi", mardi, 3, 240, 20, gfx, loader,this);
+            jours[3] = new GrilleJour("Mercredi", mercredi, 4, 340, 20, gfx, loader,this);
+            jours[4] = new GrilleJour("Jeudi", jeudi, 5, 440, 20, gfx, loader,this);
+            jours[5] = new GrilleJour("Vendredi", vendredi, 6, 540, 20, gfx, loader,this);
+            jours[6] = new GrilleJour("Samedi", samedi, 7, 640, 20, gfx, loader,this);
 
 
             refresh();
@@ -101,11 +101,41 @@ namespace HoraireBeta
         }
 
         public void passeClique(MouseEventArgs e,String mouse)
-        {
+        {  
             for (int i = 0; i < 7; i++)
             {
-                jours[i].passeClique(e,mouse);
+            //Sélection du bon jours
+            if (e.X > jours[i].getX() && e.X < jours[i].getXFin())
+                {
+                MessageBox.Show(jours[i].dateDuJour.ToString());
+                
+                //Sélection d'un bloc existant
+                if(selectionEnCours != null)
+                    {
+                    selectionEnCours.unSelectIt();
+                    }
+                selectionEnCours = jours[i].selectionneUnBloc(e.Y);
+                if (selectionEnCours != null)
+                    {
+                    selectionEnCours.selectIt();
+                    refresh();
+                    MessageBox.Show("Bloc sélectionné");
+                    }
+                
+                }
+
+                
+                
+                
+
+
+
+
+                //jours[i].passeClique(e,mouse);
             }
+            
+
+           
 
         }
 

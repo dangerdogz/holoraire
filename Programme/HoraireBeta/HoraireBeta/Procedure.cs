@@ -333,6 +333,11 @@ namespace HoraireBeta
             requete = "SELECT * FROM Poste_Profil WHERE idPoste = " + idPoste + "";
             return getResult(requete);
         }
+        public void deletePosteProfil(int idPoste)
+        {
+            String requete;
+            requete = "DELETE * FROM Poste_Profil WHERE idPoste = " + idPoste + "";
+        }
         public DataTable getProfilPoste(int idProfil)
         {
             String requete;

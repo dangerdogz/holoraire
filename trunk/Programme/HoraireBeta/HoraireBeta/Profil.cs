@@ -42,6 +42,7 @@ namespace HoraireBeta
             setEmail(email);
             setNumTelephone(numTelephone);
             setAnciennete(anciennete);
+            id = -1;
             setHeuresMax(heureMax);
 
         }
@@ -54,6 +55,8 @@ namespace HoraireBeta
             setEmail(email);
             setNumTelephone(numTelephone);
             setAnciennete(anciennete);
+            id = -1;
+            heuresMax = 0;
 
         }
 
@@ -65,6 +68,7 @@ namespace HoraireBeta
             setEmail(email);
             setNumTelephone(numTelephone);
             setAnciennete(anciennete);
+            heuresMax = 0;
 
         }
 
@@ -179,7 +183,7 @@ namespace HoraireBeta
             if (this.id < 0)
             {
                 proc.ajouterProfil(prenom, nom, numTelephone, heuresMax, 0, email, anciennete);
-                id = Convert.ToInt32(proc.getLastStuff("Profil").Rows[0]["idProfil"].ToString());
+                id = Convert.ToInt32(proc.getLastStuff("Profil").Rows[0]["last_insert_rowid()"].ToString());
             }
             else
             {

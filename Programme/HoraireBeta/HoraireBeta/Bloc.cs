@@ -386,9 +386,17 @@ namespace HoraireBeta
 
             for (int i = 0; i < ressourcesAffectes.Count; i++)
             {
+                MessageBox.Show("LOL : " + haut);
+                if (i * 20 < this.haut)
+                {
+                ((Profil)(ressourcesAffectes[i])).draw(this, i, gfx);
+
                if (i*20<this.haut)
                 ((ressourcesAffectes[i])).draw(this, i, gfx);
-            }
+
+                }
+               
+               }
         }
 
         public void undraw()

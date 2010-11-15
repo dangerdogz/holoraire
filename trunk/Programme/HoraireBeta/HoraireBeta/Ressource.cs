@@ -10,7 +10,7 @@ namespace HoraireBeta
 {
     public class Ressource
     {
-        private int id;
+        protected int id;
   
 
         public Ressource()

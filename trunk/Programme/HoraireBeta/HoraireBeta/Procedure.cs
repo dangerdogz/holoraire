@@ -374,7 +374,7 @@ namespace HoraireBeta
         public DataTable getProfilPreference(int idProfil)
         {
             String requete;
-            requete = "SELECT Plage.idPlage, debut, fin, day FROM Plage, Profil_Preference WHERE Profil_Preference.idProfil = " + id + " AND Profil_Preference.idPlage = Plage.idPlage";
+            requete = "SELECT Plage.idPlage, debut, fin, day FROM Plage, Profil_Preference WHERE Profil_Preference.idProfil = " + idProfil + " AND Profil_Preference.idPlage = Plage.idPlage";
             return getResult(requete);
         }
         public void addProfilPreference(int idProfil, int idPreference)

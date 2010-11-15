@@ -174,32 +174,8 @@ namespace HoraireBeta
         }
 
         public static int SemaineToInt(DateTime entree) {
-            int jour=0;
-            switch (entree.ToString("ddd"))
-            {
-                case "lun.": 
-                    jour = 1;
-                    break;
-                case "mar.": 
-                    jour = 2;
-                    break;
-                case "mer.":
-                    jour = 3;
-                    break;
-                case "jeu." :
-                    jour = 4;
-                    break;
-                case "ven." :
-                    jour = 5;
-                    break;
-                case "sam." :
-                    jour = 6;
-                    break;
-                case "dim." :
-                    jour = 7;
-                    break;
-            }
-        return jour;
+           
+        return (int)entree.DayOfWeek;
             }
 
         public List<Bloc> getBlocFromDate(DateTime day)

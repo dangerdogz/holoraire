@@ -280,20 +280,54 @@ namespace HoraireBeta
             ajprofemp_label.Text = "Ajouter un profil d'employé";
         }
 
+        private void posteaoccuper_gauche_Click(object sender, EventArgs e)
+        {
+            if (this.treeView_postechoisi.SelectedNode.IsSelected == true)
+            {
+                System.Windows.Forms.TreeNode name;
+                name = new System.Windows.Forms.TreeNode(this.treeView_postechoisi.SelectedNode.Text);
+                //NEGGA
+                this.treeView_postdispo.Nodes.Add(name);
+                this.treeView_postechoisi.SelectedNode.Remove();
+            }
+        }
+
         private void buttondroit_Click(object sender, EventArgs e)
         {
             if (this.treeView_postdispo.SelectedNode.IsSelected == true)
             {
                 System.Windows.Forms.TreeNode name;
                 name = new System.Windows.Forms.TreeNode(this.treeView_postdispo.SelectedNode.Text);
-              
+                //NEGGA
                 this.treeView_postechoisi.Nodes.Add(name);
                 this.treeView_postdispo.SelectedNode.Remove();
             }
-
-
-
         }
+
+        private void postaaffectgauche_Click(object sender, EventArgs e)
+        {
+            if (this.treeView_postaaffectdroite.SelectedNode.IsSelected == true)
+            {
+                System.Windows.Forms.TreeNode name;
+                name = new System.Windows.Forms.TreeNode(this.treeView_postaaffectdroite.SelectedNode.Text);
+                //NEGGA2
+                this.treeView_postaaffectgauche.Nodes.Add(name);
+                this.treeView_postaaffectdroite.SelectedNode.Remove();
+            }
+        }
+
+        private void postaaffectdroit_Click(object sender, EventArgs e)
+        {
+            if (this.treeView_postaaffectgauche.SelectedNode.IsSelected == true)
+            {
+                System.Windows.Forms.TreeNode name;
+                name = new System.Windows.Forms.TreeNode(this.treeView_postaaffectgauche.SelectedNode.Text);
+                //NEGGA2
+                this.treeView_postaaffectdroite.Nodes.Add(name);
+                this.treeView_postaaffectgauche.SelectedNode.Remove();
+            }
+        }
+
 
 
         private void createBlock(/*int x, int y, DateTime hd, DateTime hf*/)

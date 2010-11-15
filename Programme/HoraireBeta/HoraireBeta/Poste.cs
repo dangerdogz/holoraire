@@ -28,6 +28,20 @@ namespace HoraireBeta
 
         }
 
+       public void save(){
+           DBConnect proc = new DBConnect();
+           if (this.id < 0)
+           {
+               proc.addPoste(nom, description);
+               id = Convert.ToInt32(proc.getLastStuff("Poste").Rows[0]["idPoste"].ToString());
+           }
+           else
+           {
+               proc.modifyPoste(id, nom, description);
+           }
+       }
+
+
         public void setNom(string nom)
         {
             this.nom = nom;

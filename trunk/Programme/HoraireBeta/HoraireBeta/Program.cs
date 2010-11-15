@@ -21,8 +21,8 @@ namespace HoraireBeta
             loader.LoadEquipe();
             loader.loadBloc();
 
-             CreateXml xml = new CreateXml();
-            xml.CreateProfileXml();
+             
+            CreateXml.CreateProfileXml();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new HoraireBeta(loader));*/

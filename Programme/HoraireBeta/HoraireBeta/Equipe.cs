@@ -46,6 +46,26 @@ namespace HoraireBeta
          return profils;
         }
 
+        public void save(){
+            DBConnect proc = new DBConnect();
+            if (this.id < 0)
+            {
+                proc.addTeam(nom, description);
+                id = Convert.ToInt32(proc.getLastStuff("Team").Rows[0]["idTeam"].ToString());
+            }
+            else
+            {
+                proc.modifyTeam(id, nom, description);
+
+                proc.deleteTeamProfile(id);
+            }
+
+            foreach (Ressource lui in profils)
+            {
+                proc.addTeamProfile(id, lui.getId(), -1);
+            }
+        }
+
         public void draw(Bloc bloc, int i, Graphics gfx)
         {
             Font laFont = new Font("Arial", 16);

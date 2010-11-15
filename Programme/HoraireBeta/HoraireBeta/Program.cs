@@ -14,10 +14,10 @@ namespace HoraireBeta
         static void Main()
         {
 
-            Loader loader = new Loader();
+           /* Loader loader = new Loader();
 
-            loader.LoadProfil();
             loader.loadPoste();
+            loader.LoadProfil();
             loader.LoadEquipe();
             loader.loadBloc();
 
@@ -25,9 +25,9 @@ namespace HoraireBeta
             xml.CreateProfileXml();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HoraireBeta(loader));
+            Application.Run(new HoraireBeta(loader));*/
 
-           /* Loader l = new Loader();
+            Loader l = new Loader();
 
             l.loadPoste();
             l.LoadProfil();
@@ -36,10 +36,11 @@ namespace HoraireBeta
 
             l.LoadEquipe();
             l.loadBloc();
+            l.loadErreurs();
             l.bloc.ElementAt(0).addRessourceVoulue(1, l.posteCharge.ElementAt(0));
 
-            TabSchedule t = new TabSchedule();
-            t.generate(l.bloc, l.profilCharge);*/
+           // TabSchedule t = new TabSchedule();
+            //t.generate(l.bloc, l.profilCharge);
 
 
 

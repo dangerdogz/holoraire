@@ -63,14 +63,14 @@ namespace HoraireBeta
             
         }
 
-        public int getX(){
-            return posX;
-        }
+        public int getX()
+        {return posX;}
 
         public int getXFin()
-        {
-            return posX+width;
-        }
+        {return posX+width;}
+
+        public DateTime getDate()
+        {return dateDuJour;}
 
         public void activer()
         {
@@ -135,7 +135,7 @@ namespace HoraireBeta
         public void ajouterBloc(int heureDebut)
         {
             //Variables bidon
-            DateTime date = new DateTime();
+         //  DateTime date = new DateTime();
             //  blocs[indexBlocs] = new Bloc();
             //Lors de l'ajout du bloc par defaut on ajoute 1hr
             // debut +1
@@ -216,7 +216,7 @@ namespace HoraireBeta
         
         
 
-        private void createBlock(int x, int y,DateTime debut,DateTime fin)
+        public void createBlock(int x, int y,DateTime debut,DateTime fin)
         {
            
                 CreationBloc creationbloc = new CreationBloc();

@@ -495,15 +495,19 @@ namespace HoraireBeta
             Chilkat.Xml xml = new Chilkat.Xml();
             Chilkat.Xml xmlProfiles = new Chilkat.Xml();
             Chilkat.Xml xmlPostes = new Chilkat.Xml();
+            Chilkat.Xml xmlPostes2 = new Chilkat.Xml();
+            Chilkat.Xml xmlPostes3 = new Chilkat.Xml();
             Chilkat.Xml xmlTeams = new Chilkat.Xml();
             xmlProfiles.LoadXmlFile("profiles.xml");
             xmlPostes.LoadXmlFile("postes.xml");
+            xmlPostes2.LoadXmlFile("postes.xml");
+            xmlPostes3.LoadXmlFile("postes.xml");
             xmlTeams.LoadXmlFile("teams.xml");
 
             FillTree(RessourceTree.Nodes[0].Nodes, xmlProfiles);
             FillTree(RessourceTree.Nodes[1].Nodes, xmlPostes);
             FillTree(RessourceTree.Nodes[2].Nodes, xmlTeams);
-            FillTree(treeView_postdispo.Nodes, xmlPostes);
+            FillTree(treeView_postdispo.Nodes, xmlPostes2);
             FillTree(treeView_postaaffectgauche.Nodes, xmlPostes);
             
 
@@ -641,19 +645,20 @@ namespace HoraireBeta
             this.panelCentral_Parametre.Controls.Add(this.label_postgeneral);
         }
 
+
         private void Sauvegarder_button_Click(object sender, EventArgs e)
         {
-        Profil profil = new Profil(nom_textbox.Text, prenom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0);
-        loader.profilCharge.Add(profil);
-        profil.save();
-        numemp_textbox.Text = "";
-        nom_textbox.Text = "";
-        prenom_textbox.Text = "";
-
-        courriel_textbox.Text = "";
-        telephone_textbox.Text = "";
-
+            Profil profil = new Profil(nom_textbox.Text, prenom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0);
+            loader.profilCharge.Add(profil);
+            profil.save();
+            numemp_textbox.Text = "";
+            nom_textbox.Text = "";
+            prenom_textbox.Text = "";
+            courriel_textbox.Text = "";
+            telephone_textbox.Text = "";
         }
+
+
     }
 } 
            

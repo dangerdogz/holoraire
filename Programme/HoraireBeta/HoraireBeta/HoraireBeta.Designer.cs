@@ -195,8 +195,10 @@ namespace HoraireBeta
             this.panelCentral_Horaire.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
             this.panelCentral_Horaire.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseUp);
 
+
             Graphics grfx = this.panelCentral_Horaire.CreateGraphics();
             
+
             // 
             // tabConflits
             // 

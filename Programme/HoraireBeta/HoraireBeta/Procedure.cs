@@ -286,7 +286,7 @@ namespace HoraireBeta
         public void addTeam(String nom, String description)
         {
             String requete;
-            requete = "INSERT INTO Team(nom, description) VALUES("+nom+", "+description+")";
+            requete = "INSERT INTO Team(nom, description) VALUES(\"" + nom + "\", \"" + description + "\")";
             getResult(requete);
         }
         public void modifyTeam(int id, String nom, String description)

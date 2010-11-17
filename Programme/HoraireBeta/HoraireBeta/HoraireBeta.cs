@@ -210,28 +210,27 @@ namespace HoraireBeta
 
         private void popPostWindow(/*int x, int y, DateTime hd, DateTime hf*/)
         {
+            
             AjouterPoste ajouterposte = new AjouterPoste();
             ajouterposte.ShowDialog();
             loader.posteCharge.Add(new Poste(ajouterposte.getpName(), ajouterposte.getpDesc()));
-
-
             ajouterposte.save();
-
-            
             MessageBox.Show(loader.posteCharge.Last().getNom());
-          /*  CreateXml xml = new CreateXml();
-            xml.CreateProfileXml();*/
+            CreateXml.CreateProfileXml();
             ajouterposte.Dispose();
         }
 
         private void popEquipeWindow(/*int x, int y, DateTime hd, DateTime hf*/)
         {
+            Chilkat.Xml xmlEquipe5 = new Chilkat.Xml();
+            xmlEquipe5.LoadXmlFile("postes.xml");
             AjouterEquipe ajouterequipe = new AjouterEquipe();
             ajouterequipe.ShowDialog();
             loader.equipe.Add(new Equipe(-1, ajouterequipe.geteName(), ajouterequipe.geteDesc()));
+            ajouterequipe.save();
             MessageBox.Show(loader.equipe.Last().getNom());
-            /*  CreateXml xml = new CreateXml();
-              xml.CreateProfileXml();*/
+            CreateXml.CreateProfileXml();
+            FillTree(treeView_postgen.Nodes, xmlEquipe5);
             ajouterequipe.Dispose();
         }
 

@@ -17,7 +17,29 @@ namespace HoraireBeta
         {
             InitializeComponent();
         }
-
+        public AjouterEquipe(String name, String desc)
+        {
+            setName(name);
+            setDesc(desc);
+        }
+        public AjouterEquipe(int id, String name, String desc)
+        {
+            setId(id);
+            setName(name);
+            setDesc(desc);
+        }
+        public void setId(int id)
+        {
+            id = -1;
+        }
+        public void setName(String ename)
+        {
+            this.ename = ename;
+        }
+        public void setDesc(String edesc)
+        {
+            this.edesc = edesc;
+        }
         public void setEquipe()
         {
             ename = textBox_nomequipe.Text;
@@ -43,6 +65,22 @@ namespace HoraireBeta
         {
             setEquipe();
             this.Hide();
+        }
+        public void save()
+        {
+            int id = -1;
+            DBConnect proc = new DBConnect();
+            if (id < 0)
+            {
+                proc.addTeam(ename, edesc);
+                id = Convert.ToInt32(proc.getLastStuff("Team").Rows[0]["last_insert_rowid()"].ToString());
+            }
+            else
+            {
+                proc.modifyTeam(id, ename, edesc);
+
+                proc.deleteTeamProfile(id);
+            }
         }
     }
 }

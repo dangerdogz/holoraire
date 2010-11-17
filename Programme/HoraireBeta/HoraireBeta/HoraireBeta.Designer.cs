@@ -1161,6 +1161,7 @@ namespace HoraireBeta
 
 
             grille = new GrilleHoraire(grfx, loader, getDebutSemaine());
+              
         }
 
         #endregion

@@ -16,6 +16,7 @@ namespace HoraireBeta
         Loader loader;
         DateTime laDate;
         Bloc selectionEnCours;
+        GrilleJour jourCliquer;
 
         public GrilleHoraire(Graphics grfx,Loader loader,DateTime date)
 
@@ -58,18 +59,27 @@ namespace HoraireBeta
             jours[5].activer();
             jours[6].activer();
             
+            //En-tête
+
+            //Grade des heures
+            Font laFont = new Font("Arial", 10);
+            Pen pen = new Pen(Color.Black);
+            SolidBrush brush = new SolidBrush(Color.Black);
+            SolidBrush selectedBrush = new SolidBrush(Color.Black);
+
+            for (int i = 1; i <= 24; i++)
+                {
+                if(i < 10)
+                    gfx.DrawString("0"+i+":00", laFont, brush, 0, (20*i)+25);
+                else
+                    gfx.DrawString(i + ":00", laFont, brush, 0, (20*i)+25);
+                }
         }
 
         public void refresh() {
             
             gfx.Clear(Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))));
-            jours[0].activer();
-            jours[1].activer();
-            jours[2].activer();
-            jours[3].activer();
-            jours[4].activer();
-            jours[5].activer();
-            jours[6].activer();
+            activer();
         }
 
 
@@ -102,28 +112,43 @@ namespace HoraireBeta
 
         public void passeClique(MouseEventArgs e,String mouse)
         {  
-            for (int i = 0; i < 7; i++)
+            if(mouse == "MouseUp")
             {
-            //Sélection du bon jours
-            if (e.X > jours[i].getX() && e.X < jours[i].getXFin())
+                for (int i = 0; i < 7; i++)
                 {
-                MessageBox.Show(jours[i].dateDuJour.ToString());
-                
-                //Sélection d'un bloc existant
-                if(selectionEnCours != null)
+                    //Sélection du bon jours
+                    if (e.X > jours[i].getX() && e.X < jours[i].getXFin())
                     {
-                    selectionEnCours.unSelectIt();
-                    }
-                selectionEnCours = jours[i].selectionneUnBloc(e.Y);
-                if (selectionEnCours != null)
-                    {
-                    selectionEnCours.selectIt();
-                    refresh();
-                    MessageBox.Show("Bloc sélectionné");
-                    }
-                
-                }
+                        //Jour cliquer
+                        jourCliquer = jours[i];
 
+
+                        //Sélection d'un bloc existant
+                        if (selectionEnCours != null)
+                        {
+                            selectionEnCours.unSelectIt();
+                        }
+                        selectionEnCours = jours[i].selectionneUnBloc(e.Y);
+                        if (selectionEnCours != null)
+                        {
+                            selectionEnCours.selectIt();
+                            refresh();
+
+                        }
+                        //Si appuis dans le vide
+                        else
+                            {
+                                //
+                                
+                            //jourCliquer.createBlock(jourCliquer.getX(),0,jourCliquer.getDate(),
+                            MessageBox.Show("Vide");
+                            }
+
+                    }
+
+                    
+
+                }
                 
                 
                 

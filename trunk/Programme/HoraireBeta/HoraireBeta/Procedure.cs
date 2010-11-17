@@ -348,6 +348,7 @@ namespace HoraireBeta
         {
             String requete;
             requete = "INSERT INTO Poste_Profil(idPoste, idProfil) VALUES(" + idPoste + ", " + idProfil + ")";
+            getResult(requete);
         }
         public void deletePosteProfil(int idPoste)
         {

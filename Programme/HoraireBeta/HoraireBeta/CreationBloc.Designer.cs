@@ -52,6 +52,9 @@ namespace HoraireBeta
             this.textBox_hrfin.Name = "textBox_hrfin";
             this.textBox_hrfin.Size = new System.Drawing.Size(86, 20);
             this.textBox_hrfin.TabIndex = 1;
+            //Si l'heure arrive a 25
+            if (hf == "25")
+                hf = "1";
             this.textBox_hrfin.Text = hf;
             // 
             // button_blocconfirm

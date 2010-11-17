@@ -69,6 +69,18 @@
     <Compile Include="AjouterPoste.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DeleteEquipe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteEquipe.Designer.cs">
+      <DependentUpon>DeleteEquipe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeletePost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeletePost.Designer.cs">
+      <DependentUpon>DeletePost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>AjouterPoste.cs</DependentUpon>
     </Compile>
@@ -96,6 +108,12 @@
     <EmbeddedResource Include="CreationBloc.resx">
       <DependentUpon>CreationBloc.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteEquipe.resx">
+      <DependentUpon>DeleteEquipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeletePost.resx">
+      <DependentUpon>DeletePost.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>AjouterPoste.cs</DependentUpon>

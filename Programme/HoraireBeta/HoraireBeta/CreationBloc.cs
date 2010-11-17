@@ -11,11 +11,12 @@ namespace HoraireBeta
 {
     public partial class CreationBloc : Form
     {
-        String hd;
-        String hf;
-        public CreationBloc(/*double* hd, double* hf*/)
+        string hd;
+        string hf;
+        public CreationBloc(string hd, string hf)
         {
-            InitializeComponent();
+            InitializeComponent(hd,hf);
+            
         }
 
         public void setHeures()
@@ -24,12 +25,12 @@ namespace HoraireBeta
             hf = textBox_hrfin.Text;
         }
 
-        public String getHd()
+        public string getHd()
         {
             return hd;
         }
 
-        public String getHf()
+        public string getHf()
         {
             return hf;
         }

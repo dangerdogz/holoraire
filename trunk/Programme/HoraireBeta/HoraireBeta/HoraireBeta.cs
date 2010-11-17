@@ -213,6 +213,11 @@ namespace HoraireBeta
             AjouterPoste ajouterposte = new AjouterPoste();
             ajouterposte.ShowDialog();
             loader.posteCharge.Add(new Poste(ajouterposte.getpName(), ajouterposte.getpDesc()));
+
+
+            ajouterposte.save();
+
+            
             MessageBox.Show(loader.posteCharge.Last().getNom());
           /*  CreateXml xml = new CreateXml();
             xml.CreateProfileXml();*/
@@ -525,8 +530,7 @@ namespace HoraireBeta
             while (xml != null && xml.GetChildContent("nom") != "")
             {
                treeNodes.Add(new TreeNode(xml.GetChildContent("nom")));
-               MessageBox.Show(xml.GetChildContent("nom"));
-                // Advance past this record.
+               // Advance past this record.
                 xml = xml.NextSibling();
             }
         }
@@ -659,6 +663,7 @@ namespace HoraireBeta
         }
 
 
+        
     }
 } 
            

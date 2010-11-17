@@ -126,7 +126,8 @@ namespace HoraireBeta
         public void addPoste(String nom, String description)
         {
             String requete;
-            requete = "INSERT INTO Poste(nom, description) VALUES(" + nom + ", " + description + ")";
+            requete = "INSERT INTO Poste(nom, description) VALUES(\"" + nom + "\", \"" + description + "\")";
+            getResult(requete);
         }
         public void deletePoste(int idPoste)
         {

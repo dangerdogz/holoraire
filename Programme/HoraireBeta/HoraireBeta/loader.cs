@@ -20,9 +20,9 @@ namespace HoraireBeta
     {
        
         public List<Erreur> erreur = new List<Erreur>();
-        public List<Poste> posteCharge = new List<Poste>();
+        public List<Ressource> posteCharge = new List<Ressource>();
         public List<Ressource> profilCharge = new List<Ressource>();
-        public List<Equipe> equipe = new List<Equipe>();
+        public List<Ressource> equipe = new List<Ressource>();
         public List<Bloc> bloc = new List<Bloc>();
 
 
@@ -59,7 +59,7 @@ namespace HoraireBeta
                         {
                             int k = 0;
                             while (Convert.ToInt32(rs2.Rows[j]["idPoste"].ToString()) != posteCharge[k++].getId()) ;
-                            newprof.setPoste(posteCharge[--k]);
+                            newprof.setPoste((Poste)posteCharge[--k]);
                         }
 
                     }
@@ -96,7 +96,7 @@ namespace HoraireBeta
             return (profilCharge);
         }
 
-        public List<Poste> loadPoste()
+        public List<Ressource> loadPoste()
         {
             DataTable rs;
             rs = proc.getAllPoste();
@@ -113,7 +113,7 @@ namespace HoraireBeta
         }
 
 
-        public List<Equipe> LoadEquipe()
+        public List<Ressource> LoadEquipe()
         {
             DataTable rsEquipe;
             DataTable rsEquipeProfil;
@@ -131,7 +131,7 @@ namespace HoraireBeta
                     int id = Convert.ToInt32(rsEquipeProfil.Rows[j]["idProfil"].ToString());
                     k = 0;
                     while (k < profilCharge.Count && id != profilCharge[k++].getId()) ;
-                    equipe[i].setEmploye(profilCharge[--k]);
+                    ((Equipe)equipe[i]).setEmploye(profilCharge[--k]);
                     
 
                 }
@@ -238,6 +238,21 @@ namespace HoraireBeta
             MessageBox.Show("Erreur : " + erreur.ElementAt(i).nom + "\n" + "Description : " + erreur.ElementAt(i).description + "\n", "Erreur #" + erreur.ElementAt(i).id.ToString());
 
         }
+
+        public Ressource findRessource(int id, List<Ressource> liste)
+        {
+            int i = 0;
+
+            while (id != liste.ElementAt(i).getId())
+            {
+                i++;
+            }
+
+            return liste.ElementAt(i);
+
+        }
+
+
 
         
 

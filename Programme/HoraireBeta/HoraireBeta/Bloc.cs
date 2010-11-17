@@ -160,6 +160,7 @@ namespace HoraireBeta
         {
 
 
+
             if (ressourcesVoulus.Count != 0)
             {
 
@@ -180,6 +181,7 @@ namespace HoraireBeta
 
 
                     ressourcesAffectes.Insert(coun, newEmp);
+                    
 
                 }
                 int i = 0;

@@ -14,8 +14,10 @@ namespace HoraireBeta
 {
     public partial class HoraireBeta : Form
     {
+        Boolean test = true;
         AjouterPoste ajouterposte = new AjouterPoste();
         AjouterEquipe ajouterequipe = new AjouterEquipe();
+        
         public HoraireBeta(Loader loader)
         {
             this.loader = loader;
@@ -234,8 +236,12 @@ namespace HoraireBeta
             AjouterPoste ajouterposte = new AjouterPoste();
             ajouterposte.ShowDialog();
             loader.posteCharge.Add(new Poste(ajouterposte.getpName(), ajouterposte.getpDesc()));
+
+            MessageBox.Show(((Poste)loader.posteCharge.Last()).getNom());
+
             ajouterposte.save();
-            MessageBox.Show(loader.posteCharge.Last().getNom());
+            MessageBox.Show(((Poste)loader.posteCharge.Last()).getNom());
+
             CreateXml.CreateProfileXml();
             ajouterposte.Dispose();
             Chilkat.Xml xmlPoste5 = new Chilkat.Xml();
@@ -253,8 +259,12 @@ namespace HoraireBeta
             AjouterEquipe ajouterequipe = new AjouterEquipe();
             ajouterequipe.ShowDialog();
             loader.equipe.Add(new Equipe(-1, ajouterequipe.geteName(), ajouterequipe.geteDesc()));
+
+            MessageBox.Show(((Equipe)loader.equipe.Last()).getNom());
+
             ajouterequipe.save();
-            MessageBox.Show(loader.equipe.Last().getNom());
+            MessageBox.Show(((Profil)loader.equipe.Last()).getNom());
+
             CreateXml.CreateProfileXml();
             ajouterequipe.Dispose();
             Chilkat.Xml xmlEquipe5 = new Chilkat.Xml();
@@ -301,7 +311,11 @@ namespace HoraireBeta
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+           
 
+                  
+                
+            
         }
 
 
@@ -539,11 +553,6 @@ namespace HoraireBeta
             {
                treeNodes.Add(new TreeNode(xml.GetChildContent("nom")));
 
-              // MessageBox.Show(xml.GetChildContent("nom"));
-                // Advance past this record.
-
-               // Advance past this record.
-
                 xml = xml.NextSibling();
             }
         }
@@ -686,8 +695,91 @@ namespace HoraireBeta
             telephone_textbox.Text = "";
         }
 
+        private void LinkBlocToRessource(Ressource res, Bloc bloc)
+        {
+            if (res is Profil)
+                bloc.addRessource((Profil)res);
+            else
+                if (res is Equipe)
+                    bloc.addRessource((Equipe)res);
+                else
+                    bloc.addRessourceVoulue(1, res);
+        }
 
-        
+
+        private void RessourceTree_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+
+            Ressource ressource = null;
+
+            if (grille.selectionEnCours != null)
+            {
+                String textInForm;
+
+                textInForm = e.Node.Text;
+                Chilkat.Xml xml = new Chilkat.Xml();
+                Chilkat.Xml xmlProfiles = new Chilkat.Xml();
+                Chilkat.Xml xmlPostes = new Chilkat.Xml();
+                Chilkat.Xml xmlTeams = new Chilkat.Xml();
+                xmlProfiles.LoadXmlFile("profiles.xml");
+                xmlPostes.LoadXmlFile("postes.xml");
+                xmlTeams.LoadXmlFile("teams.xml");
+                String id;
+
+                id = findRessourceXML(textInForm, xmlProfiles);
+
+                if (id != null)
+                {
+                    ressource = loader.findRessource(Convert.ToInt32(id), loader.profilCharge);
+                }
+                else
+                {
+                    id = findRessourceXML(textInForm, xmlPostes);
+
+                    if (id != null)
+                    {
+                        ressource = loader.findRessource(Convert.ToInt32(id), loader.posteCharge);
+                    }
+                    else
+                    {
+                        id = findRessourceXML(textInForm, xmlTeams);
+
+                        if (id != null)
+                        {
+                            ressource = loader.findRessource(Convert.ToInt32(id), loader.equipe);
+                        }
+                    }
+                }
+
+                if (ressource != null)
+                {
+                    LinkBlocToRessource(ressource, grille.selectionEnCours);
+                    e.Node.BackColor = Color.Cyan;
+                }
+            }
+        }
+
+        public String findRessourceXML(String nom, Chilkat.Xml xml)
+        {
+            xml.FirstChild2();
+
+            while (xml != null)
+            {
+                // FindNextRecord *will* return the current record if it
+                // matches the criteria. 
+                xml = xml.FindNextRecord("nom", nom.ToLower() + "*");
+                if (xml != null)
+                {
+                    // Add the company name to the listbox.
+                    String id = null;
+                    id = xml.GetChildContent("id");
+
+                    return id;
+                }
+            }
+            return null;
+        }
+
     }
 } 
            

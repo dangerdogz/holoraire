@@ -11,6 +11,10 @@ namespace HoraireBeta
 {
     partial class HoraireBeta
     {
+
+
+        public event TreeNodeMouseClickEventHandler NodeMouseDoubleClick;
+
         /// <summary>
         /// Variable nécessaire au concepteur.
         /// </summary>
@@ -281,6 +285,7 @@ namespace HoraireBeta
             // 
             // RessourceTree
             // 
+
             this.RessourceTree.BackColor = System.Drawing.SystemColors.Window;
             this.RessourceTree.Location = new System.Drawing.Point(7, 6);
             this.RessourceTree.Name = "RessourceTree";
@@ -297,6 +302,7 @@ namespace HoraireBeta
             this.RessourceTree.Size = new System.Drawing.Size(208, 316);
             this.RessourceTree.TabIndex = 0;
             this.RessourceTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.RessourceTree.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.RessourceTree_NodeMouseDoubleClick);
             // 
             // textBox1
             // 

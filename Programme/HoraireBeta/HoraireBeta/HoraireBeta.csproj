@@ -94,6 +94,7 @@
     <Compile Include="HoraireBeta.Designer.cs">
       <DependentUpon>HoraireBeta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Parametre.cs" />
     <Compile Include="Poste.cs" />
     <Compile Include="Procedure.cs" />
     <Compile Include="Profil.cs" />

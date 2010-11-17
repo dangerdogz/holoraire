@@ -15,7 +15,7 @@ namespace HoraireBeta
         Graphics gfx;
         Loader loader;
         DateTime laDate;
-        Bloc selectionEnCours;
+        public Bloc selectionEnCours;
         GrilleJour jourCliquer;
 
         public GrilleHoraire(Graphics grfx,Loader loader,DateTime date)

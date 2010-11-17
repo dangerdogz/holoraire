@@ -1,4 +1,6 @@
-﻿namespace HoraireBeta
+﻿
+
+namespace HoraireBeta
 {
     partial class CreationBloc
     {
@@ -26,7 +28,7 @@
         /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas
         /// le contenu de cette méthode avec l'éditeur de code.
         /// </summary>
-        private void InitializeComponent()
+        private void InitializeComponent(string hd, string hf)
         {
             this.textBox_hrdebut = new System.Windows.Forms.TextBox();
             this.textBox_hrfin = new System.Windows.Forms.TextBox();
@@ -41,6 +43,8 @@
             this.textBox_hrdebut.Name = "textBox_hrdebut";
             this.textBox_hrdebut.Size = new System.Drawing.Size(85, 20);
             this.textBox_hrdebut.TabIndex = 0;
+            this.textBox_hrdebut.Text = hd;
+
             // 
             // textBox_hrfin
             // 
@@ -48,6 +52,7 @@
             this.textBox_hrfin.Name = "textBox_hrfin";
             this.textBox_hrfin.Size = new System.Drawing.Size(86, 20);
             this.textBox_hrfin.TabIndex = 1;
+            this.textBox_hrfin.Text = hf;
             // 
             // button_blocconfirm
             // 

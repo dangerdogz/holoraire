@@ -111,9 +111,11 @@ namespace HoraireBeta
         }
 
         public void passeClique(MouseEventArgs e,String mouse)
-        {  
+        {
+            
             if(mouse == "MouseUp")
             {
+               
                 for (int i = 0; i < 7; i++)
                 {
                     //Sélection du bon jours
@@ -138,10 +140,19 @@ namespace HoraireBeta
                         //Si appuis dans le vide
                         else
                             {
-                                //
-                                
-                            //jourCliquer.createBlock(jourCliquer.getX(),0,jourCliquer.getDate(),
-                            MessageBox.Show("Vide");
+                            //DateTime 1 heure plus tard
+                            DateTime tempDateFin = jourCliquer.getDate().Add(new TimeSpan(1,0,0));
+
+                            if(jourCliquer.getHeureClique(e.Y) >= 0)
+                                {
+                                //Création du bloc
+                                jourCliquer.createBlock(jourCliquer.getX(), jourCliquer.getHeureClique(e.Y),
+                                    jourCliquer.getDate(), tempDateFin);
+
+                                }
+                            else
+                                MessageBox.Show("Té pas supposer voir ca ... ");
+                           // MessageBox.Show("Vide");
                             }
 
                     }

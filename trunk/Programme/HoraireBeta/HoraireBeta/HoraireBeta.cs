@@ -148,7 +148,7 @@ namespace HoraireBeta
 
         private void pCentral_Parametre_OnMouseEvent(object sender, MouseEventArgs e)
         {
-
+            
             switch (e.Button)
             {
                 case MouseButtons.Left:
@@ -336,12 +336,12 @@ namespace HoraireBeta
 
 
         private void createBlock(/*int x, int y, DateTime hd, DateTime hf*/)
-        {
+        {/*
             CreationBloc creationbloc = new CreationBloc();
             creationbloc.ShowDialog();
             loader.bloc.Add(new Bloc(new DateTime(2010, 11, 03, Convert.ToInt32(creationbloc.getHd()), 0, 0), new DateTime(2010, 11, 03, Convert.ToInt32(creationbloc.getHf()), 0, 0), 0, 0));
             creationbloc.Dispose();
-            //Application.Run(creationbloc);
+            //Application.Run(creationbloc);*/
         }
 
        /* public void ajoutposteBD()
@@ -536,7 +536,12 @@ namespace HoraireBeta
             while (xml != null && xml.GetChildContent("nom") != "")
             {
                treeNodes.Add(new TreeNode(xml.GetChildContent("nom")));
+<<<<<<< .mine
+              // MessageBox.Show(xml.GetChildContent("nom"));
+                // Advance past this record.
+=======
                // Advance past this record.
+>>>>>>> .r238
                 xml = xml.NextSibling();
             }
         }

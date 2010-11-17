@@ -502,18 +502,25 @@ namespace HoraireBeta
             Chilkat.Xml xmlPostes = new Chilkat.Xml();
             Chilkat.Xml xmlPostes2 = new Chilkat.Xml();
             Chilkat.Xml xmlPostes3 = new Chilkat.Xml();
+            Chilkat.Xml xmlPostes4 = new Chilkat.Xml();
             Chilkat.Xml xmlTeams = new Chilkat.Xml();
+            Chilkat.Xml xmlTeams2 = new Chilkat.Xml();
             xmlProfiles.LoadXmlFile("profiles.xml");
             xmlPostes.LoadXmlFile("postes.xml");
             xmlPostes2.LoadXmlFile("postes.xml");
             xmlPostes3.LoadXmlFile("postes.xml");
+            xmlPostes4.LoadXmlFile("postes.xml");
             xmlTeams.LoadXmlFile("teams.xml");
+            xmlTeams2.LoadXmlFile("teams.xml");
+
 
             FillTree(RessourceTree.Nodes[0].Nodes, xmlProfiles);
             FillTree(RessourceTree.Nodes[1].Nodes, xmlPostes);
             FillTree(RessourceTree.Nodes[2].Nodes, xmlTeams);
             FillTree(treeView_postdispo.Nodes, xmlPostes2);
-            FillTree(treeView_postaaffectgauche.Nodes, xmlPostes);
+            FillTree(treeView_postaaffectgauche.Nodes, xmlPostes3);
+            FillTree(treeView_equipe.Nodes, xmlTeams2);
+            FillTree(treeView_postgen.Nodes, xmlPostes4);
             
 
         }

@@ -86,7 +86,6 @@ namespace HoraireBeta
             this.ajprofemp_label = new System.Windows.Forms.Label();
             this.panelGauche_Employe = new System.Windows.Forms.Panel();
             this.supprimer_button = new System.Windows.Forms.Button();
-            this.modifier_button = new System.Windows.Forms.Button();
             this.ajouter_button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.parametre = new System.Windows.Forms.TabPage();
@@ -131,6 +130,7 @@ namespace HoraireBeta
             this.button_supprimer = new System.Windows.Forms.Button();
             this.button_ajouter_PG = new System.Windows.Forms.Button();
             this.label_postgeneral = new System.Windows.Forms.Label();
+            this.modifier_button = new System.Windows.Forms.Button();
             this.Admin.SuspendLayout();
             this.horaire.SuspendLayout();
             this.panelCentral_Horaire.SuspendLayout();
@@ -194,11 +194,6 @@ namespace HoraireBeta
             this.panelCentral_Horaire.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseDown);
             this.panelCentral_Horaire.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
             this.panelCentral_Horaire.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseUp);
-
-
-            Graphics grfx = this.panelCentral_Horaire.CreateGraphics();
-            
-
             // 
             // tabConflits
             // 
@@ -668,17 +663,6 @@ namespace HoraireBeta
             this.supprimer_button.Text = "Supprimer";
             this.supprimer_button.UseVisualStyleBackColor = true;
             // 
-            // modifier_button
-            // 
-            this.modifier_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modifier_button.Location = new System.Drawing.Point(3, 75);
-            this.modifier_button.Name = "modifier_button";
-            this.modifier_button.Size = new System.Drawing.Size(232, 32);
-            this.modifier_button.TabIndex = 2;
-            this.modifier_button.Text = "Modifier";
-            this.modifier_button.UseVisualStyleBackColor = true;
-            this.modifier_button.Click += new System.EventHandler(this.modifier_button_Click);
-            // 
             // ajouter_button
             // 
             this.ajouter_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1073,6 +1057,7 @@ namespace HoraireBeta
             this.button_del_equipe.TabIndex = 5;
             this.button_del_equipe.Text = "Supprimer";
             this.button_del_equipe.UseVisualStyleBackColor = true;
+            this.button_aj_equipe.Click += new System.EventHandler(this.button_del_equipe_Click);
             // 
             // button_aj_equipe
             // 
@@ -1104,6 +1089,7 @@ namespace HoraireBeta
             this.button_supprimer.TabIndex = 2;
             this.button_supprimer.Text = "Supprimer";
             this.button_supprimer.UseVisualStyleBackColor = true;
+            this.button_aj_equipe.Click += new System.EventHandler(this.button_supprimer_Click);
             // 
             // button_ajouter_PG
             // 
@@ -1125,6 +1111,17 @@ namespace HoraireBeta
             this.label_postgeneral.Size = new System.Drawing.Size(119, 20);
             this.label_postgeneral.TabIndex = 0;
             this.label_postgeneral.Text = "Postes Général";
+            // 
+            // modifier_button
+            // 
+            this.modifier_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modifier_button.Location = new System.Drawing.Point(3, 75);
+            this.modifier_button.Name = "modifier_button";
+            this.modifier_button.Size = new System.Drawing.Size(232, 32);
+            this.modifier_button.TabIndex = 2;
+            this.modifier_button.Text = "Modifier";
+            this.modifier_button.UseVisualStyleBackColor = true;
+            this.modifier_button.Click += new System.EventHandler(this.modifier_button_Click);
             // 
             // HoraireBeta
             // 
@@ -1159,9 +1156,6 @@ namespace HoraireBeta
             ((System.ComponentModel.ISupportInitialize)(this.resultDataGrid)).EndInit();
             this.ResumeLayout(false);
 
-
-            grille = new GrilleHoraire(grfx, loader, getDebutSemaine());
-              
         }
 
         #endregion
@@ -1222,7 +1216,6 @@ namespace HoraireBeta
         private Button ajouter_button;
         private Label ajprofemp_label;
         private Button supprimer_button;
-        private Button modifier_button;
         private Label infopers_label;
         private TextBox telephone_textbox;
         private TextBox courriel_textbox;
@@ -1279,6 +1272,7 @@ namespace HoraireBeta
         private Button button_postaaffectdroit;
         private Button button_affecter;
         private TreeView treeView_postspec2;
+        private Button modifier_button;
 
 
     }

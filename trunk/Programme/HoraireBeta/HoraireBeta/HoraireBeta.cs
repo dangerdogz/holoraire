@@ -208,7 +208,27 @@ namespace HoraireBeta
             popEquipeWindow();
         }
 
-        private void popPostWindow(/*int x, int y, DateTime hd, DateTime hf*/)
+        private void button_del_equipe_Click(object sender, EventArgs e)
+        {
+            popTeamDelWindow();
+        }
+
+        private void button_supprimer_Click(object sender, EventArgs e)
+        {
+            popPostDelWindow();
+        }
+
+        private void popTeamDelWindow()
+        {
+
+        }
+
+        private void popPostDelWindow()
+        {
+
+        }
+
+        private void popPostWindow()
         {
             
             AjouterPoste ajouterposte = new AjouterPoste();
@@ -220,7 +240,7 @@ namespace HoraireBeta
             ajouterposte.Dispose();
         }
 
-        private void popEquipeWindow(/*int x, int y, DateTime hd, DateTime hf*/)
+        private void popEquipeWindow()
         {
             Chilkat.Xml xmlEquipe5 = new Chilkat.Xml();
             xmlEquipe5.LoadXmlFile("postes.xml");
@@ -333,8 +353,6 @@ namespace HoraireBeta
             }
         }
 
-
-
         private void createBlock(/*int x, int y, DateTime hd, DateTime hf*/)
         {/*
             CreationBloc creationbloc = new CreationBloc();
@@ -343,32 +361,6 @@ namespace HoraireBeta
             creationbloc.Dispose();
             //Application.Run(creationbloc);*/
         }
-
-       /* public void ajoutposteBD()
-        {
-
-            loader.posteCharge.Add(new Poste(ajouterposte.getpName(), ajouterposte.getpDesc()));
-   
-            CreateXml xml = new CreateXml();
-  
-            xml.CreateProfileXml();
- 
-            AjouterPoste.ActiveForm.Dispose();
-
-        }
-
-        public void ajoutequipeBD()
-        {
-
-            loader.equipe.Add(new Equipe(-1, ajouterequipe.geteName(), ajouterequipe.geteDesc()));
-
-            CreateXml xml = new CreateXml();
-
-            xml.CreateProfileXml();
-
-            AjouterEquipe.ActiveForm.Dispose();
-
-        }*/
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -536,12 +528,12 @@ namespace HoraireBeta
             while (xml != null && xml.GetChildContent("nom") != "")
             {
                treeNodes.Add(new TreeNode(xml.GetChildContent("nom")));
-<<<<<<< .mine
+
               // MessageBox.Show(xml.GetChildContent("nom"));
                 // Advance past this record.
-=======
+
                // Advance past this record.
->>>>>>> .r238
+
                 xml = xml.NextSibling();
             }
         }
@@ -664,7 +656,18 @@ namespace HoraireBeta
         private void Sauvegarder_button_Click(object sender, EventArgs e)
         {
             Profil profil = new Profil(nom_textbox.Text, prenom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0);
-            loader.profilCharge.Add(profil);
+
+          /*  foreach (TreeNode poste in treeView_postechoisi.Nodes)
+            {
+               
+                profil.setPoste(
+            }
+
+            treeView_postechoisi.Nodes
+            loader.profilCharge.Add(profil);*/
+
+
+
             profil.save();
             numemp_textbox.Text = "";
             nom_textbox.Text = "";

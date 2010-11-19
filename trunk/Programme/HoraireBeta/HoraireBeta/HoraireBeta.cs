@@ -111,6 +111,10 @@ namespace HoraireBeta
             {
                 case MouseButtons.Left:
                     grille.passeClique(e,"MouseUp");
+                    if (grille.selectionEnCours != null)
+                    {
+                        fillEmployeListBox(grille.selectionEnCours);
+                    }
                     break;
             }
 
@@ -540,9 +544,6 @@ namespace HoraireBeta
             FillTree(treeView_postaaffectgauche.Nodes, xmlPostes3);
             FillTree(treeView_equipe.Nodes, xmlTeams2);
             FillTree(treeView_postgen.Nodes, xmlPostes4);
-            fillEmployeListBox();
-            
-
         }
         public void FillTree(TreeNodeCollection treeNodes, Chilkat.Xml xml)
         {
@@ -705,7 +706,7 @@ namespace HoraireBeta
         private void LinkBlocToRessource(Ressource res, Bloc bloc)
         {
             if (res is Profil)
-                bloc.addRessource((Profil)res);
+                bloc.addProfil((Profil)res);
             else
                 if (res is Equipe)
                     bloc.addRessource((Equipe)res);
@@ -720,13 +721,24 @@ namespace HoraireBeta
                             nb = bloc.getRessourceVoulus(i).nbVoulue.ToString();
                         }
                     }
+<<<<<<< .mine
+//NbPoste input = new NbPoste(((Poste)res).getNom(), nb);
+                    //input.ShowDialog();
+
+=======
                     /*
                    /* NbPoste input = new NbPoste(((Poste)res).getNom(), nb);
                     input.ShowDialog();
+>>>>>>> .r256
 
+<<<<<<< .mine
+                    //bloc.addRessourceVoulue(Convert.ToInt32(input.getNb()), res);
+                    //input.Dispose();
+=======
 
                     bloc.addRessourceVoulue(Convert.ToInt32(input.getNb()), res);
                     input.Dispose();*/
+>>>>>>> .r256
                 }
         }
 
@@ -803,26 +815,26 @@ namespace HoraireBeta
             }
             return null;
         }
-        public void fillEmployeListBox()
+        public void fillEmployeListBox(Bloc bloc)
         {
-            Chilkat.Xml xml = new Chilkat.Xml();
-            xml.LoadXmlFile("profiles.xml");
-            xml.FirstChild2();
             listEmploye.Items.Clear();
-            while (xml != null)
+
+            List<Ressource> ressources = bloc.getListRessourceAffecte();
+
+            MessageBox.Show(bloc.getRessourceVoulus().Count.ToString());
+            MessageBox.Show(bloc.getListRessourceAffecte().Count.ToString());
+
+            for (int i = 0; i < ressources.Count(); i++)
             {
-                // FindNextRecord *will* return the current record if it
-                // matches the criteria. 
-                
-                if (xml != null)
-                {
-                    // Add the employee name to the listbox.
-                    listEmploye.Items.Add(xml.GetChildContent("nom"));
-                    xml = xml.NextSibling();
-                }
+
+                // Add the employee name to the listbox.
+                listEmploye.Items.Add(((Profil)ressources.ElementAt(i)).getNom() + ", " + ((Profil)ressources.ElementAt(i)).getPrenom());
+
+
             }
+
             listEmploye.MouseDoubleClick += new MouseEventHandler(listEmploye_MouseDoubleClick);
-         }
+        }
         void listEmploye_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 
@@ -838,6 +850,44 @@ namespace HoraireBeta
             }
 
         }
+        public void fillPosteListBox(Bloc bloc)
+        {
+
+            
+            listEmploye.Items.Clear();
+
+            List<Ressource> ressources = bloc.getListRessourceAffecte();
+
+            MessageBox.Show(bloc.getListRessourceAffecte().Count.ToString());
+
+            for (int i = 0; i < ressources.Count(); i++)
+            {
+
+                // Add the employee name to the listbox.
+                listPoste.Items.Add(((Poste)ressources.ElementAt(i)).getNom());
+
+
+            }
+
+            listEmploye.MouseDoubleClick += new MouseEventHandler(listPoste_MouseDoubleClick);
+        }
+        void listPoste_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+            int index = this.listPoste.IndexFromPoint(e.Location);
+
+            if (index != System.Windows.Forms.ListBox.NoMatches)
+            {
+
+                MessageBox.Show(index.ToString());
+
+                //do your stuff here
+
+            }
+
+        }
+
+       
         
     }
 } 

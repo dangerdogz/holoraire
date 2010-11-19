@@ -716,12 +716,12 @@ namespace HoraireBeta
                         }
                     }
 
-                    NbPoste input = new NbPoste(((Poste)res).getNom(), nb);
+                   /* NbPoste input = new NbPoste(((Poste)res).getNom(), nb);
                     input.ShowDialog();
 
 
                     bloc.addRessourceVoulue(Convert.ToInt32(input.getNb()), res);
-                    input.Dispose();
+                    input.Dispose();*/
                 }
         }
 

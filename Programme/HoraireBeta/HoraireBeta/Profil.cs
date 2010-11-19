@@ -195,7 +195,7 @@ namespace HoraireBeta
             foreach (Ressource lui in poste)
             {
                
-                proc.addPosteProfil(id, lui.getId());
+                proc.addPosteProfil(lui.getId(), id);
             }
             proc.deleteProfilPreference(id);
             

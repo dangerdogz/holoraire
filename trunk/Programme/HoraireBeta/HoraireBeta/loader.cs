@@ -18,6 +18,7 @@ namespace HoraireBeta
 
     public class Loader
     {
+ 
        
         public List<Erreur> erreur = new List<Erreur>();
         public List<Ressource> posteCharge = new List<Ressource>();
@@ -80,7 +81,7 @@ namespace HoraireBeta
 
                     for (int j = 0; j < rs4.Rows.Count; j++)
                     {
-                        Bloc newBloc = new Bloc(DateTime.ParseExact(rs4.Rows[i]["debut"].ToString(), "yyyy-MM-dd HH:mm:ss", null), Convert.ToDateTime(rs4.Rows[i]["fin"].ToString()), 0, Convert.ToInt32(rs4.Rows[j]["idPlage"].ToString()));
+                        Bloc newBloc = new Bloc(DateTime.ParseExact(rs4.Rows[i]["debut"].ToString(), "yyyy-MM-dd HH:mm:ss", null), DateTime.ParseExact(rs4.Rows[i]["fin"].ToString(), "yyyy-MM-dd HH:mm:ss", null), 0, Convert.ToInt32(rs4.Rows[j]["idPlage"].ToString()));
                         newprof.addPref(newBloc);
                     }
 

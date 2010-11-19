@@ -712,33 +712,45 @@ namespace HoraireBeta
                     bloc.addRessource((Equipe)res);
                 else
                 {
-                    String nb = "1";
-                    for (int i = 0; i < bloc.getRessourceVoulus().Count; i++)
+                    String nb = "";
+                    int position;
+                    bool existe = false;
+
+                    for (position = 0; position < bloc.getRessourceVoulus().Count; position++)
                     {
 
-                        if (((Poste)bloc.getRessourceVoulus(i).voulue).getNom().Equals(((Poste)res).getNom()))
+                        if (((Poste)bloc.getRessourceVoulus(position).voulue).getNom().Equals(((Poste)res).getNom()))
                         {
-                            nb = bloc.getRessourceVoulus(i).nbVoulue.ToString();
+                            nb = bloc.getRessourceVoulus(position).nbVoulue.ToString();
+                            MessageBox.Show(nb);
+                            existe = true;
+                            break;
                         }
+
+
+
+                        NbPoste input = new NbPoste(((Poste)res).getNom(), nb);
+                        input.ShowDialog();
+
+                        if (existe)
+                        {
+
+                            RessourceEntree resNb = bloc.getRessourceVoulus(position);
+                            resNb.nbVoulue = Convert.ToInt32(input.getNb());
+                            bloc.removeRessourceVoulu(bloc.getRessourceVoulus()[position]);
+
+                            bloc.addRessourceVoulue(Convert.ToInt32(input.getNb()), res);
+                            input.Dispose();
+
+
+                            bloc.addRessourceVoulue(resNb);
+
+                        }
+                        else
+                            bloc.addRessourceVoulue(Convert.ToInt32(input.getNb()), res);
+
+                        input.Dispose();
                     }
-<<<<<<< .mine
-//NbPoste input = new NbPoste(((Poste)res).getNom(), nb);
-                    //input.ShowDialog();
-
-=======
-                    /*
-                   /* NbPoste input = new NbPoste(((Poste)res).getNom(), nb);
-                    input.ShowDialog();
->>>>>>> .r256
-
-<<<<<<< .mine
-                    //bloc.addRessourceVoulue(Convert.ToInt32(input.getNb()), res);
-                    //input.Dispose();
-=======
-
-                    bloc.addRessourceVoulue(Convert.ToInt32(input.getNb()), res);
-                    input.Dispose();*/
->>>>>>> .r256
                 }
         }
 

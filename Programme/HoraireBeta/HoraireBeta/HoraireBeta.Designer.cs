@@ -207,12 +207,14 @@ namespace HoraireBeta
             this.panelCentral_Horaire.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseDown);
             this.panelCentral_Horaire.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
             this.panelCentral_Horaire.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseUp);
-<<<<<<< .mine
-=======
-           // this.panelCentral_Horaire. += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_DoubleClick);
 
             Graphics grfx = this.panelCentral_Horaire.CreateGraphics();
->>>>>>> .r256
+
+
+           // this.panelCentral_Horaire. += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_DoubleClick);
+
+
+
             // 
             // tabConflits
             // 
@@ -1233,6 +1235,7 @@ namespace HoraireBeta
             this.admin_central.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultDataGrid)).EndInit();
             this.ResumeLayout(false);
+            grille = new GrilleHoraire(grfx, loader, getDebutSemaine());
 
         }
 

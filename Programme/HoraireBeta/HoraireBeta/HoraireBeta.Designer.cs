@@ -50,6 +50,8 @@ namespace HoraireBeta
             this.tabConflits = new System.Windows.Forms.TabControl();
             this.tab_Conflits = new System.Windows.Forms.TabPage();
             this.text_Conflits = new System.Windows.Forms.RichTextBox();
+            this.tabEmploye = new System.Windows.Forms.TabPage();
+            this.listEmploye = new System.Windows.Forms.ListBox();
             this.panelGauche_Horaire = new System.Windows.Forms.Panel();
             this.Presets = new System.Windows.Forms.TabControl();
             this.tab_Presets = new System.Windows.Forms.TabPage();
@@ -90,6 +92,7 @@ namespace HoraireBeta
             this.ajprofemp_label = new System.Windows.Forms.Label();
             this.panelGauche_Employe = new System.Windows.Forms.Panel();
             this.supprimer_button = new System.Windows.Forms.Button();
+            this.modifier_button = new System.Windows.Forms.Button();
             this.ajouter_button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.parametre = new System.Windows.Forms.TabPage();
@@ -134,12 +137,12 @@ namespace HoraireBeta
             this.button_supprimer = new System.Windows.Forms.Button();
             this.button_ajouter_PG = new System.Windows.Forms.Button();
             this.label_postgeneral = new System.Windows.Forms.Label();
-            this.modifier_button = new System.Windows.Forms.Button();
             this.Admin.SuspendLayout();
             this.horaire.SuspendLayout();
             this.panelCentral_Horaire.SuspendLayout();
             this.tabConflits.SuspendLayout();
             this.tab_Conflits.SuspendLayout();
+            this.tabEmploye.SuspendLayout();
             this.panelGauche_Horaire.SuspendLayout();
             this.Presets.SuspendLayout();
             this.tab_Ressources.SuspendLayout();
@@ -198,12 +201,11 @@ namespace HoraireBeta
             this.panelCentral_Horaire.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseDown);
             this.panelCentral_Horaire.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
             this.panelCentral_Horaire.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseUp);
-
-            Graphics grfx = this.panelCentral_Horaire.CreateGraphics();
             // 
             // tabConflits
             // 
             this.tabConflits.Controls.Add(this.tab_Conflits);
+            this.tabConflits.Controls.Add(this.tabEmploye);
             this.tabConflits.Location = new System.Drawing.Point(291, 536);
             this.tabConflits.Name = "tabConflits";
             this.tabConflits.SelectedIndex = 0;
@@ -230,6 +232,25 @@ namespace HoraireBeta
             this.text_Conflits.Size = new System.Drawing.Size(455, 113);
             this.text_Conflits.TabIndex = 0;
             this.text_Conflits.Text = "";
+            // 
+            // tabEmploye
+            // 
+            this.tabEmploye.Controls.Add(this.listEmploye);
+            this.tabEmploye.Location = new System.Drawing.Point(4, 22);
+            this.tabEmploye.Name = "tabEmploye";
+            this.tabEmploye.Size = new System.Drawing.Size(442, 127);
+            this.tabEmploye.TabIndex = 1;
+            this.tabEmploye.Text = "Employés";
+            this.tabEmploye.UseVisualStyleBackColor = true;
+            // 
+            // listEmploye
+            // 
+            this.listEmploye.FormattingEnabled = true;
+            this.listEmploye.Location = new System.Drawing.Point(3, 5);
+            this.listEmploye.Name = "listEmploye";
+            this.listEmploye.Size = new System.Drawing.Size(439, 121);
+            this.listEmploye.TabIndex = 0;
+            
             // 
             // panelGauche_Horaire
             // 
@@ -285,7 +306,6 @@ namespace HoraireBeta
             // 
             // RessourceTree
             // 
-
             this.RessourceTree.BackColor = System.Drawing.SystemColors.Window;
             this.RessourceTree.Location = new System.Drawing.Point(7, 6);
             this.RessourceTree.Name = "RessourceTree";
@@ -670,6 +690,17 @@ namespace HoraireBeta
             this.supprimer_button.TabIndex = 3;
             this.supprimer_button.Text = "Supprimer";
             this.supprimer_button.UseVisualStyleBackColor = true;
+            // 
+            // modifier_button
+            // 
+            this.modifier_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modifier_button.Location = new System.Drawing.Point(3, 75);
+            this.modifier_button.Name = "modifier_button";
+            this.modifier_button.Size = new System.Drawing.Size(232, 32);
+            this.modifier_button.TabIndex = 2;
+            this.modifier_button.Text = "Modifier";
+            this.modifier_button.UseVisualStyleBackColor = true;
+            this.modifier_button.Click += new System.EventHandler(this.modifier_button_Click);
             // 
             // ajouter_button
             // 
@@ -1065,7 +1096,6 @@ namespace HoraireBeta
             this.button_del_equipe.TabIndex = 5;
             this.button_del_equipe.Text = "Supprimer";
             this.button_del_equipe.UseVisualStyleBackColor = true;
-            this.button_aj_equipe.Click += new System.EventHandler(this.button_del_equipe_Click);
             // 
             // button_aj_equipe
             // 
@@ -1076,7 +1106,7 @@ namespace HoraireBeta
             this.button_aj_equipe.TabIndex = 4;
             this.button_aj_equipe.Text = "Ajouter";
             this.button_aj_equipe.UseVisualStyleBackColor = true;
-            this.button_aj_equipe.Click += new System.EventHandler(this.button_aj_equipe_Click);
+            this.button_aj_equipe.Click += new System.EventHandler(this.button_supprimer_Click);
             // 
             // treeView_postgen
             // 
@@ -1097,7 +1127,6 @@ namespace HoraireBeta
             this.button_supprimer.TabIndex = 2;
             this.button_supprimer.Text = "Supprimer";
             this.button_supprimer.UseVisualStyleBackColor = true;
-            this.button_aj_equipe.Click += new System.EventHandler(this.button_supprimer_Click);
             // 
             // button_ajouter_PG
             // 
@@ -1120,17 +1149,6 @@ namespace HoraireBeta
             this.label_postgeneral.TabIndex = 0;
             this.label_postgeneral.Text = "Postes Général";
             // 
-            // modifier_button
-            // 
-            this.modifier_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modifier_button.Location = new System.Drawing.Point(3, 75);
-            this.modifier_button.Name = "modifier_button";
-            this.modifier_button.Size = new System.Drawing.Size(232, 32);
-            this.modifier_button.TabIndex = 2;
-            this.modifier_button.Text = "Modifier";
-            this.modifier_button.UseVisualStyleBackColor = true;
-            this.modifier_button.Click += new System.EventHandler(this.modifier_button_Click);
-            // 
             // HoraireBeta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1144,6 +1162,7 @@ namespace HoraireBeta
             this.panelCentral_Horaire.ResumeLayout(false);
             this.tabConflits.ResumeLayout(false);
             this.tab_Conflits.ResumeLayout(false);
+            this.tabEmploye.ResumeLayout(false);
             this.panelGauche_Horaire.ResumeLayout(false);
             this.panelGauche_Horaire.PerformLayout();
             this.Presets.ResumeLayout(false);
@@ -1163,8 +1182,6 @@ namespace HoraireBeta
             this.admin_central.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultDataGrid)).EndInit();
             this.ResumeLayout(false);
-
-            grille = new GrilleHoraire(grfx, loader, getDebutSemaine());
 
         }
 
@@ -1283,6 +1300,8 @@ namespace HoraireBeta
         private Button button_affecter;
         private TreeView treeView_postspec2;
         private Button modifier_button;
+        private TabPage tabEmploye;
+        private ListBox listEmploye;
 
 
     }

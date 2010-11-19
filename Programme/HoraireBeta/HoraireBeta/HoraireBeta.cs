@@ -671,19 +671,21 @@ namespace HoraireBeta
             this.panelCentral_Parametre.Controls.Add(this.label_postgeneral);
         }
 
-
         private void Sauvegarder_button_Click(object sender, EventArgs e)
         {
-            Profil profil = new Profil(nom_textbox.Text, prenom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0);
-
-          /*  foreach (TreeNode poste in treeView_postechoisi.Nodes)
+            Profil profil = new Profil(Convert.ToInt32(numemp_textbox.Text.ToString()) ,nom_textbox.Text, prenom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0);
+            int nemploye = Convert.ToInt32(numemp_textbox.Text.ToString());
+            for (int cul = 1; cul <= treeView_postechoisi.GetNodeCount(false); cul++)
             {
-               
-                profil.setPoste(
+                int i = 0;
+                while (treeView_postechoisi.GetNodeAt(1, (int)(cul * 15)).Text != ((Poste)(loader.posteCharge[i++])).getNom()) ;
+                profil.setPoste((Poste)(loader.posteCharge[--i]));
+                
             }
 
-            treeView_postechoisi.Nodes
-            loader.profilCharge.Add(profil);*/
+            
+
+            loader.profilCharge.Add(profil);
 
 
 

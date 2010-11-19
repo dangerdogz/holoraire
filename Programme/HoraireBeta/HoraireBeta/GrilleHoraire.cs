@@ -70,9 +70,9 @@ namespace HoraireBeta
             for (int i = 1; i <= 24; i++)
                 {
                 if(i < 10)
-                    gfx.DrawString("0"+i+":00", laFont, brush, 0, (20*i)+25);
+                    gfx.DrawString("0"+(i-1)+":00", laFont, brush, 0, (20*i)+15);
                 else
-                    gfx.DrawString(i + ":00", laFont, brush, 0, (20*i)+25);
+                    gfx.DrawString((i-1) + ":00", laFont, brush, 0, (20*i)+15);
                 }
         }
 
@@ -113,6 +113,7 @@ namespace HoraireBeta
         public void passeClique(MouseEventArgs e,String mouse)
         {
             
+            
             if(mouse == "MouseUp")
             {
                
@@ -141,7 +142,7 @@ namespace HoraireBeta
                         else
                             {
                             //DateTime 1 heure plus tard
-                            DateTime tempDateFin = jourCliquer.getDate().Add(new TimeSpan(1,0,0));
+                            DateTime tempDateFin = jourCliquer.getDate();
 
                             if(jourCliquer.getHeureClique(e.Y) >= 0)
                                 {

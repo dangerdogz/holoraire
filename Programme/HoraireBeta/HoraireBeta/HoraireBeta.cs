@@ -114,12 +114,17 @@ namespace HoraireBeta
                     break;
             }
 
+            
+        }
 
+        private void pCentral_Horaire_DoubleClick(object sender, EventArgs e)
+        {
+           // MessageBox.Show(""+e.X);
         }
 
         private void pCentral_Horaire_OnMouseEvent(object sender, MouseEventArgs e)
         {
-
+            
             switch (e.Button)
             {
                 case MouseButtons.Left:
@@ -137,7 +142,7 @@ namespace HoraireBeta
 
         private void pGauche_Parametre_OnMouseEvent(object sender, MouseEventArgs e)
         {
-
+            
             switch (e.Button)
             {
                 case MouseButtons.Left:
@@ -715,7 +720,7 @@ namespace HoraireBeta
                             nb = bloc.getRessourceVoulus(i).nbVoulue.ToString();
                         }
                     }
-
+                    /*
                    /* NbPoste input = new NbPoste(((Poste)res).getNom(), nb);
                     input.ShowDialog();
 

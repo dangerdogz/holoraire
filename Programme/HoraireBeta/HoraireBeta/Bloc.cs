@@ -57,15 +57,16 @@ namespace HoraireBeta
             this.typeBloc = type;
             this.id = id;
 
-            y = (Convert.ToInt32(debut.ToString("HH")) * 20 + Convert.ToInt32(debut.ToString("MM")) / 20)+20;
+            //MessageBox.Show("Date : "+
+            y = (Convert.ToInt32(debut.ToString("HH")) * 20 + Convert.ToInt32(debut.ToString("mm")) / 3)+40;
 
             x = ((Loader.SemaineToInt(debut)-1) * 100)+40;
             
             //MessageBox.Show(Loader.SemaineToInt(debut)+"||"+(debut.ToString("ddd")));
 
-            haut = ((Convert.ToInt32(fin.ToString("HH")) * 20 + Convert.ToInt32(fin.ToString("MM")) / 20) - y) + 20;
 
-
+            haut = ((Convert.ToInt32(fin.ToString("HH")) * 20 + Convert.ToInt32(fin.ToString("mm")) / 3) - y) + 40;
+            
             erreurExiste = false;
             estComplet = false;
            
@@ -414,14 +415,14 @@ namespace HoraireBeta
             if (isSelected == true)
                 {
                 gfx.DrawRectangle(pen, x, y, laWidth, haut);
-                gfx.FillRectangle(selectedBrush, x + 2, y + 2, laWidth - 4, haut - 4);
+                gfx.FillRectangle(selectedBrush, x + 1, y + 1, laWidth - 1, haut - 1);
                 gfx.DrawString("(" + id + ")", laFont, brush, x + 8, y + 8);
                 }
 
             else
                 {
                 gfx.DrawRectangle(pen, x, y, laWidth, haut);
-                gfx.FillRectangle(brush, x + 2, y + 2, laWidth - 4, haut - 4);
+                gfx.FillRectangle(brush, x + 1, y + 1, laWidth - 1, haut - 1);
                 gfx.DrawString("(" + id + ")", laFont, brush, x + 8, y + 8);
                 }
             isdrawn = true;

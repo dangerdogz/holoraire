@@ -224,7 +224,7 @@ namespace HoraireBeta
             int y = bloc.getY() + (i * 20) + 20;
 
             Point coin = new Point(x, y);
-            MessageBox.Show("Sup, jme dessine");
+           
             gfx.DrawString(nom + " " + prenom, laFont, brush, coin);
             
         }

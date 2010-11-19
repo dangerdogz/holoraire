@@ -23,7 +23,6 @@ namespace HoraireBeta
             this.loader = loader;
             InitializeComponent();
             FillInterface();
-            
         }
 
         private void horaire_Click(object sender, EventArgs e)
@@ -536,6 +535,7 @@ namespace HoraireBeta
             FillTree(treeView_postaaffectgauche.Nodes, xmlPostes3);
             FillTree(treeView_equipe.Nodes, xmlTeams2);
             FillTree(treeView_postgen.Nodes, xmlPostes4);
+            fillEmployeListBox();
             
 
         }
@@ -796,7 +796,42 @@ namespace HoraireBeta
             }
             return null;
         }
+        public void fillEmployeListBox()
+        {
+            Chilkat.Xml xml = new Chilkat.Xml();
+            xml.LoadXmlFile("profiles.xml");
+            xml.FirstChild2();
+            listEmploye.Items.Clear();
+            while (xml != null)
+            {
+                // FindNextRecord *will* return the current record if it
+                // matches the criteria. 
+                
+                if (xml != null)
+                {
+                    // Add the employee name to the listbox.
+                    listEmploye.Items.Add(xml.GetChildContent("nom"));
+                    xml = xml.NextSibling();
+                }
+            }
+            listEmploye.MouseDoubleClick += new MouseEventHandler(listEmploye_MouseDoubleClick);
+         }
+        void listEmploye_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
 
+            int index = this.listEmploye.IndexFromPoint(e.Location);
+
+            if (index != System.Windows.Forms.ListBox.NoMatches)
+            {
+
+                MessageBox.Show(index.ToString());
+
+                //do your stuff here
+
+            }
+
+        }
+        
     }
 } 
            

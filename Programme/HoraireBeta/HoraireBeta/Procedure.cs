@@ -344,6 +344,13 @@ namespace HoraireBeta
             requete = "SELECT * FROM Poste_Profil WHERE idPoste = " + idPoste + "";
             return getResult(requete);
         }
+        public DataTable getPostId(String pname)
+        {
+            String requete;
+            requete = "SELECT idPoste FROM Poste WHERE nom = \"" + pname + "\"";
+            MessageBox.Show(requete);
+            return getResult(requete);
+        }
         public void addPosteProfil(int idPoste, int idProfil)
         {
             String requete;

@@ -147,12 +147,23 @@ namespace HoraireBeta
         {
             //nom pas tant hot
 
-            RessourceEntree ressourceToAdd;
-            ressourceToAdd.voulue = voulue;
-            ressourceToAdd.nbVoulue = nbvoulue;
-            ressourceToAdd.nbAffectee = 0;
+            if (nbvoulue != 0)
+            {
+                RessourceEntree ressourceToAdd;
+                ressourceToAdd.voulue = voulue;
+                ressourceToAdd.nbVoulue = nbvoulue;
+                ressourceToAdd.nbAffectee = 0;
 
-            ressourcesVoulus.Add(ressourceToAdd);
+                ressourcesVoulus.Add(ressourceToAdd);
+
+            }
+        }
+
+        public void addRessourceVoulue(RessourceEntree ca)
+        {
+
+
+            ressourcesVoulus.Add(ca);
         }
 
 
@@ -354,6 +365,10 @@ namespace HoraireBeta
         public List<RessourceEntree> getRessourceVoulus()
         {
             return ressourcesVoulus;
+        }
+
+        public void removeRessourceVoulu(RessourceEntree lui) {
+            ressourcesVoulus.Remove(lui);
         }
 
         public Profil getRessourceAffecte(int position)

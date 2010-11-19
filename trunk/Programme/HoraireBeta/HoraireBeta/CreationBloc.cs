@@ -23,6 +23,13 @@ namespace HoraireBeta
         {
             hd = textBox_hrdebut.Text;
             hf = textBox_hrfin.Text;
+
+            if (hf == "25")
+                hf = "1";
+            if (hd == "24")
+                hd = "0";
+            if (hf == "24")
+                hf = "0";
         }
 
         public string getHd()
@@ -41,14 +48,9 @@ namespace HoraireBeta
             {
                 
             }
-            if (hf == "25")
-                hf = "1";
-            if (hd == "24")
-                hd = "0";
-            if (hf == "24")
-                hf = "0";
 
             setHeures();
+              
             //MessageBox.Show(this, "" + hd);
             this.Hide();
         }

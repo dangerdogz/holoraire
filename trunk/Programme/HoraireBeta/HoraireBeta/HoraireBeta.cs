@@ -703,7 +703,24 @@ namespace HoraireBeta
                 if (res is Equipe)
                     bloc.addRessource((Equipe)res);
                 else
-                    bloc.addRessourceVoulue(1, res);
+                {
+                    String nb = "1";
+                    for (int i = 0; i < bloc.getRessourceVoulus().Count; i++)
+                    {
+
+                        if (((Poste)bloc.getRessourceVoulus(i).voulue).getNom().Equals(((Poste)res).getNom()))
+                        {
+                            nb = bloc.getRessourceVoulus(i).nbVoulue.ToString();
+                        }
+                    }
+
+                    NbPoste input = new NbPoste(((Poste)res).getNom(), nb);
+                    input.ShowDialog();
+
+
+                    bloc.addRessourceVoulue(Convert.ToInt32(input.getNb()), res);
+                    input.Dispose();
+                }
         }
 
 

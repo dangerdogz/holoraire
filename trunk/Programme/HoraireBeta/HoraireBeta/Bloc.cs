@@ -320,6 +320,16 @@ namespace HoraireBeta
             return fin;
         }
 
+        public void setDebut(DateTime laDate) 
+        {
+            debut = laDate;
+        }
+
+        public void setFin(DateTime laDate) 
+        {
+            fin = laDate;
+        }
+
         public int getId()
         {
             return id;
@@ -430,23 +440,24 @@ namespace HoraireBeta
 
         public void draw(int laWidth, Graphics gfx)
         {
-            Font laFont = new Font("Arial", 16);
+            Font laFont = new Font("Arial", 12);
             Pen pen = new Pen(Color.Black);
             SolidBrush brush = new SolidBrush(Color.Cyan);
+            SolidBrush fontBrush = new SolidBrush(Color.Black);
             SolidBrush selectedBrush = new SolidBrush(Color.Green);
 
             if (isSelected == true)
                 {
                 gfx.DrawRectangle(pen, x, y, laWidth, haut);
                 gfx.FillRectangle(selectedBrush, x + 1, y + 1, laWidth - 1, haut - 1);
-                gfx.DrawString("(" + id + ")", laFont, brush, x + 8, y + 8);
+                gfx.DrawString("(" + id + ")", laFont, fontBrush, x + 15, y + 2);
                 }
 
             else
                 {
                 gfx.DrawRectangle(pen, x, y, laWidth, haut);
                 gfx.FillRectangle(brush, x + 1, y + 1, laWidth - 1, haut - 1);
-                gfx.DrawString("(" + id + ")", laFont, brush, x + 8, y + 8);
+                gfx.DrawString("(" + id + ")", laFont, fontBrush, x + 15, y + 2);
                 }
             isdrawn = true;
 

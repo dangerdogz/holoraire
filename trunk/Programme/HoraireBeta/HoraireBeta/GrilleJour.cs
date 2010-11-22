@@ -240,10 +240,13 @@ namespace HoraireBeta
         }
 
 
-        public void modifierBlock(int x, int heureDebut, DateTime debut, DateTime fin)
+        public void modifierBlock(Bloc leBloc)
         {
-            string hDebut = heureDebut + "";
-            string hFin = (heureDebut + 1) + "";
+            string hDebut = leBloc.getDebut().Hour + "";
+            string hFin = (leBloc.getFin().Hour+1) + "";
+
+            DateTime debut = leBloc.getDebut();
+            DateTime fin = leBloc.getFin();
 
             CreationBloc creationbloc = new CreationBloc(hDebut, hFin);
             creationbloc.ShowDialog();
@@ -255,21 +258,26 @@ namespace HoraireBeta
 
 
             DateTime tempDebut = new DateTime(debut.Year, debut.Month, debut.Day, dateDebut, debut.Minute, debut.Second);
-            DateTime tempFin = new DateTime(fin.Year, fin.Month, fin.Day, dateFin, fin.Minute, fin.Second) - new TimeSpan(0, 0, 0, 1);
+            DateTime tempFin = new DateTime(fin.Year, fin.Month, fin.Day, dateFin-1, fin.Minute, fin.Second);
             //  debut = new DateTime(dateDebut, debut.Minute, debut.Second);
             //  fin = new DateTime(dateFin, fin.Minute, fin.Second);
 
-            MessageBox.Show(" Date Début : " + tempDebut + " et Date Fin : " + tempFin);
+            //MessageBox.Show(" Date Début : " + tempDebut + " et Date Fin : " + tempFin);
 
             //loader.bloc.Add(new Bloc(new DateTime(2010, 11, 03, Convert.ToInt32(creationbloc.getHd()), 0, 0), new DateTime(2010, 11, 03, Convert.ToInt32(creationbloc.getHf()), 0, 0), 0, 0));
             //loader.bloc.Add(new Bloc(jourText, x, y, y + 16, jour, 0, 0));
-            Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0);
-
-            tempBloc.draw(width, grfx);
-            loader.bloc.Add(tempBloc);
-            this.activer();
+            //leBloc = new Bloc(tempDebut, tempFin, 0, 0);
+            /*
+            leBloc.setDebut(tempDebut);
+            leBloc.setFin(tempFin);
+             * */
+            
+            
+            leBloc = new Bloc(tempDebut, tempFin,0,0);
+            if (loader.modifierBloc(leBloc))
+        
             creationbloc.Dispose();
-            //Application.Run(creationbloc);
+            
         }
         
 
@@ -301,7 +309,8 @@ namespace HoraireBeta
                 
                 tempBloc.draw(width,grfx);
                 loader.bloc.Add(tempBloc);
-                this.activer();
+                //this.activer();
+                
                 creationbloc.Dispose();
                 //Application.Run(creationbloc);
           }

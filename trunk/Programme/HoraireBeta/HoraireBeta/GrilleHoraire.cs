@@ -116,7 +116,7 @@ namespace HoraireBeta
             
             if(mouse == "MouseUp")
             {
-               
+
                 for (int i = 0; i < 7; i++)
                 {
                     //Sélection du bon jours
@@ -140,36 +140,63 @@ namespace HoraireBeta
                         }
                         //Si appuis dans le vide
                         else
-                            {
+                        {
                             //DateTime 1 heure plus tard
                             DateTime tempDateFin = jourCliquer.getDate();
 
-                            if(jourCliquer.getHeureClique(e.Y) >= 0)
-                                {
+                            if (jourCliquer.getHeureClique(e.Y) >= 0)
+                            {
                                 //Création du bloc
                                 jourCliquer.createBlock(jourCliquer.getX(), jourCliquer.getHeureClique(e.Y),
                                     jourCliquer.getDate(), tempDateFin);
+                                refresh();
 
-                                }
+                            }
                             else
                                 MessageBox.Show("Té pas supposer voir ca ... ");
-                           // MessageBox.Show("Vide");
-                            }
+                            // MessageBox.Show("Vide");
+                        }
 
                     }
 
-                    
+                }  
+
+            }//Fin du MouseUp
+
+            if (mouse == "DoubleClick")
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    //Sélection du bon jours
+                    if (e.X > jours[i].getX() && e.X < jours[i].getXFin())
+                    {
+                        //Jour cliquer
+                        jourCliquer = jours[i];
+
+
+                        //Sélection d'un bloc existant
+                        if (selectionEnCours != null)
+                        {
+                                
+                            jourCliquer.modifierBlock(selectionEnCours);
+                            refresh();
+
+                        }
+
+                    }
+
+
+
+                    }
 
                 }
-                
-                
                 
 
 
 
 
                 //jours[i].passeClique(e,mouse);
-            }
+            
             
 
            

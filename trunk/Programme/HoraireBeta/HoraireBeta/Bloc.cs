@@ -469,7 +469,7 @@ namespace HoraireBeta
             {
                 if (i * 20 < this.haut)
                 {
-                ((Profil)(ressourcesAffectes[i])).draw(this, i, gfx);
+                ((ressourcesAffectes[i])).draw(this, i, gfx);
 
                if (i*20<this.haut)
                 ((ressourcesAffectes[i])).draw(this, i, gfx);

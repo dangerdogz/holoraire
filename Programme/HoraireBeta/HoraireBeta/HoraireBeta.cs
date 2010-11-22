@@ -206,12 +206,15 @@ namespace HoraireBeta
 
         private void modifier_button_Click(object sender, EventArgs e)
         {
+            numemp_textbox.ReadOnly.ToString();
+            panelCentral_Employe.Controls.Add(this.supprimer_button);
             ajprofemp_label.Text = "Modifier un profil d'employé";
             numemp_textbox.Text = "";
             nom_textbox.Text = "";
             prenom_textbox.Text = "";
             courriel_textbox.Text = "";
             telephone_textbox.Text = "";
+            this.panelGauche_Employe.Controls.Add(this.treeView_modemploye);
 
         }
 
@@ -341,7 +344,17 @@ namespace HoraireBeta
 
         private void ajouter_button_Click(object sender, EventArgs e)
         {
+
+            this.panelCentral_Employe.Controls.Remove(this.supprimer_button);
+            this.panelCentral_Employe.Controls.Add(this.numemp_textbox);
+            this.panelCentral_Employe.Controls.Add(this.nemp_label);
             ajprofemp_label.Text = "Ajouter un profil d'employé";
+            numemp_textbox.Text = "";
+            nom_textbox.Text = "";
+            prenom_textbox.Text = "";
+            courriel_textbox.Text = "";
+            telephone_textbox.Text = "";
+            this.panelGauche_Employe.Controls.Remove(this.treeView_modemploye);
         }
 
         private void posteaoccuper_gauche_Click(object sender, EventArgs e)
@@ -529,6 +542,7 @@ namespace HoraireBeta
             CreateXml.CreateProfileXml();
             Chilkat.Xml xml = new Chilkat.Xml();
             Chilkat.Xml xmlProfiles = new Chilkat.Xml();
+            Chilkat.Xml xmlProfiles2 = new Chilkat.Xml();
             Chilkat.Xml xmlPostes = new Chilkat.Xml();
             Chilkat.Xml xmlPostes2 = new Chilkat.Xml();
             Chilkat.Xml xmlPostes3 = new Chilkat.Xml();
@@ -536,6 +550,7 @@ namespace HoraireBeta
             Chilkat.Xml xmlTeams = new Chilkat.Xml();
             Chilkat.Xml xmlTeams2 = new Chilkat.Xml();
             xmlProfiles.LoadXmlFile("profiles.xml");
+            xmlProfiles2.LoadXmlFile("profiles.xml");
             xmlPostes.LoadXmlFile("postes.xml");
             xmlPostes2.LoadXmlFile("postes.xml");
             xmlPostes3.LoadXmlFile("postes.xml");
@@ -551,6 +566,11 @@ namespace HoraireBeta
             FillTree(treeView_postaaffectgauche.Nodes, xmlPostes3);
             FillTree(treeView_equipe.Nodes, xmlTeams2);
             FillTree(treeView_postgen.Nodes, xmlPostes4);
+            FillTree(treeView_modemploye.Nodes, xmlProfiles2);
+            //fillEmployeListBox();
+            
+
+
         }
         public void FillTree(TreeNodeCollection treeNodes, Chilkat.Xml xml)
         {
@@ -686,8 +706,7 @@ namespace HoraireBeta
 
         private void Sauvegarder_button_Click(object sender, EventArgs e)
         {
-            Profil profil = new Profil(Convert.ToInt32(numemp_textbox.Text.ToString()) ,nom_textbox.Text, prenom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0);
-            int nemploye = Convert.ToInt32(numemp_textbox.Text.ToString());
+            Profil profil = new Profil(Convert.ToInt32(numemp_textbox.Text.ToString()), prenom_textbox.Text, nom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0);
             for (int cul = 1; cul <= treeView_postechoisi.GetNodeCount(false); cul++)
             {
                 int i = 0;
@@ -696,13 +715,26 @@ namespace HoraireBeta
                 
             }
 
-            
-
             loader.profilCharge.Add(profil);
 
 
 
             profil.save();
+
+            String ginette;
+            int numero;
+            DataTable datatable2;
+            System.Threading.Thread.Sleep(5000); 
+            DBConnect proc = new DBConnect();
+            
+            datatable2 = proc.getProfil2(nom_textbox.Text, prenom_textbox.Text);
+            ginette = datatable2.Rows[1].ToString();
+            MessageBox.Show(ginette);
+            numero = Convert.ToInt32(ginette);
+
+            Profil profil2 = new Profil(numero, nom_textbox.Text, prenom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0);
+            profil2.save();
+
             numemp_textbox.Text = "";
             nom_textbox.Text = "";
             prenom_textbox.Text = "";
@@ -895,6 +927,51 @@ namespace HoraireBeta
             }
 
         }
+
+
+        private void treeView_modemploye_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            Profil ressource = null;
+            Chilkat.Xml xmlProfiles = new Chilkat.Xml();
+            xmlProfiles.LoadXmlFile("profiles.xml");
+            String textInForm;
+            textInForm = treeView_modemploye.SelectedNode.Text.ToString();
+            String id;
+            int idprofil;
+
+            id = findRessourceXML(textInForm, xmlProfiles);
+
+            if (id != null)
+            {
+                ressource = (Profil)loader.findRessource(Convert.ToInt32(id), loader.profilCharge);
+                idprofil = ressource.getId();
+                numemp_textbox.Text = ressource.getId().ToString();
+                nom_textbox.Text = ressource.getNom();
+                prenom_textbox.Text = ressource.getPrenom();
+                courriel_textbox.Text = ressource.getEmail();
+                telephone_textbox.Text = ressource.getNumTelephone();
+                DataTable datatable;
+                DBConnect proc = new DBConnect();
+                datatable = proc.getPosteProfil2(idprofil);
+                String pname;
+                MessageBox.Show(datatable.Rows.Count.ToString());
+                for(int i = 1; i <= datatable.Rows.Count; i++)
+                {
+                    pname = datatable.Rows[i].ToString();
+                    MessageBox.Show(pname);
+                    System.Windows.Forms.TreeNode name;
+                    name = new System.Windows.Forms.TreeNode(pname);
+                    this.treeView_postechoisi.Nodes.Add(name);
+                    this.treeView_postdispo.Nodes.Remove(name);
+                }
+            }  
+        }
+
+        private void supprimer_button_Click(object sender, EventArgs e)
+        {
+
+        }
+
         public void fillPosteListBox(Bloc bloc)
         {
 
@@ -935,10 +1012,6 @@ namespace HoraireBeta
         {
 
 
-       
-
-       
-        
    
 
 

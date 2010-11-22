@@ -76,6 +76,7 @@ namespace HoraireBeta
             requete = "INSERT INTO Profil(prenom, nom, phoneNumber, quotaHeureMax, quotaHeureMin, email, seniority)" +
                       " VALUES(\"" + profilPrenom + "\", \"" + profilNom + "\", \"" + profilPhoneNumber + "\", " + profilHeureMax +
                       ", " + profilHeureMin + ", \"" + profilEmail + "\", " + seniority + ")";
+            MessageBox.Show(requete);
             getResult(requete);
         }
         public void modifierProfil(int idProfil, String profilPrenom, String profilNom, String profilPhoneNumber, int profilHeureMax, int profilHeureMin, String profilEmail, int seniority)
@@ -83,7 +84,8 @@ namespace HoraireBeta
             String requete;
             requete = "UPDATE Profil SET prenom=" + profilPrenom + ", nom=" + profilNom + ", phoneNumber=" + profilPhoneNumber +
                       ", quotaHeureMax=" + profilHeureMax + ", quotaHeureMin=" + profilHeureMin + ", email=" + profilEmail + ", seniority = "+seniority+" WHERE idProfil=" + idProfil+"";
-            
+            MessageBox.Show(requete);
+            getResult(requete);
         }
         public DataTable getProfil(int idProfil)
         {
@@ -92,6 +94,13 @@ namespace HoraireBeta
                       " FROM Profil WHERE idProfil=" + idProfil+"";
             return getResult(requete);
            
+        }
+        public DataTable getProfil2(String nom, String prenom)
+        {
+            String requete;
+            requete = "SELECT idProfil FROM Profil WHERE nom = \"" + nom + "\" AND prenom = \"" + prenom + "\"";
+            MessageBox.Show(requete);
+            return getResult(requete);
         }
         public DataTable getLastStuff(String quoi)
         {
@@ -342,6 +351,12 @@ namespace HoraireBeta
         {
             String requete;
             requete = "SELECT * FROM Poste_Profil WHERE idPoste = " + idPoste + "";
+            return getResult(requete);
+        }
+        public DataTable getPosteProfil2(int idProfil)
+        {
+            String requete;
+            requete = "SELECT * FROM Poste_Profil WHERE idProfil = " + idProfil + "";
             return getResult(requete);
         }
         public DataTable getPostId(String pname)

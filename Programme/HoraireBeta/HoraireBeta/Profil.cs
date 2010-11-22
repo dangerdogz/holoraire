@@ -183,7 +183,13 @@ namespace HoraireBeta
             if (this.id < 0)
             {
                 proc.ajouterProfil(prenom, nom, numTelephone, heuresMax, 0, email, anciennete);
+                
                 id = Convert.ToInt32(proc.getLastStuff("Profil").Rows[0]["last_insert_rowid()"].ToString());
+                /*int id2;
+                
+                id2 = Convert.ToInt32(proc.getProfil2(nom, prenom).ToString());
+                MessageBox.Show(id.ToString());*/
+
             }
             else
             {
@@ -192,10 +198,13 @@ namespace HoraireBeta
                 proc.deletePosteProfil(id);
 
             }
-            foreach (Ressource lui in poste)
+            if (this.id > 0)
             {
-               
-                proc.addPosteProfil(lui.getId(), id);
+                foreach (Ressource lui in poste)
+                {
+
+                    proc.addPosteProfil(lui.getId(), id);
+                }
             }
             proc.deleteProfilPreference(id);
             

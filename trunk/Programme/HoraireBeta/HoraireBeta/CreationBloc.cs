@@ -21,6 +21,8 @@ namespace HoraireBeta
 
         public void setHeures()
         {
+            
+
             hd = textBox_hrdebut.Text;
             hf = textBox_hrfin.Text;
 
@@ -44,11 +46,6 @@ namespace HoraireBeta
 
         private void button_blocconfirm_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i <= textBox_hrdebut.Text.Length; i++)
-            {
-                
-            }
-
             setHeures();
               
             //MessageBox.Show(this, "" + hd);

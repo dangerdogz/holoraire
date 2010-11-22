@@ -62,7 +62,7 @@ namespace HoraireBeta
            switch(e.Button)
                 {
                 case MouseButtons.Left:
-                    MessageBox.Show(this, "PanelGauche Employé: Vous avez appuyez sur gauche en : " + e.X + " , " + e.Y);
+                  //  MessageBox.Show(this, "PanelGauche Employé: Vous avez appuyez sur gauche en : " + e.X + " , " + e.Y);
                     
                     break;
                 }
@@ -74,7 +74,7 @@ namespace HoraireBeta
             switch (e.Button)
             {
                 case MouseButtons.Left:
-                    MessageBox.Show(this, "PanelCentral Employé: Vous avez appuyez sur gauche en : " + e.X + " , " + e.Y);
+                   // MessageBox.Show(this, "PanelCentral Employé: Vous avez appuyez sur gauche en : " + e.X + " , " + e.Y);
                     
 
                     break;
@@ -87,7 +87,7 @@ namespace HoraireBeta
             switch (e.Button)
             {
                 case MouseButtons.Left:
-                    MessageBox.Show(this, "PanelGauche Horaire: Vous avez appuyez sur gauche en : " + e.X + " , " + e.Y);
+                    //MessageBox.Show(this, "PanelGauche Horaire: Vous avez appuyez sur gauche en : " + e.X + " , " + e.Y);
 
                     break;
             }
@@ -150,7 +150,7 @@ namespace HoraireBeta
             switch (e.Button)
             {
                 case MouseButtons.Left:
-                    MessageBox.Show(this, "PanelGauche Parametre: Vous avez appuyez sur gauche en : " + e.X + " , " + e.Y);
+                   // MessageBox.Show(this, "PanelGauche Parametre: Vous avez appuyez sur gauche en : " + e.X + " , " + e.Y);
 
                     break;
             }
@@ -162,7 +162,7 @@ namespace HoraireBeta
             switch (e.Button)
             {
                 case MouseButtons.Left:
-                    MessageBox.Show(this, "PanelCentral Parametre: Vous avez appuyez sur gauche en : " + e.X + " , " + e.Y);
+                    //MessageBox.Show(this, "PanelCentral Parametre: Vous avez appuyez sur gauche en : " + e.X + " , " + e.Y);
 
                     break;
             }
@@ -188,7 +188,7 @@ namespace HoraireBeta
         {
             dbc = new DBConnect();// enabling the DB conection
             bouton_requete.Enabled = true;
-            MessageBox.Show(this, "connecté");
+           // MessageBox.Show(this, "connecté");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -245,10 +245,10 @@ namespace HoraireBeta
             ajouterposte.ShowDialog();
             loader.posteCharge.Add(new Poste(ajouterposte.getpName(), ajouterposte.getpDesc()));
 
-            MessageBox.Show(((Poste)loader.posteCharge.Last()).getNom());
+            //MessageBox.Show(((Poste)loader.posteCharge.Last()).getNom());
 
             ajouterposte.save();
-            MessageBox.Show(((Poste)loader.posteCharge.Last()).getNom());
+          //  MessageBox.Show(((Poste)loader.posteCharge.Last()).getNom());
 
             CreateXml.CreateProfileXml();
             ajouterposte.Dispose();
@@ -268,10 +268,10 @@ namespace HoraireBeta
             ajouterequipe.ShowDialog();
             loader.equipe.Add(new Equipe(-1, ajouterequipe.geteName(), ajouterequipe.geteDesc()));
 
-            MessageBox.Show(((Equipe)loader.equipe.Last()).getNom());
+            //MessageBox.Show(((Equipe)loader.equipe.Last()).getNom());
 
             ajouterequipe.save();
-            MessageBox.Show(((Profil)loader.equipe.Last()).getNom());
+            //MessageBox.Show(((Profil)loader.equipe.Last()).getNom());
 
             CreateXml.CreateProfileXml();
             ajouterequipe.Dispose();
@@ -703,6 +703,16 @@ namespace HoraireBeta
             telephone_textbox.Text = "";
         }
 
+        private void UnlinkBlocToRessource(Ressource res, Bloc bloc)
+        {
+            for (int i = 0; i < bloc.getListRessourceAffecte().Count; i++)
+            {
+                if (res == bloc.getListRessourceAffecte()[i])
+                    bloc.getListRessourceAffecte().Remove(res);
+            }
+
+        }
+
         private void LinkBlocToRessource(Ressource res, Bloc bloc)
         {
             if (res is Profil)
@@ -722,7 +732,7 @@ namespace HoraireBeta
                         if (((Poste)bloc.getRessourceVoulus(position).voulue).getNom().Equals(((Poste)res).getNom()))
                         {
                             nb = bloc.getRessourceVoulus(position).nbVoulue.ToString();
-                            MessageBox.Show(nb);
+                           // MessageBox.Show(nb);
                             existe = true;
                             break;
                         }
@@ -763,7 +773,7 @@ namespace HoraireBeta
             if (grille.selectionEnCours != null)
             {
                 String textInForm;
-
+          
                 textInForm = e.Node.Text;
                 Chilkat.Xml xml = new Chilkat.Xml();
                 Chilkat.Xml xmlProfiles = new Chilkat.Xml();
@@ -773,7 +783,6 @@ namespace HoraireBeta
                 xmlPostes.LoadXmlFile("postes.xml");
                 xmlTeams.LoadXmlFile("teams.xml");
                 String id;
-
                 id = findRessourceXML(textInForm, xmlProfiles);
 
                 if (id != null)
@@ -799,10 +808,23 @@ namespace HoraireBeta
                     }
                 }
 
-                if (ressource != null)
+
+                if (e.Node.BackColor != Color.Cyan)
                 {
-                    LinkBlocToRessource(ressource, grille.selectionEnCours);
-                    e.Node.BackColor = Color.Cyan;
+         
+                    if (ressource != null)
+                    {
+                        LinkBlocToRessource(ressource, grille.selectionEnCours);
+                        e.Node.BackColor = Color.Cyan;
+                    }
+                }
+                else
+                {
+                    if (ressource != null)
+                    {
+                        UnlinkBlocToRessource(ressource, grille.selectionEnCours);
+                        e.Node.BackColor = Color.White;
+                    }
                 }
             }
         }
@@ -833,8 +855,8 @@ namespace HoraireBeta
 
             List<Ressource> ressources = bloc.getListRessourceAffecte();
 
-            MessageBox.Show(bloc.getRessourceVoulus().Count.ToString());
-            MessageBox.Show(bloc.getListRessourceAffecte().Count.ToString());
+          //  MessageBox.Show(bloc.getRessourceVoulus().Count.ToString());
+            //MessageBox.Show(bloc.getListRessourceAffecte().Count.ToString());
 
             for (int i = 0; i < ressources.Count(); i++)
             {
@@ -855,7 +877,7 @@ namespace HoraireBeta
             if (index != System.Windows.Forms.ListBox.NoMatches)
             {
 
-                MessageBox.Show(index.ToString());
+                //MessageBox.Show(index.ToString());
 
                 //do your stuff here
 
@@ -870,7 +892,7 @@ namespace HoraireBeta
 
             List<Ressource> ressources = bloc.getListRessourceAffecte();
 
-            MessageBox.Show(bloc.getListRessourceAffecte().Count.ToString());
+           // MessageBox.Show(bloc.getListRessourceAffecte().Count.ToString());
 
             for (int i = 0; i < ressources.Count(); i++)
             {
@@ -891,7 +913,7 @@ namespace HoraireBeta
             if (index != System.Windows.Forms.ListBox.NoMatches)
             {
 
-                MessageBox.Show(index.ToString());
+                //MessageBox.Show(index.ToString());
 
                 //do your stuff here
 

@@ -867,7 +867,9 @@ namespace HoraireBeta
             {
 
                 // Add the employee name to the listbox.
-                listEmploye.Items.Add(((Profil)ressources.ElementAt(i)).getNom() + ", " + ((Profil)ressources.ElementAt(i)).getPrenom());
+                if (ressources.ElementAt(i) is Profil)
+                    listEmploye.Items.Add(((Profil)ressources.ElementAt(i)).getNom() + ", " + ((Profil)ressources.ElementAt(i)).getPrenom());
+               
 
 
             }

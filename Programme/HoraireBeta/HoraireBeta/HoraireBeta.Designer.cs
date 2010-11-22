@@ -41,9 +41,9 @@ namespace HoraireBeta
         /// </summary>
         public void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Employé");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Equipe");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Postes");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Employés");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Postes");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Équipes");
             this.Admin = new System.Windows.Forms.TabControl();
             this.horaire = new System.Windows.Forms.TabPage();
             this.panelCentral_Horaire = new System.Windows.Forms.Panel();
@@ -55,6 +55,7 @@ namespace HoraireBeta
             this.tabPoste = new System.Windows.Forms.TabPage();
             this.listPoste = new System.Windows.Forms.ListBox();
             this.tabEquipe = new System.Windows.Forms.TabPage();
+            this.listEquipe = new System.Windows.Forms.ListBox();
             this.panelGauche_Horaire = new System.Windows.Forms.Panel();
             this.Presets = new System.Windows.Forms.TabControl();
             this.tab_Presets = new System.Windows.Forms.TabPage();
@@ -140,7 +141,6 @@ namespace HoraireBeta
             this.button_supprimer = new System.Windows.Forms.Button();
             this.button_ajouter_PG = new System.Windows.Forms.Button();
             this.label_postgeneral = new System.Windows.Forms.Label();
-            this.listEquipe = new System.Windows.Forms.ListBox();
             this.Admin.SuspendLayout();
             this.horaire.SuspendLayout();
             this.panelCentral_Horaire.SuspendLayout();
@@ -209,12 +209,6 @@ namespace HoraireBeta
             this.panelCentral_Horaire.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseUp);
 
             Graphics grfx = this.panelCentral_Horaire.CreateGraphics();
-
-
-           // this.panelCentral_Horaire. += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_DoubleClick);
-
-
-
             // 
             // tabConflits
             // 
@@ -266,6 +260,7 @@ namespace HoraireBeta
             this.listEmploye.Name = "listEmploye";
             this.listEmploye.Size = new System.Drawing.Size(439, 121);
             this.listEmploye.TabIndex = 0;
+            
             // 
             // tabPoste
             // 
@@ -284,6 +279,7 @@ namespace HoraireBeta
             this.listPoste.Name = "listPoste";
             this.listPoste.Size = new System.Drawing.Size(436, 121);
             this.listPoste.TabIndex = 0;
+           
             // 
             // tabEquipe
             // 
@@ -294,6 +290,14 @@ namespace HoraireBeta
             this.tabEquipe.TabIndex = 3;
             this.tabEquipe.Text = "Équipes";
             this.tabEquipe.UseVisualStyleBackColor = true;
+            // 
+            // listEquipe
+            // 
+            this.listEquipe.FormattingEnabled = true;
+            this.listEquipe.Location = new System.Drawing.Point(0, 3);
+            this.listEquipe.Name = "listEquipe";
+            this.listEquipe.Size = new System.Drawing.Size(439, 121);
+            this.listEquipe.TabIndex = 0;
             // 
             // panelGauche_Horaire
             // 
@@ -352,16 +356,16 @@ namespace HoraireBeta
             this.RessourceTree.BackColor = System.Drawing.SystemColors.Window;
             this.RessourceTree.Location = new System.Drawing.Point(7, 6);
             this.RessourceTree.Name = "RessourceTree";
-            treeNode4.Name = "Employe";
-            treeNode4.Text = "Employé";
-            treeNode5.Name = "Equipe";
-            treeNode5.Text = "Equipe";
-            treeNode6.Name = "Postes";
-            treeNode6.Text = "Postes";
+            treeNode1.Name = "Employe";
+            treeNode1.Text = "Employé";
+            treeNode2.Name = "Equipe";
+            treeNode2.Text = "Equipe";
+            treeNode3.Name = "Postes";
+            treeNode3.Text = "Postes";
             this.RessourceTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5,
-            treeNode6});
+            treeNode1,
+            treeNode2,
+            treeNode3});
             this.RessourceTree.Size = new System.Drawing.Size(208, 316);
             this.RessourceTree.TabIndex = 0;
             this.RessourceTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -1192,14 +1196,6 @@ namespace HoraireBeta
             this.label_postgeneral.TabIndex = 0;
             this.label_postgeneral.Text = "Postes Général";
             // 
-            // listEquipe
-            // 
-            this.listEquipe.FormattingEnabled = true;
-            this.listEquipe.Location = new System.Drawing.Point(0, 3);
-            this.listEquipe.Name = "listEquipe";
-            this.listEquipe.Size = new System.Drawing.Size(439, 121);
-            this.listEquipe.TabIndex = 0;
-            // 
             // HoraireBeta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1235,7 +1231,8 @@ namespace HoraireBeta
             this.admin_central.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultDataGrid)).EndInit();
             this.ResumeLayout(false);
-            grille = new GrilleHoraire(grfx, loader, getDebutSemaine());
+
+            grille = new GrilleHoraire(grfx,loader,getDebutSemaine());
 
         }
 

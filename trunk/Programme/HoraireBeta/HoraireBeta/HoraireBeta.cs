@@ -124,9 +124,13 @@ namespace HoraireBeta
             
         }
 
-        private void pCentral_Horaire_DoubleClick(object sender, EventArgs e)
+        private void pCentral_Horaire_DoubleClick(object sender, EventArgs me)
         {
-           // MessageBox.Show(""+e.X);
+
+            MouseEventArgs e = me as MouseEventArgs;
+
+            grille.passeClique(e, "DoubleClick");
+
         }
 
         private void pCentral_Horaire_OnMouseEvent(object sender, MouseEventArgs e)
@@ -911,6 +915,7 @@ namespace HoraireBeta
 
             listPoste.MouseDoubleClick += new MouseEventHandler(listPoste_MouseDoubleClick);
         }
+
         void listPoste_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 
@@ -928,6 +933,13 @@ namespace HoraireBeta
         }
         public void fillEquipeListBox(Bloc bloc)
         {
+
+
+       
+
+       
+        
+   
 
 
             listEquipe.Items.Clear();
@@ -973,7 +985,7 @@ namespace HoraireBeta
             {
                 Bloc blocCourant = grille.selectionEnCours;
                 Ressource ressource;
-                MessageBox.Show("" + blocCourant.getListRessourceAffecte().Count);
+              //  MessageBox.Show("" + blocCourant.getListRessourceAffecte().Count);
                 for(int i=0;i<blocCourant.getListRessourceAffecte().Count;i++)
                 {
                     
@@ -985,7 +997,7 @@ namespace HoraireBeta
                         foreach (TreeNode nodes in RessourceTree.Nodes[0].Nodes)
                         {
                             nomPrenom = ((Profil)ressource).getNom().ToLower() + ", " + ((Profil)ressource).getPrenom().ToLower();
-                            MessageBox.Show(nomPrenom+" "+nodes.Text);
+                            //MessageBox.Show(nomPrenom+" "+nodes.Text);
                             
                             if (nomPrenom == nodes.Text)
                             {
@@ -1004,7 +1016,7 @@ namespace HoraireBeta
                         foreach (TreeNode nodes in RessourceTree.Nodes[1].Nodes)
                         {
                             nom = ((Poste)ressource).getNom().ToLower();
-                            MessageBox.Show(nom);
+                        //    MessageBox.Show(nom);
                             if (nom == nodes.Text)
                             {
                                 nodes.BackColor = Color.Cyan;
@@ -1017,7 +1029,7 @@ namespace HoraireBeta
                         foreach (TreeNode nodes in RessourceTree.Nodes[2].Nodes)
                         {
                             nom = ((Equipe)ressource).getNom().ToLower();
-                            MessageBox.Show(nom);
+                         //   MessageBox.Show(nom);
                             if (nom == nodes.Text)
                             {
                                 nodes.BackColor = Color.Cyan;

@@ -18,8 +18,7 @@ namespace HoraireBeta
         public Bloc selectionEnCours;
         GrilleJour jourCliquer;
 
-        public GrilleHoraire(Graphics grfx,Loader loader,DateTime date)
-
+        public GrilleHoraire(Graphics grfx, Loader loader, DateTime date)
         {
             gfx = grfx;
             this.loader = loader;
@@ -27,30 +26,30 @@ namespace HoraireBeta
             laDate = date;
 
             //DateTime et une addition de timespan
-            DateTime lundi      = laDate;
-            DateTime mardi      = laDate.Add(new TimeSpan(24,0,0));
-            DateTime mercredi   = laDate.Add(new TimeSpan(48, 0, 0));
-            DateTime jeudi      = laDate.Add(new TimeSpan(72, 0, 0));
-            DateTime vendredi   = laDate.Add(new TimeSpan(96, 0, 0));
-            DateTime samedi     = laDate.Add(new TimeSpan(120, 0, 0));
-            DateTime dimanche   = laDate.Subtract(new TimeSpan(24,0,0));
+            DateTime lundi = laDate;
+            DateTime mardi = laDate.Add(new TimeSpan(24, 0, 0));
+            DateTime mercredi = laDate.Add(new TimeSpan(48, 0, 0));
+            DateTime jeudi = laDate.Add(new TimeSpan(72, 0, 0));
+            DateTime vendredi = laDate.Add(new TimeSpan(96, 0, 0));
+            DateTime samedi = laDate.Add(new TimeSpan(120, 0, 0));
+            DateTime dimanche = laDate.Subtract(new TimeSpan(24, 0, 0));
 
             //Création des jours - ajouter les blocs existants
-            jours[0] = new GrilleJour("Dimanche", dimanche, 1, 40, 20, grfx, loader,this);
-            jours[1] = new GrilleJour("Lundi",lundi,2, 140, 20, grfx,loader,this);
-            jours[2] = new GrilleJour("Mardi", mardi, 3, 240, 20, grfx, loader,this);
-            jours[3] = new GrilleJour("Mercredi",mercredi, 4, 340, 20, grfx, loader,this);
-            jours[4] = new GrilleJour("Jeudi", jeudi, 5, 440, 20, grfx, loader,this);
-            jours[5] = new GrilleJour("Vendredi", vendredi, 6, 540, 20, grfx, loader,this);
-            jours[6] = new GrilleJour("Samedi", samedi, 7, 640, 20, grfx, loader,this);
-           
+            jours[0] = new GrilleJour("Dimanche", dimanche, 1, 40, 20, grfx, loader, this);
+            jours[1] = new GrilleJour("Lundi", lundi, 2, 140, 20, grfx, loader, this);
+            jours[2] = new GrilleJour("Mardi", mardi, 3, 240, 20, grfx, loader, this);
+            jours[3] = new GrilleJour("Mercredi", mercredi, 4, 340, 20, grfx, loader, this);
+            jours[4] = new GrilleJour("Jeudi", jeudi, 5, 440, 20, grfx, loader, this);
+            jours[5] = new GrilleJour("Vendredi", vendredi, 6, 540, 20, grfx, loader, this);
+            jours[6] = new GrilleJour("Samedi", samedi, 7, 640, 20, grfx, loader, this);
 
-           
+
+
         }
 
         public void activer()
         {
-            
+
             jours[0].activer();
             jours[1].activer();
             jours[2].activer();
@@ -58,7 +57,7 @@ namespace HoraireBeta
             jours[4].activer();
             jours[5].activer();
             jours[6].activer();
-            
+
             //En-tête
 
             //Grade des heures
@@ -68,16 +67,17 @@ namespace HoraireBeta
             SolidBrush selectedBrush = new SolidBrush(Color.Black);
 
             for (int i = 1; i <= 24; i++)
-                {
-                if(i < 10)
-                    gfx.DrawString("0"+(i-1)+":00", laFont, brush, 0, (20*i)+15);
+            {
+                if (i < 10)
+                    gfx.DrawString("0" + (i - 1) + ":00", laFont, brush, 0, (20 * i) + 15);
                 else
-                    gfx.DrawString((i-1) + ":00", laFont, brush, 0, (20*i)+15);
-                }
+                    gfx.DrawString((i - 1) + ":00", laFont, brush, 0, (20 * i) + 15);
+            }
         }
 
-        public void refresh() {
-            
+        public void refresh()
+        {
+
             gfx.Clear(Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))));
             activer();
         }
@@ -85,8 +85,9 @@ namespace HoraireBeta
 
 
 
-        public void changeSemaine(DateTime date) {
-       
+        public void changeSemaine(DateTime date)
+        {
+
             DateTime lundi = date;
             DateTime mardi = date.Add(new TimeSpan(24, 0, 0));
             DateTime mercredi = date.Add(new TimeSpan(48, 0, 0));
@@ -95,26 +96,26 @@ namespace HoraireBeta
             DateTime samedi = date.Add(new TimeSpan(120, 0, 0));
             DateTime dimanche = date.Subtract(new TimeSpan(24, 0, 0));
 
-            
+
             //Création des jours - ajouter les blocs existants
-            jours[0] = new GrilleJour("Dimanche", dimanche, 1, 40, 20, gfx, loader,this);
-            jours[1] = new GrilleJour("Lundi", lundi, 2, 140, 20, gfx, loader,this);
-            jours[2] = new GrilleJour("Mardi", mardi, 3, 240, 20, gfx, loader,this);
-            jours[3] = new GrilleJour("Mercredi", mercredi, 4, 340, 20, gfx, loader,this);
-            jours[4] = new GrilleJour("Jeudi", jeudi, 5, 440, 20, gfx, loader,this);
-            jours[5] = new GrilleJour("Vendredi", vendredi, 6, 540, 20, gfx, loader,this);
-            jours[6] = new GrilleJour("Samedi", samedi, 7, 640, 20, gfx, loader,this);
+            jours[0] = new GrilleJour("Dimanche", dimanche, 1, 40, 20, gfx, loader, this);
+            jours[1] = new GrilleJour("Lundi", lundi, 2, 140, 20, gfx, loader, this);
+            jours[2] = new GrilleJour("Mardi", mardi, 3, 240, 20, gfx, loader, this);
+            jours[3] = new GrilleJour("Mercredi", mercredi, 4, 340, 20, gfx, loader, this);
+            jours[4] = new GrilleJour("Jeudi", jeudi, 5, 440, 20, gfx, loader, this);
+            jours[5] = new GrilleJour("Vendredi", vendredi, 6, 540, 20, gfx, loader, this);
+            jours[6] = new GrilleJour("Samedi", samedi, 7, 640, 20, gfx, loader, this);
 
 
             refresh();
-        
+
         }
 
-        public void passeClique(MouseEventArgs e,String mouse)
+        public void passeClique(MouseEventArgs e, String mouse)
         {
-            
-            
-            if(mouse == "MouseUp")
+
+
+            if (mouse == "MouseDown")
             {
 
                 Boolean blocUnselected = false;
@@ -143,48 +144,47 @@ namespace HoraireBeta
                         }
                         //Si appuis dans le vide
                         else
-
                         {
                             if (blocUnselected == false)
                             {
 
-                        {
-
-                                //DateTime 1 heure plus tard
-                                DateTime tempDateFin = jourCliquer.getDate();
-
-
-                                if (jourCliquer.getHeureClique(e.Y) >= 0)
                                 {
 
-                            if (jourCliquer.getHeureClique(e.Y) >= 0)
-                            {
-
-                                    //Création du bloc
-                                refresh();
+                                    //DateTime 1 heure plus tard
+                                    DateTime tempDateFin = jourCliquer.getDate();
 
 
-                                    jourCliquer.createBlock(jourCliquer.getX(), jourCliquer.getHeureClique(e.Y),
-                                        jourCliquer.getDate(), tempDateFin);
+                                    if (jourCliquer.getHeureClique(e.Y) >= 0)
+                                    {
+
+                                        if (jourCliquer.getHeureClique(e.Y) >= 0)
+                                        {
+
+                                            //Création du bloc
+                                            refresh();
+
+
+                                            jourCliquer.createBlock(jourCliquer.getX(), jourCliquer.getHeureClique(e.Y),
+                                                jourCliquer.getDate(), tempDateFin);
+
+                                        }
+
+                                    }
+
+                                    else
+                                        MessageBox.Show("Té pas supposer voir ca ... ");
+                                    // MessageBox.Show("Vide");
 
                                 }
 
-                            }
-
-                                else
-                                    MessageBox.Show("Té pas supposer voir ca ... ");
-                                // MessageBox.Show("Vide");
 
                             }
-
-                            
-                        }
 
                         }
                     }
 
 
-                }  
+                }
 
 
             }//Fin du MouseUp
@@ -203,7 +203,7 @@ namespace HoraireBeta
                         //Sélection d'un bloc existant
                         if (selectionEnCours != null)
                         {
-                                
+
                             jourCliquer.modifierBlock(selectionEnCours);
                             refresh();
 
@@ -214,18 +214,18 @@ namespace HoraireBeta
                 }
 
             }
-                
 
-                    refresh();
-                    
 
+            refresh();
 
 
 
 
-                //jours[i].passeClique(e,mouse);
 
-                }
-        }     
+
+            //jours[i].passeClique(e,mouse);
+
+        }
     }
+}
 

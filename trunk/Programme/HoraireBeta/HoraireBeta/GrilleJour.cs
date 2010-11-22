@@ -12,9 +12,9 @@ namespace HoraireBeta
     class GrilleJour
     {
         //Variables locales
-       
+
         DateTime dateFin;
-        bool mousepush=false;
+        bool mousepush = false;
         int jour;
         public String jourText;
         //Bloc[] blocs = new Bloc[10];
@@ -41,11 +41,11 @@ namespace HoraireBeta
         //Gestion des heures
         int heightHeure;
         int heureDebutGradation = 1;
-        
+
 
 
         //Constructeur
-        public GrilleJour(String jourText,DateTime laDate, int jour, int posx, int posy, Graphics grfx, Loader loader,GrilleHoraire grilleH)
+        public GrilleJour(String jourText, DateTime laDate, int jour, int posx, int posy, Graphics grfx, Loader loader, GrilleHoraire grilleH)
         {
             this.jourText = jourText;
             this.jour = jour;
@@ -60,43 +60,46 @@ namespace HoraireBeta
 
             //Petit rectangle
             heightHeure = ((height - 20) / nbHeures);
-            
+
         }
 
-        ~GrilleJour() { //Destructeur Décoratif! Made by Simon Brassard
-           
+        ~GrilleJour()
+        { //Destructeur Décoratif! Made by Simon Brassard
 
-            
+
+
         }
         //Renvois la position en Y l'heure cliquer
-        public int getHeureClique(int yClique) {
-          
+        public int getHeureClique(int yClique)
+        {
+
             //Enève l'entête de 20 pixel
             yClique = yClique - 20;
 
             for (int i = 0; i <= nbHeures; i++)
+            {
+                if (yClique > (i * heightHeure) && yClique < ((i + 1) * heightHeure))
                 {
-                if (yClique > (i*heightHeure) && yClique < ((i+1) * heightHeure))
-                    {
-                    return (i-1);
-                    }
+                    return (i - 1);
                 }
-            
+            }
+
             return -1;
         }
 
-        public int getHeightHeure(){
+        public int getHeightHeure()
+        {
             return heightHeure;
         }
 
         public int getX()
-        {return posX;}
+        { return posX; }
 
         public int getXFin()
-        {return posX+width;}
+        { return posX + width; }
 
         public DateTime getDate()
-        {return dateDuJour;}
+        { return dateDuJour; }
 
         public void activer()
         {
@@ -120,24 +123,24 @@ namespace HoraireBeta
             //Charge les blocs du jours
             blocs = loader.getBlocFromDate(dateDuJour);
             if (blocs != null)
-                {
+            {
                 for (int i = 0; i < blocs.Count; i++)
-                    {
+                {
                     blocs.ElementAt(i).draw(width, grfx);
 
-                    }
-                    
                 }
+
+            }
         }
 
         public void changeDate(DateTime nouvelleDate)
-            {
-                dateDuJour = nouvelleDate;
-        
-            }
+        {
+            dateDuJour = nouvelleDate;
 
-        public Bloc selectionneUnBloc(int lesY) 
-            {
+        }
+
+        public Bloc selectionneUnBloc(int lesY)
+        {
             //Vérifis si le clique touche un bloc
             // blocs = loader.getBlocFromDate(dateDuJour);
             if (blocs != null)
@@ -147,21 +150,21 @@ namespace HoraireBeta
                     //Vérifis les Y des blocs
                     if ((lesY > blocs.ElementAt(i).getY()) && (lesY < blocs.ElementAt(i).getYFin()))
                     {
-                    return blocs.ElementAt(i);
-                        
+                        return blocs.ElementAt(i);
+
                     }
                 }
-            
+
             }
             return null;
-            }
+        }
 
-       
+
 
         public void ajouterBloc(int heureDebut)
         {
             //Variables bidon
-         //  DateTime date = new DateTime();
+            //  DateTime date = new DateTime();
             //  blocs[indexBlocs] = new Bloc();
             //Lors de l'ajout du bloc par defaut on ajoute 1hr
             // debut +1
@@ -174,14 +177,15 @@ namespace HoraireBeta
 
         }
 
-        public Bloc getBloc(int i) {
+        public Bloc getBloc(int i)
+        {
             return blocs.ElementAt(i);
         }
 
-        public void passeClique(MouseEventArgs e,String mouse)
+        public void passeClique(MouseEventArgs e, String mouse)
         {
-            
-            
+
+
             if (mouse == "MouseDown")
             {
                 if ((e.X >= posX) && (e.X < (posX + 100)))
@@ -209,33 +213,33 @@ namespace HoraireBeta
                                 }
                         }
                     */
-                    }
-                    /*
-                    //Détecteur de bloc
-                    if ((e.Y > 40) && (e.Y < 60))
-                    {
-                    // grfx.FillRectangle(myBlueBrush, posX + 1, e.Y, width - 1, heightHeure);
-
-                    dateDuJour = new DateTime(dateDuJour.Year, dateDuJour.Month, dateDuJour.Day, 1, 0, 0);
-                    dateFin = new DateTime(dateDuJour.Year, dateDuJour.Month, dateDuJour.Day, 2, 0, 0);
-                    createBlock(posX, 40,dateDuJour,dateFin);
-                    }
-                    */
                 }
+                /*
+                //Détecteur de bloc
+                if ((e.Y > 40) && (e.Y < 60))
+                {
+                // grfx.FillRectangle(myBlueBrush, posX + 1, e.Y, width - 1, heightHeure);
+
+                dateDuJour = new DateTime(dateDuJour.Year, dateDuJour.Month, dateDuJour.Day, 1, 0, 0);
+                dateFin = new DateTime(dateDuJour.Year, dateDuJour.Month, dateDuJour.Day, 2, 0, 0);
+                createBlock(posX, 40,dateDuJour,dateFin);
+                }
+                */
+            }
 
 
 
-            
+
 
             if (mouse == "MouseUp")
-                {
+            {
                 if (mousepush)
-                    { 
-                    
-                
-                    }
-            
+                {
+
+
                 }
+
+            }
 
         }
 
@@ -243,10 +247,51 @@ namespace HoraireBeta
         public void modifierBlock(Bloc leBloc)
         {
             string hDebut = leBloc.getDebut().Hour + "";
-            string hFin = (leBloc.getFin().Hour+1) + "";
+            string hFin = (leBloc.getFin().Hour + 1) + "";
 
             DateTime debut = leBloc.getDebut();
             DateTime fin = leBloc.getFin();
+
+            ModificationBloc modifbloc = new ModificationBloc(hDebut, hFin);
+            modifbloc.ShowDialog();
+
+            if (modifbloc.getCommande() == 0)
+            {
+                //Modification d'un bloc
+                //Compute Nouvelle Date ** Ajouter validation ** 
+                int dateDebut = int.Parse(modifbloc.getHd());
+                int dateFin = int.Parse(modifbloc.getHf());
+
+                DateTime tempDebut = new DateTime(debut.Year, debut.Month, debut.Day, dateDebut, debut.Minute, debut.Second);
+                DateTime tempFin = new DateTime(fin.Year, fin.Month, fin.Day, dateFin - 1, fin.Minute, fin.Second);
+
+                leBloc = new Bloc(tempDebut, tempFin, 0, 0);
+                if (loader.modifierBloc(leBloc))
+                { //Ajout du bloc confirmé 
+                } //
+                else
+                    //Bloc introuvable
+                    MessageBox.Show("Bloc introuvable");
+
+            }
+            else
+            //Suppression d'un Bloc
+            {
+                loader.supprimerBloc(leBloc);
+                laGrille.refresh();
+
+            }
+
+            modifbloc.Dispose();
+
+        }
+
+
+
+        public void createBlock(int x, int heureDebut, DateTime debut, DateTime fin)
+        {
+            string hDebut = heureDebut + "";
+            string hFin = (heureDebut + 1) + "";
 
             CreationBloc creationbloc = new CreationBloc(hDebut, hFin);
             creationbloc.ShowDialog();
@@ -258,69 +303,26 @@ namespace HoraireBeta
 
 
             DateTime tempDebut = new DateTime(debut.Year, debut.Month, debut.Day, dateDebut, debut.Minute, debut.Second);
-            DateTime tempFin = new DateTime(fin.Year, fin.Month, fin.Day, dateFin-1, fin.Minute, fin.Second);
-            //  debut = new DateTime(dateDebut, debut.Minute, debut.Second);
-            //  fin = new DateTime(dateFin, fin.Minute, fin.Second);
+            DateTime tempFin = new DateTime(fin.Year, fin.Month, fin.Day, dateFin, fin.Minute, fin.Second) - new TimeSpan(0, 0, 0, 1);
 
-            //MessageBox.Show(" Date Début : " + tempDebut + " et Date Fin : " + tempFin);
+            MessageBox.Show(" Date Début : " + tempDebut + " et Date Fin : " + tempFin);
 
-            //loader.bloc.Add(new Bloc(new DateTime(2010, 11, 03, Convert.ToInt32(creationbloc.getHd()), 0, 0), new DateTime(2010, 11, 03, Convert.ToInt32(creationbloc.getHf()), 0, 0), 0, 0));
-            //loader.bloc.Add(new Bloc(jourText, x, y, y + 16, jour, 0, 0));
-            //leBloc = new Bloc(tempDebut, tempFin, 0, 0);
-            /*
-            leBloc.setDebut(tempDebut);
-            leBloc.setFin(tempFin);
-             * */
-            
-            
-            leBloc = new Bloc(tempDebut, tempFin,0,0);
-            if (loader.modifierBloc(leBloc))
-        
+            Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0);
+
+            tempBloc.draw(width, grfx);
+            loader.bloc.Add(tempBloc);
+
+
             creationbloc.Dispose();
-            
+
         }
-        
 
 
-        public void createBlock(int x, int heureDebut,DateTime debut,DateTime fin)
-        {
-            string hDebut = heureDebut + "";
-            string hFin = (heureDebut + 1) + "";
-
-                CreationBloc creationbloc = new CreationBloc(hDebut, hFin);
-                creationbloc.ShowDialog();
-                
-                //Compute Nouvelle Date ** Ajouter validation ** 
-                int dateDebut = int.Parse(creationbloc.getHd());
-                int dateFin = int.Parse(creationbloc.getHf());
-
-                
-
-                DateTime tempDebut = new DateTime(debut.Year, debut.Month, debut.Day, dateDebut, debut.Minute, debut.Second);
-                DateTime tempFin = new DateTime(fin.Year, fin.Month, fin.Day, dateFin, fin.Minute, fin.Second) - new TimeSpan(0,0,0,1);
-              //  debut = new DateTime(dateDebut, debut.Minute, debut.Second);
-              //  fin = new DateTime(dateFin, fin.Minute, fin.Second);
-
-                MessageBox.Show(" Date Début : " + tempDebut + " et Date Fin : " + tempFin);
-
-                //loader.bloc.Add(new Bloc(new DateTime(2010, 11, 03, Convert.ToInt32(creationbloc.getHd()), 0, 0), new DateTime(2010, 11, 03, Convert.ToInt32(creationbloc.getHf()), 0, 0), 0, 0));
-                //loader.bloc.Add(new Bloc(jourText, x, y, y + 16, jour, 0, 0));
-                Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0);
-                
-                tempBloc.draw(width,grfx);
-                loader.bloc.Add(tempBloc);
-                //this.activer();
-                
-                creationbloc.Dispose();
-                //Application.Run(creationbloc);
-          }
-       
-    
     }
 
-    
 
 
 
-   }
+
+}
 

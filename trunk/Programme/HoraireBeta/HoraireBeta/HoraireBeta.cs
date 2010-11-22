@@ -111,6 +111,7 @@ namespace HoraireBeta
             {
                 case MouseButtons.Left:
                     grille.passeClique(e,"MouseUp");
+                    updateInterfaceHoraire();
                     if (grille.selectionEnCours != null)
                     {
                         fillEmployeListBox(grille.selectionEnCours);
@@ -736,10 +737,12 @@ namespace HoraireBeta
                             existe = true;
                             break;
                         }
+                    }
+                }
+        }
 
 
-
-                        NbPoste input = new NbPoste(((Poste)res).getNom(), nb);
+                      /*  NbPoste input = new NbPoste(((Poste)res).getNom(), nb);
                         input.ShowDialog();
 
                         if (existe)
@@ -764,7 +767,7 @@ namespace HoraireBeta
                 }
         }
 
-
+*/
         private void RessourceTree_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
 
@@ -855,8 +858,12 @@ namespace HoraireBeta
 
             List<Ressource> ressources = bloc.getListRessourceAffecte();
 
+<<<<<<< .mine
+           
+=======
           //  MessageBox.Show(bloc.getRessourceVoulus().Count.ToString());
             //MessageBox.Show(bloc.getListRessourceAffecte().Count.ToString());
+>>>>>>> .r263
 
             for (int i = 0; i < ressources.Count(); i++)
             {
@@ -921,13 +928,73 @@ namespace HoraireBeta
 
         }
 
-       
-        
+        void updateInterfaceHoraire()
+        {
+            MessageBox.Show("LOL");
+            resetTree(RessourceTree.Nodes[0].Nodes);
+            resetTree(RessourceTree.Nodes[1].Nodes);
+            resetTree(RessourceTree.Nodes[2].Nodes);
+
+            if (grille.selectionEnCours != null)
+            {
+                Bloc blocCourant = grille.selectionEnCours;
+                Ressource ressource;
+
+                for(int i=0;i<blocCourant.getListRessourceAffecte().Count;i++)
+                {
+                    MessageBox.Show(i + "");
+                    ressource = blocCourant.getListRessourceAffecte().ElementAt(i);
+                    if (ressource is Profil)
+                    {
+                        String nomPrenom;
+                        foreach (TreeNode nodes in RessourceTree.Nodes[0].Nodes)
+                        {
+                            nomPrenom = ((Profil)ressource).getNom().ToLower() + ", " + ((Profil)ressource).getPrenom().ToLower();
+                            MessageBox.Show(nomPrenom+" "+nodes.Text);
+                            
+                            if (nomPrenom == nodes.Text)
+                            {
+                                nodes.BackColor = Color.Cyan;
+                                break;
+                            }
+                        }
+                    }
+                    if (ressource is Equipe)
+                    {
+                        String nom;
+                        foreach (TreeNode nodes in RessourceTree.Nodes[1].Nodes)
+                        {
+                            nom = ((Equipe)ressource).getNom().ToLower();
+                            MessageBox.Show(nom);
+                            if (nom == nodes.Text)
+                            {
+                                nodes.BackColor = Color.Cyan;
+                            }
+                        }
+                    }
+                    if (ressource is Poste)
+                    {
+                        String nom;
+                        foreach (TreeNode nodes in RessourceTree.Nodes[2].Nodes)
+                        {
+                            nom = ((Poste)ressource).getNom().ToLower();
+                            MessageBox.Show(nom);
+                            if (nom == nodes.Text)
+                            {
+                                nodes.BackColor = Color.Cyan;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        void resetTree(TreeNodeCollection tree)
+        {
+            foreach (TreeNode nodes in tree)
+            {
+                nodes.BackColor = Color.White; 
+            }
+        }
+
     }
 } 
-           
-
-          
-
-
-            

@@ -142,6 +142,7 @@ namespace HoraireBeta
 
         }
 
+        
         public List<Bloc> loadBloc()
         {
             DataTable rsBloc;
@@ -253,9 +254,26 @@ namespace HoraireBeta
 
         }
 
+        //Modifis le bloc correspondant a celui en parenthèse
+        public bool modifierBloc(Bloc leBloc) {
+            int nbBloc = bloc.Count;
+            bool blocTrouve=false;
 
+            //Les conditions a modifier devront être unique a chaque blocs
+            for (int i = 0; i < nbBloc; i++) {
+                if (bloc[i].getDebut() == leBloc.getDebut())
+                    {
+                    bloc[i] = leBloc;
+                    blocTrouve = true;
+                    break;
+                    }
+            
+                }
 
+            return blocTrouve;        
         
+        }
+              
 
     }
 }

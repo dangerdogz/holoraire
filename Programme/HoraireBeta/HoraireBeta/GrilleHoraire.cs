@@ -116,11 +116,9 @@ namespace HoraireBeta
             
             if(mouse == "MouseUp")
             {
-<<<<<<< .mine
-                Boolean blocUnselected = false;
-=======
 
->>>>>>> .r263
+                Boolean blocUnselected = false;
+
                 for (int i = 0; i < 7; i++)
                 {
                     //Sélection du bon jours
@@ -145,54 +143,50 @@ namespace HoraireBeta
                         }
                         //Si appuis dans le vide
                         else
-<<<<<<< .mine
+
                         {
                             if (blocUnselected == false)
                             {
-=======
+
                         {
->>>>>>> .r263
+
                                 //DateTime 1 heure plus tard
                                 DateTime tempDateFin = jourCliquer.getDate();
 
-<<<<<<< .mine
+
                                 if (jourCliquer.getHeureClique(e.Y) >= 0)
                                 {
-=======
+
                             if (jourCliquer.getHeureClique(e.Y) >= 0)
                             {
->>>>>>> .r263
+
                                     //Création du bloc
                                 refresh();
 
-<<<<<<< .mine
+
                                     jourCliquer.createBlock(jourCliquer.getX(), jourCliquer.getHeureClique(e.Y),
                                         jourCliquer.getDate(), tempDateFin);
 
                                 }
-=======
+
                             }
->>>>>>> .r263
-<<<<<<< .mine
+
                                 else
                                     MessageBox.Show("Té pas supposer voir ca ... ");
                                 // MessageBox.Show("Vide");
 
                             }
-=======
-                            else
-                                MessageBox.Show("Té pas supposer voir ca ... ");
-                            // MessageBox.Show("Vide");
+
+                            
                         }
->>>>>>> .r263
+
                         }
                     }
-<<<<<<< .mine
-=======
+
 
                 }  
 
->>>>>>> .r263
+
             }//Fin du MouseUp
 
             if (mouse == "DoubleClick")
@@ -217,37 +211,21 @@ namespace HoraireBeta
 
                     }
 
-
-
-                    }
-
                 }
+
+            }
                 
-<<<<<<< .mine
+
                     refresh();
                     
-=======
->>>>>>> .r263
+
 
 
 
 
                 //jours[i].passeClique(e,mouse);
-<<<<<<< .mine
+
                 }
-=======
->>>>>>> .r263
-            
-            
-
-           
-
-        }
-
-
-
-
-
-     
+        }     
     }
-}
+

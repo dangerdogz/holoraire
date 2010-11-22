@@ -69,6 +69,7 @@ namespace HoraireBeta
             this.button_genere = new System.Windows.Forms.Button();
             this.employe = new System.Windows.Forms.TabPage();
             this.panelCentral_Employe = new System.Windows.Forms.Panel();
+            this.supprimer_button = new System.Windows.Forms.Button();
             this.treeView_postdispo = new System.Windows.Forms.TreeView();
             this.treeView_postechoisi = new System.Windows.Forms.TreeView();
             this.posteaoccuper_gauche = new System.Windows.Forms.Button();
@@ -95,7 +96,7 @@ namespace HoraireBeta
             this.infopers_label = new System.Windows.Forms.Label();
             this.ajprofemp_label = new System.Windows.Forms.Label();
             this.panelGauche_Employe = new System.Windows.Forms.Panel();
-            this.supprimer_button = new System.Windows.Forms.Button();
+            this.treeView_modemploye = new System.Windows.Forms.TreeView();
             this.modifier_button = new System.Windows.Forms.Button();
             this.ajouter_button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -208,8 +209,6 @@ namespace HoraireBeta
             this.panelCentral_Horaire.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseDown);
             this.panelCentral_Horaire.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
             this.panelCentral_Horaire.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseUp);
-
-            Graphics grfx = this.panelCentral_Horaire.CreateGraphics();
             // 
             // tabConflits
             // 
@@ -261,7 +260,6 @@ namespace HoraireBeta
             this.listEmploye.Name = "listEmploye";
             this.listEmploye.Size = new System.Drawing.Size(439, 121);
             this.listEmploye.TabIndex = 0;
-
             // 
             // tabPoste
             // 
@@ -441,6 +439,7 @@ namespace HoraireBeta
             // 
             this.panelCentral_Employe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panelCentral_Employe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            
             this.panelCentral_Employe.Controls.Add(this.treeView_postdispo);
             this.panelCentral_Employe.Controls.Add(this.treeView_postechoisi);
             this.panelCentral_Employe.Controls.Add(this.posteaoccuper_gauche);
@@ -473,6 +472,17 @@ namespace HoraireBeta
             this.panelCentral_Employe.Paint += new System.Windows.Forms.PaintEventHandler(this.pCentral_Employe_Paint);
             this.panelCentral_Employe.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pCentral_Employe_OnMouseEvent);
             this.panelCentral_Employe.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Employe_OnMouseEvent);
+            // 
+            // supprimer_button
+            // 
+            this.supprimer_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.supprimer_button.Location = new System.Drawing.Point(618, 599);
+            this.supprimer_button.Name = "supprimer_button";
+            this.supprimer_button.Size = new System.Drawing.Size(120, 32);
+            this.supprimer_button.TabIndex = 3;
+            this.supprimer_button.Text = "Supprimer";
+            this.supprimer_button.UseVisualStyleBackColor = true;
+            this.supprimer_button.Click += new System.EventHandler(this.supprimer_button_Click);
             // 
             // treeView_postdispo
             // 
@@ -717,7 +727,7 @@ namespace HoraireBeta
             // 
             this.panelGauche_Employe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panelGauche_Employe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelGauche_Employe.Controls.Add(this.supprimer_button);
+            
             this.panelGauche_Employe.Controls.Add(this.modifier_button);
             this.panelGauche_Employe.Controls.Add(this.ajouter_button);
             this.panelGauche_Employe.Controls.Add(this.label1);
@@ -729,15 +739,13 @@ namespace HoraireBeta
             this.panelGauche_Employe.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pGauche_Employe_OnMouseEvent);
             this.panelGauche_Employe.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pGauche_Employe_OnMouseEvent);
             // 
-            // supprimer_button
+            // treeView_modemploye
             // 
-            this.supprimer_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.supprimer_button.Location = new System.Drawing.Point(3, 113);
-            this.supprimer_button.Name = "supprimer_button";
-            this.supprimer_button.Size = new System.Drawing.Size(232, 32);
-            this.supprimer_button.TabIndex = 3;
-            this.supprimer_button.Text = "Supprimer";
-            this.supprimer_button.UseVisualStyleBackColor = true;
+            this.treeView_modemploye.Location = new System.Drawing.Point(3, 113);
+            this.treeView_modemploye.Name = "treeView_modemploye";
+            this.treeView_modemploye.Size = new System.Drawing.Size(232, 217);
+            this.treeView_modemploye.TabIndex = 3;
+            this.treeView_modemploye.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_modemploye_AfterSelect);
             // 
             // modifier_button
             // 
@@ -1233,8 +1241,6 @@ namespace HoraireBeta
             ((System.ComponentModel.ISupportInitialize)(this.resultDataGrid)).EndInit();
             this.ResumeLayout(false);
 
-            grille = new GrilleHoraire(grfx, loader, getDebutSemaine());
-
         }
 
         #endregion
@@ -1354,6 +1360,7 @@ namespace HoraireBeta
         private Button modifier_button;
         private TabPage tabEmploye;
         private ListBox listEmploye;
+        private TreeView treeView_modemploye;
         private TabPage tabPoste;
         private TabPage tabEquipe;
         private ListBox listPoste;

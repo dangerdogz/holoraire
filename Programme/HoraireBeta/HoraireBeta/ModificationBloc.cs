@@ -13,16 +13,17 @@ namespace HoraireBeta
     {
         string hd;
         string hf;
+        int commande = 0;
         public ModificationBloc(string hd, string hf)
         {
             InitializeComponent(hd, hf);
-
         }
+
 
         public void setHeures()
         {
-            hd = textBox_hrdebut.Text;
-            hf = textBox_hrfin.Text;
+            hd = textBox1.Text;
+            hf = textBox2.Text;
 
             if (hf == "25")
                 hf = "1";
@@ -37,22 +38,41 @@ namespace HoraireBeta
             return hd;
         }
 
+        public int getCommande() 
+        {
+            return commande;
+        }
+
         public string getHf()
         {
             return hf;
         }
 
-        private void button_blocconfirm_Click(object sender, EventArgs e)
+        private void modifierClick(object sender, EventArgs e)
         {
-            for (int i = 0; i <= textBox_hrdebut.Text.Length; i++)
+            for (int i = 0; i <= textBox1.Text.Length; i++)
             {
 
             }
 
             setHeures();
-
-            //MessageBox.Show(this, "" + hd);
+            commande = 0;
+           
             this.Hide();
         }
+
+        private void supprimerClick(object sender, EventArgs e)
+        {
+            for (int i = 0; i <= textBox1.Text.Length; i++)
+            {
+
+            }
+
+            commande = 1;
+            
+           
+            this.Hide();
+        }
+
     }
 }

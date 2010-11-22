@@ -203,6 +203,7 @@ namespace HoraireBeta
             this.panelCentral_Horaire.Size = new System.Drawing.Size(746, 694);
             this.panelCentral_Horaire.TabIndex = 1;
             this.panelCentral_Horaire.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCentral_Horaire_Paint);
+            this.panelCentral_Horaire.DoubleClick += new System.EventHandler(this.pCentral_Horaire_DoubleClick);
             this.panelCentral_Horaire.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
             this.panelCentral_Horaire.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseDown);
             this.panelCentral_Horaire.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
@@ -260,7 +261,7 @@ namespace HoraireBeta
             this.listEmploye.Name = "listEmploye";
             this.listEmploye.Size = new System.Drawing.Size(439, 121);
             this.listEmploye.TabIndex = 0;
-            
+
             // 
             // tabPoste
             // 
@@ -279,7 +280,7 @@ namespace HoraireBeta
             this.listPoste.Name = "listPoste";
             this.listPoste.Size = new System.Drawing.Size(436, 121);
             this.listPoste.TabIndex = 0;
-           
+
             // 
             // tabEquipe
             // 
@@ -1232,7 +1233,7 @@ namespace HoraireBeta
             ((System.ComponentModel.ISupportInitialize)(this.resultDataGrid)).EndInit();
             this.ResumeLayout(false);
 
-            grille = new GrilleHoraire(grfx,loader,getDebutSemaine());
+            grille = new GrilleHoraire(grfx, loader, getDebutSemaine());
 
         }
 
@@ -1271,24 +1272,24 @@ namespace HoraireBeta
         private GrilleHoraire grille;
 
 
-        
-        
+
+
 
 
 
         private TreeView RessourceTree;
         private TreeView treeView_postdispo;
-        
+
         private List<Ressource> profilCharge = new List<Ressource>();
         private List<Equipe> equipe = new List<Equipe>();
         public List<Poste> posteCharge = new List<Poste>();
 
         public void initInterface()
         {
-            FillInterface();            
+            FillInterface();
         }
 
-        
+
 
         private Label label1;
         private Button ajouter_button;
@@ -1315,7 +1316,7 @@ namespace HoraireBeta
         private Button buttondroit;
         private Label postchoisi_label;
         private Label postedisp_label;
-        
+
         private TreeView treeView_postechoisi;
         private Button posteaoccuper_gauche;
         private Label parametre_label;

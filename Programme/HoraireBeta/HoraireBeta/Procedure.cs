@@ -56,7 +56,7 @@ namespace HoraireBeta
                 cmd = sqlite.CreateCommand();
                 cmd.CommandText = query;  //set the passed query
                 ad = new SQLiteDataAdapter(cmd);
-                MessageBox.Show(query, "Yikes");
+             
                
               
             }
@@ -97,7 +97,7 @@ namespace HoraireBeta
         {
             string requete;
             requete = "SELECT DISTINCT last_insert_rowid() FROM "+quoi+";";
-            MessageBox.Show(requete);
+           // MessageBox.Show(requete);
             return getResult(requete);
 
         }
@@ -348,7 +348,7 @@ namespace HoraireBeta
         {
             String requete;
             requete = "SELECT idPoste FROM Poste WHERE nom = \"" + pname + "\"";
-            MessageBox.Show(requete);
+           // MessageBox.Show(requete);
             return getResult(requete);
         }
         public void addPosteProfil(int idPoste, int idProfil)
@@ -356,7 +356,7 @@ namespace HoraireBeta
             String requete;
             requete = "INSERT INTO Poste_Profil(idPoste, idProfil) VALUES(" + idPoste + ", " + idProfil + ")";
             getResult(requete);
-            MessageBox.Show(requete);
+           // MessageBox.Show(requete);
         }
         public void deletePosteProfil(int idPoste)
         {

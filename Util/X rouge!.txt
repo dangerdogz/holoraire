@@ -1,0 +1,9 @@
+Ajouter dans HoraireBeta.Designer.cs
+
+a la fin de la section //panelCentral_Horaire
+
+Graphics grfx = this.panelCentral_Horaire.CreateGraphics();
+
+a la fin de la section //HoraireBeta
+
+grille = new GrilleHoraire(grfx, loader, getDebutSemaine());

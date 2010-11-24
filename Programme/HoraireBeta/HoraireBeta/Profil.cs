@@ -177,35 +177,33 @@ namespace HoraireBeta
             return (disponibilite);
         }
 
-        public void save()
+        public void robert()
         {
+            MessageBox.Show("robert");
+        }
+
+        public void save(bool mod)
+        {
+            
             DBConnect proc = new DBConnect();
-            if (this.id < 0)
+            if (mod == false)
             {
-                proc.ajouterProfil(prenom, nom, numTelephone, heuresMax, 0, email, anciennete);
-                
-                id = Convert.ToInt32(proc.getLastStuff("Profil").Rows[0]["last_insert_rowid()"].ToString());
-                /*int id2;
-                
-                id2 = Convert.ToInt32(proc.getProfil2(nom, prenom).ToString());
-                MessageBox.Show(id.ToString());*/
-
-            }
-            else
-            {
-                proc.modifierProfil(id, prenom, nom, numTelephone, heuresMax, 0, email, anciennete);
-
-                proc.deletePosteProfil(id);
-
-            }
-            if (this.id > 0)
-            {
+                proc.ajouterProfil(id, prenom, nom, numTelephone, heuresMax, 0, email, anciennete);
                 foreach (Ressource lui in poste)
                 {
 
                     proc.addPosteProfil(lui.getId(), id);
                 }
+
             }
+            else
+                if(mod == true)
+                {
+                    proc.modifierProfil(id, prenom, nom, numTelephone, heuresMax, 0, email, anciennete);
+
+                    proc.deletePosteProfil(id);
+
+                }
             proc.deleteProfilPreference(id);
             
             foreach (Bloc pref in preference)

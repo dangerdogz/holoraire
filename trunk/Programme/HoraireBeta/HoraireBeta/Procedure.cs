@@ -265,10 +265,10 @@ namespace HoraireBeta
             requete = "SELECT * FROM Preset";
             return getResult(requete);
         }
-        public void addRessource(int idBlock, int idPoste, int idTeam)
+        public void addRessource(int idBlock, int idPoste, int idTeam, int number)
         {
             String requete;
-            requete = "INSERT INTO Ressource(idBlock, idPoste, idTeam) VALUES(" + idBlock + "," + idPoste + "," + idTeam + ")";
+            requete = "INSERT INTO Ressource(idBlock, idPoste, idTeam, number) VALUES(" + idBlock + "," + idPoste + "," + idTeam + ","+number+")";
         }
         public void modifyRessource(int idBlock, int idPoste, int idTeam)
         {

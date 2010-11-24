@@ -248,18 +248,35 @@ namespace HoraireBeta
             ressourcesAffectes.Add(profil);
         }
 
-        public void removeEmplNouv()
+        public void removeEmplNouv(Poste poste)
         {
             //enlève l'employé le plus noob
             int i = 0;
             int j = 0;
-            while (i < ressourcesVoulus.Count() && ressourcesVoulus[i].voulue != ((Profil)ressourcesAffectes[0]).getPoste(j))
+            int k = 0;
+            int l = 0;
+
+            while(ressourcesAffectes[k].getPoste()[l] !=poste)
+            {
+                l++;
+                if (l >= ressourcesAffectes[k].getPoste().Count)
+                {
+                    l=0;
+                    k++;
+                    if (k >= ressourcesAffectes.Count)
+                    {
+                        return;
+                    }
+                }
+                
+            }
+            while (i < ressourcesVoulus.Count() && ressourcesVoulus[i].voulue != ((Profil)ressourcesAffectes[k]).getPoste(j))
             {
 
                 j = 0;
-                while (j < ((Profil)ressourcesAffectes[0]).getPoste().Count && ressourcesVoulus[i].voulue != ((Profil)ressourcesAffectes[0]).getPoste(j++)) ;
+                while (j < ((Profil)ressourcesAffectes[k]).getPoste().Count && ressourcesVoulus[i].voulue != ((Profil)ressourcesAffectes[0]).getPoste(j++)) ;
                 j--;
-                if (ressourcesVoulus[i].voulue != ((Profil)ressourcesAffectes[0]).getPoste(j))
+                if (ressourcesVoulus[i].voulue != ((Profil)ressourcesAffectes[k]).getPoste(j))
                     i++;
             }
 
@@ -267,7 +284,7 @@ namespace HoraireBeta
             ressourceAdded.nbAffectee--;
             ressourcesVoulus[i] = ressourceAdded;
 
-            ressourcesAffectes.RemoveAt(0);
+            ressourcesAffectes.RemoveAt(k);
             checkCompletion();
 
         }

@@ -59,7 +59,9 @@ namespace HoraireBeta
                         for (int j = 0; j < rs2.Rows.Count; j++)
                         {
                             int k = 0;
-                            while (Convert.ToInt32(rs2.Rows[j]["idPoste"].ToString()) != posteCharge[k++].getId()) ;
+                           // MessageBox.Show(Convert.ToInt32(rs2.Rows[j]["idPoste"].ToString()) + "" + posteCharge[k].getId());
+                            while (k<posteCharge.Count && Convert.ToInt32(rs2.Rows[j]["idPoste"].ToString()) != posteCharge[k++].getId())
+                            { MessageBox.Show(Convert.ToInt32(rs2.Rows[j]["idPoste"].ToString()) +""+ posteCharge[k].getId()); }
                             newprof.setPoste((Poste)posteCharge[--k]);
                         }
 
@@ -67,21 +69,18 @@ namespace HoraireBeta
 
                     rs3 = proc.getProfilDispo(newprof.getId());
                     rs4 = proc.getProfilPreference(newprof.getId());
-
+                    Console.WriteLine(rs4.Rows.Count+"");
                     for (int j = 0; j < rs3.Rows.Count; j++)
                     {
-                        Bloc newBloc = new Bloc(DateTime.ParseExact(rs3.Rows[i]["debut"].ToString(), "yyyy-MM-dd HH:mm:ss", null), DateTime.ParseExact(rs3.Rows[i]["fin"].ToString(), "yyyy-MM-dd HH:mm:ss", null), 0, Convert.ToInt32(rs3.Rows[j]["idPlage"].ToString()));
+                        Bloc newBloc = new Bloc(DateTime.ParseExact(rs3.Rows[j]["debut"].ToString(), "yyyy-MM-dd HH:mm:ss", null), DateTime.ParseExact(rs3.Rows[j]["fin"].ToString(), "yyyy-MM-dd HH:mm:ss", null), 0, Convert.ToInt32(rs3.Rows[j]["idPlage"].ToString()));
                         newprof.addDispo(newBloc);
-
-
-
 
 
                     }
 
                     for (int j = 0; j < rs4.Rows.Count; j++)
                     {
-                        Bloc newBloc = new Bloc(DateTime.ParseExact(rs4.Rows[i]["debut"].ToString(), "yyyy-MM-dd HH:mm:ss", null), DateTime.ParseExact(rs4.Rows[i]["fin"].ToString(), "yyyy-MM-dd HH:mm:ss", null), 0, Convert.ToInt32(rs4.Rows[j]["idPlage"].ToString()));
+                        Bloc newBloc = new Bloc(DateTime.ParseExact(rs4.Rows[j]["debut"].ToString(), "yyyy-MM-dd HH:mm:ss", null), DateTime.ParseExact(rs4.Rows[j]["fin"].ToString(), "yyyy-MM-dd HH:mm:ss", null), 0, Convert.ToInt32(rs4.Rows[j]["idPlage"].ToString()));
                         newprof.addPref(newBloc);
                     }
 
@@ -159,12 +158,12 @@ namespace HoraireBeta
                 rsRessource = proc.getRessource(bloc[i].getId());
                 for (int j = 0; j < rsRessource.Rows.Count; j++)
                 {
-                    if (rsRessource.Rows[j]["idPoste"] == null)
+                    if (rsRessource.Rows[j]["idPoste"] != null)
                     {
 
                         int id = Convert.ToInt32(rsRessource.Rows[j]["idPoste"].ToString());
                         k = 0;
-                        while (k < profilCharge.Count && id != profilCharge[k++].getId()) ;
+                        while (k < posteCharge.Count && id != posteCharge[k++].getId()) ;
                         bloc[i].addRessourceVoulue(Convert.ToInt32(rsRessource.Rows[j]["number"]), posteCharge[--k]);
                     }
                     else

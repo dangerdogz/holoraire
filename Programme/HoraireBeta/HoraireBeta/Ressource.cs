@@ -10,8 +10,9 @@ namespace HoraireBeta
 {
     public class Ressource
     {
+        protected String nom;
         protected int id;
-  
+
 
         public Ressource()
         {
@@ -33,6 +34,16 @@ namespace HoraireBeta
             return id;
         }
 
+        public List<Poste> getPoste()
+        {
+            return (new List<Poste>());
+        }
+
+        public string getNom()
+        {
+            return nom;
+        }
+
         public List<Bloc> getPref()
         {
             return (new List<Bloc>());
@@ -46,5 +57,5 @@ namespace HoraireBeta
         {
         }
 
-     }
+    }
 }

@@ -35,10 +35,10 @@ namespace HoraireBeta
         private int x;
         private int y;
         private int haut;
-        private bool isSelected=false;
-       
+        private bool isSelected = false;
 
-        private Boolean isdrawn=false;
+
+        private Boolean isdrawn = false;
 
 
 
@@ -49,7 +49,7 @@ namespace HoraireBeta
 
         public Bloc(DateTime debut, DateTime fin, int type, int id)
         {
-            
+
 
             System.Globalization.Calendar calendar = info.Calendar;
             this.debut = debut;
@@ -58,18 +58,18 @@ namespace HoraireBeta
             this.id = id;
 
             //MessageBox.Show("Date : "+
-            y = (Convert.ToInt32(debut.ToString("HH")) * 20 + Convert.ToInt32(debut.ToString("mm")) / 3)+40;
+            y = (Convert.ToInt32(debut.ToString("HH")) * 20 + Convert.ToInt32(debut.ToString("mm")) / 3) + 40;
 
-            x = ((Loader.SemaineToInt(debut)-1) * 100)+40;
-            
+            x = ((Loader.SemaineToInt(debut) - 1) * 100) + 40;
+
             //MessageBox.Show(Loader.SemaineToInt(debut)+"||"+(debut.ToString("ddd")));
 
 
             haut = ((Convert.ToInt32(fin.ToString("HH")) * 20 + Convert.ToInt32(fin.ToString("mm")) / 3) - y) + 40;
-            
+
             erreurExiste = false;
             estComplet = false;
-           
+
         }
 
         public Bloc(DateTime debut, DateTime fin, int x, int type, int id)
@@ -101,8 +101,7 @@ namespace HoraireBeta
 
         //public Bloc(int debutY, int finY, String jour, int type, int id);
 
-        public Bloc(String jourText,int posX, int debutY, int finY, int jour, int type, int id)
-
+        public Bloc(String jourText, int posX, int debutY, int finY, int jour, int type, int id)
         {
 
 
@@ -115,10 +114,10 @@ namespace HoraireBeta
             this.id = id;
             int hh = debutY / 20;
 
-           // int mm = (debutY%20)*3;
-         
-           // DateTime.ParseExact("0"+jour+"/"+hh+"/"+mm, "dd/HH/mm", null);
-           // MessageBox.Show(DateTime.ParseExact("1/1/34","dd/HH/mm",null)+"");
+            // int mm = (debutY%20)*3;
+
+            // DateTime.ParseExact("0"+jour+"/"+hh+"/"+mm, "dd/HH/mm", null);
+            // MessageBox.Show(DateTime.ParseExact("1/1/34","dd/HH/mm",null)+"");
 
             int mm = (debutY % 20) * 3;
             //DateTime.ParseExact(jour + "/" + hh + "/" + mm, "ddd/HH/mm", null);
@@ -140,8 +139,8 @@ namespace HoraireBeta
         {
             return typeBloc;
         }
-        
-        
+
+
 
         public void addRessourceVoulue(int nbvoulue, Ressource voulue)
         {
@@ -171,19 +170,19 @@ namespace HoraireBeta
         public void addRessource(Profil newEmp)
         {
 
-            MessageBox.Show("CALISSE");
+            //MessageBox.Show("CALISSE");
 
             if (ressourcesVoulus.Count != 0)
             {
-                MessageBox.Show("CALISSE2");
+                // MessageBox.Show("CALISSE2");
                 if (ressourcesAffectes.Count == 0)
                 {
                     ressourcesAffectes.Add(newEmp);
-                    MessageBox.Show("CALISSE3");
+                    //MessageBox.Show("CALISSE3");
                 }
                 else
                 {
-                    MessageBox.Show("CALISSE4");
+                    //MessageBox.Show("CALISSE4");
                     //trie l'employé dès son ajout
                     int coun = 0;
                     while (coun < ressourcesAffectes.Count && ((Profil)ressourcesAffectes[coun]).getAnciennete() <= newEmp.getAnciennete())
@@ -194,7 +193,7 @@ namespace HoraireBeta
 
 
                     ressourcesAffectes.Insert(coun, newEmp);
-                    
+
 
                 }
                 int i = 0;
@@ -215,8 +214,10 @@ namespace HoraireBeta
                     RessourceEntree ressourceAdded = ressourcesVoulus[i];
                     ressourceAdded.nbAffectee++;
                     ressourcesVoulus[i] = ressourceAdded;
+
                 }
             }
+            newEmp.setHeuresTravaillees((newEmp.getHeuresTravaillees() + ((Convert.ToInt32(debut.ToString("HH"))) - (Convert.ToInt32(fin.ToString("HH"))))));
             checkCompletion();
 
 
@@ -320,12 +321,12 @@ namespace HoraireBeta
             return fin;
         }
 
-        public void setDebut(DateTime laDate) 
+        public void setDebut(DateTime laDate)
         {
             debut = laDate;
         }
 
-        public void setFin(DateTime laDate) 
+        public void setFin(DateTime laDate)
         {
             fin = laDate;
         }
@@ -347,15 +348,16 @@ namespace HoraireBeta
         { return y; }
 
         public int getYFin()
-        { return y+haut; }
+        { return y + haut; }
 
         public void selectIt()
-        { isSelected = true;}
+        { isSelected = true; }
 
         public void unSelectIt()
         { isSelected = false; }
 
-        public Boolean isMyclick(int clickx,int clicky) {
+        public Boolean isMyclick(int clickx, int clicky)
+        {
             if (isdrawn)
             {
                 if (clickx < this.x && clicky < this.y)
@@ -363,7 +365,7 @@ namespace HoraireBeta
                 else return (false);
             }
             else return (false);
-        
+
         }
 
 
@@ -377,7 +379,8 @@ namespace HoraireBeta
             return ressourcesVoulus;
         }
 
-        public void removeRessourceVoulu(RessourceEntree lui) {
+        public void removeRessourceVoulu(RessourceEntree lui)
+        {
             ressourcesVoulus.Remove(lui);
         }
 
@@ -399,17 +402,29 @@ namespace HoraireBeta
         {
             int i = -1;
 
-            estComplet = false;
+            estComplet = true;
 
             while (++i != ressourcesVoulus.Count)
             {
                 if (ressourcesVoulus[i].nbVoulue >= ressourcesVoulus[i].nbAffectee)
                 {
-                    estComplet = true;
+                    estComplet = false;
                 }
             }
 
             return estComplet;
+        }
+
+        public bool estDejaPresent(Ressource ress)
+        {
+            Boolean oui = false;
+            foreach (Ressource assigne in ressourcesAffectes)
+            {
+                if (assigne == ress)
+                    oui = true;
+            }
+
+            return oui;
         }
 
         public void save()
@@ -434,9 +449,10 @@ namespace HoraireBeta
                 else
                     proc.addRessource(id, lui.getId(), 0);
             }
-            
+
 
         }
+
 
         public void draw(int laWidth, Graphics gfx)
         {
@@ -447,36 +463,36 @@ namespace HoraireBeta
             SolidBrush selectedBrush = new SolidBrush(Color.Green);
 
             if (isSelected == true)
-                {
+            {
                 gfx.DrawRectangle(pen, x, y, laWidth, haut);
                 gfx.FillRectangle(selectedBrush, x + 1, y + 1, laWidth - 1, haut - 1);
                 gfx.DrawString("(" + id + ")", laFont, fontBrush, x + 15, y + 2);
-                }
+            }
 
             else
-                {
+            {
                 gfx.DrawRectangle(pen, x, y, laWidth, haut);
                 gfx.FillRectangle(brush, x + 1, y + 1, laWidth - 1, haut - 1);
                 gfx.DrawString("(" + id + ")", laFont, fontBrush, x + 15, y + 2);
-                }
+            }
             isdrawn = true;
 
-            
 
-          //  MessageBox.Show("Bloc dessiné Date début :"+debut+ " | fin :"+fin);
+
+            //  MessageBox.Show("Bloc dessiné Date début :"+debut+ " | fin :"+fin);
 
             for (int i = 0; i < ressourcesAffectes.Count; i++)
             {
                 if (i * 20 < this.haut)
                 {
-                ((ressourcesAffectes[i])).draw(this, i, gfx);
+                    ((ressourcesAffectes[i])).draw(this, i, gfx);
 
-               if (i*20<this.haut)
-                ((ressourcesAffectes[i])).draw(this, i, gfx);
+                    if (i * 20 < this.haut)
+                        ((ressourcesAffectes[i])).draw(this, i, gfx);
 
                 }
-               
-               }
+
+            }
         }
 
         public void undraw()

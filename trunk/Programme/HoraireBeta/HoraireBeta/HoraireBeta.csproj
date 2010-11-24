@@ -98,6 +98,12 @@
     <Compile Include="HoraireBeta.Designer.cs">
       <DependentUpon>HoraireBeta.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModificationBloc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificationBloc.Designer.cs">
+      <DependentUpon>ModificationBloc.cs</DependentUpon>
+    </Compile>
     <Compile Include="NbPoste.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ressource.cs" />
+    <Compile Include="SelectDispo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectDispo.Designer.cs">
+      <DependentUpon>SelectDispo.cs</DependentUpon>
+    </Compile>
     <Compile Include="TabSchedule.cs" />
     <Compile Include="xml.cs" />
     <EmbeddedResource Include="AjouterEquipe.resx">
@@ -131,6 +143,9 @@
       <DependentUpon>HoraireBeta.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModificationBloc.resx">
+      <DependentUpon>ModificationBloc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NbPoste.resx">
       <DependentUpon>NbPoste.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,6 +159,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SelectDispo.resx">
+      <DependentUpon>SelectDispo.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

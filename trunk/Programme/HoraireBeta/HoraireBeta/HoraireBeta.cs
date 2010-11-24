@@ -242,12 +242,21 @@ namespace HoraireBeta
 
         private void popTeamDelWindow()
         {
+            DeleteEquipe delequipe = new DeleteEquipe();
+            delequipe.setName(treeView_equipe.SelectedNode.Text.ToString());
+            delequipe.ShowDialog();
 
+            CreateXml.CreateProfileXml();
+            ajouterequipe.Dispose();
+            Chilkat.Xml xmlEquipe6 = new Chilkat.Xml();
+            xmlEquipe6.LoadXmlFile("teams.xml");
+            treeView_equipe.Nodes.Clear();
+            FillTree(treeView_equipe.Nodes, xmlEquipe6);
         }
 
         private void popPostDelWindow()
         {
-
+            
         }
 
         private void popPostWindow()
@@ -708,7 +717,9 @@ namespace HoraireBeta
 
         private void Sauvegarder_button_Click(object sender, EventArgs e)
         {
-            Profil profil = new Profil(Convert.ToInt32(numemp_textbox.Text.ToString()), prenom_textbox.Text, nom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0);
+            bool mod = false;
+
+            Profil profil = new Profil(Convert.ToInt32(numemp_textbox.Text), prenom_textbox.Text, nom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0);
             for (int cul = 1; cul <= treeView_postechoisi.GetNodeCount(false); cul++)
             {
                 int i = 0;
@@ -716,26 +727,10 @@ namespace HoraireBeta
                 profil.setPoste((Poste)(loader.posteCharge[--i]));
                 
             }
-
-            loader.profilCharge.Add(profil);
-
-
-
-            profil.save();
-
-            String ginette;
-            int numero;
-            DataTable datatable2;
-            System.Threading.Thread.Sleep(5000); 
-            DBConnect proc = new DBConnect();
             
-            datatable2 = proc.getProfil2(nom_textbox.Text, prenom_textbox.Text);
-            ginette = datatable2.Rows[1].ToString();
-            MessageBox.Show(ginette);
-            numero = Convert.ToInt32(ginette);
-
-            Profil profil2 = new Profil(numero, nom_textbox.Text, prenom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0);
-            profil2.save();
+            loader.profilCharge.Add(profil);
+            profil.save(mod);
+            
 
             numemp_textbox.Text = "";
             nom_textbox.Text = "";

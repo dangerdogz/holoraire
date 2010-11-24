@@ -209,6 +209,8 @@ namespace HoraireBeta
             this.panelCentral_Horaire.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseDown);
             this.panelCentral_Horaire.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
             this.panelCentral_Horaire.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseUp);
+
+
             // 
             // tabConflits
             // 
@@ -1240,6 +1242,8 @@ namespace HoraireBeta
             this.admin_central.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultDataGrid)).EndInit();
             this.ResumeLayout(false);
+
+
 
         }
 

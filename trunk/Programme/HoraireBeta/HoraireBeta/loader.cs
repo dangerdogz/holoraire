@@ -83,7 +83,7 @@ namespace HoraireBeta
                         Bloc newBloc = new Bloc(DateTime.ParseExact(rs4.Rows[j]["debut"].ToString(), "yyyy-MM-dd HH:mm:ss", null), DateTime.ParseExact(rs4.Rows[j]["fin"].ToString(), "yyyy-MM-dd HH:mm:ss", null), 0, Convert.ToInt32(rs4.Rows[j]["idPlage"].ToString()));
                         newprof.addPref(newBloc);
                     }
-
+                    
                     profilCharge.Add(newprof);
 
 

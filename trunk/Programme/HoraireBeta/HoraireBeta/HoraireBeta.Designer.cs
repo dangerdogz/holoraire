@@ -41,9 +41,9 @@ namespace HoraireBeta
         /// </summary>
         public void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Employés");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Postes");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Équipes");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Employé");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Equipe");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Postes");
             this.Admin = new System.Windows.Forms.TabControl();
             this.horaire = new System.Windows.Forms.TabPage();
             this.panelCentral_Horaire = new System.Windows.Forms.Panel();
@@ -69,7 +69,6 @@ namespace HoraireBeta
             this.button_genere = new System.Windows.Forms.Button();
             this.employe = new System.Windows.Forms.TabPage();
             this.panelCentral_Employe = new System.Windows.Forms.Panel();
-            this.supprimer_button = new System.Windows.Forms.Button();
             this.treeView_postdispo = new System.Windows.Forms.TreeView();
             this.treeView_postechoisi = new System.Windows.Forms.TreeView();
             this.posteaoccuper_gauche = new System.Windows.Forms.Button();
@@ -96,7 +95,6 @@ namespace HoraireBeta
             this.infopers_label = new System.Windows.Forms.Label();
             this.ajprofemp_label = new System.Windows.Forms.Label();
             this.panelGauche_Employe = new System.Windows.Forms.Panel();
-            this.treeView_modemploye = new System.Windows.Forms.TreeView();
             this.modifier_button = new System.Windows.Forms.Button();
             this.ajouter_button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -123,6 +121,8 @@ namespace HoraireBeta
             this.bouton_requete = new System.Windows.Forms.Button();
             this.bouton_connecter = new System.Windows.Forms.Button();
             this.admin_gauche = new System.Windows.Forms.Panel();
+            this.supprimer_button = new System.Windows.Forms.Button();
+            this.treeView_modemploye = new System.Windows.Forms.TreeView();
             this.label_postaffect = new System.Windows.Forms.Label();
             this.treeView_postaaffectgauche = new System.Windows.Forms.TreeView();
             this.treeView_postaaffectdroite = new System.Windows.Forms.TreeView();
@@ -209,8 +209,6 @@ namespace HoraireBeta
             this.panelCentral_Horaire.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseDown);
             this.panelCentral_Horaire.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseEvent);
             this.panelCentral_Horaire.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pCentral_Horaire_OnMouseUp);
-
-
             // 
             // tabConflits
             // 
@@ -280,7 +278,6 @@ namespace HoraireBeta
             this.listPoste.Name = "listPoste";
             this.listPoste.Size = new System.Drawing.Size(436, 121);
             this.listPoste.TabIndex = 0;
-
             // 
             // tabEquipe
             // 
@@ -441,7 +438,6 @@ namespace HoraireBeta
             // 
             this.panelCentral_Employe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panelCentral_Employe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            
             this.panelCentral_Employe.Controls.Add(this.treeView_postdispo);
             this.panelCentral_Employe.Controls.Add(this.treeView_postechoisi);
             this.panelCentral_Employe.Controls.Add(this.posteaoccuper_gauche);
@@ -474,17 +470,6 @@ namespace HoraireBeta
             this.panelCentral_Employe.Paint += new System.Windows.Forms.PaintEventHandler(this.pCentral_Employe_Paint);
             this.panelCentral_Employe.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pCentral_Employe_OnMouseEvent);
             this.panelCentral_Employe.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pCentral_Employe_OnMouseEvent);
-            // 
-            // supprimer_button
-            // 
-            this.supprimer_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.supprimer_button.Location = new System.Drawing.Point(618, 599);
-            this.supprimer_button.Name = "supprimer_button";
-            this.supprimer_button.Size = new System.Drawing.Size(120, 32);
-            this.supprimer_button.TabIndex = 3;
-            this.supprimer_button.Text = "Supprimer";
-            this.supprimer_button.UseVisualStyleBackColor = true;
-            this.supprimer_button.Click += new System.EventHandler(this.supprimer_button_Click);
             // 
             // treeView_postdispo
             // 
@@ -589,6 +574,7 @@ namespace HoraireBeta
             this.button1.TabIndex = 14;
             this.button1.Text = "Modifier les plages de disponibilité";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // label2
             // 
@@ -729,7 +715,6 @@ namespace HoraireBeta
             // 
             this.panelGauche_Employe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panelGauche_Employe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            
             this.panelGauche_Employe.Controls.Add(this.modifier_button);
             this.panelGauche_Employe.Controls.Add(this.ajouter_button);
             this.panelGauche_Employe.Controls.Add(this.label1);
@@ -740,14 +725,6 @@ namespace HoraireBeta
             this.panelGauche_Employe.Paint += new System.Windows.Forms.PaintEventHandler(this.pGauche_Employe_Paint);
             this.panelGauche_Employe.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pGauche_Employe_OnMouseEvent);
             this.panelGauche_Employe.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pGauche_Employe_OnMouseEvent);
-            // 
-            // treeView_modemploye
-            // 
-            this.treeView_modemploye.Location = new System.Drawing.Point(3, 113);
-            this.treeView_modemploye.Name = "treeView_modemploye";
-            this.treeView_modemploye.Size = new System.Drawing.Size(232, 217);
-            this.treeView_modemploye.TabIndex = 3;
-            this.treeView_modemploye.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_modemploye_AfterSelect);
             // 
             // modifier_button
             // 
@@ -1021,6 +998,26 @@ namespace HoraireBeta
             this.admin_gauche.Size = new System.Drawing.Size(240, 694);
             this.admin_gauche.TabIndex = 0;
             // 
+            // supprimer_button
+            // 
+            this.supprimer_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.supprimer_button.Location = new System.Drawing.Point(618, 599);
+            this.supprimer_button.Name = "supprimer_button";
+            this.supprimer_button.Size = new System.Drawing.Size(120, 32);
+            this.supprimer_button.TabIndex = 3;
+            this.supprimer_button.Text = "Supprimer";
+            this.supprimer_button.UseVisualStyleBackColor = true;
+            this.supprimer_button.Click += new System.EventHandler(this.supprimer_button_Click);
+            // 
+            // treeView_modemploye
+            // 
+            this.treeView_modemploye.LineColor = System.Drawing.Color.Empty;
+            this.treeView_modemploye.Location = new System.Drawing.Point(3, 113);
+            this.treeView_modemploye.Name = "treeView_modemploye";
+            this.treeView_modemploye.Size = new System.Drawing.Size(232, 217);
+            this.treeView_modemploye.TabIndex = 3;
+            this.treeView_modemploye.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_modemploye_AfterSelect);
+            // 
             // label_postaffect
             // 
             this.label_postaffect.AutoSize = true;
@@ -1244,8 +1241,6 @@ namespace HoraireBeta
             this.admin_central.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultDataGrid)).EndInit();
             this.ResumeLayout(false);
-
-
 
         }
 

@@ -237,6 +237,60 @@ namespace HoraireBeta
         }
 
 
+        public bool modifierBloc(Bloc leBloc, bool isPref)
+        {
+            int nbBloc;
+            bool blocTrouve = false;
+            List<Bloc> bloc = null;
+            if (isPref)
+                bloc = getPref();
+            else
+                if (!isPref)
+                    bloc = getDispo();
+
+
+            nbBloc = bloc.Count;
+            //Les conditions a modifier devront être unique a chaque blocs
+            for (int i = 0; i < nbBloc; i++)
+            {
+                if (bloc[i].getDebut() == leBloc.getDebut())
+                {
+                    bloc[i] = leBloc;
+                    blocTrouve = true;
+                    break;
+                }
+
+            }
+
+            return blocTrouve;
+
+        }
+
+        public List<Bloc> getBlocFromDate(DateTime day, bool isPref)
+        {
+            List<Bloc> temp = new List<Bloc>();
+            List<Bloc> bloc = null;
+            if (isPref)
+                bloc = getPref();
+            else
+                if (!isPref)
+                    bloc = getDispo();
+
+            if (bloc.Count != 0)
+            {
+                for (int i = 0; i < bloc.Count; i++)
+                {
+
+                    DateTime datebloc = bloc.ElementAt(i).getDebut();
+                    if (datebloc.DayOfYear == day.DayOfYear && datebloc.Month == day.Month && datebloc.Year == day.Year)
+                    {
+                        temp.Add(bloc.ElementAt(i));
+
+                    }
+                }
+            }
+            return temp;
+        }
 
     }
 }

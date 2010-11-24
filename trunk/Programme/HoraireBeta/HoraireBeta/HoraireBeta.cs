@@ -23,6 +23,8 @@ namespace HoraireBeta
             this.loader = loader;
             InitializeComponent();
             FillInterface();
+            Graphics grfx = this.panelCentral_Horaire.CreateGraphics();
+            grille = new GrilleHoraire(grfx, loader, getDebutSemaine());
         }
 
         private void horaire_Click(object sender, EventArgs e)

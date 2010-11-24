@@ -17,6 +17,7 @@ namespace HoraireBeta
         Boolean test = true;
         AjouterPoste ajouterposte = new AjouterPoste();
         AjouterEquipe ajouterequipe = new AjouterEquipe();
+        SelectDispo dispoWindow;
         
         public HoraireBeta(Loader loader)
         {
@@ -720,10 +721,10 @@ namespace HoraireBeta
             bool mod = false;
 
             Profil profil = new Profil(Convert.ToInt32(numemp_textbox.Text), prenom_textbox.Text, nom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0);
-            for (int cul = 1; cul <= treeView_postechoisi.GetNodeCount(false); cul++)
+            for (int cul = 0; cul <= treeView_postechoisi.Nodes.Count; cul++)
             {
                 int i = 0;
-                while (treeView_postechoisi.GetNodeAt(1, (int)(cul * 15)).Text != ((Poste)(loader.posteCharge[i++])).getNom()) ;
+                while (treeView_postechoisi.Nodes[cul].Text != ((Poste)(loader.posteCharge[i++])).getNom()) ;
                 profil.setPoste((Poste)(loader.posteCharge[--i]));
                 
             }
@@ -949,18 +950,26 @@ namespace HoraireBeta
                 telephone_textbox.Text = ressource.getNumTelephone();
                 DataTable datatable;
                 DBConnect proc = new DBConnect();
+                MessageBox.Show("There's a nigger in the woodpile");
                 datatable = proc.getPosteProfil2(idprofil);
                 String pname;
-                MessageBox.Show(datatable.Rows.Count.ToString());
+                MessageBox.Show("Shiteater");
+               // MessageBox.Show(datatable.Rows.Count.ToString());
                 for(int i = 1; i <= datatable.Rows.Count; i++)
                 {
+                    MessageBox.Show("Sally is a cunt");
                     pname = datatable.Rows[i].ToString();
-                    MessageBox.Show(pname);
+                    MessageBox.Show("Fuck you Martin tu vois ben que ca marche pas");
+                    //MessageBox.Show(pname);
                     System.Windows.Forms.TreeNode name;
                     name = new System.Windows.Forms.TreeNode(pname);
                     this.treeView_postechoisi.Nodes.Add(name);
                     this.treeView_postdispo.Nodes.Remove(name);
+                    MessageBox.Show("Ca marche pas");
                 }
+                 MessageBox.Show("pigfucker");
+                 dispoWindow = new SelectDispo(ressource);
+                 MessageBox.Show("lolwat");
             }  
         }
 
@@ -1115,6 +1124,12 @@ namespace HoraireBeta
             {
                 nodes.BackColor = Color.White; 
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (dispoWindow != null)
+                dispoWindow.ShowDialog();
         }
 
         

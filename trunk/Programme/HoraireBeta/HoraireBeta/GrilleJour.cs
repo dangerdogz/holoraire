@@ -27,6 +27,7 @@ namespace HoraireBeta
         private int width;
         private int height;
         Loader loader;
+        Profil profil;
         Graphics grfx;
         GrilleHoraire laGrille;
         Font laFont = new Font("Arial", 12);
@@ -36,7 +37,7 @@ namespace HoraireBeta
         SolidBrush myBlueBrush = new SolidBrush(Color.Blue);
         Pen bPen = new Pen(Color.Black);
         int nbHeures = 24;
-
+        bool isPref = false;
 
         //Gestion des heures
         int heightHeure;
@@ -55,6 +56,24 @@ namespace HoraireBeta
             width = 100;
             height = 500;
             this.loader = loader;
+            this.grfx = grfx;
+            laGrille = grilleH;
+
+            //Petit rectangle
+            heightHeure = ((height - 20) / nbHeures);
+
+        }
+
+        public GrilleJour(String jourText, DateTime laDate, int jour, int posx, int posy, Graphics grfx, Profil profil, GrilleHoraire grilleH)
+        {
+            this.jourText = jourText;
+            this.jour = jour;
+            dateDuJour = laDate;
+            posX = posx;
+            posY = posy;
+            width = 100;
+            height = 500;
+            this.profil = profil;
             this.grfx = grfx;
             laGrille = grilleH;
 
@@ -105,14 +124,11 @@ namespace HoraireBeta
         {
             //Tracé du jour
             grfx.DrawRectangle(bPen, posX, posY, width, height);
-
             //En-tête du jour
             grfx.DrawRectangle(bPen, posX, posY, width, 20);
             grfx.DrawString(jourText, laFont, myBrush, posX + 8, posY);
-
             //BG des jours
             grfx.FillRectangle(myBlackBrush, posX + 1, posY + 20, width - 1, height - 20);
-
             //Gradation rectangulaire
             for (int i = 0; i < 24; i++)
             {
@@ -121,7 +137,19 @@ namespace HoraireBeta
             }
 
             //Charge les blocs du jours
-            blocs = loader.getBlocFromDate(dateDuJour);
+            if (profil == null)
+                blocs = loader.getBlocFromDate(dateDuJour);
+            else
+                if (loader == null && isPref)
+                    blocs = profil.getBlocFromDate(dateDuJour, true);
+                else
+                    if (loader == null && !isPref)
+                    {
+                        MessageBox.Show("Fuckshit");
+                        blocs = profil.getBlocFromDate(dateDuJour, false);
+                    MessageBox.Show("Niggercunt");
+                    }
+
             if (blocs != null)
             {
                 for (int i = 0; i < blocs.Count; i++)
@@ -131,6 +159,7 @@ namespace HoraireBeta
                 }
 
             }
+
         }
 
         public void changeDate(DateTime nouvelleDate)
@@ -266,18 +295,35 @@ namespace HoraireBeta
                 DateTime tempFin = new DateTime(fin.Year, fin.Month, fin.Day, dateFin - 1, fin.Minute, fin.Second);
 
                 leBloc = new Bloc(tempDebut, tempFin, 0, 0);
-                if (loader.modifierBloc(leBloc))
+                if (loader != null && loader.modifierBloc(leBloc))
                 { //Ajout du bloc confirmé 
                 } //
                 else
+                    if (loader != null)
                     //Bloc introuvable
                     MessageBox.Show("Bloc introuvable");
+                    else
+                        if (profil != null && isPref && profil.modifierBloc(leBloc, true))
+                        { //lolnigger
+                        }
+                        else
+                             if (profil != null && !isPref && profil.modifierBloc(leBloc, false))
+                                  { //lolnigger
+                             }
 
             }
             else
             //Suppression d'un Bloc
             {
-                loader.supprimerBloc(leBloc);
+                if (profil == null)
+                    loader.supprimerBloc(leBloc);
+                else
+                    if (loader == null && isPref)
+                        profil.getPref().Remove(leBloc);
+                    else
+                        if (loader == null && !isPref)
+                            profil.getDispo().Remove(leBloc);
+                               
                 laGrille.refresh();
 
             }
@@ -310,7 +356,14 @@ namespace HoraireBeta
             Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0);
 
             tempBloc.draw(width, grfx);
-            loader.bloc.Add(tempBloc);
+            if (profil == null)
+                loader.bloc.Add(tempBloc);
+            else
+                if (loader == null && isPref)
+                    profil.addPref(tempBloc);
+                else
+                    if (loader == null && !isPref)
+                        profil.addDispo(tempBloc);
 
 
             creationbloc.Dispose();

@@ -42,6 +42,7 @@
             this.button_NON_equipe.TabIndex = 5;
             this.button_NON_equipe.Text = "Non";
             this.button_NON_equipe.UseVisualStyleBackColor = true;
+            this.button_NON_equipe.Click += new System.EventHandler(this.button_NON_equipe_Click);
             // 
             // button_OUI_equipe
             // 
@@ -52,6 +53,7 @@
             this.button_OUI_equipe.TabIndex = 4;
             this.button_OUI_equipe.Text = "Oui";
             this.button_OUI_equipe.UseVisualStyleBackColor = true;
+            this.button_OUI_equipe.Click += new System.EventHandler(this.button_OUI_equipe_Click);
             // 
             // label_delequipe
             // 

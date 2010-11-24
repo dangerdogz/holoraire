@@ -11,9 +11,32 @@ namespace HoraireBeta
 {
     public partial class DeleteEquipe : Form
     {
+        String ename;
         public DeleteEquipe()
         {
             InitializeComponent();
+        }
+
+        public void setName(String ename)
+        {
+            this.ename = ename;
+        }
+
+        private void button_OUI_equipe_Click(object sender, EventArgs e)
+        {
+            delete(ename);
+            this.Hide();
+        }
+
+        private void button_NON_equipe_Click(object sender, EventArgs e)
+        {
+            DeleteEquipe.ActiveForm.Dispose();
+        }
+
+        public void delete(String equipe)
+        {
+            DBConnect proc = new DBConnect();
+            proc.deleteTeam2(equipe);
         }
     }
 }

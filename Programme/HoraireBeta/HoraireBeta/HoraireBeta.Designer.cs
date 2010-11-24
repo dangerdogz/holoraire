@@ -1154,7 +1154,7 @@ namespace HoraireBeta
             this.button_del_equipe.TabIndex = 5;
             this.button_del_equipe.Text = "Supprimer";
             this.button_del_equipe.UseVisualStyleBackColor = true;
-            this.button_aj_equipe.Click += new System.EventHandler(this.button_del_equipe_Click);
+            this.button_del_equipe.Click += new System.EventHandler(this.button_del_equipe_Click);
             //loll
             // 
             // button_aj_equipe

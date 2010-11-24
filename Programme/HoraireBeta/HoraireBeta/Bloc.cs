@@ -459,12 +459,12 @@ namespace HoraireBeta
                 proc.deleteRessource(id);
 
             }
-            foreach (Ressource lui in ressourcesAffectes)
+            foreach (RessourceEntree lui in ressourcesVoulus)
             {
-                if (lui is Equipe)
-                    proc.addRessource(id, 0, lui.getId());
+                if (lui.voulue is Equipe)
+                    proc.addRessource(id, 0, lui.voulue.getId(), lui.nbVoulue);
                 else
-                    proc.addRessource(id, lui.getId(), 0);
+                    proc.addRessource(id, lui.voulue.getId(), 0, lui.nbVoulue);
             }
 
 

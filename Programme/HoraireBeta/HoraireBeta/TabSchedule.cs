@@ -54,7 +54,7 @@ namespace HoraireBeta
                     if (blocs[i].getRessourceVoulus(j).nbVoulue < blocs[i].getRessourceVoulus(j).nbAffectee)
                     {
 
-                        blocs[i].removeEmplNouv();
+                        //blocs[i].removeEmplNouv();
                         j--;
                     }
 

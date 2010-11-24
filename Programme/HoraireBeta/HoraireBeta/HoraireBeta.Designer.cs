@@ -1154,6 +1154,8 @@ namespace HoraireBeta
             this.button_del_equipe.TabIndex = 5;
             this.button_del_equipe.Text = "Supprimer";
             this.button_del_equipe.UseVisualStyleBackColor = true;
+            this.button_aj_equipe.Click += new System.EventHandler(this.button_del_equipe_Click);
+            //loll
             // 
             // button_aj_equipe
             // 
@@ -1164,7 +1166,7 @@ namespace HoraireBeta
             this.button_aj_equipe.TabIndex = 4;
             this.button_aj_equipe.Text = "Ajouter";
             this.button_aj_equipe.UseVisualStyleBackColor = true;
-            this.button_aj_equipe.Click += new System.EventHandler(this.button_supprimer_Click);
+            this.button_aj_equipe.Click += new System.EventHandler(this.button_aj_equipe_Click);
             // 
             // treeView_postgen
             // 

@@ -311,7 +311,7 @@ namespace HoraireBeta
         public void deleteTeam2(String ename)
         {
             String requete;
-            requete = "DELETE * FROM Team WHERE nom=" + ename + "";
+            requete = "DELETE FROM Team WHERE nom=\"" + ename + "\"";
             getResult(requete);
         }
         public DataTable getTeam(int idTeam)

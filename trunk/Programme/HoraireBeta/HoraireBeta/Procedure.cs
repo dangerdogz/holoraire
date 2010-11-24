@@ -69,12 +69,11 @@ namespace HoraireBeta
         }
     
    
-        public void ajouterProfil(String profilPrenom, String profilNom, String profilPhoneNumber, int profilHeureMax, int profilHeureMin, String profilEmail, int seniority)
+        public void ajouterProfil(int profilid, String profilPrenom, String profilNom, String profilPhoneNumber, int profilHeureMax, int profilHeureMin, String profilEmail, int seniority)
         {
             String requete;
-            
-            requete = "INSERT INTO Profil(prenom, nom, phoneNumber, quotaHeureMax, quotaHeureMin, email, seniority)" +
-                      " VALUES(\"" + profilPrenom + "\", \"" + profilNom + "\", \"" + profilPhoneNumber + "\", " + profilHeureMax +
+            requete = "INSERT INTO Profil(idProfil, prenom, nom, phoneNumber, quotaHeureMax, quotaHeureMin, email, seniority)" +
+                      " VALUES(\"" + profilid + "\", \"" + profilPrenom + "\", \"" + profilNom + "\", \"" + profilPhoneNumber + "\", " + profilHeureMax +
                       ", " + profilHeureMin + ", \"" + profilEmail + "\", " + seniority + ")";
             MessageBox.Show(requete);
             getResult(requete);
@@ -95,10 +94,10 @@ namespace HoraireBeta
             return getResult(requete);
            
         }
-        public DataTable getProfil2(String nom, String prenom)
+        public DataTable getMAXID()
         {
             String requete;
-            requete = "SELECT idProfil FROM Profil WHERE nom = \"" + nom + "\" AND prenom = \"" + prenom + "\"";
+            requete = "SELECT MAX(idProfil) FROM Profil;";
             MessageBox.Show(requete);
             return getResult(requete);
         }
@@ -306,7 +305,14 @@ namespace HoraireBeta
         public void deleteTeam(int idTeam)
         {
             String requete;
-            requete = "DELETE * FROM Team WHERE idTeam=" + idTeam + "";
+            requete = "DELETE FROM Team WHERE idTeam=" + idTeam + "";
+        }
+
+        public void deleteTeam2(String ename)
+        {
+            String requete;
+            requete = "DELETE * FROM Team WHERE nom=" + ename + "";
+            getResult(requete);
         }
         public DataTable getTeam(int idTeam)
         {
@@ -335,6 +341,7 @@ namespace HoraireBeta
             String requete;
             requete = "DELETE * FROM Team_Profil WHERE idTeam=" + idTeam + "";
         }
+
         public DataTable getTeamProfile(int idTeam)
         {
             String requete;

@@ -1,4 +1,6 @@
-﻿﻿using System;
+﻿
+﻿
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +21,7 @@ namespace HoraireBeta
             InitializeComponent();
             Graphics grfx = this.panel1.CreateGraphics();
             grille = new GrilleHoraire(grfx, profil, getDebutSemaine());
-            MessageBox.Show("Jewthunder");
+           // MessageBox.Show("Jewthunder");
             
         }
 
@@ -75,6 +77,24 @@ namespace HoraireBeta
 
         }
 
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            grille.isPref = false;
+
+            label1.Text = ("Disponibilités de l'employé");
+            grille.refresh();
+        }
+
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            grille.isPref = true;
+            label1.Text = ("Préférences de l'employé");
+            grille.refresh();
+
+        }
+
         private void panel_CentralMouseDown(object sender, MouseEventArgs e)
         {
             grille.passeClique(e, "MouseDown");
@@ -85,6 +105,7 @@ namespace HoraireBeta
             MouseEventArgs e = me as MouseEventArgs;
             grille.passeClique(e, "DoubleClick");
         }
+
 
     }
 }

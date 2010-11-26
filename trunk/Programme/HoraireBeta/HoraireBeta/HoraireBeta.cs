@@ -962,26 +962,29 @@ namespace HoraireBeta
                 telephone_textbox.Text = ressource.getNumTelephone();
                 DataTable datatable;
                 DBConnect proc = new DBConnect();
-                MessageBox.Show("There's a nigger in the woodpile");
+               // MessageBox.Show("There's a nigger in the woodpile");
                 datatable = proc.getPosteProfil2(idprofil);
                 String pname;
-                MessageBox.Show("Shiteater");
+               // MessageBox.Show("Shiteater");
                // MessageBox.Show(datatable.Rows.Count.ToString());
-                for(int i = 1; i <= datatable.Rows.Count; i++)
+                for(int i = 0; i < datatable.Rows.Count; i++)
                 {
-                    MessageBox.Show("Sally is a cunt");
+                   // MessageBox.Show(datatable.Rows[0].ToString());
+                   //MessageBox.Show(datatable.Rows[1].ToString());
+                   //MessageBox.Show(datatable.Rows[2].ToString());
+                 // MessageBox.Show(datatable.Rows[0].ToString())
                     pname = datatable.Rows[i].ToString();
-                    MessageBox.Show("Fuck you Martin tu vois ben que ca marche pas");
+                  //  MessageBox.Show("Fuck you Martin tu vois ben que ca marche pas");
                     //MessageBox.Show(pname);
                     System.Windows.Forms.TreeNode name;
                     name = new System.Windows.Forms.TreeNode(pname);
                     this.treeView_postechoisi.Nodes.Add(name);
                     this.treeView_postdispo.Nodes.Remove(name);
-                    MessageBox.Show("Ca marche pas");
+                  //  MessageBox.Show("Ca marche pas");
                 }
-                 MessageBox.Show("pigfucker");
+               //  MessageBox.Show("pigfucker");
                  dispoWindow = new SelectDispo(ressource);
-                 MessageBox.Show("lolwat");
+                // MessageBox.Show("lolwat");
             }  
         }
 
@@ -1103,7 +1106,11 @@ namespace HoraireBeta
                     
                     if (ressource is Profil)
                     {
+
+                        //MessageBox.Show("LOL1.5");
+
                         MessageBox.Show(((Profil)ressource).getNom());
+
                         String nomPrenom;
                         foreach (TreeNode nodes in RessourceTree.Nodes[0].Nodes)
                         {
@@ -1120,7 +1127,9 @@ namespace HoraireBeta
                         }
 
                     }
+
                     
+
                     if (ressource is Equipe)
                     {
                         String nom;

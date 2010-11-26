@@ -37,7 +37,7 @@ namespace HoraireBeta
         SolidBrush myBlueBrush = new SolidBrush(Color.Blue);
         Pen bPen = new Pen(Color.Black);
         int nbHeures = 24;
-        bool isPref = false;
+       
 
         //Gestion des heures
         int heightHeure;
@@ -140,10 +140,10 @@ namespace HoraireBeta
             if (profil == null)
                 blocs = loader.getBlocFromDate(dateDuJour);
             else
-                if (loader == null && isPref)
+                if (loader == null && laGrille.isPref)
                     blocs = profil.getBlocFromDate(dateDuJour, true);
                 else
-                    if (loader == null && !isPref)
+                    if (loader == null && !laGrille.isPref)
                     {
                        // MessageBox.Show("Fuckshit");
                         blocs = profil.getBlocFromDate(dateDuJour, false);
@@ -197,8 +197,7 @@ namespace HoraireBeta
             //  blocs[indexBlocs] = new Bloc();
             //Lors de l'ajout du bloc par defaut on ajoute 1hr
             // debut +1
-
-
+            
             //blocs[indexBlocs++] = new Bloc(date,date,0);
 
 
@@ -312,12 +311,12 @@ namespace HoraireBeta
                             MessageBox.Show("Bloc introuvable");
                         else
                         {
-                            if (profil != null && isPref && profil.modifierBloc(leBloc, true))
+                            if (profil != null && laGrille.isPref && profil.modifierBloc(leBloc, true))
                             { //lolnigger
                             }
                             else
                             {
-                                if (profil != null && !isPref && profil.modifierBloc(leBloc, false))
+                                if (profil != null && !laGrille.isPref && profil.modifierBloc(leBloc, false))
                                 { //lolnigger
                                 }
                             }
@@ -341,11 +340,11 @@ namespace HoraireBeta
                     loader.supprimerBloc(leBloc);
                 else
                 {
-                    if (loader == null && isPref)
+                    if (loader == null && laGrille.isPref)
                         profil.getPref().Remove(leBloc);
                     else
                     {
-                        if (loader == null && !isPref)
+                        if (loader == null && !laGrille.isPref)
                             profil.getDispo().Remove(leBloc);
                     }
 
@@ -390,10 +389,10 @@ namespace HoraireBeta
                 {
                 if (profil != null)
                 {
-                if (loader == null && isPref)
+                    if (loader == null && laGrille.isPref)
                     profil.addPref(tempBloc);
                 else
-                    if (loader == null && !isPref)
+                        if (loader == null && !laGrille.isPref)
                         profil.addDispo(tempBloc);
                 tempBloc.draw(width, grfx);
                 }

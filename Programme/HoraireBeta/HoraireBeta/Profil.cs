@@ -237,11 +237,12 @@ namespace HoraireBeta
         }
 
 
-        public bool modifierBloc(Bloc leBloc, bool isPref)
+        public bool modifierBloc(Bloc leBloc, Bloc leBloc2, bool isPref)
         {
             int nbBloc;
             bool blocTrouve = false;
             List<Bloc> bloc = null;
+
             if (isPref)
                 bloc = getPref();
             else
@@ -255,7 +256,7 @@ namespace HoraireBeta
             {
                 if (bloc[i].getDebut() == leBloc.getDebut())
                 {
-                    bloc[i] = leBloc;
+                    bloc[i] = leBloc2;
                     blocTrouve = true;
                     break;
                 }
@@ -265,6 +266,7 @@ namespace HoraireBeta
             return blocTrouve;
 
         }
+
 
         public List<Bloc> getBlocFromDate(DateTime day, bool isPref)
         {

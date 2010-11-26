@@ -276,6 +276,20 @@ namespace HoraireBeta
 
         }
 
+        public List<Bloc> getBlocDeLaSemaine(DateTime dimanche)
+        {
+           List<Bloc> blocdelasemaine = new List<Bloc>();
+
+           foreach (Bloc lui in bloc) { 
+                if((Convert.ToInt32(lui.getDebut().ToString("dd")))<(Convert.ToInt32(dimanche.ToString("dd"))+7) && (dimanche.ToString("MMYY")== lui.getDebut().ToString("MMYY"))){
+                    blocdelasemaine.Add(lui);
+                }
+           }
+
+           return (blocdelasemaine);
+
+        }
+
         //Supprime le bloc correspondant a celui fournis
         public bool supprimerBloc(Bloc leBloc)
         {

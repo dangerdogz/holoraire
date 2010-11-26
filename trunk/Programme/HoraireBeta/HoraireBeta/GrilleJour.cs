@@ -145,9 +145,9 @@ namespace HoraireBeta
                 else
                     if (loader == null && !isPref)
                     {
-                        MessageBox.Show("Fuckshit");
+                       // MessageBox.Show("Fuckshit");
                         blocs = profil.getBlocFromDate(dateDuJour, false);
-                    MessageBox.Show("Niggercunt");
+                   // MessageBox.Show("Niggercunt");
                     }
 
             if (blocs != null)
@@ -219,7 +219,7 @@ namespace HoraireBeta
             {
                 if ((e.X >= posX) && (e.X < (posX + 100)))
                 {
-                    /*
+                    
                     //Vérifis si le clique touche un bloc
                    // blocs = loader.getBlocFromDate(dateDuJour);
                     if (blocs != null)
@@ -241,21 +241,22 @@ namespace HoraireBeta
                                 laGrille.refresh();
                                 }
                         }
-                    */
-                }
-                /*
-                //Détecteur de bloc
-                if ((e.Y > 40) && (e.Y < 60))
-                {
-                // grfx.FillRectangle(myBlueBrush, posX + 1, e.Y, width - 1, heightHeure);
+                    
+                    }
+                
+                    //Détecteur de bloc
+                    if ((e.Y > 40) && (e.Y < 60))
+                    {
+                    // grfx.FillRectangle(myBlueBrush, posX + 1, e.Y, width - 1, heightHeure);
 
-                dateDuJour = new DateTime(dateDuJour.Year, dateDuJour.Month, dateDuJour.Day, 1, 0, 0);
-                dateFin = new DateTime(dateDuJour.Year, dateDuJour.Month, dateDuJour.Day, 2, 0, 0);
-                createBlock(posX, 40,dateDuJour,dateFin);
+                    dateDuJour = new DateTime(dateDuJour.Year, dateDuJour.Month, dateDuJour.Day, 1, 0, 0);
+                    dateFin = new DateTime(dateDuJour.Year, dateDuJour.Month, dateDuJour.Day, 2, 0, 0);
+                    createBlock(posX, 40,dateDuJour,dateFin);
+                    }
+                
                 }
-                */
             }
-
+        
 
 
 
@@ -286,7 +287,7 @@ namespace HoraireBeta
 
          
             if (modifbloc.getCommande() == 0)
-                {
+            {
                 //Modification d'un bloc
                 //Compute Nouvelle Date ** Ajouter validation ** 
                 
@@ -309,55 +310,79 @@ namespace HoraireBeta
                         {
                          MessageBox.Show("Bloc introuvable");
                         }
-                    }
-                /*
-                leBloc = new Bloc(tempDebut, tempFin, 0, 0);
-                if (loader != null && loader.modifierBloc(leBloc, leBloc2))
-                { //Ajout du bloc confirmé 
-                } //
-
+                    
+                
+                    leBloc = new Bloc(tempDebut, tempFin, 0, 0);
+                    if (loader != null && loader.modifierBloc(leBloc, leBloc2))
+                    { //Ajout du bloc confirmé 
+                    } //
+                }
                 else
-                    {
+                {
+
                     if (loader != null)
-                        {
-                        //Bloc introuvable
-                        MessageBox.Show("Bloc implacable");
-                        }
+
+                         MessageBox.Show("Bloc introuvable");
                     else
-                        {
+
+                    {
+
+                       
+
                         if (profil != null && isPref && profil.modifierBloc(leBloc, true))
                         { //lolnigger
                         }
                         else
+
+                        {
                             if (profil != null && !isPref && profil.modifierBloc(leBloc, false))
                             { //lolnigger
                             }
+                            else
+                            {
+               
+
+                      
+
+                                if (profil != null && !isPref && profil.modifierBloc(leBloc, false))
+                                { //lolnigger
+                                }
+                            }
                         }
-                    }*/
+                     }
                 }
+            }
+            
+
             else
             //Suppression d'un Bloc
+
+            {
+                if (profil == null)
+                    loader.supprimerBloc(leBloc);
+                else
                 {
-                loader.supprimerBloc(leBloc);
-                  /*  if (profil == null)
-                        loader.supprimerBloc(leBloc);
+                    if (loader == null && isPref)
+                        profil.getPref().Remove(leBloc);
                     else
-                        {
-                        if (loader == null && isPref)
-                            profil.getPref().Remove(leBloc);
-                        else
-                            {
-                            if (loader == null && !isPref)
-                               profil.getDispo().Remove(leBloc);
-                            }
-                        }  */       
+                    {
+                        if (loader == null && !isPref)
+                            profil.getDispo().Remove(leBloc);
+                    }
+
+                }   
+                    
+
                 laGrille.refresh();
 
-                }         
+                
+                       
                
-            modifbloc.Dispose();
+            
 
-        }
+            }
+    
+}
 
 
 
@@ -378,10 +403,14 @@ namespace HoraireBeta
             DateTime tempDebut = new DateTime(debut.Year, debut.Month, debut.Day, dateDebut, debut.Minute, debut.Second);
             DateTime tempFin = new DateTime(fin.Year, fin.Month, fin.Day, dateFin, fin.Minute, fin.Second) - new TimeSpan(0, 0, 0, 1);
 
-            MessageBox.Show(" Date Début : " + tempDebut + " et Date Fin : " + tempFin);
+           // MessageBox.Show(" Date Début : " + tempDebut + " et Date Fin : " + tempFin);
 
             //Affecte le bloc
             Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0);
+
+
+           tempBloc.draw(width, grfx);
+
 
             if (creationbloc.placementValide(tempBloc))
                 {
@@ -392,8 +421,9 @@ namespace HoraireBeta
             else
                 MessageBox.Show("Placement invalide");
 
-            /*
+            
             tempBloc.draw(width, grfx);
+
             if (profil == null)
                 loader.bloc.Add(tempBloc);
             else
@@ -405,7 +435,7 @@ namespace HoraireBeta
                         profil.addDispo(tempBloc);
                 }
 
-            */
+            
             creationbloc.Dispose();
 
         }

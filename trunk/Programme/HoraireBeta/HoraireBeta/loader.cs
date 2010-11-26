@@ -60,8 +60,8 @@ namespace HoraireBeta
                         {
                             int k = 0;
                            // MessageBox.Show(Convert.ToInt32(rs2.Rows[j]["idPoste"].ToString()) + "" + posteCharge[k].getId());
-                            while (k<posteCharge.Count && Convert.ToInt32(rs2.Rows[j]["idPoste"].ToString()) != posteCharge[k++].getId())
-                            { MessageBox.Show(Convert.ToInt32(rs2.Rows[j]["idPoste"].ToString()) +""+ posteCharge[k].getId()); }
+                            while (k<posteCharge.Count && Convert.ToInt32(rs2.Rows[j]["idPoste"].ToString()) != posteCharge[k++].getId());
+                            // MessageBox.Show(Convert.ToInt32(rs2.Rows[j]["idPoste"].ToString()) +""+ posteCharge[k].getId()); }
                             newprof.setPoste((Poste)posteCharge[--k]);
                         }
 

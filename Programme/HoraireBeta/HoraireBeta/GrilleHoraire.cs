@@ -19,6 +19,8 @@ namespace HoraireBeta
         GrilleJour jourCliquer;
         Profil profil;
 
+        //Id des blocs en mémoires
+
         public GrilleHoraire(Graphics grfx, Loader loader, DateTime date)
         {
             gfx = grfx;
@@ -89,12 +91,9 @@ namespace HoraireBeta
 
         public void refresh()
         {
-
             gfx.Clear(Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))));
             activer();
         }
-
-
 
 
         public void changeSemaine(DateTime date)
@@ -117,10 +116,8 @@ namespace HoraireBeta
             jours[4] = new GrilleJour("Jeudi", jeudi, 5, 440, 20, gfx, loader, this);
             jours[5] = new GrilleJour("Vendredi", vendredi, 6, 540, 20, gfx, loader, this);
             jours[6] = new GrilleJour("Samedi", samedi, 7, 640, 20, gfx, loader, this);
-
-
+            
             refresh();
-
         }
 
         public void changeSemaineProfil(DateTime date)
@@ -153,11 +150,8 @@ namespace HoraireBeta
 
         public void passeClique(MouseEventArgs e, String mouse)
         {
-
-
             if (mouse == "MouseDown")
             {
-
                 Boolean blocUnselected = false;
 
                 for (int i = 0; i < 7; i++)
@@ -187,43 +181,26 @@ namespace HoraireBeta
                         {
                             if (blocUnselected == false)
                             {
-
                                 {
-
                                     //DateTime 1 heure plus tard
                                     DateTime tempDateFin = jourCliquer.getDate();
-
-
+                                    
                                     if (jourCliquer.getHeureClique(e.Y) >= 0)
                                     {
-
                                         if (jourCliquer.getHeureClique(e.Y) >= 0)
                                         {
-
                                             //Création du bloc
                                             refresh();
-
-
                                             jourCliquer.createBlock(jourCliquer.getX(), jourCliquer.getHeureClique(e.Y),
                                                 jourCliquer.getDate(), tempDateFin);
 
                                         }
-
                                     }
-
-                                    else
-                                        MessageBox.Show("Té pas supposer voir ca ... ");
-                                    // MessageBox.Show("Vide");
-
+                                   
                                 }
-
-
                             }
-
                         }
                     }
-
-
                 }
 
 
@@ -239,11 +216,9 @@ namespace HoraireBeta
                         //Jour cliquer
                         jourCliquer = jours[i];
 
-
                         //Sélection d'un bloc existant
                         if (selectionEnCours != null)
                         {
-
                             jourCliquer.modifierBlock(selectionEnCours);
                             refresh();
 
@@ -257,14 +232,6 @@ namespace HoraireBeta
 
 
             refresh();
-
-
-
-
-
-
-            //jours[i].passeClique(e,mouse);
-
         }
     }
 }

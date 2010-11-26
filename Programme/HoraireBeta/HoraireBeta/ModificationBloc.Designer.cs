@@ -63,6 +63,7 @@
             this.textBox1.Size = new System.Drawing.Size(144, 20);
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = hd;
+            tempHd = hd;
             // 
             // textBox2
             // 

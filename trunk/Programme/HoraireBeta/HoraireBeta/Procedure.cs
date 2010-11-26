@@ -388,7 +388,7 @@ namespace HoraireBeta
         public DataTable getProfilPoste(int idProfil)
         {
             String requete;
-            requete = "SELECT * FROM Poste_Profil WHERE idPoste = " + idProfil + "";
+            requete = "SELECT * FROM Poste_Profil WHERE idProfil = " + idProfil + "";
             return getResult(requete);
         }
         public DataTable getAllProfilPoste()

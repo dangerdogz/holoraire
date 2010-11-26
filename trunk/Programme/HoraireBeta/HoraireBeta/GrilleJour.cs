@@ -300,7 +300,7 @@ namespace HoraireBeta
 
                 Bloc leBloc2 = new Bloc(tempDebut, tempFin, 0, 0);
                 if (modifbloc.placementValide(leBloc2))
-                    {
+                {
                    
                     if (loader != null && loader.modifierBloc(leBloc, leBloc2))
                     { //Ajout du bloc confirmé 
@@ -311,12 +311,12 @@ namespace HoraireBeta
                             MessageBox.Show("Bloc introuvable");
                         else
                         {
-                            if (profil != null && laGrille.isPref && profil.modifierBloc(leBloc, true))
+                            if (profil != null && laGrille.isPref && profil.modifierBloc(leBloc, leBloc2, true))
                             { //lolnigger
                             }
                             else
                             {
-                                if (profil != null && !laGrille.isPref && profil.modifierBloc(leBloc, false))
+                                if (profil != null && !laGrille.isPref && profil.modifierBloc(leBloc, leBloc2, false))
                                 { //lolnigger
                                 }
                             }
@@ -324,7 +324,7 @@ namespace HoraireBeta
                         }
 
                     }
-                    }
+                }
                 else
                 {
                 

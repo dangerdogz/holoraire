@@ -18,6 +18,7 @@ namespace HoraireBeta
         public Bloc selectionEnCours;
         GrilleJour jourCliquer;
         Profil profil;
+        public bool isPref = false;
 
         //Id des blocs en mémoires
 

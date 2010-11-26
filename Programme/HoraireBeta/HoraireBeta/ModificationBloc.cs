@@ -77,7 +77,6 @@ namespace HoraireBeta
             //Variables
             //Retirer lui-même du tableau
             int indexBloc = -1;
-            MessageBox.Show("HD TEMP : " + tempHd);
             int heureTempDebut;
             try
                 {
@@ -105,7 +104,7 @@ namespace HoraireBeta
                 //Sois le bloc ajouté enpiète sur la fin du bloc existant ou sur le debut du bloc existant
                 if (((( heureTempDebut < listBloc[i].getFin().Hour && leBloc.getFin().Hour > listBloc[i].getFin().Hour)
                     || (leBloc.getFin().Hour > listBloc[i].getDebut().Hour && heureTempDebut < listBloc[i].getDebut().Hour)
-                    || (heureTempDebut > listBloc[i].getDebut().Hour && leBloc.getFin().Hour < listBloc[i].getDebut().Hour))) 
+                    || (heureTempDebut > listBloc[i].getDebut().Hour && leBloc.getFin().Hour < listBloc[i].getFin().Hour))) 
                     && (indexBloc != i))//Différent de lui-même
                     {
                     return false; //Bloc existant                 

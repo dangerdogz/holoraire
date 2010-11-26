@@ -39,6 +39,7 @@ namespace HoraireBeta
                                     if (blocs[i].estVoulue(((Profil)employee[j]).getPoste(l)))
                                     {
                                         blocs[i].addRessource(((Profil)employee[j]));
+                                        break;
                                     }
                                 }
                             }
@@ -54,7 +55,7 @@ namespace HoraireBeta
                     if (blocs[i].getRessourceVoulus(j).nbVoulue < blocs[i].getRessourceVoulus(j).nbAffectee)
                     {
 
-                        //blocs[i].removeEmplNouv();
+                        blocs[i].removeEmplNouv((Poste)blocs[i].getRessourceVoulus(j).voulue);
                         j--;
                     }
 

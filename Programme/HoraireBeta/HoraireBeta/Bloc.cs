@@ -217,7 +217,7 @@ namespace HoraireBeta
 
                 }
             }
-            newEmp.setHeuresTravaillees((newEmp.getHeuresTravaillees() + ((Convert.ToInt32(debut.ToString("HH"))) - (Convert.ToInt32(fin.ToString("HH"))))));
+            newEmp.setHeuresTravaillees((newEmp.getHeuresTravaillees() + ((Convert.ToInt32(fin.ToString("HH"))) - (Convert.ToInt32(debut.ToString("HH"))))));
             checkCompletion();
 
 
@@ -255,21 +255,22 @@ namespace HoraireBeta
             int j = 0;
             int k = 0;
             int l = 0;
-
-            while(ressourcesAffectes[k].getPoste()[l] !=poste)
+            foreach (Ressource ress in ressourcesAffectes)
             {
-                l++;
-                if (l >= ressourcesAffectes[k].getPoste().Count)
+                if (ress.getPoste().Count > 0)
                 {
-                    l=0;
-                    k++;
-                    if (k >= ressourcesAffectes.Count)
+                    while (l<ress.getPoste().Count && ress.getPoste()[l] != poste)
                     {
-                        return;
+                        l++;
+
                     }
                 }
-                
             }
+            if (k >= ressourcesAffectes.Count)
+            {
+                return;
+            }
+
             while (i < ressourcesVoulus.Count() && ressourcesVoulus[i].voulue != ((Profil)ressourcesAffectes[k]).getPoste(j))
             {
 

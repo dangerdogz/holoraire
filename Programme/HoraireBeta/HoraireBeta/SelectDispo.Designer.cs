@@ -44,9 +44,8 @@
              this.panel1.Size = new System.Drawing.Size(758, 569);
              this.panel1.TabIndex = 0;
              this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_CentralMouseDown);
              this.panel1.DoubleClick += new System.EventHandler(this.panel_CentralDoubleClick);
-
+             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_CentralMouseDown);
              // 
              // monthCalendar1
              // 
@@ -77,14 +76,11 @@
              // 
              // label1
              // 
-
              this.label1.AutoSize = true;
              this.label1.Location = new System.Drawing.Point(97, 217);
              this.label1.Name = "label1";
-             this.label1.Size = new System.Drawing.Size(35, 13);
+             this.label1.Size = new System.Drawing.Size(0, 13);
              this.label1.TabIndex = 4;
-             this.label1.Text = "label1";
-        
              // 
              // SelectDispo
              // 

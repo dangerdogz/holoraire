@@ -82,5 +82,7 @@ namespace HoraireBeta
                 proc.deleteTeamProfile(id);
             }
         }
+
+        
     }
 }

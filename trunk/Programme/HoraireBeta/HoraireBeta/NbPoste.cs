@@ -21,6 +21,7 @@ namespace HoraireBeta
         private Label nNb;
         private Label titre;
         String nb;
+        public bool confirm = false;
 
         public NbPoste()
         {
@@ -48,13 +49,17 @@ namespace HoraireBeta
 
         private void button_annul_aj_post_Click(object sender, EventArgs e)
         {
-            NbPoste.ActiveForm.Dispose();
+
+            this.Hide();
         }
 
         private void button_aj_post_confirm_Click(object sender, EventArgs e)
         {
-            setPoste();
-            this.Hide();
+
+                setPoste();
+                confirm = true;
+                this.Hide();
+           
         }
 
         private void textBox_nomposte_TextChanged(object sender, EventArgs e)
@@ -125,6 +130,7 @@ namespace HoraireBeta
             this.nombre.Name = "nombre";
             this.nombre.Size = new System.Drawing.Size(34, 20);
             this.nombre.TabIndex = 2;
+            
             // 
             // textBox2
             // 
@@ -205,15 +211,25 @@ namespace HoraireBeta
 
         private void button1_Click(object sender, EventArgs e)
         {
-            setPoste();
-            this.Hide();
+            int n;
+            bool isNumeric = int.TryParse(nombre.Text, out n);
+            if (isNumeric == true)
+            {
+                setPoste();
+                confirm = true;
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Le nombre de postes doit être en format numérique");
+            }            
         }
 
         private void annuler_Click(object sender, EventArgs e)
         {
-            //Hommage à Johnny
-            MessageBox.Show("Pèse pas la dessus, le programme plante");
             this.Hide();
         }
+
+        
     }
 }

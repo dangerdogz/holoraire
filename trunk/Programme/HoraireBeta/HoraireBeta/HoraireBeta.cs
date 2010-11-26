@@ -758,23 +758,34 @@ namespace HoraireBeta
                 if (res is Equipe)
                     bloc.addRessource((Equipe)res);
                 else
-                {
-                    String nb = "";
-                    int position;
-                    bool existe = false;
-
-                    for (position = 0; position < bloc.getRessourceVoulus().Count; position++)
+                    if (res is Poste)
                     {
-
-                        if (((Poste)bloc.getRessourceVoulus(position).voulue).getNom().Equals(((Poste)res).getNom()))
+                        NbPoste showPosteDialog = new NbPoste();
+                        showPosteDialog.ShowDialog();
+                        if (showPosteDialog.confirm)
                         {
-                            nb = bloc.getRessourceVoulus(position).nbVoulue.ToString();
-                           // MessageBox.Show(nb);
-                            existe = true;
-                            break;
+                            bloc.addRessourceVoulue(1, (Poste)res);
+                        }
+                        showPosteDialog.Dispose();
+                    }
+                    else
+                    {
+                        String nb = "";
+                        int position;
+                        bool existe = false;
+
+                        for (position = 0; position < bloc.getRessourceVoulus().Count; position++)
+                        {
+
+                            if (((Poste)bloc.getRessourceVoulus(position).voulue).getNom().Equals(((Poste)res).getNom()))
+                            {
+                                nb = bloc.getRessourceVoulus(position).nbVoulue.ToString();
+                                // MessageBox.Show(nb);
+                                existe = true;
+                                break;
+                            }
                         }
                     }
-                }
         }
 
 
@@ -902,8 +913,9 @@ namespace HoraireBeta
 
                 // Add the employee name to the listbox.
                 if (ressources.ElementAt(i) is Profil)
+                {
                     listEmploye.Items.Add(((Profil)ressources.ElementAt(i)).getNom() + ", " + ((Profil)ressources.ElementAt(i)).getPrenom());
-               
+                }
 
 
             }
@@ -983,16 +995,17 @@ namespace HoraireBeta
 
             listPoste.Items.Clear();
             
-            List<Ressource> ressources = bloc.getListRessourceAffecte();
+            List<RessourceEntree> ressources = bloc.getRessourceVoulus();
 
            // MessageBox.Show(bloc.getListRessourceAffecte().Count.ToString());
 
             for (int i = 0; i < ressources.Count(); i++)
             {
-
-                // Add the employee name to the listbox.
-                listPoste.Items.Add(((Poste)ressources.ElementAt(i)).getNom());
-
+                if (ressources.ElementAt(i).voulue is Poste)
+                {
+                    // Add the employee name to the listbox.
+                    listPoste.Items.Add(((Poste)ressources.ElementAt(i).voulue).getNom());
+                }
 
             }
 
@@ -1016,23 +1029,18 @@ namespace HoraireBeta
         }
         public void fillEquipeListBox(Bloc bloc)
         {
-
-
-   
-
-
             listEquipe.Items.Clear();
-
             List<Ressource> ressources = bloc.getListRessourceAffecte();
 
             // MessageBox.Show(bloc.getListRessourceAffecte().Count.ToString());
 
             for (int i = 0; i < ressources.Count(); i++)
             {
-
-                // Add the employee name to the listbox.
-                listEquipe.Items.Add(((Equipe)ressources.ElementAt(i)).getNom());
-
+                if (ressources.ElementAt(i) is Equipe)
+                {
+                    // Add the employee name to the listbox.
+                    listEquipe.Items.Add(((Equipe)ressources.ElementAt(i)).getNom());
+                }
 
             }
 
@@ -1053,25 +1061,49 @@ namespace HoraireBeta
             }
 
         }
+        void clearList()
+        {
+            listEmploye.Items.Clear();
+            listEquipe.Items.Clear();
+            listPoste.Items.Clear();
+        }
 
         void updateInterfaceHoraire()
         {
             resetTree(RessourceTree.Nodes[0].Nodes);
             resetTree(RessourceTree.Nodes[1].Nodes);
             resetTree(RessourceTree.Nodes[2].Nodes);
+            clearList();
+            
 
             if (grille.selectionEnCours != null)
             {
                 Bloc blocCourant = grille.selectionEnCours;
                 Ressource ressource;
               //  MessageBox.Show("" + blocCourant.getListRessourceAffecte().Count);
+
+                foreach (RessourceEntree ressources in blocCourant.getRessourceVoulus())
+                {
+
+                    String nom;
+                    foreach (TreeNode nodes in RessourceTree.Nodes[1].Nodes)
+                    {
+                        nom = ((Poste)(ressources.voulue)).getNom().ToLower();
+                        //    MessageBox.Show(nom);
+                        if (nom == nodes.Text)
+                        {
+                            nodes.BackColor = Color.Cyan;
+                        }
+                    }
+                }
                 for(int i=0;i<blocCourant.getListRessourceAffecte().Count;i++)
                 {
                     
                     ressource = blocCourant.getListRessourceAffecte().ElementAt(i);
+                    
                     if (ressource is Profil)
                     {
-                        MessageBox.Show("LOL1.5");
+                        MessageBox.Show(((Profil)ressource).getNom());
                         String nomPrenom;
                         foreach (TreeNode nodes in RessourceTree.Nodes[0].Nodes)
                         {
@@ -1088,20 +1120,7 @@ namespace HoraireBeta
                         }
 
                     }
-                    if (ressource is Poste)
-                    {
-                        MessageBox.Show("LOL2");
-                        String nom;
-                        foreach (TreeNode nodes in RessourceTree.Nodes[1].Nodes)
-                        {
-                            nom = ((Poste)ressource).getNom().ToLower();
-                        //    MessageBox.Show(nom);
-                            if (nom == nodes.Text)
-                            {
-                                nodes.BackColor = Color.Cyan;
-                            }
-                        }
-                    }
+                    
                     if (ressource is Equipe)
                     {
                         String nom;
@@ -1115,6 +1134,7 @@ namespace HoraireBeta
                             }
                         }
                     }
+
                 }
             }
         }

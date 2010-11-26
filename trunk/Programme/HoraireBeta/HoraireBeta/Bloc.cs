@@ -170,19 +170,15 @@ namespace HoraireBeta
         public void addRessource(Profil newEmp)
         {
 
-            //MessageBox.Show("CALISSE");
 
             if (ressourcesVoulus.Count != 0)
             {
-                // MessageBox.Show("CALISSE2");
                 if (ressourcesAffectes.Count == 0)
                 {
                     ressourcesAffectes.Add(newEmp);
-                    //MessageBox.Show("CALISSE3");
                 }
                 else
                 {
-                    //MessageBox.Show("CALISSE4");
                     //trie l'employé dès son ajout
                     int coun = 0;
                     while (coun < ressourcesAffectes.Count && ((Profil)ressourcesAffectes[coun]).getAnciennete() <= newEmp.getAnciennete())

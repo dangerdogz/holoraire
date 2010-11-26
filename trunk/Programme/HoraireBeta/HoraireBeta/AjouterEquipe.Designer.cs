@@ -83,6 +83,7 @@
             this.textBox_nomequipe.Name = "textBox_nomequipe";
             this.textBox_nomequipe.Size = new System.Drawing.Size(221, 20);
             this.textBox_nomequipe.TabIndex = 9;
+            this.textBox_nomequipe.TextChanged += new System.EventHandler(this.textBox_nomequipe_TextChanged);
             // 
             // label_nomequipe
             // 

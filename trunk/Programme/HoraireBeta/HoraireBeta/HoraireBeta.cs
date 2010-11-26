@@ -1132,6 +1132,13 @@ namespace HoraireBeta
                 dispoWindow.ShowDialog();
         }
 
+        private void button_genere_Click(object sender, EventArgs e)
+        {
+            
+            TabSchedule leTableSchedule = new TabSchedule();
+            leTableSchedule.generate(loader.getBlocDeLaSemaine(getDebutSemaine()),loader.profilCharge);
+        }
+
         
 
     }

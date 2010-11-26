@@ -254,8 +254,8 @@ namespace HoraireBeta
 
         }
 
-        //Modifis le bloc correspondant a celui en fournis
-        public bool modifierBloc(Bloc leBloc)
+        //Modifis le bloc correspondant a celui fournis
+        public bool modifierBloc(Bloc leBloc, Bloc leBloc2)
         {
             int nbBloc = bloc.Count;
             bool blocTrouve = false;
@@ -265,7 +265,7 @@ namespace HoraireBeta
             {
                 if (bloc[i].getDebut() == leBloc.getDebut())
                 {
-                    bloc[i] = leBloc;
+                    bloc[i] = leBloc2;
                     blocTrouve = true;
                     break;
                 }
@@ -286,7 +286,8 @@ namespace HoraireBeta
             {
                 if (bloc[i].getDebut() == leBloc.getDebut())
                 {
-                    bloc.Remove(bloc.ElementAt(i));
+                   // bloc.Remove(bloc.ElementAt(i));
+                    bloc.RemoveAt(i);
                     supConf = true;
                     break;
                 }

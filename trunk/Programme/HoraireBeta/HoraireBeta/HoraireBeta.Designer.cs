@@ -41,9 +41,14 @@ namespace HoraireBeta
         /// </summary>
         public void InitializeComponent()
         {
+
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Employé");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Equipe");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Postes");
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Employé");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Equipe");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Postes");
+
             this.Admin = new System.Windows.Forms.TabControl();
             this.horaire = new System.Windows.Forms.TabPage();
             this.panelCentral_Horaire = new System.Windows.Forms.Panel();
@@ -354,16 +359,16 @@ namespace HoraireBeta
             this.RessourceTree.BackColor = System.Drawing.SystemColors.Window;
             this.RessourceTree.Location = new System.Drawing.Point(7, 6);
             this.RessourceTree.Name = "RessourceTree";
-            treeNode1.Name = "Employe";
-            treeNode1.Text = "Employé";
-            treeNode2.Name = "Equipe";
-            treeNode2.Text = "Equipe";
-            treeNode3.Name = "Postes";
-            treeNode3.Text = "Postes";
+            treeNode4.Name = "Employe";
+            treeNode4.Text = "Employé";
+            treeNode5.Name = "Equipe";
+            treeNode5.Text = "Equipe";
+            treeNode6.Name = "Postes";
+            treeNode6.Text = "Postes";
             this.RessourceTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
+            treeNode4,
+            treeNode5,
+            treeNode6});
             this.RessourceTree.Size = new System.Drawing.Size(208, 316);
             this.RessourceTree.TabIndex = 0;
             this.RessourceTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);

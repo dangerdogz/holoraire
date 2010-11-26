@@ -13,16 +13,16 @@ namespace HoraireBeta
     {
         string hd;
         string hf;
-        public CreationBloc(string hd, string hf)
+        List<Bloc> listBloc;
+
+        public CreationBloc(string hd, string hf, List<Bloc> listBloc)
         {
             InitializeComponent(hd,hf);
-            
+            this.listBloc = listBloc;
         }
 
         public void setHeures()
         {
-            
-
             hd = textBox_hrdebut.Text;
             hf = textBox_hrfin.Text;
 
@@ -32,6 +32,26 @@ namespace HoraireBeta
                 hd = "0";
             if (hf == "24")
                 hf = "0";
+           
+        }
+
+        public bool valideHeures() {
+
+            try
+                {
+                //Si contient juste des chiffres
+                int.Parse(hd);
+                int.Parse(hf);
+                return true;
+                }
+            catch (Exception)
+                {
+                MessageBox.Show("Erreur lors de l'entrée des heures");
+                
+                return false;
+                }
+
+            
         }
 
         public string getHd()
@@ -44,12 +64,29 @@ namespace HoraireBeta
             return hf;
         }
 
+        //Retourne vrai si le placement est valide
+        public bool placementValide(Bloc leBloc) {
+
+            //Variables
+            for (int i = 0; i < listBloc.Count; i++)
+                {
+                //Sois le bloc ajouté enpiète sur la fin du bloc existant ou sur le debut du bloc existant
+                if ( (leBloc.getDebut() < listBloc[i].getFin() && leBloc.getFin() > listBloc[i].getFin()) 
+                    || (leBloc.getFin() > listBloc[i].getDebut() && leBloc.getDebut() < listBloc[i].getDebut()))
+                    {
+                    return false; //Bloc existant                 
+                    }
+            
+                }
+            return true; //Aucun accros
+        }
+
         private void button_blocconfirm_Click(object sender, EventArgs e)
         {
             setHeures();
-              
-            //MessageBox.Show(this, "" + hd);
-            this.Hide();
+             
+            if(valideHeures())
+                this.Hide();
         }
     }
 }

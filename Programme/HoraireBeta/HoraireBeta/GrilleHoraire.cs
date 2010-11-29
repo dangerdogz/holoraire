@@ -134,9 +134,7 @@ namespace HoraireBeta
 
 
             //Création des jours - ajouter les blocs existants
-            MessageBox.Show("Nozzlecunt");
             jours[0] = new GrilleJour("Dimanche", dimanche, 1, 40, 20, gfx, profil, this);
-            MessageBox.Show("Wafflecock");
             jours[1] = new GrilleJour("Lundi", lundi, 2, 140, 20, gfx, profil, this);
             jours[2] = new GrilleJour("Mardi", mardi, 3, 240, 20, gfx, profil, this);
             jours[3] = new GrilleJour("Mercredi", mercredi, 4, 340, 20, gfx, profil, this);

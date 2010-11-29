@@ -84,16 +84,7 @@ namespace HoraireBeta
             this.id = id;
 
 
-            //MessageBox.Show("Date : "+
-            y = (Convert.ToInt32(debut.ToString("HH")) * 20 + Convert.ToInt32(debut.ToString("mm")) / 3) + 40;
-
-            x = ((Loader.SemaineToInt(debut) - 1) * 100) + 40;
-
-            //MessageBox.Show(Loader.SemaineToInt(debut)+"||"+(debut.ToString("ddd")));
-
-
-            haut = ((Convert.ToInt32(fin.ToString("HH")) * 20 + Convert.ToInt32(fin.ToString("mm")) / 3) - y) + 40;
-
+            computePos();
             erreurExiste = false;
             estComplet = false;
 
@@ -373,12 +364,26 @@ namespace HoraireBeta
         public void setDebut(DateTime laDate)
         {
             debut = laDate;
+            computePos();
         }
 
         public void setFin(DateTime laDate)
         {
             fin = laDate;
+            computePos();
         }
+
+        public void computePos()
+        {  //MessageBox.Show("Date : "+
+            y = (Convert.ToInt32(debut.ToString("HH")) * 20 + Convert.ToInt32(debut.ToString("mm")) / 3) + 40;
+
+            x = ((Loader.SemaineToInt(debut) - 1) * 100) + 40;
+
+            //MessageBox.Show(Loader.SemaineToInt(debut)+"||"+(debut.ToString("ddd")));
+
+
+            haut = ((Convert.ToInt32(fin.ToString("HH")) * 20 + Convert.ToInt32(fin.ToString("mm")) / 3) - y) + 40;
+        return ;}
 
         public int getId()
         {
@@ -479,10 +484,10 @@ namespace HoraireBeta
         public void save()
         {
             DBConnect proc = new DBConnect();
-            if (this.id < 0)
+            if (this.id <= 0)
             {
                 proc.addBlock(debut.ToString("yyyy-MM-dd HH:mm:ss"), fin.ToString("yyyy-MM-dd HH:mm:ss"), typeBloc);
-                id = Convert.ToInt32(proc.getLastStuff("Block").Rows[0]["last_insert_rowid()"].ToString());
+                id = Convert.ToInt32(proc.getLastStuff("Block").Rows[0]["idBlock"].ToString());
             }
             else
             {
@@ -493,6 +498,7 @@ namespace HoraireBeta
             }
             foreach (RessourceEntree lui in ressourcesVoulus)
             {
+                MessageBox.Show("Lol this");
                 if (lui.voulue is Equipe)
                     proc.addRessource(id, 0, lui.voulue.getId(), lui.nbVoulue);
                 else
@@ -509,7 +515,7 @@ namespace HoraireBeta
             Pen pen = new Pen(Color.Black);
             SolidBrush brush = new SolidBrush(Color.Cyan);
             SolidBrush fontBrush = new SolidBrush(Color.Black);
-            SolidBrush selectedBrush = new SolidBrush(Color.Green);
+            SolidBrush selectedBrush = new SolidBrush((Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(246)))), ((int)(((byte)(134)))))));
 
             if (isSelected == true)
             {

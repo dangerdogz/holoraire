@@ -82,7 +82,7 @@ namespace HoraireBeta
 
             for (int i = 1; i <= 24; i++)
             {
-                if (i < 10)
+                if (i <= 10)
                     gfx.DrawString("0" + (i - 1) + ":00", laFont, brush, 0, (20 * i) + 15);
                 else
                     gfx.DrawString((i - 1) + ":00", laFont, brush, 0, (20 * i) + 15);

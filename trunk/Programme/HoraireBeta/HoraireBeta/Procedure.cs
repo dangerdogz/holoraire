@@ -75,7 +75,7 @@ namespace HoraireBeta
             requete = "INSERT INTO Profil(idProfil, prenom, nom, phoneNumber, quotaHeureMax, quotaHeureMin, email, seniority)" +
                       " VALUES(\"" + profilid + "\", \"" + profilPrenom + "\", \"" + profilNom + "\", \"" + profilPhoneNumber + "\", " + profilHeureMax +
                       ", " + profilHeureMin + ", \"" + profilEmail + "\", " + seniority + ")";
-            MessageBox.Show(requete);
+           // MessageBox.Show(requete);
             getResult(requete);
         }
         public void modifierProfil(int idProfil, String profilPrenom, String profilNom, String profilPhoneNumber, int profilHeureMax, int profilHeureMin, String profilEmail, int seniority)
@@ -83,14 +83,14 @@ namespace HoraireBeta
             String requete;
             requete = "UPDATE Profil SET prenom=\"" + profilPrenom + "\", nom=\"" + profilNom + "\", phoneNumber=\"" + profilPhoneNumber +
                       "\", quotaHeureMax=" + profilHeureMax + ", quotaHeureMin=" + profilHeureMin + ", email=\"" + profilEmail + "\", seniority = \"" + seniority + "\" WHERE idProfil=" + idProfil + "";
-            MessageBox.Show(requete);
+           // MessageBox.Show(requete);
             getResult(requete);
         }
         public DataTable getProfil(int idProfil)
         {
             String requete;
             requete = "SELECT idProfil, prenom, nom, phoneNumber, quotaHeureMax, quotaHeureMin, email, seniority" +
-                      " FROM Profil WHERE idProfil=" + idProfil+"";
+                      " FROM Profil WHERE idProfil= " + idProfil+"";
             return getResult(requete);
            
         }
@@ -105,7 +105,6 @@ namespace HoraireBeta
         {
             string requete;
             requete = "SELECT * FROM "+quoi+" order by id"+quoi+" desc;";
-            MessageBox.Show(requete);
             return getResult(requete);
 
         }
@@ -121,7 +120,7 @@ namespace HoraireBeta
         public void deleteProfil(int idProfil)
         {
             String requete;
-            requete = "DELETE * FROM Profil WHERE idProfil = " +idProfil+"";
+            requete = "DELETE FROM Profil WHERE idProfil = " +idProfil+"";
         }
 
 
@@ -140,12 +139,14 @@ namespace HoraireBeta
         public void deletePoste(int idPoste)
         {
             String requete;
-            requete = "DELETE * FROM Poste WHERE idPoste = " + idPoste+"";
+            requete = "DELETE FROM Poste WHERE idPoste = " + idPoste+"";
+            getResult(requete);
         }
         public void modifyPoste(int idPoste, String nom, String description)
         {
             String requete;
-            requete = "UPDATE Poste SET nom=" + nom + ", description=" + description + " where idPoste = "+idPoste+"";
+            requete = "UPDATE Poste SET nom=\"" + nom + "\", description=\"" + description + "\" where idPoste = "+idPoste+"";
+            getResult(requete);
         }
         public DataTable getPoste(int idPoste)
         {
@@ -162,17 +163,21 @@ namespace HoraireBeta
         public void addBlock(String debut, String fin, int idType)
         {
             String requete;
-            requete = "INSERT INTO Block(idType, debut, fin) VALUES(" + idType + "," + debut + "," + fin + ")";
+            requete = "INSERT INTO Block(idType, debut, fin) VALUES(\"" + idType + "\",\"" + debut + "\",\"" + fin + "\")";
+            getResult(requete);
+           // MessageBox.Show(requete);
         }
         public void deleteBlock(int idBlock)
         {
             String requete;
-            requete = "DELETE * FROM Block WHERE idBlock = "+idBlock+"";
+            requete = "DELETE FROM Block WHERE idBlock = "+idBlock+"";
+            getResult(requete);
         }
         public void modifyBlock(String debut, String fin, int idBlock)
         {
             String requete;
-            requete = "UPDATE Block SET debut = "+debut+", "+fin+" WHERE idBlock="+idBlock+"";
+            requete = "UPDATE Block SET debut = \""+debut+"\",fin=\""+fin+"\" WHERE idBlock="+idBlock+"";
+            getResult(requete);
         }
         public DataTable getBlock(int idBlock)
         {
@@ -219,12 +224,12 @@ namespace HoraireBeta
         public void addPlage(String debut, String fin, int day)
         {
             String requete;
-            requete = "INSERT INTO Plage(debut, fin, day) VALUES(" + debut + "," + fin + "," + day + ")";
+            requete = "INSERT INTO Plage(debut, fin, day) VALUES(\"" + debut + "\",\"" + fin + "\"," + day + ")";
         }
         public void modifyPlage(String debut, String fin, int day)
         {
             String requete;
-            requete = "UPDATE Plage SET debut="+debut+", fin="+fin+", day="+day+"";
+            requete = "UPDATE Plage SET debut=\""+debut+"\", fin=\""+fin+"\", day="+day+"";
         }
         public void deletePlage(int idPlage)
         {
@@ -246,12 +251,12 @@ namespace HoraireBeta
         public void addPreset(String beginDate, String endDate, String nom)
         {
             String requete;
-            requete = "INSERT INTO Preset(beginDate, endDate, nom) VALUES(" + beginDate + "," + endDate + "," + nom + ")";
+            requete = "INSERT INTO Preset(beginDate, endDate, nom) VALUES(\"" + beginDate + "\",\"" + endDate + "\",\"" + nom + "\")";
         }
         public void modifyPreset(String beginDate, String endDate, String nom)
         {
             String requete;
-            requete = "UPDATE Preset SET beginDate=" + beginDate + ", endDate=" + endDate + ", nom=" + nom+"";
+            requete = "UPDATE Preset SET beginDate=\"" + beginDate + "\", endDate=\"" + endDate + "\", nom=\"" + nom+"\"";
         }
         public void deletePreset(int idPreset)
         {
@@ -274,6 +279,7 @@ namespace HoraireBeta
         {
             String requete;
             requete = "INSERT INTO Ressource(idBlock, idPoste, idTeam, number) VALUES(" + idBlock + "," + idPoste + "," + idTeam + ","+number+")";
+            getResult(requete);
         }
         public void modifyRessource(int idBlock, int idPoste, int idTeam)
         {
@@ -306,7 +312,7 @@ namespace HoraireBeta
         public void modifyTeam(int id, String nom, String description)
         {
             String requete;
-            requete = "UPDATE Team SET nom=" + nom + ", description = " + description + " where idTeam ="+id+"";
+            requete = "UPDATE Team SET nom=\"" + nom + "\", description = \"" + description + "\" where idTeam ="+id+"";
         }
         public void deleteTeam(int idTeam)
         {

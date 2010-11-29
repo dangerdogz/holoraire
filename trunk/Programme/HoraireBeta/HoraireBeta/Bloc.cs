@@ -73,6 +73,32 @@ namespace HoraireBeta
 
         }
 
+        public Bloc(DateTime debut, DateTime fin, int type, int id)
+        {
+
+
+            System.Globalization.Calendar calendar = info.Calendar;
+            this.debut = debut;
+            this.fin = fin;
+            this.typeBloc = type;
+            this.id = id;
+
+
+            //MessageBox.Show("Date : "+
+            y = (Convert.ToInt32(debut.ToString("HH")) * 20 + Convert.ToInt32(debut.ToString("mm")) / 3) + 40;
+
+            x = ((Loader.SemaineToInt(debut) - 1) * 100) + 40;
+
+            //MessageBox.Show(Loader.SemaineToInt(debut)+"||"+(debut.ToString("ddd")));
+
+
+            haut = ((Convert.ToInt32(fin.ToString("HH")) * 20 + Convert.ToInt32(fin.ToString("mm")) / 3) - y) + 40;
+
+            erreurExiste = false;
+            estComplet = false;
+
+        }
+
         public Bloc(DateTime debut, DateTime fin, int x, int type, int id)
         {
 

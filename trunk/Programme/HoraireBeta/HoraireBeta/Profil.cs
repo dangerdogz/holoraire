@@ -17,6 +17,7 @@ namespace HoraireBeta
         private int anciennete;
         private int heuresTravaillees;
         private int heuresMax;
+        private bool mod;
         private List<Poste> poste = new List<Poste>();
         private List<Bloc> preference = new List<Bloc>();
         private List<Bloc> disponibilite = new List<Bloc>();
@@ -32,6 +33,7 @@ namespace HoraireBeta
             setAnciennete(anciennete);
             setHeuresMax(heureMax);
             this.poste.Add(poste);
+            mod = false;
 
         }
 
@@ -44,6 +46,7 @@ namespace HoraireBeta
             setAnciennete(anciennete);
             id = -1;
             setHeuresMax(heureMax);
+            mod = false;
 
         }
 
@@ -57,6 +60,7 @@ namespace HoraireBeta
             setAnciennete(anciennete);
             id = -1;
             heuresMax = 0;
+            mod = false;
 
         }
 
@@ -69,6 +73,7 @@ namespace HoraireBeta
             setNumTelephone(numTelephone);
             setAnciennete(anciennete);
             heuresMax = 0;
+            mod = true;
 
         }
 
@@ -182,7 +187,7 @@ namespace HoraireBeta
             MessageBox.Show("robert");
         }
 
-        public void save(bool mod)
+        public void save()
         {
             
             DBConnect proc = new DBConnect();
@@ -193,6 +198,8 @@ namespace HoraireBeta
                 {
 
                     proc.addPosteProfil(lui.getId(), id);
+                    mod = true;
+                    
                 }
 
             }

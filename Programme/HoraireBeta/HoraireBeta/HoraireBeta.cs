@@ -731,12 +731,7 @@ namespace HoraireBeta
             }
             
             loader.profilCharge.Add(profil);
-
-            profil.save();
-
-            //profil.save(mod);
-        
-
+            profil.save(false);
             numemp_textbox.Text = "";
             nom_textbox.Text = "";
             prenom_textbox.Text = "";
@@ -987,11 +982,11 @@ namespace HoraireBeta
                     datatable2 = proc.getPoste2(pid);
                     pname = datatable2.Rows[0]["nom"].ToString().ToLower();
 
-                    pname = datatable.Rows[i].ToString();
+                    //pname = datatable.Rows[i].ToString();
 
                     System.Windows.Forms.TreeNode name;
                     name = new System.Windows.Forms.TreeNode(pname);
-                    this.treeView_postechoisi.Nodes.Add(name);
+                    this.treeView_postechoisi.Nodes.Add(pname);
 
                     for (int j = 0; j < treeView_postdispo.Nodes.Count; j++)
                     {

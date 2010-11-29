@@ -291,13 +291,13 @@ namespace HoraireBeta
                     int dateDebut = int.Parse(modifbloc.getHd());
                     int dateFin = int.Parse(modifbloc.getHf());
 
-
                     DateTime tempDebut = new DateTime(debut.Year, debut.Month, debut.Day, dateDebut, debut.Minute, debut.Second);
                     DateTime tempFin = new DateTime(fin.Year, fin.Month, fin.Day, dateFin - 1, fin.Minute, fin.Second);
 
 
-                    Bloc leBloc2 = new Bloc(tempDebut, tempFin, 0, 0);
+                    Bloc leBloc2 = new Bloc(tempDebut, tempFin, 0, 0, 0);
                     if (modifbloc.placementValide(leBloc2))
+
                     {
 
                         if (loader != null && loader.modifierBloc(leBloc, leBloc2))
@@ -384,7 +384,7 @@ namespace HoraireBeta
 
 
             //Affecte le bloc
-            Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0);
+            Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0, 0);
 
             
 

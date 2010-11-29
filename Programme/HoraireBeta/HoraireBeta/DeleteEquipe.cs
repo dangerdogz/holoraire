@@ -36,6 +36,8 @@ namespace HoraireBeta
         public void delete(String equipe)
         {
             DBConnect proc = new DBConnect();
+
+
             proc.deleteTeam2(equipe);
         }
     }

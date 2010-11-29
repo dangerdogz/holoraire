@@ -18,6 +18,7 @@ namespace HoraireBeta
         AjouterPoste ajouterposte = new AjouterPoste();
         AjouterEquipe ajouterequipe = new AjouterEquipe();
         SelectDispo dispoWindow;
+        bool mod = false;
         
         public HoraireBeta(Loader loader)
         {
@@ -209,6 +210,7 @@ namespace HoraireBeta
 
         private void modifier_button_Click(object sender, EventArgs e)
         {
+            mod = true;
             numemp_textbox.ReadOnly.ToString();
             panelCentral_Employe.Controls.Add(this.supprimer_button);
             ajprofemp_label.Text = "Modifier un profil d'employé";
@@ -356,7 +358,7 @@ namespace HoraireBeta
 
         private void ajouter_button_Click(object sender, EventArgs e)
         {
-
+            mod = false;
             this.panelCentral_Employe.Controls.Remove(this.supprimer_button);
             this.panelCentral_Employe.Controls.Add(this.numemp_textbox);
             this.panelCentral_Employe.Controls.Add(this.nemp_label);
@@ -580,6 +582,8 @@ namespace HoraireBeta
             FillTree(treeView_postgen.Nodes, xmlPostes4);
             FillTree(treeView_modemploye.Nodes, xmlProfiles2);
             //fillEmployeListBox();
+
+            //FillTree(treeView_postdispo.Nodes, xmlPostes2);
             
 
 
@@ -715,16 +719,13 @@ namespace HoraireBeta
             this.panelCentral_Parametre.Controls.Add(this.button_ajouter_PG);
             this.panelCentral_Parametre.Controls.Add(this.label_postgeneral);
         }
-
         private void Sauvegarder_button_Click(object sender, EventArgs e)
         {
-            bool mod = false;
-
             Profil profil = new Profil(Convert.ToInt32(numemp_textbox.Text), prenom_textbox.Text, nom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0);
-            for (int cul = 0; cul <= treeView_postechoisi.Nodes.Count; cul++)
+            for (int cul = 0; cul < treeView_postechoisi.Nodes.Count; cul++)
             {
                 int i = 0;
-                while (treeView_postechoisi.Nodes[cul].Text != ((Poste)(loader.posteCharge[i++])).getNom()) ;
+                while (treeView_postechoisi.Nodes[cul].Text.ToLower() != ((Poste)(loader.posteCharge[i++])).getNom().ToLower()) ;
                 profil.setPoste((Poste)(loader.posteCharge[--i]));
                 
             }
@@ -738,6 +739,9 @@ namespace HoraireBeta
             prenom_textbox.Text = "";
             courriel_textbox.Text = "";
             telephone_textbox.Text = "";
+
+
+
         }
 
         private void UnlinkBlocToRessource(Ressource res, Bloc bloc)
@@ -944,11 +948,17 @@ namespace HoraireBeta
             Profil ressource = null;
             Chilkat.Xml xmlProfiles = new Chilkat.Xml();
             xmlProfiles.LoadXmlFile("profiles.xml");
+
+            Chilkat.Xml xmlPoste7 = new Chilkat.Xml();
+            xmlPoste7.LoadXmlFile("postes.xml");
+            treeView_postdispo.Nodes.Clear();
+            FillTree(treeView_postdispo.Nodes, xmlPoste7);
+            treeView_postechoisi.Nodes.Clear();
+
             String textInForm;
             textInForm = treeView_modemploye.SelectedNode.Text.ToString();
             String id;
             int idprofil;
-
             id = findRessourceXML(textInForm, xmlProfiles);
 
             if (id != null)
@@ -961,30 +971,39 @@ namespace HoraireBeta
                 courriel_textbox.Text = ressource.getEmail();
                 telephone_textbox.Text = ressource.getNumTelephone();
                 DataTable datatable;
+                DataTable datatable2;
                 DBConnect proc = new DBConnect();
-               // MessageBox.Show("There's a nigger in the woodpile");
                 datatable = proc.getPosteProfil2(idprofil);
+                int pid;
                 String pname;
-               // MessageBox.Show("Shiteater");
-               // MessageBox.Show(datatable.Rows.Count.ToString());
+
                 for(int i = 0; i < datatable.Rows.Count; i++)
                 {
-                   // MessageBox.Show(datatable.Rows[0].ToString());
-                   //MessageBox.Show(datatable.Rows[1].ToString());
-                   //MessageBox.Show(datatable.Rows[2].ToString());
-                 // MessageBox.Show(datatable.Rows[0].ToString())
+
+                    pid = Convert.ToInt32(datatable.Rows[i]["idPoste"]);
+                    datatable2 = proc.getPoste2(pid);
+                    pname = datatable2.Rows[0]["nom"].ToString().ToLower();
+
                     pname = datatable.Rows[i].ToString();
-                  //  MessageBox.Show("Fuck you Martin tu vois ben que ca marche pas");
-                    //MessageBox.Show(pname);
+
                     System.Windows.Forms.TreeNode name;
                     name = new System.Windows.Forms.TreeNode(pname);
                     this.treeView_postechoisi.Nodes.Add(name);
+
+                    for (int j = 0; j < treeView_postdispo.Nodes.Count; j++)
+                    {
+                        if (treeView_postdispo.Nodes[j].Text.ToString() == pname)
+                        {
+                            treeView_postdispo.Nodes[j].Remove();
+                        }
+                    }
+
                     this.treeView_postdispo.Nodes.Remove(name);
-                  //  MessageBox.Show("Ca marche pas");
+
                 }
-               //  MessageBox.Show("pigfucker");
+
                  dispoWindow = new SelectDispo(ressource);
-                // MessageBox.Show("lolwat");
+
             }  
         }
 
@@ -1160,15 +1179,12 @@ namespace HoraireBeta
             if (dispoWindow != null)
                 dispoWindow.ShowDialog();
         }
-
         private void button_genere_Click(object sender, EventArgs e)
         {
             
             TabSchedule leTableSchedule = new TabSchedule();
             leTableSchedule.generate(loader.getBlocDeLaSemaine(getDebutSemaine()),loader.profilCharge);
         }
-
-        
 
     }
 } 

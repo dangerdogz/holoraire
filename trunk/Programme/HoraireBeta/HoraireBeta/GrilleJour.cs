@@ -257,9 +257,6 @@ namespace HoraireBeta
             }
         
 
-
-
-
             if (mouse == "MouseUp")
             {
                 if (mousepush)
@@ -284,79 +281,82 @@ namespace HoraireBeta
             ModificationBloc modifbloc = new ModificationBloc(hDebut, hFin,blocs);
             modifbloc.ShowDialog();
 
-         
-            if (modifbloc.getCommande() == 0)
+            if (modifbloc.isValide())
             {
-                //Modification d'un bloc
-                //Compute Nouvelle Date ** Ajouter validation ** 
-                
-                int dateDebut = int.Parse(modifbloc.getHd());
-                int dateFin = int.Parse(modifbloc.getHf());
-
-              
-                DateTime tempDebut = new DateTime(debut.Year, debut.Month, debut.Day, dateDebut, debut.Minute, debut.Second);
-                DateTime tempFin = new DateTime(fin.Year, fin.Month, fin.Day, dateFin - 1, fin.Minute, fin.Second);
-
-
-                Bloc leBloc2 = new Bloc(tempDebut, tempFin, 0, 0);
-                if (modifbloc.placementValide(leBloc2))
+                if (modifbloc.getCommande() == 0)
                 {
-                   
-                    if (loader != null && loader.modifierBloc(leBloc, leBloc2))
-                    { //Ajout du bloc confirmé 
-                    } //
-                    else
+                    //Modification d'un bloc
+                    //Compute Nouvelle Date ** Ajouter validation ** 
+
+                    int dateDebut = int.Parse(modifbloc.getHd());
+                    int dateFin = int.Parse(modifbloc.getHf());
+
+
+                    DateTime tempDebut = new DateTime(debut.Year, debut.Month, debut.Day, dateDebut, debut.Minute, debut.Second);
+                    DateTime tempFin = new DateTime(fin.Year, fin.Month, fin.Day, dateFin - 1, fin.Minute, fin.Second);
+
+
+                    Bloc leBloc2 = new Bloc(tempDebut, tempFin, 0, 0);
+                    if (modifbloc.placementValide(leBloc2))
                     {
-                        if (loader != null)
-                            MessageBox.Show("Bloc introuvable");
+
+                        if (loader != null && loader.modifierBloc(leBloc, leBloc2))
+                        { //Ajout du bloc confirmé 
+                        } //
                         else
                         {
-                            if (profil != null && laGrille.isPref && profil.modifierBloc(leBloc, leBloc2, true))
-                            { //lolnigger
-                            }
+                            if (loader != null)
+                                MessageBox.Show("Bloc introuvable");
                             else
                             {
-                                if (profil != null && !laGrille.isPref && profil.modifierBloc(leBloc, leBloc2, false))
+                                if (profil != null && laGrille.isPref && profil.modifierBloc(leBloc, leBloc2, true))
                                 { //lolnigger
                                 }
+                                else
+                                {
+                                    if (profil != null && !laGrille.isPref && profil.modifierBloc(leBloc, leBloc2, false))
+                                    { //lolnigger
+                                    }
+                                }
+
                             }
 
                         }
-
                     }
-                }
-                else
-                {
-                
-                }
-            }
-            
-
-            else
-            //Suppression d'un Bloc
-
-            {
-                if (profil == null)
-                    loader.supprimerBloc(leBloc);
-                else
-                {
-                    if (loader == null && laGrille.isPref)
-                        profil.getPref().Remove(leBloc);
                     else
                     {
-                        if (loader == null && !laGrille.isPref)
-                            profil.getDispo().Remove(leBloc);
+
+                    }
+                }
+
+
+                else
+                //Suppression d'un Bloc
+                {
+                    if (profil == null)
+                        loader.supprimerBloc(leBloc);
+                    else
+                    {
+                        if (loader == null && laGrille.isPref)
+                            profil.getPref().Remove(leBloc);
+                        else
+                        {
+                            if (loader == null && !laGrille.isPref)
+                                profil.getDispo().Remove(leBloc);
+                        }
+
                     }
 
-                }   
-                    
 
-                laGrille.refresh();
+                    laGrille.refresh();
 
-                
+
+                }
+
             }
+            modifbloc.Dispose();
     
-}
+        }
 
 
 
@@ -368,6 +368,9 @@ namespace HoraireBeta
             CreationBloc creationbloc = new CreationBloc(hDebut, hFin, blocs);
             creationbloc.ShowDialog();
 
+            if (creationbloc.isValide())
+            {
+
             //Compute Nouvelle Date ** Ajouter validation ** 
             int dateDebut = int.Parse(creationbloc.getHd());
             int dateFin = int.Parse(creationbloc.getHf());
@@ -377,36 +380,36 @@ namespace HoraireBeta
             DateTime tempDebut = new DateTime(debut.Year, debut.Month, debut.Day, dateDebut, debut.Minute, debut.Second);
             DateTime tempFin = new DateTime(fin.Year, fin.Month, fin.Day, dateFin, fin.Minute, fin.Second) - new TimeSpan(0, 0, 0, 1);
 
-          // MessageBox.Show(" Date Début : " + tempDebut + " et Date Fin : " + tempFin);
+            // MessageBox.Show(" Date Début : " + tempDebut + " et Date Fin : " + tempFin);
 
 
             //Affecte le bloc
             Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0);
 
-
+            
 
             if (creationbloc.placementValide(tempBloc))
-                {
+            {
                 if (profil != null)
                 {
                     if (loader == null && laGrille.isPref)
-                    profil.addPref(tempBloc);
-                else
+                        profil.addPref(tempBloc);
+                    else
                         if (loader == null && !laGrille.isPref)
-                        profil.addDispo(tempBloc);
-                tempBloc.draw(width, grfx);
+                            profil.addDispo(tempBloc);
+                    tempBloc.draw(width, grfx);
                 }
                 else
-                    {
+                {
                     //Ajout du block valide
                     tempBloc.draw(width, grfx);
                     loader.bloc.Add(tempBloc);
                 }
-                }
+            }
             else
                 MessageBox.Show("Placement invalide");
 
-
+            }
            
 
 

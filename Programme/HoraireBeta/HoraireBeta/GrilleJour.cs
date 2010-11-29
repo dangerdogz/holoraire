@@ -135,7 +135,7 @@ namespace HoraireBeta
                 grfx.FillRectangle(myWhiteBrush, posX + 1, posY + (heightHeure * i) + 20, width - 1, heightHeure - 1);
 
             }
-
+        
             //Charge les blocs du jours
             if (profil == null)
                 blocs = loader.getBlocFromDate(dateDuJour);
@@ -348,7 +348,7 @@ namespace HoraireBeta
                     }
 
 
-                    laGrille.refresh();
+               //     laGrille.refresh();
 
 
                 }

@@ -81,8 +81,13 @@ namespace HoraireBeta
         public void modifierProfil(int idProfil, String profilPrenom, String profilNom, String profilPhoneNumber, int profilHeureMax, int profilHeureMin, String profilEmail, int seniority)
         {
             String requete;
+<<<<<<< .mine
+            requete = "UPDATE Profil SET prenom=\"" + profilPrenom + "\", nom=\"" + profilNom + "\", phoneNumber=\"" + profilPhoneNumber +
+                      "\", quotaHeureMax=" + profilHeureMax + ", quotaHeureMin=" + profilHeureMin + ", email=\"" + profilEmail + "\", seniority = \"" + seniority + "\" WHERE idProfil=" + idProfil + "";
+=======
             requete = "UPDATE Profil SET prenom=\"" + profilPrenom + "\", nom=\"" + profilNom + "\", phoneNumber=\"" + profilPhoneNumber +
                       "\", quotaHeureMax=" + profilHeureMax + ", quotaHeureMin=" + profilHeureMin + ", email=\"" + profilEmail + "\", seniority = " + seniority + " WHERE idProfil=" + idProfil + "";
+>>>>>>> .r333
             MessageBox.Show(requete);
             getResult(requete);
         }
@@ -104,8 +109,8 @@ namespace HoraireBeta
         public DataTable getLastStuff(String quoi)
         {
             string requete;
-            requete = "SELECT DISTINCT last_insert_rowid() FROM "+quoi+";";
-           // MessageBox.Show(requete);
+            requete = "SELECT * FROM "+quoi+" order by id"+quoi+" desc;";
+            MessageBox.Show(requete);
             return getResult(requete);
 
         }

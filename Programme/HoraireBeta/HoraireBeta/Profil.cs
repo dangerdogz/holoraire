@@ -64,7 +64,7 @@ namespace HoraireBeta
 
         }
 
-        public Profil(int id, string prenom, string nom, string email, string numTelephone, int anciennete)
+        public Profil(int id, string prenom, string nom, string email, string numTelephone, int anciennete,int heurmax)
         {
             setId(id);
             setPrenom(prenom);
@@ -72,7 +72,7 @@ namespace HoraireBeta
             setEmail(email);
             setNumTelephone(numTelephone);
             setAnciennete(anciennete);
-            heuresMax = 0;
+            heuresMax = heurmax;
             mod = true;
 
         }

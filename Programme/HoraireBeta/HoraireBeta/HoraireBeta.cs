@@ -44,12 +44,12 @@ namespace HoraireBeta
         {
 
         }
-
+        /*
         private void pCentral_Horaire_Paint(object sender, PaintEventArgs e)
         {
         
         }
-
+        */
         private void pCentral_Employe_Paint(object sender, PaintEventArgs e)
         {
 
@@ -115,7 +115,7 @@ namespace HoraireBeta
             {
                 case MouseButtons.Left:
                     grille.passeClique(e,"MouseUp");
-                    updateInterfaceHoraire();
+                   // updateInterfaceHoraire();
                     if (grille.selectionEnCours != null)
                     {
                         fillEmployeListBox(grille.selectionEnCours);
@@ -721,7 +721,7 @@ namespace HoraireBeta
         }
         private void Sauvegarder_button_Click(object sender, EventArgs e)
         {
-            Profil profil = new Profil(Convert.ToInt32(numemp_textbox.Text), prenom_textbox.Text, nom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0);
+            Profil profil = new Profil(Convert.ToInt32(numemp_textbox.Text), prenom_textbox.Text, nom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0,0);
             for (int cul = 0; cul < treeView_postechoisi.Nodes.Count; cul++)
             {
                 int i = 0;
@@ -731,7 +731,11 @@ namespace HoraireBeta
             }
             
             loader.profilCharge.Add(profil);
+<<<<<<< .mine
+            profil.save();
+=======
             //profil.save(mod);
+>>>>>>> .r333
             
 
             numemp_textbox.Text = "";

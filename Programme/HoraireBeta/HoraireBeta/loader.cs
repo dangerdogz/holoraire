@@ -47,8 +47,8 @@ namespace HoraireBeta
 
                 if (rs.Rows[i]["prenom"].ToString() != "")
                 {
-                    Profil newprof = new Profil(rs.Rows[i]["prenom"].ToString(), rs.Rows[i]["nom"].ToString(), rs.Rows[i]["email"].ToString(), rs.Rows[i]["phoneNumber"].ToString(), Convert.ToInt32(rs.Rows[i]["seniority"].ToString()), Convert.ToInt32(rs.Rows[i]["quotaHeureMax"].ToString()));
-                    newprof.setId(Convert.ToInt32(rs.Rows[i]["idProfil"].ToString()));
+                    Profil newprof = new Profil(Convert.ToInt32(rs.Rows[i]["idProfil"].ToString()), rs.Rows[i]["prenom"].ToString(), rs.Rows[i]["nom"].ToString(), rs.Rows[i]["email"].ToString(), rs.Rows[i]["phoneNumber"].ToString(), Convert.ToInt32(rs.Rows[i]["seniority"].ToString()), Convert.ToInt32(rs.Rows[i]["quotaHeureMax"].ToString()));
+                    
 
                     if (posteCharge.Count != 0)
                     {

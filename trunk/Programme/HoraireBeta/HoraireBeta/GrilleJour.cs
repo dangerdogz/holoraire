@@ -295,7 +295,7 @@ namespace HoraireBeta
                     DateTime tempFin = new DateTime(fin.Year, fin.Month, fin.Day, dateFin - 1, fin.Minute, fin.Second);
 
 
-                    Bloc leBloc2 = new Bloc(tempDebut, tempFin, 0, 0, 0);
+                    Bloc leBloc2 = new Bloc(tempDebut, tempFin, 0, 0);
                     if (modifbloc.placementValide(leBloc2))
 
                     {
@@ -384,7 +384,7 @@ namespace HoraireBeta
 
 
             //Affecte le bloc
-            Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0, 0);
+            Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0);
 
             
 

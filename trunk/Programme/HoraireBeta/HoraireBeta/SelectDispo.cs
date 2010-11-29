@@ -22,6 +22,7 @@ namespace HoraireBeta
             Graphics grfx = this.panel1.CreateGraphics();
             grille = new GrilleHoraire(grfx, profil, getDebutSemaine());
            // MessageBox.Show("Jewthunder");
+            label1.Text = ("Disponibilités de l'employé");
             
         }
 
@@ -104,6 +105,11 @@ namespace HoraireBeta
         {
             MouseEventArgs e = me as MouseEventArgs;
             grille.passeClique(e, "DoubleClick");
+        }
+
+        private void SelectDispo_Load(object sender, EventArgs e)
+        {
+
         }
 
 

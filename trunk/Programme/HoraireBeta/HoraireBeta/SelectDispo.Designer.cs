@@ -94,6 +94,7 @@
              this.Controls.Add(this.panel1);
              this.Name = "SelectDispo";
              this.Text = "SelectDispo";
+             this.Load += new System.EventHandler(this.SelectDispo_Load);
              this.ResumeLayout(false);
              this.PerformLayout();
 

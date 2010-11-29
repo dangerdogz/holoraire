@@ -72,7 +72,6 @@ namespace HoraireBeta
             jours[4].activer();
             jours[5].activer();
             jours[6].activer();
-
             //En-tête
 
             //Grade des heures
@@ -93,6 +92,7 @@ namespace HoraireBeta
         public void refresh()
         {
             gfx.Clear(Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))));
+            //MessageBox.Show("kill the niggers");
             activer();
         }
 

@@ -14,12 +14,15 @@ namespace HoraireBeta
         string hd;
         string hf;
         List<Bloc> listBloc;
+        bool valide = false;
 
         public CreationBloc(string hd, string hf, List<Bloc> listBloc)
         {
             InitializeComponent(hd,hf);
             this.listBloc = listBloc;
         }
+
+        public bool isValide() { return valide; }
 
         public void setHeures()
         {
@@ -84,9 +87,12 @@ namespace HoraireBeta
         private void button_blocconfirm_Click(object sender, EventArgs e)
         {
             setHeures();
-             
-            if(valideHeures())
+
+            if (valideHeures())
+                {
                 this.Hide();
+                valide = true;
+                }
         }
     }
 }

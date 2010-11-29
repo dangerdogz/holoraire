@@ -36,7 +36,7 @@ namespace HoraireBeta
         private int y;
         private int haut;
         private bool isSelected = false;
-
+        private bool isPreset = false;
 
         private Boolean isdrawn = false;
 
@@ -47,7 +47,7 @@ namespace HoraireBeta
         List<Ressource> ressourcesAffectes = new List<Ressource>();
         List<RessourceEntree> ressourcesVoulus = new List<RessourceEntree>();
 
-        public Bloc(DateTime debut, DateTime fin, int type, int id)
+        public Bloc(DateTime debut, DateTime fin, int type, int id, bool preset)
         {
 
 
@@ -56,6 +56,7 @@ namespace HoraireBeta
             this.fin = fin;
             this.typeBloc = type;
             this.id = id;
+            this.isPreset = preset;
 
             //MessageBox.Show("Date : "+
             y = (Convert.ToInt32(debut.ToString("HH")) * 20 + Convert.ToInt32(debut.ToString("mm")) / 3) + 40;
@@ -165,7 +166,15 @@ namespace HoraireBeta
             ressourcesVoulus.Add(ca);
         }
 
+        public void setPreset(bool preset)
+        {
+            isPreset = preset;
+        }
 
+        public bool getPrest()
+        {
+            return isPreset;
+        }
 
         public void addRessource(Profil newEmp)
         {

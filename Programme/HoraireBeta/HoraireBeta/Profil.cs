@@ -207,9 +207,11 @@ namespace HoraireBeta
                 if(mod == true)
                 {
                     proc.modifierProfil(id, prenom, nom, numTelephone, heuresMax, 0, email, anciennete);
-
                     proc.deletePosteProfil(id);
-
+                    foreach (Ressource lui in poste)
+                    {
+                        proc.addPosteProfil(lui.getId(), id);
+                    }
                 }
             proc.deleteProfilPreference(id);
             

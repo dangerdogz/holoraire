@@ -81,8 +81,8 @@ namespace HoraireBeta
         public void modifierProfil(int idProfil, String profilPrenom, String profilNom, String profilPhoneNumber, int profilHeureMax, int profilHeureMin, String profilEmail, int seniority)
         {
             String requete;
-            requete = "UPDATE Profil SET prenom=" + profilPrenom + ", nom=" + profilNom + ", phoneNumber=" + profilPhoneNumber +
-                      ", quotaHeureMax=" + profilHeureMax + ", quotaHeureMin=" + profilHeureMin + ", email=" + profilEmail + ", seniority = "+seniority+" WHERE idProfil=" + idProfil+"";
+            requete = "UPDATE Profil SET prenom=\"" + profilPrenom + "\", nom=\"" + profilNom + "\", phoneNumber=\"" + profilPhoneNumber +
+                      "\", quotaHeureMax=" + profilHeureMax + ", quotaHeureMin=" + profilHeureMin + ", email=\"" + profilEmail + "\", seniority = " + seniority + " WHERE idProfil=" + idProfil + "";
             MessageBox.Show(requete);
             getResult(requete);
         }
@@ -151,6 +151,12 @@ namespace HoraireBeta
         {
             String requete;
             requete = "SELECT * FROM Poste WHERE idPoste = "+idPoste+"";
+            return getResult(requete);
+        }
+        public DataTable getPoste2(int idPoste)
+        {
+            String requete;
+            requete = "SELECT nom FROM Poste WHERE idPoste = " + idPoste + "";
             return getResult(requete);
         }
         public void addBlock(String debut, String fin, int idType)
@@ -363,7 +369,7 @@ namespace HoraireBeta
         public DataTable getPosteProfil2(int idProfil)
         {
             String requete;
-            requete = "SELECT * FROM Poste_Profil WHERE idProfil = " + idProfil + "";
+            requete = "SELECT idPoste FROM Poste_Profil WHERE idProfil = " + idProfil + "";
             return getResult(requete);
         }
         public DataTable getPostId(String pname)
@@ -380,10 +386,11 @@ namespace HoraireBeta
             getResult(requete);
            // MessageBox.Show(requete);
         }
-        public void deletePosteProfil(int idPoste)
+        public void deletePosteProfil(int idProfil)
         {
             String requete;
-            requete = "DELETE * FROM Poste_Profil WHERE idPoste = " + idPoste + "";
+            requete = "DELETE FROM Poste_Profil WHERE idProfil = " + idProfil + ";";
+            getResult(requete);
         }
         public DataTable getProfilPoste(int idProfil)
         {

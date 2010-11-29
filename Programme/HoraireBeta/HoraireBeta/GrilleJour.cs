@@ -295,11 +295,13 @@ namespace HoraireBeta
                     DateTime tempFin = new DateTime(fin.Year, fin.Month, fin.Day, dateFin - 1, fin.Minute, fin.Second);
 
 
-                    Bloc leBloc2 = new Bloc(tempDebut, tempFin, 0, 0);
+                    Bloc leBloc2 = leBloc;
+                    leBloc2.setDebut(tempDebut);
+                    leBloc2.setFin(tempFin);
+
                     if (modifbloc.placementValide(leBloc2))
-
                     {
-
+                       
                         if (loader != null && loader.modifierBloc(leBloc, leBloc2))
                         { //Ajout du bloc confirmé 
                         } //
@@ -309,6 +311,7 @@ namespace HoraireBeta
                                 MessageBox.Show("Bloc introuvable");
                             else
                             {
+                                
                                 if (profil != null && laGrille.isPref && profil.modifierBloc(leBloc, leBloc2, true))
                                 { //lolnigger
                                 }
@@ -347,11 +350,10 @@ namespace HoraireBeta
 
                     }
 
-
-               //     laGrille.refresh();
-
-
+                DBConnect uneConnect = new DBConnect();
+                uneConnect.deleteBlock(leBloc.getId());
                 }
+
 
             }
             modifbloc.Dispose();

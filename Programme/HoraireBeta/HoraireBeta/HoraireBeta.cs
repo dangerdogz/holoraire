@@ -733,7 +733,15 @@ namespace HoraireBeta
                 
             }
             loader.profilCharge.Add(profil);
-            profil.save(mod);
+
+
+            profil.save();
+
+            //profil.save(mod);
+
+
+            profil.save();
+
             numemp_textbox.Text = "";
             nom_textbox.Text = "";
             prenom_textbox.Text = "";
@@ -1185,7 +1193,7 @@ namespace HoraireBeta
         {
             
             TabSchedule leTableSchedule = new TabSchedule();
-            leTableSchedule.generate(loader.getBlocDeLaSemaine(getDebutSemaine()),loader.profilCharge);
+            leTableSchedule.generate(loader.getBlocDeLaSemaine(getDebutSemaine().Subtract(new TimeSpan(1,0,0,0))),loader.profilCharge);
         }
 
     }

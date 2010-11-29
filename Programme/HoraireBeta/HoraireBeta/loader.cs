@@ -282,13 +282,17 @@ namespace HoraireBeta
         {
            List<Bloc> blocdelasemaine = new List<Bloc>();
 
-           foreach (Bloc lui in bloc) { 
-                if((Convert.ToInt32(lui.getDebut().ToString("dd")))<(Convert.ToInt32(dimanche.ToString("dd"))+7) && (dimanche.ToString("MMYY")== lui.getDebut().ToString("MMYY"))){
-                    blocdelasemaine.Add(lui);
-                }
-           }
+           foreach (Bloc lui in bloc) {
 
-           return (blocdelasemaine);
+               if ((lui.getDebut() >= dimanche) && (lui.getFin() <= dimanche.Add(new TimeSpan(7, 0, 0, 0))))
+                    {
+                       blocdelasemaine.Add(lui);
+                       MessageBox.Show(lui.getDebut() + " : " + dimanche);
+                    }
+                }
+           
+
+           return blocdelasemaine;
 
         }
 

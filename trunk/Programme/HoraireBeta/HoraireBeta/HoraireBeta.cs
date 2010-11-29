@@ -731,12 +731,11 @@ namespace HoraireBeta
             }
             
             loader.profilCharge.Add(profil);
-<<<<<<< .mine
+
             profil.save();
-=======
+
             //profil.save(mod);
->>>>>>> .r333
-            
+        
 
             numemp_textbox.Text = "";
             nom_textbox.Text = "";

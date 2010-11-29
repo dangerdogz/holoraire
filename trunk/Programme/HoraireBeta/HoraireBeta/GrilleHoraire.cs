@@ -189,10 +189,10 @@ namespace HoraireBeta
                                         if (jourCliquer.getHeureClique(e.Y) >= 0)
                                         {
                                             //Création du bloc
-                                            refresh();
+                                          //  refresh();
                                             jourCliquer.createBlock(jourCliquer.getX(), jourCliquer.getHeureClique(e.Y),
                                                 jourCliquer.getDate(), tempDateFin);
-
+                                            refresh();
                                         }
                                     }
                                    
@@ -230,7 +230,7 @@ namespace HoraireBeta
             }
 
 
-            refresh();
+          
         }
     }
 }

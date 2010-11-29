@@ -312,7 +312,7 @@ namespace HoraireBeta
             this.panelGauche_Horaire.Name = "panelGauche_Horaire";
             this.panelGauche_Horaire.Size = new System.Drawing.Size(240, 694);
             this.panelGauche_Horaire.TabIndex = 0;
-            this.panelGauche_Horaire.Paint += new System.Windows.Forms.PaintEventHandler(this.pCentral_Horaire_Paint);
+            //this.panelGauche_Horaire.Paint += new System.Windows.Forms.PaintEventHandler(this.pCentral_Horaire_Paint);
             this.panelGauche_Horaire.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pGauche_Horaire_OnMouseEvent);
             this.panelGauche_Horaire.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pGauche_Horaire_OnMouseEvent);
             // 

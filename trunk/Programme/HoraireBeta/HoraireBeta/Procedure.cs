@@ -81,11 +81,8 @@ namespace HoraireBeta
         public void modifierProfil(int idProfil, String profilPrenom, String profilNom, String profilPhoneNumber, int profilHeureMax, int profilHeureMin, String profilEmail, int seniority)
         {
             String requete;
-
-
             requete = "UPDATE Profil SET prenom=\"" + profilPrenom + "\", nom=\"" + profilNom + "\", phoneNumber=\"" + profilPhoneNumber +
-                      "\", quotaHeureMax=" + profilHeureMax + ", quotaHeureMin=" + profilHeureMin + ", email=\"" + profilEmail + "\", seniority = " + seniority + " WHERE idProfil=" + idProfil + "";
-
+                      "\", quotaHeureMax=" + profilHeureMax + ", quotaHeureMin=" + profilHeureMin + ", email=\"" + profilEmail + "\", seniority = \"" + seniority + "\" WHERE idProfil=" + idProfil + "";
             MessageBox.Show(requete);
             getResult(requete);
         }

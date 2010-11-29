@@ -248,11 +248,13 @@ namespace HoraireBeta
             DeleteEquipe delequipe = new DeleteEquipe();
             delequipe.setName(treeView_equipe.SelectedNode.Text.ToString());
             delequipe.ShowDialog();
+            String textinform = treeView_equipe.SelectedNode.Text.ToString();
 
             CreateXml.CreateProfileXml();
             ajouterequipe.Dispose();
             Chilkat.Xml xmlEquipe6 = new Chilkat.Xml();
             xmlEquipe6.LoadXmlFile("teams.xml");
+            String id = findRessourceXML(textinform, xmlEquipe6);
             treeView_equipe.Nodes.Clear();
             FillTree(treeView_equipe.Nodes, xmlEquipe6);
         }
@@ -729,17 +731,13 @@ namespace HoraireBeta
                 profil.setPoste((Poste)(loader.posteCharge[--i]));
                 
             }
-            
             loader.profilCharge.Add(profil);
-            profil.save(false);
+            profil.save(mod);
             numemp_textbox.Text = "";
             nom_textbox.Text = "";
             prenom_textbox.Text = "";
             courriel_textbox.Text = "";
             telephone_textbox.Text = "";
-
-
-
         }
 
         private void UnlinkBlocToRessource(Ressource res, Bloc bloc)

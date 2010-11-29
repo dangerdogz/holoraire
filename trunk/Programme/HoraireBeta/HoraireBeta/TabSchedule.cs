@@ -120,6 +120,15 @@ namespace HoraireBeta
                     }
                 }
             }
+            foreach (Bloc bloc in blocs)
+            {
+                bloc.save();
+            }
+            foreach (Ressource emp in employee)
+            {
+                ((Profil)emp).save(true);
+            }
+
 
             return valide;
         }

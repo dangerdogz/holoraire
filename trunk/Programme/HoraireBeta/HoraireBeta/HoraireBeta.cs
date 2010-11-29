@@ -18,6 +18,7 @@ namespace HoraireBeta
         AjouterPoste ajouterposte = new AjouterPoste();
         AjouterEquipe ajouterequipe = new AjouterEquipe();
         SelectDispo dispoWindow;
+        Profil profilSelected = null;
         bool mod = false;
         
         public HoraireBeta(Loader loader)
@@ -959,7 +960,8 @@ namespace HoraireBeta
 
             if (id != null)
             {
-                ressource = (Profil)loader.findRessource(Convert.ToInt32(id), loader.profilCharge);
+                profilSelected = (Profil)loader.findRessource(Convert.ToInt32(id), loader.profilCharge);
+                ressource = profilSelected;
                 idprofil = ressource.getId();
                 numemp_textbox.Text = ressource.getId().ToString();
                 nom_textbox.Text = ressource.getNom();
@@ -998,7 +1000,7 @@ namespace HoraireBeta
 
                 }
 
-                 dispoWindow = new SelectDispo(ressource);
+                 
 
             }  
         }
@@ -1172,8 +1174,12 @@ namespace HoraireBeta
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            if (profilSelected != null)
+            dispoWindow = new SelectDispo(profilSelected);
             if (dispoWindow != null)
+            {
                 dispoWindow.ShowDialog();
+            }
         }
         private void button_genere_Click(object sender, EventArgs e)
         {

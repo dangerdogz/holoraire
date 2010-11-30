@@ -31,6 +31,7 @@ namespace HoraireBeta
         private bool erreurExiste;
         private bool estComplet;
         private String jourText;
+        private String nom;
         private int id;
         private int x;
         private int y;
@@ -188,7 +189,7 @@ namespace HoraireBeta
             isPreset = preset;
         }
 
-        public bool getPrest()
+        public bool getPreset()
         {
             return isPreset;
         }
@@ -507,7 +508,14 @@ namespace HoraireBeta
 
 
         }
-
+        public void setNom(String nom)
+        {
+            this.nom = nom;
+        }
+        public String getNom()
+        {
+            return nom;
+        }
 
         public void draw(int laWidth, Graphics gfx)
         {

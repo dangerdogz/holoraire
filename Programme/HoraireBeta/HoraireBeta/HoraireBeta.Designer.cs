@@ -41,9 +41,9 @@ namespace HoraireBeta
         /// </summary>
         public void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Employé");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Equipe");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Postes");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Employé");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Postes");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Équipes");
             this.Admin = new System.Windows.Forms.TabControl();
             this.horaire = new System.Windows.Forms.TabPage();
             this.panelCentral_Horaire = new System.Windows.Forms.Panel();
@@ -59,6 +59,7 @@ namespace HoraireBeta
             this.panelGauche_Horaire = new System.Windows.Forms.Panel();
             this.Presets = new System.Windows.Forms.TabControl();
             this.tab_Presets = new System.Windows.Forms.TabPage();
+            this.listPreset = new System.Windows.Forms.ListBox();
             this.tab_Ressources = new System.Windows.Forms.TabPage();
             this.RessourceTree = new System.Windows.Forms.TreeView();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -152,6 +153,7 @@ namespace HoraireBeta
             this.tabEquipe.SuspendLayout();
             this.panelGauche_Horaire.SuspendLayout();
             this.Presets.SuspendLayout();
+            this.tab_Presets.SuspendLayout();
             this.tab_Ressources.SuspendLayout();
             this.employe.SuspendLayout();
             this.panelCentral_Employe.SuspendLayout();
@@ -260,6 +262,7 @@ namespace HoraireBeta
             this.listEmploye.Name = "listEmploye";
             this.listEmploye.Size = new System.Drawing.Size(439, 121);
             this.listEmploye.TabIndex = 0;
+            this.listEmploye.MouseDoubleClick += new MouseEventHandler(listEmploye_MouseDoubleClick);
             // 
             // tabPoste
             // 
@@ -278,6 +281,7 @@ namespace HoraireBeta
             this.listPoste.Name = "listPoste";
             this.listPoste.Size = new System.Drawing.Size(436, 121);
             this.listPoste.TabIndex = 0;
+            this.listPoste.MouseDoubleClick += new MouseEventHandler(listEmploye_MouseDoubleClick);
             // 
             // tabEquipe
             // 
@@ -296,6 +300,7 @@ namespace HoraireBeta
             this.listEquipe.Name = "listEquipe";
             this.listEquipe.Size = new System.Drawing.Size(439, 121);
             this.listEquipe.TabIndex = 0;
+            this.listEquipe.MouseDoubleClick += new MouseEventHandler(listEmploye_MouseDoubleClick);
             // 
             // panelGauche_Horaire
             // 
@@ -330,6 +335,7 @@ namespace HoraireBeta
             // 
             // tab_Presets
             // 
+            this.tab_Presets.Controls.Add(this.listPreset);
             this.tab_Presets.Location = new System.Drawing.Point(4, 22);
             this.tab_Presets.Name = "tab_Presets";
             this.tab_Presets.Padding = new System.Windows.Forms.Padding(3);
@@ -337,6 +343,15 @@ namespace HoraireBeta
             this.tab_Presets.TabIndex = 0;
             this.tab_Presets.Text = "Presets";
             this.tab_Presets.UseVisualStyleBackColor = true;
+            // 
+            // listPreset
+            // 
+            this.listPreset.FormattingEnabled = true;
+            this.listPreset.Location = new System.Drawing.Point(0, 2);
+            this.listPreset.Name = "listPreset";
+            this.listPreset.Size = new System.Drawing.Size(218, 316);
+            this.listPreset.TabIndex = 0;
+            this.listPreset.MouseDoubleClick += new MouseEventHandler(listEmploye_MouseDoubleClick);
             // 
             // tab_Ressources
             // 
@@ -354,16 +369,16 @@ namespace HoraireBeta
             this.RessourceTree.BackColor = System.Drawing.SystemColors.Window;
             this.RessourceTree.Location = new System.Drawing.Point(7, 6);
             this.RessourceTree.Name = "RessourceTree";
-            treeNode1.Name = "Employe";
-            treeNode1.Text = "Employé";
-            treeNode2.Name = "Equipe";
-            treeNode2.Text = "Equipe";
-            treeNode3.Name = "Postes";
-            treeNode3.Text = "Postes";
+            treeNode4.Name = "Employe";
+            treeNode4.Text = "Employé";
+            treeNode5.Name = "Postes";
+            treeNode5.Text = "Postes";
+            treeNode6.Name = "Équipes";
+            treeNode6.Text = "Équipes";
             this.RessourceTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
+            treeNode4,
+            treeNode5,
+            treeNode6});
             this.RessourceTree.Size = new System.Drawing.Size(208, 316);
             this.RessourceTree.TabIndex = 0;
             this.RessourceTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -1225,6 +1240,7 @@ namespace HoraireBeta
             this.panelGauche_Horaire.ResumeLayout(false);
             this.panelGauche_Horaire.PerformLayout();
             this.Presets.ResumeLayout(false);
+            this.tab_Presets.ResumeLayout(false);
             this.tab_Ressources.ResumeLayout(false);
             this.employe.ResumeLayout(false);
             this.panelCentral_Employe.ResumeLayout(false);
@@ -1366,6 +1382,7 @@ namespace HoraireBeta
         private TabPage tabEquipe;
         private ListBox listPoste;
         private ListBox listEquipe;
+        private ListBox listPreset;
 
 
     }

@@ -584,6 +584,7 @@ namespace HoraireBeta
             FillTree(treeView_equipe.Nodes, xmlTeams2);
             FillTree(treeView_postgen.Nodes, xmlPostes4);
             FillTree(treeView_modemploye.Nodes, xmlProfiles2);
+            fillPresetListBox();
             //fillEmployeListBox();
 
             //FillTree(treeView_postdispo.Nodes, xmlPostes2);
@@ -735,12 +736,13 @@ namespace HoraireBeta
             loader.profilCharge.Add(profil);
 
 
-            profil.save();
-
-            //profil.save(mod);
+            profil.save(mod);
 
 
-            profil.save();
+
+
+
+
 
             numemp_textbox.Text = "";
             nom_textbox.Text = "";
@@ -923,13 +925,13 @@ namespace HoraireBeta
                 // Add the employee name to the listbox.
                 if (ressources.ElementAt(i) is Profil)
                 {
-                    listEmploye.Items.Add(((Profil)ressources.ElementAt(i)).getNom() + ", " + ((Profil)ressources.ElementAt(i)).getPrenom());
+                    listEmploye.Items.Add(((Profil)ressources.ElementAt(i)).getId()+" - "+((Profil)ressources.ElementAt(i)).getNom() + " " + ((Profil)ressources.ElementAt(i)).getPrenom());
                 }
 
 
             }
 
-            listEmploye.MouseDoubleClick += new MouseEventHandler(listEmploye_MouseDoubleClick);
+            
         }
         void listEmploye_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -1032,12 +1034,11 @@ namespace HoraireBeta
                 if (ressources.ElementAt(i).voulue is Poste)
                 {
                     // Add the employee name to the listbox.
-                    listPoste.Items.Add(((Poste)ressources.ElementAt(i).voulue).getNom());
+                    listPoste.Items.Add(((Poste)ressources.ElementAt(i).voulue).getNom()+" ("+ressources.ElementAt(i).nbAffectee+"/"+ressources.ElementAt(i).nbVoulue+")");
                 }
 
             }
 
-            listPoste.MouseDoubleClick += new MouseEventHandler(listPoste_MouseDoubleClick);
         }
 
         void listPoste_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -1072,7 +1073,6 @@ namespace HoraireBeta
 
             }
 
-            listEquipe.MouseDoubleClick += new MouseEventHandler(listEquipe_MouseDoubleClick);
         }
         void listEquipe_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -1094,6 +1094,7 @@ namespace HoraireBeta
             listEmploye.Items.Clear();
             listEquipe.Items.Clear();
             listPoste.Items.Clear();
+            listPreset.Items.Clear();
         }
 
         void updateInterfaceHoraire()
@@ -1195,6 +1196,39 @@ namespace HoraireBeta
             TabSchedule leTableSchedule = new TabSchedule();
             leTableSchedule.generate(loader.getBlocDeLaSemaine(getDebutSemaine().Subtract(new TimeSpan(1,0,0,0))),loader.profilCharge);
         }
+
+
+        public void fillPresetListBox()
+        {
+            listPreset.Items.Clear();
+            List<Bloc> blocs = loader.bloc;
+            for (int i = 0; i < blocs.Count(); i++)
+            {
+                if (blocs.ElementAt(i).getPreset())
+                {
+                    listPreset.Items.Add(((Bloc)blocs.ElementAt(i)).getNom());
+                }
+            }
+
+        }
+        void listPreset_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+            int index = this.listPreset.IndexFromPoint(e.Location);
+
+            if (index != System.Windows.Forms.ListBox.NoMatches)
+            {
+
+                //MessageBox.Show(index.ToString());
+
+                //do your stuff here
+
+            }
+
+        }
+
+        
+
 
     }
 } 

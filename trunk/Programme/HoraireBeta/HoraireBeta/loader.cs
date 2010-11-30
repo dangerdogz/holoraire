@@ -74,7 +74,14 @@ namespace HoraireBeta
                     Console.WriteLine(rs4.Rows.Count+"");
                     for (int j = 0; j < rs3.Rows.Count; j++)
                     {
-                        Bloc newBloc = new Bloc(DateTime.ParseExact(rs3.Rows[j]["debut"].ToString(), "yyyy-MM-dd HH:mm:ss", null), DateTime.ParseExact(rs3.Rows[j]["fin"].ToString(), "yyyy-MM-dd HH:mm:ss", null), 0, Convert.ToInt32(rs3.Rows[j]["idPlage"].ToString()));
+
+
+                       
+
+                        Bloc newBloc = new Bloc(DateTime.ParseExact(rs3.Rows[j]["debut"].ToString(), "yyyy-MM-dd HH:mm:ss", null), DateTime.ParseExact(rs3.Rows[j]["fin"].ToString(), "yyyy-MM-dd HH:mm:ss", null), 0, Convert.ToInt32(rs3.Rows[j]["idPlage"].ToString() ));
+
+
+
                         newprof.addDispo(newBloc);
 
 
@@ -82,7 +89,7 @@ namespace HoraireBeta
 
                     for (int j = 0; j < rs4.Rows.Count; j++)
                     {
-                        Bloc newBloc = new Bloc(DateTime.ParseExact(rs4.Rows[j]["debut"].ToString(), "yyyy-MM-dd HH:mm:ss", null), DateTime.ParseExact(rs4.Rows[j]["fin"].ToString(), "yyyy-MM-dd HH:mm:ss", null), 0, Convert.ToInt32(rs4.Rows[j]["idPlage"].ToString()));
+                        Bloc newBloc = new Bloc(DateTime.ParseExact(rs4.Rows[j]["debut"].ToString(), "yyyy-MM-dd HH:mm:ss", null), DateTime.ParseExact(rs4.Rows[j]["fin"].ToString(), "yyyy-MM-dd HH:mm:ss", null), 0, Convert.ToInt32(rs4.Rows[j]["idPlage"].ToString()), Convert.ToInt32(rs4.Rows[j]["idPlage"].ToString()));
                         newprof.addPref(newBloc);
                     }
                     
@@ -154,7 +161,13 @@ namespace HoraireBeta
             for (int i = 0; i < rsBloc.Rows.Count; i++)
             {
 
+
+
                 Bloc newBloc = new Bloc(DateTime.ParseExact(rsBloc.Rows[i]["debut"].ToString(), "yyyy-MM-dd HH:mm:ss", null), DateTime.ParseExact(rsBloc.Rows[i]["fin"].ToString(), "yyyy-MM-dd HH:mm:ss", null), Convert.ToInt32(rsBloc.Rows[i]["idType"].ToString()), Convert.ToInt32(rsBloc.Rows[i]["idBlock"].ToString()), (Boolean)(rsBloc.Rows[i]["preset"]));
+
+
+
+                
 
                 bloc.Add(newBloc);
                 rsRessource = proc.getRessource(bloc[i].getId());

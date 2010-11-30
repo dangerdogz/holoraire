@@ -386,7 +386,14 @@ namespace HoraireBeta
 
 
             //Affecte le bloc
-            Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0);
+
+
+
+            Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0, 0);
+
+            
+
+
 
             
 

@@ -30,7 +30,7 @@
          private void InitializeComponent()
          {
              this.panel1 = new System.Windows.Forms.Panel();
-             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+
              this.button1 = new System.Windows.Forms.Button();
              this.button2 = new System.Windows.Forms.Button();
              this.label1 = new System.Windows.Forms.Label();
@@ -49,10 +49,7 @@
              // 
              // monthCalendar1
              // 
-             this.monthCalendar1.Location = new System.Drawing.Point(5, 1);
-             this.monthCalendar1.Name = "monthCalendar1";
-             this.monthCalendar1.TabIndex = 1;
-             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+
              // 
              // button1
              // 
@@ -90,7 +87,7 @@
              this.Controls.Add(this.label1);
              this.Controls.Add(this.button2);
              this.Controls.Add(this.button1);
-             this.Controls.Add(this.monthCalendar1);
+
              this.Controls.Add(this.panel1);
              this.Name = "SelectDispo";
              this.Text = "SelectDispo";
@@ -103,7 +100,7 @@
          #endregion
 
          private System.Windows.Forms.Panel panel1;
-         private System.Windows.Forms.MonthCalendar monthCalendar1;
+
          private System.Windows.Forms.Button button1;
          private System.Windows.Forms.Button button2;
          private System.Windows.Forms.Label label1;

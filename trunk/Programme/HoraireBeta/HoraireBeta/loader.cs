@@ -300,7 +300,7 @@ namespace HoraireBeta
                if ((lui.getDebut() >= dimanche) && (lui.getFin() <= dimanche.Add(new TimeSpan(7, 0, 0, 0))))
                     {
                        blocdelasemaine.Add(lui);
-                       MessageBox.Show(lui.getDebut() + " : " + dimanche);
+                       //MessageBox.Show(lui.getDebut() + " : " + dimanche);
                     }
                 }
            

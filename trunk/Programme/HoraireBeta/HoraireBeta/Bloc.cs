@@ -256,7 +256,7 @@ namespace HoraireBeta
             ressourcesAffectes.Add(profil);
         }
 
-        public void removeEmplNouv(Poste poste)
+        public Profil removeEmplNouv(Poste poste)
         {
             //enlève l'employé le plus noob
             int i = 0;
@@ -276,7 +276,7 @@ namespace HoraireBeta
             }
             if (k >= ressourcesAffectes.Count)
             {
-                return;
+                return null;
             }
 
             while (i < ressourcesVoulus.Count() && ressourcesVoulus[i].voulue != ((Profil)ressourcesAffectes[k]).getPoste(j))
@@ -293,9 +293,11 @@ namespace HoraireBeta
             ressourceAdded.nbAffectee--;
             ressourcesVoulus[i] = ressourceAdded;
 
+            Profil emplKicked = (Profil)ressourcesAffectes[k];
             ressourcesAffectes.RemoveAt(k);
             checkCompletion();
 
+            return (emplKicked);
         }
 
         public void removeEmpl(int position)
@@ -535,8 +537,6 @@ namespace HoraireBeta
                 {
                     ((ressourcesAffectes[i])).draw(this, i, gfx);
 
-                    if (i * 20 < this.haut)
-                        ((ressourcesAffectes[i])).draw(this, i, gfx);
 
                 }
 

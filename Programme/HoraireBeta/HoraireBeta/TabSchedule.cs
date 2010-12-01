@@ -41,6 +41,21 @@ namespace HoraireBeta
                                         blocs[i].addRessource(((Profil)employee[j]));
                                         MessageBox.Show("han?");
                                         break;
+
+                                        for (int i = 0; i < blocs.Count; i++)
+                                        {
+                                            for (int j = 0; j < blocs[i].getRessourceVoulus().Count; j++)
+                                            {
+                                                if (blocs[i].getRessourceVoulus(j).nbVoulue < blocs[i].getRessourceVoulus(j).nbAffectee)
+                                                {
+
+                                                    blocs[i].removeEmplNouv((Poste)blocs[i].getRessourceVoulus(j).voulue);
+                                                    MessageBox.Show("criss le camp " + blocs[i].getRessourceVoulus(j).nbVoulue);
+                                                    j--;
+                                                }
+
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -49,20 +64,7 @@ namespace HoraireBeta
                 }
             }
 
-            for (int i = 0; i < blocs.Count; i++)
-            {
-                for (int j = 0; j < blocs[i].getRessourceVoulus().Count; j++)
-                {
-                    if (blocs[i].getRessourceVoulus(j).nbVoulue < blocs[i].getRessourceVoulus(j).nbAffectee)
-                    {
-
-                        blocs[i].removeEmplNouv((Poste)blocs[i].getRessourceVoulus(j).voulue);
-                        MessageBox.Show("criss le camp " + blocs[i].getRessourceVoulus(j).nbVoulue);
-                        j--;
-                    }
-
-                }
-            }
+           
 
 
 

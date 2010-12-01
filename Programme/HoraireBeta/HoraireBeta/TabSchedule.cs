@@ -42,16 +42,16 @@ namespace HoraireBeta
                                         MessageBox.Show("han?");
                                         break;
 
-                                        for (int i = 0; i < blocs.Count; i++)
+                                        for (int m = 0; m < blocs.Count; m++)
                                         {
-                                            for (int j = 0; j < blocs[i].getRessourceVoulus().Count; j++)
+                                            for (int n = 0; n < blocs[m].getRessourceVoulus().Count; n++)
                                             {
-                                                if (blocs[i].getRessourceVoulus(j).nbVoulue < blocs[i].getRessourceVoulus(j).nbAffectee)
+                                                if (blocs[m].getRessourceVoulus(n).nbVoulue < blocs[m].getRessourceVoulus(n).nbAffectee)
                                                 {
 
-                                                    blocs[i].removeEmplNouv((Poste)blocs[i].getRessourceVoulus(j).voulue);
-                                                    MessageBox.Show("criss le camp " + blocs[i].getRessourceVoulus(j).nbVoulue);
-                                                    j--;
+                                                    blocs[m].removeEmplNouv((Poste)blocs[m].getRessourceVoulus(n).voulue);
+                                                    MessageBox.Show("criss le camp " + blocs[m].getRessourceVoulus(n).nbVoulue);
+                                                    n--;
                                                 }
 
                                             }

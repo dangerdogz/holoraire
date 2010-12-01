@@ -21,6 +21,7 @@ namespace HoraireBeta
         private List<Poste> poste = new List<Poste>();
         private List<Bloc> preference = new List<Bloc>();
         private List<Bloc> disponibilite = new List<Bloc>();
+        private Poste posteassgine;
 
 
         public Profil(Poste poste, string prenom, string nom, string email, int heureMax, string numTelephone, int anciennete)
@@ -91,6 +92,10 @@ namespace HoraireBeta
         {
             this.email = email;
         }
+
+        public void SetPosteAssigne(Poste newposte){this.posteassgine=newposte;}
+
+        public Poste getPosteAssigne() { return posteassgine; }
 
         public void setNumTelephone(string numTelephone)
         {

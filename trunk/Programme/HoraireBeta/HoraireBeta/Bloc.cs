@@ -226,6 +226,7 @@ namespace HoraireBeta
             }
             newEmp.setHeuresTravaillees((newEmp.getHeuresTravaillees() + ((Convert.ToInt32(fin.ToString("HH"))) - (Convert.ToInt32(debut.ToString("HH"))))));
             checkCompletion();
+            newEmp.SetPosteAssigne(poste);
 
 
 

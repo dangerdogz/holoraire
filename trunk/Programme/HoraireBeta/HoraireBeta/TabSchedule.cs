@@ -40,7 +40,7 @@ namespace HoraireBeta
                                     {
                                         blocs[i].addRessource(((Profil)employee[j]));
                                         MessageBox.Show("han?");
-                                        break;
+                                       
 
                                         for (int m = 0; m < blocs.Count; m++)
                                         {
@@ -56,6 +56,8 @@ namespace HoraireBeta
 
                                             }
                                         }
+                                        if(blocs[i].estDejaPresent(employee[j])
+                                            break;
                                     }
                                 }
                             }

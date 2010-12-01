@@ -59,16 +59,7 @@ namespace HoraireBeta
             this.id = id;
             this.isPreset = preset;
 
-            //MessageBox.Show("Date : "+
-            y = (Convert.ToInt32(debut.ToString("HH")) * 20 + Convert.ToInt32(debut.ToString("mm")) / 3) + 40;
-
-            x = ((Loader.SemaineToInt(debut) - 1) * 100) + 40;
-
-            //MessageBox.Show(Loader.SemaineToInt(debut)+"||"+(debut.ToString("ddd")));
-
-
-            haut = ((Convert.ToInt32(fin.ToString("HH")) * 20 + Convert.ToInt32(fin.ToString("mm")) / 3) - y) + 40;
-
+            computePos();
             erreurExiste = false;
             estComplet = false;
 
@@ -90,7 +81,7 @@ namespace HoraireBeta
             estComplet = false;
 
         }
-
+        
         public Bloc(DateTime debut, DateTime fin, int x, int type, int id)
         {
 
@@ -115,7 +106,7 @@ namespace HoraireBeta
 
         }
 
-
+        
 
 
         //public Bloc(int debutY, int finY, String jour, int type, int id);

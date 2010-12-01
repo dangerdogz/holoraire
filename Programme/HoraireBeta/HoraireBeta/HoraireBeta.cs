@@ -739,8 +739,16 @@ namespace HoraireBeta
 
             profil.save();
 
+<<<<<<< .mine
+           // profil.save(mod);
+=======
+>>>>>>> .r349
 
+<<<<<<< .mine
+           // profil.save();
+=======
 
+>>>>>>> .r349
 
 
             numemp_textbox.Text = "";

@@ -377,26 +377,14 @@ namespace HoraireBeta
             int dateDebut = int.Parse(creationbloc.getHd());
             int dateFin = int.Parse(creationbloc.getHf());
 
-
-
             DateTime tempDebut = new DateTime(debut.Year, debut.Month, debut.Day, dateDebut, debut.Minute, debut.Second);
             DateTime tempFin = new DateTime(fin.Year, fin.Month, fin.Day, dateFin, fin.Minute, fin.Second) - new TimeSpan(0, 0, 0, 1);
 
             // MessageBox.Show(" Date Début : " + tempDebut + " et Date Fin : " + tempFin);
 
-
             //Affecte le bloc
-
-
-
-            Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0, 0);
-
-            
-
-
-
-            
-
+            Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0, false);
+                            
             if (creationbloc.placementValide(tempBloc))
             {
                 if (profil != null)
@@ -412,7 +400,7 @@ namespace HoraireBeta
                 {
                     //Ajout du block valide
                     tempBloc.draw(width, grfx);
-                    loader.bloc.Add(tempBloc);
+                    loader.bloc.Add(tempBloc);                   
                 }
             }
             else
@@ -420,9 +408,6 @@ namespace HoraireBeta
 
             }
            
-
-
-            
             creationbloc.Dispose();
 
         }

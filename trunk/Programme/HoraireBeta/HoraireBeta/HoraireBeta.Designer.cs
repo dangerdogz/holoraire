@@ -1200,6 +1200,7 @@ namespace HoraireBeta
             this.button_supprimer.TabIndex = 2;
             this.button_supprimer.Text = "Supprimer";
             this.button_supprimer.UseVisualStyleBackColor = true;
+            this.button_supprimer.Click += new System.EventHandler(this.button_supprimer_Click);
             // 
             // button_ajouter_PG
             // 

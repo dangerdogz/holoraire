@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,7 +22,10 @@ namespace HoraireBeta
         SelectDispo dispoWindow;
         Profil profilSelected = null;
         bool mod = false;
-        
+        private Font verdana10Font;
+        private StreamReader reader;
+        private StreamWriter writer;
+        private String file = "employeesOfTheWeek.txt";
         public HoraireBeta(Loader loader)
         {
             this.loader = loader;
@@ -933,44 +937,7 @@ namespace HoraireBeta
             }
             return null;
         }
-        public void fillEmployeListBox(Bloc bloc)
-        {
-            listEmploye.Items.Clear();
-
-            List<Ressource> ressources = bloc.getListRessourceAffecte();
-
-
-
-
-            for (int i = 0; i < ressources.Count(); i++)
-            {
-
-                // Add the employee name to the listbox.
-                if (ressources.ElementAt(i) is Profil)
-                {
-                    listEmploye.Items.Add(((Profil)ressources.ElementAt(i)).getId()+" - "+((Profil)ressources.ElementAt(i)).getNom() + " " + ((Profil)ressources.ElementAt(i)).getPrenom());
-                }
-
-
-            }
-
-            
-        }
-        void listEmploye_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-
-            int index = this.listEmploye.IndexFromPoint(e.Location);
-
-            if (index != System.Windows.Forms.ListBox.NoMatches)
-            {
-
-                //MessageBox.Show(index.ToString());
-
-                //do your stuff here
-
-            }
-
-        }
+        
 
 
         private void treeView_modemploye_AfterSelect(object sender, TreeViewEventArgs e)
@@ -1040,6 +1007,13 @@ namespace HoraireBeta
 
         private void supprimer_button_Click(object sender, EventArgs e)
         {
+
+            
+        }
+        public void fillEmployeListBox(Bloc bloc)
+        {
+            listEmploye.Items.Clear();
+
             Profil ressource = null;
             Chilkat.Xml xmlProfiles = new Chilkat.Xml();
             xmlProfiles.LoadXmlFile("profiles.xml");
@@ -1059,6 +1033,25 @@ namespace HoraireBeta
                 DBConnect proc = new DBConnect();
                 proc.deleteEmploye(nemploye, nom, prenom, courriel, telephone);
 
+            List<Ressource> ressources = bloc.getListRessourceAffecte();
+
+
+
+
+            for (int i = 0; i < ressources.Count(); i++)
+            {
+
+                // Add the employee name to the listbox.
+                if (ressources.ElementAt(i) is Profil)
+                {
+                    listEmploye.Items.Add(((Profil)ressources.ElementAt(i)).getId() + " - " + ((Profil)ressources.ElementAt(i)).getNom() + " " + ((Profil)ressources.ElementAt(i)).getPrenom());
+                }
+
+
+            }
+
+
+
                 CreateXml.CreateProfileXml();
                 Chilkat.Xml xmlProfiles2 = new Chilkat.Xml();
                 xmlProfiles2.LoadXmlFile("profiles.xml");
@@ -1071,8 +1064,23 @@ namespace HoraireBeta
                 MessageBox.Show("lol");
             }
 
-        }
 
+        }
+        void listEmploye_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+            int index = this.listEmploye.IndexFromPoint(e.Location);
+
+            if (index != System.Windows.Forms.ListBox.NoMatches)
+            {
+
+                //MessageBox.Show(index.ToString());
+
+                //do your stuff here
+
+            }
+
+        }
         public void fillPosteListBox(Bloc bloc)
         {
 
@@ -1131,6 +1139,34 @@ namespace HoraireBeta
         {
 
             int index = this.listEquipe.IndexFromPoint(e.Location);
+
+            if (index != System.Windows.Forms.ListBox.NoMatches)
+            {
+
+                //MessageBox.Show(index.ToString());
+
+                //do your stuff here
+
+            }
+
+        }
+        public void fillPresetListBox()
+        {
+            listPreset.Items.Clear();
+            List<Bloc> blocs = loader.bloc;
+            for (int i = 0; i < blocs.Count(); i++)
+            {
+                if (blocs.ElementAt(i).getPreset())
+                {
+                    listPreset.Items.Add(((Bloc)blocs.ElementAt(i)).getNom());
+                }
+            }
+
+        }
+        void listPreset_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+            int index = this.listPreset.IndexFromPoint(e.Location);
 
             if (index != System.Windows.Forms.ListBox.NoMatches)
             {
@@ -1250,36 +1286,42 @@ namespace HoraireBeta
             leTableSchedule.generate(loader.getBlocDeLaSemaine(getDebutSemaine().Subtract(new TimeSpan(1,0,0,0))),loader.profilCharge);
             grille.refresh();
         }
-
-
-        public void fillPresetListBox()
+        public void generateEmployeList()
         {
-            listPreset.Items.Clear();
-            List<Bloc> blocs = loader.bloc;
-            for (int i = 0; i < blocs.Count(); i++)
-            {
-                if (blocs.ElementAt(i).getPreset())
+            writer = new StreamWriter(file);
+            TimeSpan time = new TimeSpan(24, 0, 0);
+            List<Bloc> blocs = loader.getBlocDeLaSemaine(getDebutSemaine() - time);
+            List<Ressource> profils = loader.profilCharge;
+            
+
+                foreach (Bloc bloc in blocs)
                 {
-                    listPreset.Items.Add(((Bloc)blocs.ElementAt(i)).getNom());
+                    writer.WriteLine("Bloc #" + bloc.getId());
+                    writer.WriteLine("Début : " + bloc.getDebut());
+                    writer.WriteLine("Fin : " +bloc.getFin());
+                    writer.WriteLine("Employés qui travaillent durant ce quart");
+                    writer.WriteLine("");
+                    foreach (Ressource ressource in bloc.getListRessourceAffecte())
+                    {
+                      
+                        if (ressource is Profil)
+                        {
+                            foreach (Ressource profil in profils)
+                            {
+                                if (ressource == profil)
+                                {
+                                    writer.WriteLine(((Profil)profil).getNom() + " " + ((Profil)profil).getPrenom());
+                                }
+                            }        
+                        }
+                    }
+                    writer.WriteLine("");
                 }
-            }
 
-        }
-        void listPreset_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
+            
+            writer.Close();
+        }       
 
-            int index = this.listPreset.IndexFromPoint(e.Location);
-
-            if (index != System.Windows.Forms.ListBox.NoMatches)
-            {
-
-                //MessageBox.Show(index.ToString());
-
-                //do your stuff here
-
-            }
-
-        }
         [System.Runtime.InteropServices.DllImport("gdi32.dll")]
         public static extern long BitBlt(IntPtr hdcDest, int nXDest, int nYDest, int nWidth, int nHeight, IntPtr hdcSrc, int nXSrc, int nYSrc, int dwRop);
         private Bitmap memoryImage;
@@ -1301,11 +1343,78 @@ namespace HoraireBeta
             e.Graphics.DrawImage(memoryImage, 0, 0);
 
         }
+        private void PrintTextFileHandler(object sender, PrintPageEventArgs ppeArgs)
+        {
+
+            //Get the Graphics object
+            Graphics g = ppeArgs.Graphics;
+            float linesPerPage = 0;
+            float yPos = 0;
+            int count = 0;
+            //Read margins from PrintPageEventArgs
+            float leftMargin = ppeArgs.MarginBounds.Left;
+            float topMargin = ppeArgs.MarginBounds.Top;
+            string line = null;
+            //Calculate the lines per page on the basis of the height of the page and the height of the font
+            linesPerPage = ppeArgs.MarginBounds.Height /
+            verdana10Font.GetHeight(g);
+            //Now read lines one by one, using StreamReader
+            while (count < linesPerPage && ((line = reader.ReadLine()) != null))
+            {
+                //Calculate the starting position
+                yPos = topMargin + (count * verdana10Font.GetHeight(g));
+                //Draw text
+                g.DrawString(line, verdana10Font, Brushes.Black, leftMargin, yPos, new StringFormat());
+
+                //Move to next line
+
+                count++;
+
+            }
+
+            //If PrintPageEventArgs has more pages to print
+
+            if (line != null)
+            {
+
+                ppeArgs.HasMorePages = true;
+
+            }
+
+            else
+            {
+
+                ppeArgs.HasMorePages = false;
+
+            }
+
+        }
         private void button_imprime_Click_1(object sender, EventArgs e)
         {
             CaptureScreen();
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             printDocument1.Print();
+            //Create a StreamReader object
+            generateEmployeList();
+            reader = new StreamReader(file);
+            //Create a Verdana font with size 10
+            verdana10Font = new Font("Verdana", 10);
+            //Create a PrintDocument object
+            PrintDocument pd = new PrintDocument();
+            //Add PrintPage event handler
+            pd.PrintPage += new PrintPageEventHandler(this.PrintTextFileHandler);
+            //Call Print Method
+            pd.Print();
+            //Close the reader
+
+            if (reader != null)
+
+                reader.Close();
+        }
+
+        private void button_exporter_Click(object sender, EventArgs e)
+        {
+            generateEmployeList();
         }
 
         

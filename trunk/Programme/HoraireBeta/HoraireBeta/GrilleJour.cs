@@ -376,6 +376,8 @@ namespace HoraireBeta
             //Compute Nouvelle Date ** Ajouter validation ** 
             int dateDebut = int.Parse(creationbloc.getHd());
             int dateFin = int.Parse(creationbloc.getHf());
+            bool isPreset = creationbloc.getPreset();
+
 
             DateTime tempDebut = new DateTime(debut.Year, debut.Month, debut.Day, dateDebut, debut.Minute, debut.Second);
             DateTime tempFin = new DateTime(fin.Year, fin.Month, fin.Day, dateFin, fin.Minute, fin.Second) - new TimeSpan(0, 0, 0, 1);
@@ -383,8 +385,14 @@ namespace HoraireBeta
             // MessageBox.Show(" Date Début : " + tempDebut + " et Date Fin : " + tempFin);
 
             //Affecte le bloc
-            Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0, false);
+
+
+
+            Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0, ((bool)isPreset));
+
+
                             
+
             if (creationbloc.placementValide(tempBloc))
             {
                 if (profil != null)

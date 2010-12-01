@@ -185,7 +185,7 @@ namespace HoraireBeta
             return isPreset;
         }
 
-        public void addRessource(Profil newEmp)
+        public void addRessource(Profil newEmp, Poste poste)
         {
 
 
@@ -213,15 +213,8 @@ namespace HoraireBeta
                 int i = 0;
                 int j = 0;
                 //parse la liste des ressources voulues et ensuite la liste des poste de l'employé pour essayer de trouver un match
-                while (i < ressourcesVoulus.Count() && ressourcesVoulus[i].voulue != newEmp.getPoste(j))
-                {
-
-                    j = 0;
-                    while (j < newEmp.getPoste().Count && ressourcesVoulus[i].voulue != newEmp.getPoste(j++)) ;
-                    j--;
-                    if (ressourcesVoulus[i].voulue != newEmp.getPoste(j))
-                        i++;
-                }
+                while (i < ressourcesVoulus.Count() && ressourcesVoulus[i++].voulue != poste) ;
+                --i;
 
                 if (i < ressourcesVoulus.Count())
                 {

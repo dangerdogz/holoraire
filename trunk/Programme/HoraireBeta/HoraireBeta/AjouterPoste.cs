@@ -14,6 +14,7 @@ namespace HoraireBeta
     {
         String pname;
         String pdesc;
+        bool annul;
         public AjouterPoste()
         {
             InitializeComponent();
@@ -42,13 +43,20 @@ namespace HoraireBeta
             this.pdesc = pdesc;
         }
 
+        public bool getannul()
+        {
+            return annul;
+        }
+
         private void button_annul_aj_post_Click(object sender, EventArgs e)
         {
+            annul = true;
             AjouterPoste.ActiveForm.Dispose();
         }
 
         private void button_aj_post_confirm_Click(object sender, EventArgs e)
         {
+            annul = false;
             setPoste();
             this.Hide();
         }
@@ -85,7 +93,7 @@ namespace HoraireBeta
             if (id < 0)
             {
                 proc.addPoste(pname, pdesc);
-                id = Convert.ToInt32(proc.getLastStuff("Poste").Rows[0]["last_insert_rowid()"].ToString());
+                //id = Convert.ToInt32(proc.getLastStuff("Poste").Rows[0]["last_insert_rowid()"].ToString());
             }
             else
             {

@@ -248,22 +248,45 @@ namespace HoraireBeta
         private void popTeamDelWindow()
         {
             DeleteEquipe delequipe = new DeleteEquipe();
-            delequipe.setName(treeView_equipe.SelectedNode.Text.ToString());
-            delequipe.ShowDialog();
-            String textinform = treeView_equipe.SelectedNode.Text.ToString();
+            if (treeView_equipe.SelectedNode != null)
+            {
+                delequipe.setName(treeView_equipe.SelectedNode.Text.ToString());
+                delequipe.ShowDialog();
 
-            CreateXml.CreateProfileXml();
-            ajouterequipe.Dispose();
-            Chilkat.Xml xmlEquipe6 = new Chilkat.Xml();
-            xmlEquipe6.LoadXmlFile("teams.xml");
-            String id = findRessourceXML(textinform, xmlEquipe6);
-            treeView_equipe.Nodes.Clear();
-            FillTree(treeView_equipe.Nodes, xmlEquipe6);
+                CreateXml.CreateProfileXml();
+                Chilkat.Xml xmlEquipe6 = new Chilkat.Xml();
+                xmlEquipe6.LoadXmlFile("teams.xml");
+
+                delequipe.Dispose();
+                treeView_equipe.Nodes.Clear();
+                FillTree(treeView_equipe.Nodes, xmlEquipe6);
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner une équipe");
+            }
         }
 
         private void popPostDelWindow()
         {
-            
+            DeletePost delposte = new DeletePost();
+            if (treeView_postgen.SelectedNode != null)
+            {
+                delposte.setName(treeView_postgen.SelectedNode.Text.ToString());
+                delposte.ShowDialog();
+
+                CreateXml.CreateProfileXml();
+                Chilkat.Xml xmlPoste10 = new Chilkat.Xml();
+                xmlPoste10.LoadXmlFile("postes.xml");
+
+                delposte.Dispose();
+                treeView_equipe.Nodes.Clear();
+                FillTree(treeView_postgen.Nodes, xmlPoste10);
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner un poste");
+            }
         }
 
         private void popPostWindow()
@@ -271,42 +294,46 @@ namespace HoraireBeta
             
             AjouterPoste ajouterposte = new AjouterPoste();
             ajouterposte.ShowDialog();
-            loader.posteCharge.Add(new Poste(ajouterposte.getpName(), ajouterposte.getpDesc()));
+            bool saveannul;
+            saveannul = ajouterposte.getannul();
+            if (saveannul == false)
+            {
+                loader.posteCharge.Add(new Poste(ajouterposte.getpName(), ajouterposte.getpDesc()));
 
-            //MessageBox.Show(((Poste)loader.posteCharge.Last()).getNom());
+                ajouterposte.save();
 
-            ajouterposte.save();
-          //  MessageBox.Show(((Poste)loader.posteCharge.Last()).getNom());
-
-            CreateXml.CreateProfileXml();
-            ajouterposte.Dispose();
-            Chilkat.Xml xmlPoste5 = new Chilkat.Xml();
-            xmlPoste5.LoadXmlFile("postes.xml");
-            Chilkat.Xml xmlPoste6 = new Chilkat.Xml();
-            xmlPoste6.LoadXmlFile("postes.xml");
-            treeView_postgen.Nodes.Clear();
-            treeView_postaaffectgauche.Nodes.Clear();
-            FillTree(treeView_postgen.Nodes, xmlPoste5);
-            FillTree(treeView_postaaffectgauche.Nodes, xmlPoste6);
+                CreateXml.CreateProfileXml();
+                ajouterposte.Dispose();
+                Chilkat.Xml xmlPoste5 = new Chilkat.Xml();
+                xmlPoste5.LoadXmlFile("postes.xml");
+                Chilkat.Xml xmlPoste6 = new Chilkat.Xml();
+                xmlPoste6.LoadXmlFile("postes.xml");
+                treeView_postgen.Nodes.Clear();
+                treeView_postaaffectgauche.Nodes.Clear();
+                FillTree(treeView_postgen.Nodes, xmlPoste5);
+                FillTree(treeView_postaaffectgauche.Nodes, xmlPoste6);
+            }
         }
 
         private void popEquipeWindow()
         {
             AjouterEquipe ajouterequipe = new AjouterEquipe();
             ajouterequipe.ShowDialog();
-            loader.equipe.Add(new Equipe(-1, ajouterequipe.geteName(), ajouterequipe.geteDesc()));
+            bool saveannul;
+            saveannul = ajouterequipe.getannul();
+            if (saveannul == false)
+            {
+                loader.equipe.Add(new Equipe(-1, ajouterequipe.geteName(), ajouterequipe.geteDesc()));
 
-            //MessageBox.Show(((Equipe)loader.equipe.Last()).getNom());
+                ajouterequipe.save();
 
-            ajouterequipe.save();
-            //MessageBox.Show(((Profil)loader.equipe.Last()).getNom());
-
-            CreateXml.CreateProfileXml();
-            ajouterequipe.Dispose();
-            Chilkat.Xml xmlEquipe5 = new Chilkat.Xml();
-            xmlEquipe5.LoadXmlFile("teams.xml");
-            treeView_equipe.Nodes.Clear();
-            FillTree(treeView_equipe.Nodes, xmlEquipe5);
+                CreateXml.CreateProfileXml();
+                ajouterequipe.Dispose();
+                Chilkat.Xml xmlEquipe5 = new Chilkat.Xml();
+                xmlEquipe5.LoadXmlFile("teams.xml");
+                treeView_equipe.Nodes.Clear();
+                FillTree(treeView_equipe.Nodes, xmlEquipe5);
+            }
             
         }
 
@@ -480,7 +507,7 @@ namespace HoraireBeta
             {
                 // FindNextRecord *will* return the current record if it
                 // matches the criteria. 
-                xml = xml.FindNextRecord("nom", textInForm.ToLower() + "*");
+                xml = xml.FindNextRecord("nom", textInForm + "*");
                 if (xml != null)
                 {
                     // Add the company name to the listbox.
@@ -501,7 +528,7 @@ namespace HoraireBeta
             {
                 // FindNextRecord *will* return the current record if it
                 // matches the criteria. 
-                xml = xml.FindNextRecord("nom", textInForm.ToLower() + "*");
+                xml = xml.FindNextRecord("nom", textInForm + "*");
                 if (xml != null)
                 {
                     // Add the company name to the listbox.
@@ -522,7 +549,7 @@ namespace HoraireBeta
             {
                 // FindNextRecord *will* return the current record if it
                 // matches the criteria. 
-                xml = xml.FindNextRecord("nom", textInForm.ToLower() + "*");
+                xml = xml.FindNextRecord("nom", textInForm + "*");
                 if (xml != null)
                 {
                     // Add the company name to the listbox.
@@ -730,7 +757,7 @@ namespace HoraireBeta
             for (int cul = 0; cul < treeView_postechoisi.Nodes.Count; cul++)
             {
                 int i = 0;
-                while (treeView_postechoisi.Nodes[cul].Text.ToLower() != ((Poste)(loader.posteCharge[i++])).getNom().ToLower()) ;
+                while (treeView_postechoisi.Nodes[cul].Text != ((Poste)(loader.posteCharge[i++])).getNom()) ;
                 profil.setPoste((Poste)(loader.posteCharge[--i]));
                 
             }
@@ -738,18 +765,6 @@ namespace HoraireBeta
 
 
             profil.save();
-
-<<<<<<< .mine
-           // profil.save(mod);
-=======
->>>>>>> .r349
-
-<<<<<<< .mine
-           // profil.save();
-=======
-
->>>>>>> .r349
-
 
             numemp_textbox.Text = "";
             nom_textbox.Text = "";
@@ -905,13 +920,14 @@ namespace HoraireBeta
             {
                 // FindNextRecord *will* return the current record if it
                 // matches the criteria. 
-                xml = xml.FindNextRecord("nom", nom.ToLower() + "*");
+                xml = xml.FindNextRecord("nom", nom + "*");
+                MessageBox.Show("robert");
                 if (xml != null)
                 {
                     // Add the company name to the listbox.
                     String id = null;
                     id = xml.GetChildContent("id");
-
+                    MessageBox.Show(id.ToString());
                     return id;
                 }
             }
@@ -997,7 +1013,7 @@ namespace HoraireBeta
 
                     pid = Convert.ToInt32(datatable.Rows[i]["idPoste"]);
                     datatable2 = proc.getPoste2(pid);
-                    pname = datatable2.Rows[0]["nom"].ToString().ToLower();
+                    pname = datatable2.Rows[0]["nom"].ToString();
 
                     //pname = datatable.Rows[i].ToString();
 
@@ -1124,7 +1140,7 @@ namespace HoraireBeta
                     String nom;
                     foreach (TreeNode nodes in RessourceTree.Nodes[1].Nodes)
                     {
-                        nom = ((Poste)(ressources.voulue)).getNom().ToLower();
+                        nom = ((Poste)(ressources.voulue)).getNom();
                         //    MessageBox.Show(nom);
                         if (nom == nodes.Text)
                         {
@@ -1147,7 +1163,7 @@ namespace HoraireBeta
                         String nomPrenom;
                         foreach (TreeNode nodes in RessourceTree.Nodes[0].Nodes)
                         {
-                            nomPrenom = ((Profil)ressource).getNom().ToLower() + ", " + ((Profil)ressource).getPrenom().ToLower();
+                            nomPrenom = ((Profil)ressource).getNom() + ", " + ((Profil)ressource).getPrenom();
                             //MessageBox.Show(nomPrenom+" "+nodes.Text);
                             
                             if (nomPrenom == nodes.Text)
@@ -1168,7 +1184,7 @@ namespace HoraireBeta
                         String nom;
                         foreach (TreeNode nodes in RessourceTree.Nodes[2].Nodes)
                         {
-                            nom = ((Equipe)ressource).getNom().ToLower();
+                            nom = ((Equipe)ressource).getNom();
                          //   MessageBox.Show(nom);
                             if (nom == nodes.Text)
                             {

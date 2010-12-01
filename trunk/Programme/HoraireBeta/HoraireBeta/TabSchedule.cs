@@ -12,6 +12,7 @@ namespace HoraireBeta
 
     public class TabSchedule
     {
+        int coun = 0;
 
         Loader l = new Loader();
 
@@ -52,6 +53,7 @@ namespace HoraireBeta
                                                     MessageBox.Show("criss le camp " + blocs[i].getRessourceVoulus(n).nbVoulue);
                                                     n--;
                                                 }
+                                                coun++;
 
                                             
                                         }
@@ -99,6 +101,7 @@ namespace HoraireBeta
                                                     MessageBox.Show("criss le camp " + blocs[i].getRessourceVoulus(n).nbVoulue);
                                                     n--;
                                                 }
+                                                coun++;
 
 
                                             }
@@ -142,6 +145,7 @@ namespace HoraireBeta
                                             blocs[i].addRessource(((Profil)employee[j]), ((Profil)employee[j]).getPoste(l));
                                             MessageBox.Show("han?");
                                         }
+                                        coun++;
                                     }
                                 }
                             }
@@ -159,8 +163,9 @@ namespace HoraireBeta
                 {
 
                     l.returnErreur(1);
-
+                    
                 }
+                coun++;
             }
 
 
@@ -173,8 +178,9 @@ namespace HoraireBeta
                     {
 
                         l.returnErreur(2);
-
+                        
                     }
+                    coun++;
                 }
             }
             foreach (Bloc bloc in blocs)
@@ -186,7 +192,7 @@ namespace HoraireBeta
                 ((Profil)emp).save();
             }
 
-
+            MessageBox.Show(coun+"");
             return valide;
         }
     }

@@ -40,21 +40,18 @@ namespace HoraireBeta
                                     {
                                         blocs[i].addRessource(((Profil)employee[j]), ((Profil)employee[j]).getPoste(l)));
                                         MessageBox.Show("han?");
-                                       
-
-                                        for (int m = 0; m < blocs.Count; m++)
-                                        {
-                                            for (int n = 0; n < blocs[m].getRessourceVoulus().Count; n++)
+                                      
+                                            for (int n = 0; n < blocs[i].getRessourceVoulus().Count; n++)
                                             {
-                                                if (blocs[m].getRessourceVoulus(n).nbVoulue < blocs[m].getRessourceVoulus(n).nbAffectee)
+                                                if (blocs[i].getRessourceVoulus(n).nbVoulue < blocs[i].getRessourceVoulus(n).nbAffectee)
                                                 {
 
-                                                    blocs[m].removeEmplNouv((Poste)blocs[m].getRessourceVoulus(n).voulue);
-                                                    MessageBox.Show("criss le camp " + blocs[m].getRessourceVoulus(n).nbVoulue);
+                                                    blocs[i].removeEmplNouv((Poste)blocs[i].getRessourceVoulus(n).voulue);
+                                                    MessageBox.Show("criss le camp " + blocs[i].getRessourceVoulus(n).nbVoulue);
                                                     n--;
                                                 }
 
-                                            }
+                                            
                                         }
                                         if(blocs[i].estDejaPresent(employee[j]))
                                             break;

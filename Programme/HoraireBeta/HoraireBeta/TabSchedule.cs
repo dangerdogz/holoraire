@@ -38,7 +38,7 @@ namespace HoraireBeta
                                 {
                                     if (blocs[i].estVoulue(((Profil)employee[j]).getPoste(l)))
                                     {
-                                        blocs[i].addRessource(((Profil)employee[j]), ((Profil)employee[j]).getPoste(l)));
+                                        blocs[i].addRessource(((Profil)employee[j]), ((Profil)employee[j]).getPoste(l));
                                         MessageBox.Show("han?");
                                       
                                             for (int n = 0; n < blocs[i].getRessourceVoulus().Count; n++)

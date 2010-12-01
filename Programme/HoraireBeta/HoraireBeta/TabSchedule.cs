@@ -141,7 +141,5 @@ namespace HoraireBeta
 
             return valide;
         }
-
-
     }
 }

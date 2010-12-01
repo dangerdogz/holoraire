@@ -52,6 +52,7 @@
             this.button_OUI_poste.TabIndex = 1;
             this.button_OUI_poste.Text = "Oui";
             this.button_OUI_poste.UseVisualStyleBackColor = true;
+            this.button_OUI_poste.Click += new System.EventHandler(this.button_OUI_poste_Click);
             // 
             // button_NON_poste
             // 
@@ -62,6 +63,7 @@
             this.button_NON_poste.TabIndex = 2;
             this.button_NON_poste.Text = "Non";
             this.button_NON_poste.UseVisualStyleBackColor = true;
+            this.button_NON_poste.Click += new System.EventHandler(this.button_NON_poste_Click);
             // 
             // DeletePost
             // 

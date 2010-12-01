@@ -12,6 +12,7 @@ namespace HoraireBeta
     public partial class DeleteEquipe : Form
     {
         String ename;
+        int id;
         public DeleteEquipe()
         {
             InitializeComponent();
@@ -20,6 +21,11 @@ namespace HoraireBeta
         public void setName(String ename)
         {
             this.ename = ename;
+        }
+
+        public void setid(int id)
+        {
+            this.id = id;
         }
 
         private void button_OUI_equipe_Click(object sender, EventArgs e)
@@ -36,8 +42,6 @@ namespace HoraireBeta
         public void delete(String equipe)
         {
             DBConnect proc = new DBConnect();
-
-
             proc.deleteTeam2(equipe);
         }
     }

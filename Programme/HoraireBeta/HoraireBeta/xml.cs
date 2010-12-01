@@ -38,8 +38,8 @@ namespace HoraireBeta
 
                 // Create a "company" record.  NewChild2 does not return the child node that is created
                 xml.NewChild2("id", Convert.ToString(rs.Rows[i]["idProfil"]));
-                xml.NewChild2("nom", rs.Rows[i]["nom"].ToString().ToLower()+", "+rs.Rows[i]["prenom"].ToString().ToLower());
-                xml.NewChild2("email", rs.Rows[i]["email"].ToString().ToLower());
+                xml.NewChild2("nom", rs.Rows[i]["nom"].ToString()+", "+rs.Rows[i]["prenom"].ToString());
+                xml.NewChild2("email", rs.Rows[i]["email"].ToString());
                 xml.NewChild2("phone", rs.Rows[i]["phoneNumber"].ToString());
                 xml.NewChild2("seniority", Convert.ToString(rs.Rows[i]["seniority"]));
 
@@ -68,7 +68,7 @@ namespace HoraireBeta
             {
                 xml = xml.NewChild("poste", "");
                 xml.NewChild2("id", Convert.ToString(rs2.Rows[j]["idPoste"]));
-                xml.NewChild2("nom", rs2.Rows[j]["nom"].ToString().ToLower());
+                xml.NewChild2("nom", rs2.Rows[j]["nom"].ToString());
                 xml.NewChild2("description", rs2.Rows[j]["description"].ToString());
                 xml.GetParent2();
                 j++;
@@ -90,7 +90,7 @@ namespace HoraireBeta
             {
                 xml = xml.NewChild("team", "");
                 xml.NewChild2("id", Convert.ToString(rs3.Rows[k]["idTeam"]));
-                xml.NewChild2("nom", rs3.Rows[k]["nom"].ToString().ToLower());
+                xml.NewChild2("nom", rs3.Rows[k]["nom"].ToString());
                 xml.NewChild2("description", rs3.Rows[k]["description"].ToString());
                 xml.GetParent2();
                 k++;

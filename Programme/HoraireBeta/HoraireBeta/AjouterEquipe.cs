@@ -13,6 +13,7 @@ namespace HoraireBeta
     {
         String ename;
         String edesc;
+        bool annul;
         public AjouterEquipe()
         {
             InitializeComponent();
@@ -40,6 +41,12 @@ namespace HoraireBeta
         {
             this.edesc = edesc;
         }
+
+        public bool getannul()
+        {
+            return annul;
+        }
+
         public void setEquipe()
         {
             ename = textBox_nomequipe.Text;
@@ -58,11 +65,13 @@ namespace HoraireBeta
 
         private void button_annul_aj_equipe_Click(object sender, EventArgs e)
         {
+            annul = true;
             AjouterEquipe.ActiveForm.Dispose();
         }
 
         private void button_aj_equipe_confirm_Click(object sender, EventArgs e)
         {
+            annul = false;
             setEquipe();
             this.Hide();
         }
@@ -73,7 +82,7 @@ namespace HoraireBeta
             if (id < 0)
             {
                 proc.addTeam(ename, edesc);
-                id = Convert.ToInt32(proc.getLastStuff("Team").Rows[0]["last_insert_rowid()"].ToString());
+                //id = Convert.ToInt32(proc.getLastStuff("Team").Rows[0]["last_insert_rowid()"].ToString());
             }
             else
             {

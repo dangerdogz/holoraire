@@ -139,12 +139,8 @@ namespace HoraireBeta
         public void deletePoste(int idPoste)
         {
             String requete;
-<<<<<<< .mine
-            requete = "DELETE FROM Poste WHERE idPoste = " + idPoste+"";
-=======
             requete = "DELETE FROM Poste WHERE idPoste = " + idPoste+"";
             getResult(requete);
->>>>>>> .r354
         }
         public void deletePoste2(String pname)
         {

@@ -15,9 +15,10 @@ namespace HoraireBeta
 
         Loader l = new Loader();
 
+
         public int generate(List<Bloc> blocs, List<Ressource> employee)
         {
-
+            List<Profil> gotkicked = new List<Profil>();
             int valide = 0;
 
             for (int i = 0; i < blocs.Count; i++)
@@ -46,7 +47,8 @@ namespace HoraireBeta
                                                 if (blocs[i].getRessourceVoulus(n).nbVoulue < blocs[i].getRessourceVoulus(n).nbAffectee)
                                                 {
 
-                                                    blocs[i].removeEmplNouv((Poste)blocs[i].getRessourceVoulus(n).voulue);
+                                                   if(blocs[i].removeEmplNouv((Poste)blocs[i].getRessourceVoulus(n).voulue) != (Profil)employee[j])
+                                                         gotkicked.Add((Profil)employee[j]);
                                                     MessageBox.Show("criss le camp " + blocs[i].getRessourceVoulus(n).nbVoulue);
                                                     n--;
                                                 }
@@ -61,6 +63,55 @@ namespace HoraireBeta
                         }
                     }
                 }
+            }
+
+            while (gotkicked.Count > 0)
+            {
+                List<Profil> gotkickedagain = new List<Profil>();
+                for (int i = 0; i < blocs.Count; i++)
+                {
+                    if (!blocs[i].checkCompletion())
+                    {
+                        Console.WriteLine(blocs[i].getId() + " " + blocs[i].getDebut() + " " + blocs[i].getFin());
+                        for (int j = 0; j < gotkicked.Count; j++)
+                        {
+                            for (int k = 0; k < (gotkicked.ElementAt(j)).getPref().Count; k++)
+                            {
+
+                                Console.WriteLine("       " + (gotkicked[j]).getNom() + " " + ((gotkicked[j]).getPref()[k].getDebut()) + " " + ((gotkicked[j]).getPref()[k].getFin()) + " " + (gotkicked[j]).getHeuresMax() + " " + (gotkicked[j]).getHeuresTravaillees() + " ");
+                                //si l'heure de début et avant le début du bloc, et l'heure de fin est après la fin du bloc, et le jour de la semaine est le même et que l'employé n'as pas dépassé son quota d'heure
+                                if (Convert.ToInt32((gotkicked[j]).getPref()[k].getDebut().ToString("HHmm")) <= Convert.ToInt32(blocs[i].getDebut().ToString("HHmm")) && Convert.ToInt32((gotkicked[j]).getPref()[k].getFin().ToString("HHmm")) >= Convert.ToInt32(blocs[i].getFin().ToString("HHmm")) && (gotkicked[j]).getHeuresMax() > (gotkicked[j]).getHeuresTravaillees() && (gotkicked[j]).getPref()[k].getDebut().DayOfWeek.Equals(blocs[i].getDebut().DayOfWeek) && !blocs[i].estDejaPresent(gotkicked[j]))
+                                {
+                                    for (int l = 0; l < (gotkicked[j]).getPoste().Count; l++)
+                                    {
+                                        if (blocs[i].estVoulue((gotkicked[j]).getPoste(l)))
+                                        {
+                                            blocs[i].addRessource((gotkicked[j]), (gotkicked[j]).getPoste(l));
+                                            MessageBox.Show("han?");
+
+                                            for (int n = 0; n < blocs[i].getRessourceVoulus().Count; n++)
+                                            {
+                                                if (blocs[i].getRessourceVoulus(n).nbVoulue < blocs[i].getRessourceVoulus(n).nbAffectee)
+                                                {
+
+                                                    if (blocs[i].removeEmplNouv((Poste)blocs[i].getRessourceVoulus(n).voulue) != gotkicked[j])
+                                                        gotkickedagain.Add(gotkicked[j]);
+                                                    MessageBox.Show("criss le camp " + blocs[i].getRessourceVoulus(n).nbVoulue);
+                                                    n--;
+                                                }
+
+
+                                            }
+                                            if (blocs[i].estDejaPresent(gotkicked[j]))
+                                                break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                gotkicked = gotkickedagain;
             }
 
            

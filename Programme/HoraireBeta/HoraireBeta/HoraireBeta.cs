@@ -738,8 +738,16 @@ namespace HoraireBeta
 
             profil.save(mod);
 
+<<<<<<< .mine
+           // profil.save(mod);
+=======
+>>>>>>> .r344
 
 
+<<<<<<< .mine
+           // profil.save();
+=======
+>>>>>>> .r344
 
 
 
@@ -1195,6 +1203,7 @@ namespace HoraireBeta
             
             TabSchedule leTableSchedule = new TabSchedule();
             leTableSchedule.generate(loader.getBlocDeLaSemaine(getDebutSemaine().Subtract(new TimeSpan(1,0,0,0))),loader.profilCharge);
+            grille.refresh();
         }
 
 

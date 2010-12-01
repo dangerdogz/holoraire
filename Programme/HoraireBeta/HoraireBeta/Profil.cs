@@ -187,7 +187,7 @@ namespace HoraireBeta
             MessageBox.Show("robert");
         }
 
-        public void save(bool mod)
+        public void save()
         {
             
             DBConnect proc = new DBConnect();

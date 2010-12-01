@@ -250,22 +250,22 @@ namespace HoraireBeta
         {
             int nbBloc;
             bool blocTrouve = false;
-            List<Bloc> bloc = null;
+            List<Bloc> blocs = null;
 
             if (isPref)
-                bloc = getPref();
+                blocs = getPref();
             else
-                if (!isPref)
-                    bloc = getDispo();
+                {
+                blocs = getDispo();
+                }
 
-
-            nbBloc = bloc.Count;
+            nbBloc = blocs.Count;
             //Les conditions a modifier devront être unique a chaque blocs
             for (int i = 0; i < nbBloc; i++)
             {
-                if (bloc[i].getDebut() == leBloc.getDebut())
+                if (blocs[i].getDebut() == leBloc.getDebut())
                 {
-                    bloc[i] = leBloc2;
+                    blocs[i] = leBloc2;
                     blocTrouve = true;
                     break;
                 }

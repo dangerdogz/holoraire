@@ -15,6 +15,7 @@ namespace HoraireBeta
         string hf;
         List<Bloc> listBloc;
         bool valide = false;
+        bool preset = false;
 
         public CreationBloc(string hd, string hf, List<Bloc> listBloc)
         {
@@ -67,6 +68,11 @@ namespace HoraireBeta
             return hf;
         }
 
+        public bool getPreset()
+        {
+            return preset;
+        }
+
         //Retourne vrai si le placement est valide
         public bool placementValide(Bloc leBloc) {
 
@@ -87,6 +93,9 @@ namespace HoraireBeta
         private void button_blocconfirm_Click(object sender, EventArgs e)
         {
             setHeures();
+
+            if (checkBox_Preset.Checked)
+                preset = true;
 
             if (valideHeures())
                 {

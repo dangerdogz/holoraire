@@ -35,6 +35,8 @@ namespace HoraireBeta
             this.button_blocconfirm = new System.Windows.Forms.Button();
             this.label_hrdebut = new System.Windows.Forms.Label();
             this.label_hrfin = new System.Windows.Forms.Label();
+            this.label_Preset = new System.Windows.Forms.Label();
+            this.checkBox_Preset = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // textBox_hrdebut
@@ -84,6 +86,19 @@ namespace HoraireBeta
             this.label_hrfin.Size = new System.Drawing.Size(71, 13);
             this.label_hrfin.TabIndex = 4;
             this.label_hrfin.Text = "Heure de fin :";
+            //
+            this.label_Preset.AutoSize = true;
+            this.label_Preset.Location = new System.Drawing.Point(11,95);
+            this.label_Preset.Name = "label_Preset";
+            this.label_Preset.Size = new System.Drawing.Size(40, 13);
+            this.label_Preset.TabIndex = 4;
+            this.label_Preset.Text = "Preset: ";
+
+            this.checkBox_Preset.Location = new System.Drawing.Point(55, 95);
+            this.checkBox_Preset.Name = "checkBox_Preset";
+            this.checkBox_Preset.Size = new System.Drawing.Size(15, 15);
+            this.checkBox_Preset.TabIndex = 4;
+
             // 
             // CreationBloc
             // 
@@ -96,6 +111,8 @@ namespace HoraireBeta
             this.Controls.Add(this.button_blocconfirm);
             this.Controls.Add(this.textBox_hrfin);
             this.Controls.Add(this.textBox_hrdebut);
+            this.Controls.Add(this.label_Preset);
+            this.Controls.Add(this.checkBox_Preset);
             this.Name = "CreationBloc";
             this.Text = "Création d\'un bloc";
             this.ResumeLayout(false);
@@ -110,5 +127,8 @@ namespace HoraireBeta
         private System.Windows.Forms.Button button_blocconfirm;
         private System.Windows.Forms.Label label_hrdebut;
         private System.Windows.Forms.Label label_hrfin;
+        private System.Windows.Forms.CheckBox checkBox_Preset;
+        private System.Windows.Forms.Label label_Preset;
+
     }
 }

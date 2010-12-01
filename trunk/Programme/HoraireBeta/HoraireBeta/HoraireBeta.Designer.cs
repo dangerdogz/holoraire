@@ -41,9 +41,9 @@ namespace HoraireBeta
         /// </summary>
         public void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Employé");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Postes");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Équipes");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Employé");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Postes");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Équipes");
             this.Admin = new System.Windows.Forms.TabControl();
             this.horaire = new System.Windows.Forms.TabPage();
             this.panelCentral_Horaire = new System.Windows.Forms.Panel();
@@ -143,6 +143,7 @@ namespace HoraireBeta
             this.button_supprimer = new System.Windows.Forms.Button();
             this.button_ajouter_PG = new System.Windows.Forms.Button();
             this.label_postgeneral = new System.Windows.Forms.Label();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.Admin.SuspendLayout();
             this.horaire.SuspendLayout();
             this.panelCentral_Horaire.SuspendLayout();
@@ -262,7 +263,7 @@ namespace HoraireBeta
             this.listEmploye.Name = "listEmploye";
             this.listEmploye.Size = new System.Drawing.Size(439, 121);
             this.listEmploye.TabIndex = 0;
-            this.listEmploye.MouseDoubleClick += new MouseEventHandler(listEmploye_MouseDoubleClick);
+            this.listEmploye.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listEmploye_MouseDoubleClick);
             // 
             // tabPoste
             // 
@@ -281,7 +282,7 @@ namespace HoraireBeta
             this.listPoste.Name = "listPoste";
             this.listPoste.Size = new System.Drawing.Size(436, 121);
             this.listPoste.TabIndex = 0;
-            this.listPoste.MouseDoubleClick += new MouseEventHandler(listEmploye_MouseDoubleClick);
+            this.listPoste.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listEmploye_MouseDoubleClick);
             // 
             // tabEquipe
             // 
@@ -300,7 +301,7 @@ namespace HoraireBeta
             this.listEquipe.Name = "listEquipe";
             this.listEquipe.Size = new System.Drawing.Size(439, 121);
             this.listEquipe.TabIndex = 0;
-            this.listEquipe.MouseDoubleClick += new MouseEventHandler(listEmploye_MouseDoubleClick);
+            this.listEquipe.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listEmploye_MouseDoubleClick);
             // 
             // panelGauche_Horaire
             // 
@@ -317,7 +318,6 @@ namespace HoraireBeta
             this.panelGauche_Horaire.Name = "panelGauche_Horaire";
             this.panelGauche_Horaire.Size = new System.Drawing.Size(240, 694);
             this.panelGauche_Horaire.TabIndex = 0;
-            //this.panelGauche_Horaire.Paint += new System.Windows.Forms.PaintEventHandler(this.pCentral_Horaire_Paint);
             this.panelGauche_Horaire.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pGauche_Horaire_OnMouseEvent);
             this.panelGauche_Horaire.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pGauche_Horaire_OnMouseEvent);
             // 
@@ -351,7 +351,7 @@ namespace HoraireBeta
             this.listPreset.Name = "listPreset";
             this.listPreset.Size = new System.Drawing.Size(218, 316);
             this.listPreset.TabIndex = 0;
-            this.listPreset.MouseDoubleClick += new MouseEventHandler(listEmploye_MouseDoubleClick);
+            this.listPreset.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listEmploye_MouseDoubleClick);
             // 
             // tab_Ressources
             // 
@@ -369,16 +369,16 @@ namespace HoraireBeta
             this.RessourceTree.BackColor = System.Drawing.SystemColors.Window;
             this.RessourceTree.Location = new System.Drawing.Point(7, 6);
             this.RessourceTree.Name = "RessourceTree";
-            treeNode4.Name = "Employe";
-            treeNode4.Text = "Employé";
-            treeNode5.Name = "Postes";
-            treeNode5.Text = "Postes";
-            treeNode6.Name = "Équipes";
-            treeNode6.Text = "Équipes";
+            treeNode1.Name = "Employe";
+            treeNode1.Text = "Employé";
+            treeNode2.Name = "Postes";
+            treeNode2.Text = "Postes";
+            treeNode3.Name = "Équipes";
+            treeNode3.Text = "Équipes";
             this.RessourceTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5,
-            treeNode6});
+            treeNode1,
+            treeNode2,
+            treeNode3});
             this.RessourceTree.Size = new System.Drawing.Size(208, 316);
             this.RessourceTree.TabIndex = 0;
             this.RessourceTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -426,6 +426,7 @@ namespace HoraireBeta
             this.button_imprime.TabIndex = 1;
             this.button_imprime.Text = "Imprimer";
             this.button_imprime.UseVisualStyleBackColor = true;
+            this.button_imprime.Click += new System.EventHandler(this.button_imprime_Click_1);
             // 
             // button_genere
             // 
@@ -1383,6 +1384,7 @@ namespace HoraireBeta
         private ListBox listPoste;
         private ListBox listEquipe;
         private ListBox listPreset;
+        private System.Drawing.Printing.PrintDocument printDocument1;
 
 
     }

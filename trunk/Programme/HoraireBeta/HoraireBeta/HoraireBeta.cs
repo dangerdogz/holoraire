@@ -1040,6 +1040,36 @@ namespace HoraireBeta
 
         private void supprimer_button_Click(object sender, EventArgs e)
         {
+            Profil ressource = null;
+            Chilkat.Xml xmlProfiles = new Chilkat.Xml();
+            xmlProfiles.LoadXmlFile("profiles.xml");
+            String textInForm;
+            String id;
+            textInForm = treeView_modemploye.SelectedNode.Text.ToString();
+            id = findRessourceXML(textInForm, xmlProfiles);
+            if (id != null)
+            {
+                profilSelected = (Profil)loader.findRessource(Convert.ToInt32(id), loader.profilCharge);
+                ressource = profilSelected;
+                int nemploye = Convert.ToInt32(ressource.getId().ToString());
+                String nom = ressource.getNom();
+                String prenom = ressource.getPrenom();
+                String courriel = ressource.getEmail();
+                String telephone = ressource.getNumTelephone();
+                DBConnect proc = new DBConnect();
+                proc.deleteEmploye(nemploye, nom, prenom, courriel, telephone);
+
+                CreateXml.CreateProfileXml();
+                Chilkat.Xml xmlProfiles2 = new Chilkat.Xml();
+                xmlProfiles2.LoadXmlFile("profiles.xml");
+
+                treeView_modemploye.Nodes.Clear();
+                FillTree(treeView_modemploye.Nodes, xmlProfiles2);
+            }
+            else
+            {
+                MessageBox.Show("lol");
+            }
 
         }
 

@@ -235,6 +235,49 @@ namespace HoraireBeta
             }
         }
 
+        public void save(bool mod)
+        {
+
+            DBConnect proc = new DBConnect();
+            if (mod == false)
+            {
+                proc.ajouterProfil(id, prenom, nom, numTelephone, heuresMax, 0, email, anciennete);
+                foreach (Ressource lui in poste)
+                {
+
+                    proc.addPosteProfil(lui.getId(), id);
+                    mod = true;
+
+                }
+
+            }
+            else
+                if (mod == true)
+                {
+                    proc.modifierProfil(id, prenom, nom, numTelephone, heuresMax, 0, email, anciennete);
+                    proc.deletePosteProfil(id);
+                    foreach (Ressource lui in poste)
+                    {
+                        proc.addPosteProfil(lui.getId(), id);
+                    }
+                }
+            proc.deleteProfilPreference(id);
+
+            foreach (Bloc pref in preference)
+            {
+                if (pref.getId() < 0)
+                    proc.addPlage(pref.getDebut().ToString("yyyy-MM-dd HH:mm:ss"), pref.getFin().ToString("yyyy-MM-dd HH:mm:ss"), Loader.SemaineToInt(pref.getFin()));
+                proc.addProfilPreference(id, Convert.ToInt32(proc.getLastStuff("Plage").Rows[0]["idPlage"].ToString()));
+            }
+            proc.deleteProfilDispo(id);
+
+            foreach (Bloc dispo in disponibilite)
+            {
+                proc.addPlage(dispo.getDebut().ToString("yyyy-MM-dd HH:mm:ss"), dispo.getFin().ToString("yyyy-MM-dd HH:mm:ss"), Loader.SemaineToInt(dispo.getFin()));
+                proc.addProfilDispo(id, Convert.ToInt32(proc.getLastStuff("Plage").Rows[0]["idPlage"].ToString()));
+            }
+        }
+
         public void draw(Bloc bloc,int i, Graphics gfx)
         {
             Font laFont = new Font("Arial", 16);

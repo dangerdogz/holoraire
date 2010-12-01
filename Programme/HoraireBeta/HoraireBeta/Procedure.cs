@@ -148,6 +148,15 @@ namespace HoraireBeta
             requete = "DELETE FROM Poste WHERE nom = \"" + pname + "\";";
             getResult(requete);
         }
+        public void deleteEmploye(int nemploye, String nom, String prenom, String email, String telephone)
+        {
+            String requete;
+            String requete2;
+            requete = "DELETE FROM Profil WHERE idProfil = " + nemploye + " AND nom = \"" + nom + "\" AND prenom = \"" + prenom + "\" AND email = \"" + email + "\" AND phoneNumber = \"" + telephone + "\";";
+            requete2 = "DELETE FROM Poste_Profil WHERE idProfil = " + nemploye + ";";
+            getResult(requete);
+            getResult(requete2);
+        }
         public void modifyPoste(int idPoste, String nom, String description)
         {
             String requete;

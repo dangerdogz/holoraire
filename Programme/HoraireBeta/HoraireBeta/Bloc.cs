@@ -96,7 +96,6 @@ namespace HoraireBeta
 
             this.x = x;
 
-            //MessageBox.Show(Loader.SemaineToInt(debut)+"||"+(debut.ToString("ddd")));
 
             haut = ((Convert.ToInt32(fin.ToString("HH")) * 20 + Convert.ToInt32(fin.ToString("MM")) / 20) - y) + 20;
             */
@@ -124,13 +123,8 @@ namespace HoraireBeta
             this.id = id;
             int hh = debutY / 20;
 
-            // int mm = (debutY%20)*3;
-
-            // DateTime.ParseExact("0"+jour+"/"+hh+"/"+mm, "dd/HH/mm", null);
-            // MessageBox.Show(DateTime.ParseExact("1/1/34","dd/HH/mm",null)+"");
 
             int mm = (debutY % 20) * 3;
-            //DateTime.ParseExact(jour + "/" + hh + "/" + mm, "ddd/HH/mm", null);
 
 
             y = debutY;
@@ -173,6 +167,26 @@ namespace HoraireBeta
 
 
             ressourcesVoulus.Add(ca);
+        }
+
+        public List<RessourceEntree> getListRessourceVoulus()
+        {
+            return ressourcesVoulus;
+        }
+
+        public List<Ressource> getRessourceAffectes()
+        {
+            return ressourcesAffectes;
+        }
+
+        public void setRessourceVoulus(List<RessourceEntree> ressourceList)
+        {
+            ressourcesVoulus = ressourceList;
+        }
+
+        public void setRessourceAffectes(List<Ressource> ressourceList)
+        {
+            ressourcesAffectes = ressourceList;
         }
 
         public void setPreset(bool preset)
@@ -332,15 +346,12 @@ namespace HoraireBeta
             {
 
 
-                if (ress == ((Poste)ressourcesVoulus[i].voulue)&&(ressourcesVoulus[i].nbAffectee<ressourcesVoulus[i].nbVoulue))
+                if (ress == ((Poste)ressourcesVoulus[i].voulue))
                     oui = true;
             }
-            if(oui)
-            {
 
                 oui = !estDejaPresent(ress);
             }
-
             return oui;
         }
 
@@ -367,12 +378,10 @@ namespace HoraireBeta
         }
 
         public void computePos()
-        {  //MessageBox.Show("Date : "+
+        {  
             y = (Convert.ToInt32(debut.ToString("HH")) * 20 + Convert.ToInt32(debut.ToString("mm")) / 3) + 40;
 
             x = ((Loader.SemaineToInt(debut) - 1) * 100) + 40;
-
-            //MessageBox.Show(Loader.SemaineToInt(debut)+"||"+(debut.ToString("ddd")));
 
 
             haut = ((Convert.ToInt32(fin.ToString("HH")) * 20 + Convert.ToInt32(fin.ToString("mm")) / 3) - y) + 40;
@@ -491,7 +500,7 @@ namespace HoraireBeta
             }
             foreach (RessourceEntree lui in ressourcesVoulus)
             {
-               
+                MessageBox.Show("Lol this");
                 if (lui.voulue is Equipe)
                     proc.addRessource(id, 0, lui.voulue.getId(), lui.nbVoulue);
                 else
@@ -532,9 +541,6 @@ namespace HoraireBeta
             }
             isdrawn = true;
 
-
-
-            //  MessageBox.Show("Bloc dessiné Date début :"+debut+ " | fin :"+fin);
 
             for (int i = 0; i < ressourcesAffectes.Count; i++)
             {

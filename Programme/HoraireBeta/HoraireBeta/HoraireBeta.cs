@@ -48,7 +48,7 @@ namespace HoraireBeta
 
         private void employe_Click(object sender, EventArgs e)
         {
-
+            
         }
         /*
         private void pCentral_Horaire_Paint(object sender, PaintEventArgs e)
@@ -963,13 +963,13 @@ namespace HoraireBeta
                 // FindNextRecord *will* return the current record if it
                 // matches the criteria. 
                 xml = xml.FindNextRecord("nom", nom + "*");
-                MessageBox.Show("robert");
+               
                 if (xml != null)
                 {
                     // Add the company name to the listbox.
                     String id = null;
                     id = xml.GetChildContent("id");
-                    MessageBox.Show(id.ToString());
+                    
                     return id;
                 }
             }
@@ -978,21 +978,7 @@ namespace HoraireBeta
 
             
         }
-        void listEmploye_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-
-            int index = this.listEmploye.IndexFromPoint(e.Location);
-
-            if (index != System.Windows.Forms.ListBox.NoMatches)
-            {
-
-                //MessageBox.Show(index.ToString());
-
-                //do your stuff here
-
-            }
-
-        }
+        
 
 
         private void treeView_modemploye_AfterSelect(object sender, TreeViewEventArgs e)
@@ -1059,7 +1045,47 @@ namespace HoraireBeta
 
             }  
         }
+        private void loadEmployeInfos(int id)
+        {
+            Admin.SelectedTab = this.employe;
+            Profil ressource = null;
+            treeView_postdispo.Nodes.Clear();
+            this.panelCentral_Employe.Controls.Add(clear_button);
+            this.panelCentral_Employe.Controls.Remove(Sauvegarder_button);
+            this.panelCentral_Employe.Controls.Remove(button_Valider);
+            this.panelGauche_Employe.Controls.Remove(ajouter_button);
+            this.panelGauche_Employe.Controls.Remove(modifier_button);
+            int idprofil;
+            if (id != null)
+            {
+                profilSelected = (Profil)loader.findRessource(Convert.ToInt32(id), loader.profilCharge);
+                ressource = profilSelected;
+                idprofil = ressource.getId();
+                numemp_textbox.Text = ressource.getId().ToString();
+                nom_textbox.Text = ressource.getNom();
+                prenom_textbox.Text = ressource.getPrenom();
+                courriel_textbox.Text = ressource.getEmail();
+                telephone_textbox.Text = ressource.getNumTelephone();
+                
+            }
+        }
+        private void restablishInterface()
+        {
+            if (!panelCentral_Employe.Controls.Contains(Sauvegarder_button))
+            {
+                this.panelCentral_Employe.Controls.Add(Sauvegarder_button);
+                this.panelCentral_Employe.Controls.Add(button_Valider);
+                this.panelGauche_Employe.Controls.Add(ajouter_button);
+                this.panelGauche_Employe.Controls.Add(modifier_button);
+                this.panelCentral_Employe.Controls.Remove(clear_button);
+                numemp_textbox.Text = "";
+                nom_textbox.Text = "";
+                prenom_textbox.Text = "";
+                courriel_textbox.Text = "";
+                telephone_textbox.Text = "";
+            }
 
+        }
         private void supprimer_button_Click(object sender, EventArgs e)
         {
 
@@ -1069,34 +1095,7 @@ namespace HoraireBeta
         {
             listEmploye.Items.Clear();
 
-            Profil ressource = null;
-            Chilkat.Xml xmlProfiles = new Chilkat.Xml();
-            xmlProfiles.LoadXmlFile("profiles.xml");
-            String textInForm;
-            String id;
-            if (treeView_modemploye.SelectedNode != null)
-                textInForm = treeView_modemploye.SelectedNode.Text.ToString();
-            else
-                textInForm = "Null";
-
-            id = findRessourceXML(textInForm, xmlProfiles);
-            if (id != null)
-            {
-                profilSelected = (Profil)loader.findRessource(Convert.ToInt32(id), loader.profilCharge);
-                ressource = profilSelected;
-                int nemploye = Convert.ToInt32(ressource.getId().ToString());
-                String nom = ressource.getNom();
-                String prenom = ressource.getPrenom();
-                String courriel = ressource.getEmail();
-                String telephone = ressource.getNumTelephone();
-                DBConnect proc = new DBConnect();
-                proc.deleteEmploye(nemploye, nom, prenom, courriel, telephone);
-
             List<Ressource> ressources = bloc.getListRessourceAffecte();
-
-
-
-
             for (int i = 0; i < ressources.Count(); i++)
             {
 
@@ -1109,23 +1108,22 @@ namespace HoraireBeta
 
             }
 
+        }
+        void listEmploye_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
 
+            int index = this.listEmploye.IndexFromPoint(e.Location);
 
-                CreateXml.CreateProfileXml();
-                Chilkat.Xml xmlProfiles2 = new Chilkat.Xml();
-                xmlProfiles2.LoadXmlFile("profiles.xml");
-
-                treeView_modemploye.Nodes.Clear();
-                FillTree(treeView_modemploye.Nodes, xmlProfiles2);
-            }
-            else
+            if (index != System.Windows.Forms.ListBox.NoMatches)
             {
-                MessageBox.Show("lol");
-            }
+                int idEmployeClicked = Convert.ToInt32(listEmploye.Items[index].ToString().Substring(0, 1));
+                
+                loadEmployeInfos(idEmployeClicked);
 
+                
+            }
 
         }
-        
         public void fillPosteListBox(Bloc bloc)
         {
 
@@ -1461,6 +1459,13 @@ namespace HoraireBeta
         {
             generateEmployeList();
         }
+
+        private void clear_button_Click(object sender, EventArgs e)
+        {
+            restablishInterface();
+        }
+
+        
 
         
 

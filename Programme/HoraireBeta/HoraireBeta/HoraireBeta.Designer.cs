@@ -1310,27 +1310,15 @@ namespace HoraireBeta
         private RichTextBox text_Conflits;
         public Loader loader;
         private GrilleHoraire grille;
-
-
-
-
-
-
-
         private TreeView RessourceTree;
         private TreeView treeView_postdispo;
-
         private List<Ressource> profilCharge = new List<Ressource>();
         private List<Equipe> equipe = new List<Equipe>();
         public List<Poste> posteCharge = new List<Poste>();
-
         public void initInterface()
         {
             FillInterface();
         }
-
-
-
         private Label label1;
         private Button ajouter_button;
         private Label ajprofemp_label;

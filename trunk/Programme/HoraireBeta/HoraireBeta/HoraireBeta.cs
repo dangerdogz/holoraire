@@ -770,6 +770,11 @@ namespace HoraireBeta
 
             profil.save(mod);
 
+
+           // profil.save(mod);
+
+           // profil.save();
+
             numemp_textbox.Text = "";
             nom_textbox.Text = "";
             prenom_textbox.Text = "";
@@ -936,8 +941,25 @@ namespace HoraireBeta
                 }
             }
             return null;
-        }
         
+
+            
+        }
+        void listEmploye_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+            int index = this.listEmploye.IndexFromPoint(e.Location);
+
+            if (index != System.Windows.Forms.ListBox.NoMatches)
+            {
+
+                //MessageBox.Show(index.ToString());
+
+                //do your stuff here
+
+            }
+
+        }
 
 
         private void treeView_modemploye_AfterSelect(object sender, TreeViewEventArgs e)
@@ -1019,7 +1041,11 @@ namespace HoraireBeta
             xmlProfiles.LoadXmlFile("profiles.xml");
             String textInForm;
             String id;
-            textInForm = treeView_modemploye.SelectedNode.Text.ToString();
+            if (treeView_modemploye.SelectedNode != null)
+                textInForm = treeView_modemploye.SelectedNode.Text.ToString();
+            else
+                textInForm = "Null";
+
             id = findRessourceXML(textInForm, xmlProfiles);
             if (id != null)
             {
@@ -1066,21 +1092,7 @@ namespace HoraireBeta
 
 
         }
-        void listEmploye_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-
-            int index = this.listEmploye.IndexFromPoint(e.Location);
-
-            if (index != System.Windows.Forms.ListBox.NoMatches)
-            {
-
-                //MessageBox.Show(index.ToString());
-
-                //do your stuff here
-
-            }
-
-        }
+        
         public void fillPosteListBox(Bloc bloc)
         {
 

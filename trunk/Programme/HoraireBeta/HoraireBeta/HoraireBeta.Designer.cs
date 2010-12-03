@@ -41,9 +41,9 @@ namespace HoraireBeta
         /// </summary>
         public void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Employé");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Postes");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Équipes");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Employé");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Postes");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Équipes");
             this.Admin = new System.Windows.Forms.TabControl();
             this.horaire = new System.Windows.Forms.TabPage();
             this.panelCentral_Horaire = new System.Windows.Forms.Panel();
@@ -144,6 +144,7 @@ namespace HoraireBeta
             this.button_ajouter_PG = new System.Windows.Forms.Button();
             this.label_postgeneral = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.clear_button = new System.Windows.Forms.Button();
             this.Admin.SuspendLayout();
             this.horaire.SuspendLayout();
             this.panelCentral_Horaire.SuspendLayout();
@@ -371,16 +372,16 @@ namespace HoraireBeta
             this.RessourceTree.BackColor = System.Drawing.SystemColors.Window;
             this.RessourceTree.Location = new System.Drawing.Point(7, 6);
             this.RessourceTree.Name = "RessourceTree";
-            treeNode4.Name = "Employe";
-            treeNode4.Text = "Employé";
-            treeNode5.Name = "Postes";
-            treeNode5.Text = "Postes";
-            treeNode6.Name = "Équipes";
-            treeNode6.Text = "Équipes";
+            treeNode1.Name = "Employe";
+            treeNode1.Text = "Employé";
+            treeNode2.Name = "Postes";
+            treeNode2.Text = "Postes";
+            treeNode3.Name = "Équipes";
+            treeNode3.Text = "Équipes";
             this.RessourceTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5,
-            treeNode6});
+            treeNode1,
+            treeNode2,
+            treeNode3});
             this.RessourceTree.Size = new System.Drawing.Size(208, 316);
             this.RessourceTree.TabIndex = 0;
             this.RessourceTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -458,6 +459,7 @@ namespace HoraireBeta
             // 
             this.panelCentral_Employe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panelCentral_Employe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            //this.panelCentral_Employe.Controls.Add(this.clear_button);
             this.panelCentral_Employe.Controls.Add(this.treeView_postdispo);
             this.panelCentral_Employe.Controls.Add(this.treeView_postechoisi);
             this.panelCentral_Employe.Controls.Add(this.posteaoccuper_gauche);
@@ -1226,6 +1228,16 @@ namespace HoraireBeta
             this.label_postgeneral.TabIndex = 0;
             this.label_postgeneral.Text = "Postes Général";
             // 
+            // clear_button
+            // 
+            this.clear_button.Location = new System.Drawing.Point(458, 128);
+            this.clear_button.Name = "clear_button";
+            this.clear_button.Size = new System.Drawing.Size(177, 46);
+            this.clear_button.TabIndex = 26;
+            this.clear_button.Text = "Rétablir l\'affichage normal";
+            this.clear_button.UseVisualStyleBackColor = true;
+            this.clear_button.Click += new System.EventHandler(this.clear_button_Click);
+            // 
             // HoraireBeta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1389,6 +1401,7 @@ namespace HoraireBeta
         private ListBox listEquipe;
         private ListBox listPreset;
         private System.Drawing.Printing.PrintDocument printDocument1;
+        private Button clear_button;
 
 
     }

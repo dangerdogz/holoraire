@@ -113,7 +113,7 @@ namespace HoraireBeta
         {
             String requete;
             requete = "SELECT idProfil, prenom, nom, phoneNumber, quotaHeureMax, quotaHeureMin, email, seniority" +
-                      " FROM Profil";
+                      " FROM Profil order by seniority desc";
             return getResult(requete);
 
         }

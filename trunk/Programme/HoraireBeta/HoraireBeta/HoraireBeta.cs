@@ -804,7 +804,6 @@ namespace HoraireBeta
             MessageBox.Show("Sauvegarde réussie!");
             profilSelected = new Profil();
             }
-            //indélibile
 
             CreateXml.CreateProfileXml();
             Chilkat.Xml xmlPoste11 = new Chilkat.Xml();

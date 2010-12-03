@@ -248,6 +248,7 @@ namespace HoraireBeta
             // 
             // tabEmploye
             // 
+            profilSelected = new Profil();
             this.tabEmploye.Controls.Add(this.listEmploye);
             this.tabEmploye.Location = new System.Drawing.Point(4, 22);
             this.tabEmploye.Name = "tabEmploye";
@@ -255,6 +256,7 @@ namespace HoraireBeta
             this.tabEmploye.TabIndex = 1;
             this.tabEmploye.Text = "Employés";
             this.tabEmploye.UseVisualStyleBackColor = true;
+
             // 
             // listEmploye
             // 

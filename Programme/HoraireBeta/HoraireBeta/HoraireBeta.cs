@@ -216,6 +216,13 @@ namespace HoraireBeta
 
         private void modifier_button_Click(object sender, EventArgs e)
         {
+            CreateXml.CreateProfileXml();
+            Chilkat.Xml xmlProfiles3 = new Chilkat.Xml();
+            xmlProfiles3.LoadXmlFile("profiles.xml");
+
+            treeView_modemploye.Nodes.Clear();
+            FillTree(treeView_modemploye.Nodes, xmlProfiles3);
+
             mod = true;
             numemp_textbox.ReadOnly.ToString();
             panelCentral_Employe.Controls.Add(this.supprimer_button);
@@ -260,6 +267,7 @@ namespace HoraireBeta
                 CreateXml.CreateProfileXml();
                 Chilkat.Xml xmlEquipe6 = new Chilkat.Xml();
                 xmlEquipe6.LoadXmlFile("teams.xml");
+                
 
                 delequipe.Dispose();
                 treeView_equipe.Nodes.Clear();
@@ -282,10 +290,14 @@ namespace HoraireBeta
                 CreateXml.CreateProfileXml();
                 Chilkat.Xml xmlPoste10 = new Chilkat.Xml();
                 xmlPoste10.LoadXmlFile("postes.xml");
-
+                Chilkat.Xml xmlPoste7 = new Chilkat.Xml();
+                xmlPoste7.LoadXmlFile("postes.xml");
+                
                 delposte.Dispose();
-                treeView_equipe.Nodes.Clear();
+                treeView_postgen.Nodes.Clear();
                 FillTree(treeView_postgen.Nodes, xmlPoste10);
+                treeView_postaaffectgauche.Nodes.Clear();
+                FillTree(treeView_postaaffectgauche.Nodes, xmlPoste7);
             }
             else
             {
@@ -757,7 +769,21 @@ namespace HoraireBeta
         }
         private void Sauvegarder_button_Click(object sender, EventArgs e)
         {
-            Profil profil = new Profil(Convert.ToInt32(numemp_textbox.Text), prenom_textbox.Text, nom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0,0);
+            if (nom_textbox.Text == "" || prenom_textbox.Text == "" || numemp_textbox.Text == "")
+            {
+                MessageBox.Show("Veuillez entrer un numéro d'employé, un nom et un prenom pour l'employé");
+            }
+            else
+            {
+            Profil profil = profilSelected;
+            profil.setId(Convert.ToInt32(numemp_textbox.Text));
+            profil.setNom(nom_textbox.Text);
+            profil.setPrenom(prenom_textbox.Text);
+            profil.setEmail(courriel_textbox.Text);
+            profil.setNumTelephone(telephone_textbox.Text);
+            profil.setAnciennete(0);
+
+            //new Profil(Convert.ToInt32(numemp_textbox.Text), prenom_textbox.Text, nom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0, 0);
             for (int cul = 0; cul < treeView_postechoisi.Nodes.Count; cul++)
             {
                 int i = 0;
@@ -767,8 +793,9 @@ namespace HoraireBeta
             }
             loader.profilCharge.Add(profil);
 
-
+            
             profil.save(mod);
+            
 
 
            // profil.save(mod);
@@ -780,6 +807,9 @@ namespace HoraireBeta
             prenom_textbox.Text = "";
             courriel_textbox.Text = "";
             telephone_textbox.Text = "";
+            MessageBox.Show("Sauvegarde réussie!");
+            profilSelected = new Profil();
+            }
         }
 
         private void UnlinkBlocToRessource(Ressource res, Bloc bloc)
@@ -1281,7 +1311,7 @@ namespace HoraireBeta
                 nodes.BackColor = Color.White; 
             }
         }
-
+        
         private void button1_Click_1(object sender, EventArgs e)
         {
             if (profilSelected != null)

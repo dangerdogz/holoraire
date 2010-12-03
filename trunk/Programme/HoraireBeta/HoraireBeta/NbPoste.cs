@@ -20,7 +20,7 @@ namespace HoraireBeta
         private Label nPoste;
         private Label nNb;
         private Label titre;
-        String nb;
+        public String nb;
         public bool confirm = false;
 
         public NbPoste()

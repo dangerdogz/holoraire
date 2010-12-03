@@ -304,7 +304,7 @@ namespace HoraireBeta
         public void deleteRessource(int idBlock)
         {
             String requete;
-            requete = "DELETE * FROM Ressource WHERE idBlock=" + idBlock + "";
+            requete = "DELETE  FROM Ressource WHERE idBlock=" + idBlock + "";
         }
         public DataTable getRessource(int idBlock)
         {
@@ -455,7 +455,7 @@ namespace HoraireBeta
         public void deleteProfilPreference(int idProfil)
         {
             String requete;
-            requete = "DELETE * FROM Profil_Preference WHERE idProfil = " + idProfil + "";
+            requete = "DELETE  FROM Profil_Preference WHERE idProfil = " + idProfil + "";
         }
 
     }

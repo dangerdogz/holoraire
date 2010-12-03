@@ -223,16 +223,23 @@ namespace HoraireBeta
             
             foreach (Bloc pref in preference)
             {
-                if (pref.getId()<0)
+                if (pref.getId() < 0)
+                {
                     proc.addPlage(pref.getDebut().ToString("yyyy-MM-dd HH:mm:ss"), pref.getFin().ToString("yyyy-MM-dd HH:mm:ss"), Loader.SemaineToInt(pref.getFin()));
-                proc.addProfilPreference(id, Convert.ToInt32(proc.getLastStuff("Plage").Rows[0]["idPlage"].ToString()));
+                   pref.setId(Convert.ToInt32(proc.getLastStuff("Plage").Rows[0]["idPlage"].ToString()));
+                }
+                proc.addProfilPreference(id, pref.getId());
             }
             proc.deleteProfilDispo(id);
 
             foreach (Bloc dispo in disponibilite)
             {
-                proc.addPlage(dispo.getDebut().ToString("yyyy-MM-dd HH:mm:ss"), dispo.getFin().ToString("yyyy-MM-dd HH:mm:ss"), Loader.SemaineToInt(dispo.getFin()));
-                proc.addProfilDispo(id, Convert.ToInt32(proc.getLastStuff("Plage").Rows[0]["idPlage"].ToString()));
+                if (dispo.getId() < 0)
+                {
+                    proc.addPlage(dispo.getDebut().ToString("yyyy-MM-dd HH:mm:ss"), dispo.getFin().ToString("yyyy-MM-dd HH:mm:ss"), Loader.SemaineToInt(pref.getFin()));
+                    dispo.setId(Convert.ToInt32(proc.getLastStuff("Plage").Rows[0]["idPlage"].ToString()));
+                }
+                proc.addProfilPreference(id, dispo.getId());
             }
         }
 

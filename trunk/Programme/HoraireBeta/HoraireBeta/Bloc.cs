@@ -332,8 +332,13 @@ namespace HoraireBeta
             {
 
 
-                if (ress == ((Poste)ressourcesVoulus[i].voulue))
+                if (ress == ((Poste)ressourcesVoulus[i].voulue)&&(ressourcesVoulus[i].nbAffectee<ressourcesVoulus[i].nbVoulue))
                     oui = true;
+            }
+            if(oui)
+            {
+
+                oui = estDejaPresent(ress);
             }
 
             return oui;

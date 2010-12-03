@@ -58,6 +58,7 @@ namespace HoraireBeta
 
 
                                         }
+                                        coun++;
                                     }
                                 }
                             }
@@ -100,6 +101,7 @@ namespace HoraireBeta
                                             k = ((Profil)employee.ElementAt(j)).getDispo().Count;
 
                                         }
+                                        coun++;
                                     }
                                 }
                             }

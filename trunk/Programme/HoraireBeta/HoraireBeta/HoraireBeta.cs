@@ -1310,7 +1310,7 @@ namespace HoraireBeta
                             {
                                 if (ressource == profil)
                                 {
-                                    writer.WriteLine(((Profil)profil).getNom() + " " + ((Profil)profil).getPrenom());
+                                    writer.WriteLine(((Profil)profil).getNom() + " " + ((Profil)profil).getPrenom() + ", " + ((Profil)profil).getNumTelephone() + ", " + ((Profil)profil).getEmail());
                                 }
                             }        
                         }

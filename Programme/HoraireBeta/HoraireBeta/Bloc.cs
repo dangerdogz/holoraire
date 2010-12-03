@@ -91,7 +91,7 @@ namespace HoraireBeta
             this.fin = fin;
             this.typeBloc = type;
             this.id = id;
-
+            /*
             y = (Convert.ToInt32(debut.ToString("HH")) * 20 + Convert.ToInt32(debut.ToString("MM")) / 20) + 20;
 
             this.x = x;
@@ -99,8 +99,8 @@ namespace HoraireBeta
             //MessageBox.Show(Loader.SemaineToInt(debut)+"||"+(debut.ToString("ddd")));
 
             haut = ((Convert.ToInt32(fin.ToString("HH")) * 20 + Convert.ToInt32(fin.ToString("MM")) / 20) - y) + 20;
-
-
+            */
+            computePos();
             erreurExiste = false;
             estComplet = false;
 
@@ -338,7 +338,7 @@ namespace HoraireBeta
             if(oui)
             {
 
-                oui = estDejaPresent(ress);
+                oui = !estDejaPresent(ress);
             }
 
             return oui;

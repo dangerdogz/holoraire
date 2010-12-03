@@ -23,6 +23,7 @@ namespace HoraireBeta
         private List<Bloc> disponibilite = new List<Bloc>();
         private Poste posteassgine;
 
+        public Profil() { }
 
         public Profil(Poste poste, string prenom, string nom, string email, int heureMax, string numTelephone, int anciennete)
         {

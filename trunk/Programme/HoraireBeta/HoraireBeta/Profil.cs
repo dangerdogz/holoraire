@@ -190,7 +190,7 @@ namespace HoraireBeta
 
         public void robert()
         {
-            MessageBox.Show("robert");
+           // MessageBox.Show("robert");
         }
 
         public void save()
@@ -223,8 +223,12 @@ namespace HoraireBeta
             
             foreach (Bloc pref in preference)
             {
+<<<<<<< .mine
+                if (pref.getId()<=0)
+=======
                 if (pref.getId() < 0)
                 {
+>>>>>>> .r391
                     proc.addPlage(pref.getDebut().ToString("yyyy-MM-dd HH:mm:ss"), pref.getFin().ToString("yyyy-MM-dd HH:mm:ss"), Loader.SemaineToInt(pref.getFin()));
                    pref.setId(Convert.ToInt32(proc.getLastStuff("Plage").Rows[0]["idPlage"].ToString()));
                 }

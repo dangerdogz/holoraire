@@ -41,9 +41,15 @@ namespace HoraireBeta
         /// </summary>
         public void InitializeComponent()
         {
+<<<<<<< .mine
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Employé");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Postes");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Équipes");
+=======
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Employé");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Postes");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Équipes");
+>>>>>>> .r391
             this.Admin = new System.Windows.Forms.TabControl();
             this.horaire = new System.Windows.Forms.TabPage();
             this.panelCentral_Horaire = new System.Windows.Forms.Panel();
@@ -181,6 +187,7 @@ namespace HoraireBeta
             this.Admin.Size = new System.Drawing.Size(1013, 736);
             this.Admin.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.Admin.TabIndex = 0;
+            this.Admin.SelectedIndexChanged += new System.EventHandler(this.employe_Click);
             // 
             // horaire
             // 
@@ -372,16 +379,31 @@ namespace HoraireBeta
             this.RessourceTree.BackColor = System.Drawing.SystemColors.Window;
             this.RessourceTree.Location = new System.Drawing.Point(7, 6);
             this.RessourceTree.Name = "RessourceTree";
+<<<<<<< .mine
+            treeNode10.Name = "Employe";
+            treeNode10.Text = "Employé";
+            treeNode11.Name = "Postes";
+            treeNode11.Text = "Postes";
+            treeNode12.Name = "Équipes";
+            treeNode12.Text = "Équipes";
+=======
             treeNode1.Name = "Employe";
             treeNode1.Text = "Employé";
             treeNode2.Name = "Postes";
             treeNode2.Text = "Postes";
             treeNode3.Name = "Équipes";
             treeNode3.Text = "Équipes";
+>>>>>>> .r391
             this.RessourceTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+<<<<<<< .mine
+            treeNode10,
+            treeNode11,
+            treeNode12});
+=======
             treeNode1,
             treeNode2,
             treeNode3});
+>>>>>>> .r391
             this.RessourceTree.Size = new System.Drawing.Size(208, 316);
             this.RessourceTree.TabIndex = 0;
             this.RessourceTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -438,7 +460,7 @@ namespace HoraireBeta
             this.button_genere.Name = "button_genere";
             this.button_genere.Size = new System.Drawing.Size(230, 29);
             this.button_genere.TabIndex = 0;
-            this.button_genere.Text = "Générer";
+            this.button_genere.Text = "PlayBall";
             this.button_genere.UseVisualStyleBackColor = true;
             this.button_genere.Click += new System.EventHandler(this.button_genere_Click);
             // 

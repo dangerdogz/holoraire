@@ -48,7 +48,12 @@ namespace HoraireBeta
 
         private void employe_Click(object sender, EventArgs e)
         {
+<<<<<<< .mine
+           
+
+=======
             
+>>>>>>> .r391
         }
         /*
         private void pCentral_Horaire_Paint(object sender, PaintEventArgs e)
@@ -971,13 +976,21 @@ namespace HoraireBeta
                 // FindNextRecord *will* return the current record if it
                 // matches the criteria. 
                 xml = xml.FindNextRecord("nom", nom + "*");
+<<<<<<< .mine
+              //  MessageBox.Show("robert");
+=======
                
+>>>>>>> .r391
                 if (xml != null)
                 {
                     // Add the company name to the listbox.
                     String id = null;
                     id = xml.GetChildContent("id");
+<<<<<<< .mine
+                 //   MessageBox.Show(id.ToString());
+=======
                     
+>>>>>>> .r391
                     return id;
                 }
             }
@@ -1103,17 +1116,41 @@ namespace HoraireBeta
         {
             listEmploye.Items.Clear();
 
-            List<Ressource> ressources = bloc.getListRessourceAffecte();
-            for (int i = 0; i < ressources.Count(); i++)
+<<<<<<< .mine
+            Profil ressource = null;
+            Chilkat.Xml xmlProfiles = new Chilkat.Xml();
+            xmlProfiles.LoadXmlFile("profiles.xml");
+            String textInForm;
+            String id;
+            if (treeView_modemploye.SelectedNode != null)
+                textInForm = treeView_modemploye.SelectedNode.Text.ToString();
+            else
+                textInForm = "Null";
+
+            //MessageBox.Show(textInForm + "");
+
+            id = findRessourceXML(textInForm, xmlProfiles);
+            if (id != null)
             {
+                profilSelected = (Profil)loader.findRessource(Convert.ToInt32(id), loader.profilCharge);
+                ressource = profilSelected;
+                int nemploye = Convert.ToInt32(ressource.getId().ToString());
+                String nom = ressource.getNom();
+                String prenom = ressource.getPrenom();
+                String courriel = ressource.getEmail();
+                String telephone = ressource.getNumTelephone();
+                DBConnect proc = new DBConnect();
+               // proc.deleteEmploye(nemploye, nom, prenom, courriel, telephone);
 
-                // Add the employee name to the listbox.
-                if (ressources.ElementAt(i) is Profil)
-                {
-                    listEmploye.Items.Add(((Profil)ressources.ElementAt(i)).getId() + " - " + ((Profil)ressources.ElementAt(i)).getNom() + " " + ((Profil)ressources.ElementAt(i)).getPrenom());
-                }
+=======
+>>>>>>> .r391
+                
+        
 
 
+
+<<<<<<< .mine
+=======
             }
 
         }
@@ -1122,6 +1159,7 @@ namespace HoraireBeta
 
             int index = this.listEmploye.IndexFromPoint(e.Location);
 
+>>>>>>> .r391
             if (index != System.Windows.Forms.ListBox.NoMatches)
             {
                 int idEmployeClicked = Convert.ToInt32(listEmploye.Items[index].ToString().Substring(0, 1));
@@ -1130,6 +1168,29 @@ namespace HoraireBeta
 
                 
             }
+<<<<<<< .mine
+            else
+            {
+               // MessageBox.Show("lol");
+            }
+=======
+>>>>>>> .r391
+            List<Ressource> ressources = bloc.getListRessourceAffecte();
+            for (int i = 0; i < ressources.Count(); i++)
+            {
+
+<<<<<<< .mine
+                // Add the employee name to the listbox.
+                if (ressources.ElementAt(i) is Profil)
+                {
+                    listEmploye.Items.Add(((Profil)ressources.ElementAt(i)).getId() + " - " + ((Profil)ressources.ElementAt(i)).getNom() + " " + ((Profil)ressources.ElementAt(i)).getPrenom());
+                }
+
+=======
+>>>>>>> .r391
+
+            }
+
 
         }
         public void fillPosteListBox(Bloc bloc)
@@ -1275,7 +1336,7 @@ namespace HoraireBeta
 
                         //MessageBox.Show("LOL1.5");
 
-                        MessageBox.Show(((Profil)ressource).getNom());
+                       // MessageBox.Show(((Profil)ressource).getNom());
 
                         String nomPrenom;
                         foreach (TreeNode nodes in RessourceTree.Nodes[0].Nodes)

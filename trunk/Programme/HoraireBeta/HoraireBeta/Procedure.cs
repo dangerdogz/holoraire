@@ -241,16 +241,19 @@ namespace HoraireBeta
             String requete;
             requete = "INSERT INTO Plage(debut, fin, day) VALUES(\"" + debut + "\",\"" + fin + "\"," + day + ")";
             getResult(requete);
+            MessageBox.Show("Requete non magique : " + requete);
         }
         public void modifyPlage(String debut, String fin, int day)
         {
             String requete;
             requete = "UPDATE Plage SET debut=\""+debut+"\", fin=\""+fin+"\", day="+day+"";
+            getResult(requete);
         }
         public void deletePlage(int idPlage)
         {
             String requete;
-            requete = "DELETE * FROM Plage WHERE idPlage=" + idPlage+"";
+            requete = "delete FROM Plage WHERE idPlage=" + idPlage+"";
+            getResult(requete);
         }
         public DataTable getPlage(int idPlage)
         {
@@ -268,16 +271,19 @@ namespace HoraireBeta
         {
             String requete;
             requete = "INSERT INTO Preset(beginDate, endDate, nom) VALUES(\"" + beginDate + "\",\"" + endDate + "\",\"" + nom + "\")";
+            getResult(requete);
         }
         public void modifyPreset(String beginDate, String endDate, String nom)
         {
             String requete;
             requete = "UPDATE Preset SET beginDate=\"" + beginDate + "\", endDate=\"" + endDate + "\", nom=\"" + nom+"\"";
+            getResult(requete);
         }
         public void deletePreset(int idPreset)
         {
             String requete;
-            requete = "DELETE * FROM Preset WHERE idPreset=" + idPreset+"";
+            requete = "delete FROM Preset WHERE idPreset=" + idPreset+"";
+            getResult(requete);
         }
         public DataTable getPreset(int idPreset)
         {
@@ -301,6 +307,7 @@ namespace HoraireBeta
         {
             String requete;
             requete = "UPDATE Ressource SET idBlock="+idBlock+", idPoste = "+idPoste+", idTeam = "+idTeam+"";
+            getResult(requete);
         }
         public void deleteRessource(int idBlock)
         {
@@ -330,11 +337,13 @@ namespace HoraireBeta
         {
             String requete;
             requete = "UPDATE Team SET nom=\"" + nom + "\", description = \"" + description + "\" where idTeam ="+id+"";
+            getResult(requete);
         }
         public void deleteTeam(int idTeam)
         {
             String requete;
             requete = "DELETE FROM Team WHERE idTeam=" + idTeam + "";
+            getResult(requete);
         }
 
         public void deleteTeam2(String ename)
@@ -359,16 +368,19 @@ namespace HoraireBeta
         {
             String requete;
             requete = "INSERT INTO Team_Profil(idTeam, idProfil, idPoste) VALUES(" + idTeam + ", " + idProfil + ", " + idPoste + ")";
+            getResult(requete);
         }
         public void modifyTeamProfile(int idTeam, int idProfil, int idPoste)
         {
             String requete;
             requete = "UPDATE Team_Profil SET idTeam=" + idTeam + ", idProfil = " + idProfil + ", idPoste = " + idPoste + "";
+            getResult(requete);
         }
         public void deleteTeamProfile(int idTeam)
         {
             String requete;
-            requete = "DELETE * FROM Team_Profil WHERE idTeam=" + idTeam + "";
+            requete = "delete FROM Team_Profil WHERE idTeam=" + idTeam + "";
+            getResult(requete);
         }
 
         public DataTable getTeamProfile(int idTeam)
@@ -437,11 +449,12 @@ namespace HoraireBeta
         {
             String requete;
             requete = "INSERT INTO Profil_Dispo(idProfil, idPlage) VALUES(" + idProfil + ", " + idPlage + ")";
+            getResult(requete);
         }
         public void deleteProfilDispo(int idProfil)
         {
             String requete;
-            requete = "DELETE * FROM Profil_Dispo WHERE idProfil = " + idProfil + "";
+            requete = "delete FROM Profil_Dispo WHERE idProfil = " + idProfil + "";
             getResult(requete);
         }
         public DataTable getProfilPreference(int idProfil)
@@ -453,13 +466,14 @@ namespace HoraireBeta
         public void addProfilPreference(int idProfil, int idPreference)
         {
             String requete;
-            requete = "INSERT INTO Profil_Preference(idProfil, idPreference) VALUES(" + idProfil + ", " + idPreference + ")";
+            requete = "INSERT INTO Profil_Preference(idProfil, idPlage) VALUES(" + idProfil + ", " + idPreference + ")";
             getResult(requete);
         }
         public void deleteProfilPreference(int idProfil)
         {
             String requete;
             requete = "DELETE  FROM Profil_Preference WHERE idProfil = " + idProfil + "";
+            getResult(requete);
         }
 
     }

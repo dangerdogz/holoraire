@@ -240,6 +240,7 @@ namespace HoraireBeta
         {
             String requete;
             requete = "INSERT INTO Plage(debut, fin, day) VALUES(\"" + debut + "\",\"" + fin + "\"," + day + ")";
+            getResult(requete);
         }
         public void modifyPlage(String debut, String fin, int day)
         {
@@ -441,6 +442,7 @@ namespace HoraireBeta
         {
             String requete;
             requete = "DELETE * FROM Profil_Dispo WHERE idProfil = " + idProfil + "";
+            getResult(requete);
         }
         public DataTable getProfilPreference(int idProfil)
         {
@@ -452,6 +454,7 @@ namespace HoraireBeta
         {
             String requete;
             requete = "INSERT INTO Profil_Preference(idProfil, idPreference) VALUES(" + idProfil + ", " + idPreference + ")";
+            getResult(requete);
         }
         public void deleteProfilPreference(int idProfil)
         {

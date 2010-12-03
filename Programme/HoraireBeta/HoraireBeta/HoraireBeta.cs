@@ -795,12 +795,6 @@ namespace HoraireBeta
 
             
             profil.save(mod);
-            
-
-
-           // profil.save(mod);
-
-           // profil.save();
 
             numemp_textbox.Text = "";
             nom_textbox.Text = "";
@@ -810,6 +804,16 @@ namespace HoraireBeta
             MessageBox.Show("Sauvegarde réussie!");
             profilSelected = new Profil();
             }
+            //indélibile
+
+            CreateXml.CreateProfileXml();
+            Chilkat.Xml xmlPoste11 = new Chilkat.Xml();
+            xmlPoste11.LoadXmlFile("postes.xml");
+
+            treeView_postdispo.Nodes.Clear();
+            treeView_postechoisi.Nodes.Clear();
+            FillTree(treeView_postdispo.Nodes, xmlPoste11);
+
         }
 
         private void UnlinkBlocToRessource(Ressource res, Bloc bloc)

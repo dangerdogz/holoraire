@@ -19,138 +19,90 @@ namespace HoraireBeta
 
         public int generate(List<Bloc> blocs, List<Ressource> employee)
         {
-            List<Profil> gotkicked = new List<Profil>();
+            
             int valide = 0;
+            bool breakthefuck = false;
 
-            for (int i = 0; i < blocs.Count; i++)
+            for (int j = 0; j < employee.Count; j++)
             {
-                if (!blocs[i].checkCompletion())
+                if (((Profil)employee[j]).getHeuresMax() > ((Profil)employee[j]).getHeuresTravaillees())
                 {
-                    Console.WriteLine(blocs[i].getId() + " " + blocs[i].getDebut() + " " + blocs[i].getFin());
-                    for (int j = 0; j < employee.Count; j++)
+                    for (int i = 0; i < blocs.Count; i++)
                     {
-                        for (int k = 0; k < ((Profil)employee.ElementAt(j)).getPref().Count; k++)
+                        if (!blocs[i].checkCompletion())
                         {
+                            Console.WriteLine(blocs[i].getId() + " " + blocs[i].getDebut() + " " + blocs[i].getFin());
+                    
 
-                            Console.WriteLine("       " + ((Profil)employee[j]).getNom() + " " + (((Profil)employee[j]).getPref()[k].getDebut()) + " " + (((Profil)employee[j]).getPref()[k].getFin()) + " " + ((Profil)employee[j]).getHeuresMax() + " " + ((Profil)employee[j]).getHeuresTravaillees() + " ");
-                            //si l'heure de début et avant le début du bloc, et l'heure de fin est après la fin du bloc, et le jour de la semaine est le même et que l'employé n'as pas dépassé son quota d'heure
-                            if (Convert.ToInt32(((Profil)employee[j]).getPref()[k].getDebut().ToString("HHmm")) <= Convert.ToInt32(blocs[i].getDebut().ToString("HHmm")) && Convert.ToInt32(((Profil)employee[j]).getPref()[k].getFin().ToString("HHmm")) >= Convert.ToInt32(blocs[i].getFin().ToString("HHmm")) && ((Profil)employee[j]).getHeuresMax() > ((Profil)employee[j]).getHeuresTravaillees() && ((Profil)employee[j]).getPref()[k].getDebut().DayOfWeek.Equals(blocs[i].getDebut().DayOfWeek) && !blocs[i].estDejaPresent(employee[j]))
+                            for (int k = 0; k < ((Profil)employee.ElementAt(j)).getPref().Count; k++)
                             {
-                                for (int l = 0; l < ((Profil)employee[j]).getPoste().Count; l++)
-                                {
-                                    if (blocs[i].estVoulue(((Profil)employee[j]).getPoste(l)))
-                                    {
-                                        blocs[i].addRessource(((Profil)employee[j]), ((Profil)employee[j]).getPoste(l));
-                                        MessageBox.Show("han?");
-                                      
-                                            for (int n = 0; n < blocs[i].getRessourceVoulus().Count; n++)
-                                            {
-                                                if (blocs[i].getRessourceVoulus(n).nbVoulue < blocs[i].getRessourceVoulus(n).nbAffectee)
-                                                {
-
-                                                   if(blocs[i].removeEmplNouv((Poste)blocs[i].getRessourceVoulus(n).voulue) != (Profil)employee[j])
-                                                         gotkicked.Add((Profil)employee[j]);
-                                                    MessageBox.Show("criss le camp " + blocs[i].getRessourceVoulus(n).nbVoulue);
-                                                    n--;
-                                                }
-                                                coun++;
-
-                                            
-                                        }
-                                        if(blocs[i].estDejaPresent(employee[j]))
-                                            break;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            while (gotkicked.Count > 0)
-            {
-                List<Profil> gotkickedagain = new List<Profil>();
-                for (int i = 0; i < blocs.Count; i++)
-                {
-                    if (!blocs[i].checkCompletion())
-                    {
-                        Console.WriteLine(blocs[i].getId() + " " + blocs[i].getDebut() + " " + blocs[i].getFin());
-                        for (int j = 0; j < gotkicked.Count; j++)
-                        {
-                            for (int k = 0; k < (gotkicked.ElementAt(j)).getPref().Count; k++)
-                            {
-
-                                Console.WriteLine("       " + (gotkicked[j]).getNom() + " " + ((gotkicked[j]).getPref()[k].getDebut()) + " " + ((gotkicked[j]).getPref()[k].getFin()) + " " + (gotkicked[j]).getHeuresMax() + " " + (gotkicked[j]).getHeuresTravaillees() + " ");
+                                Console.WriteLine("       " + ((Profil)employee[j]).getNom() + " " + (((Profil)employee[j]).getPref()[k].getDebut()) + " " + (((Profil)employee[j]).getPref()[k].getFin()) + " " + ((Profil)employee[j]).getHeuresMax() + " " + ((Profil)employee[j]).getHeuresTravaillees() + " ");
+                                   
                                 //si l'heure de début et avant le début du bloc, et l'heure de fin est après la fin du bloc, et le jour de la semaine est le même et que l'employé n'as pas dépassé son quota d'heure
-                                if (Convert.ToInt32((gotkicked[j]).getPref()[k].getDebut().ToString("HHmm")) <= Convert.ToInt32(blocs[i].getDebut().ToString("HHmm")) && Convert.ToInt32((gotkicked[j]).getPref()[k].getFin().ToString("HHmm")) >= Convert.ToInt32(blocs[i].getFin().ToString("HHmm")) && (gotkicked[j]).getHeuresMax() > (gotkicked[j]).getHeuresTravaillees() && (gotkicked[j]).getPref()[k].getDebut().DayOfWeek.Equals(blocs[i].getDebut().DayOfWeek) && !blocs[i].estDejaPresent(gotkicked[j]))
+                                if (Convert.ToInt32(((Profil)employee[j]).getPref()[k].getDebut().ToString("HHmm")) <= Convert.ToInt32(blocs[i].getDebut().ToString("HHmm")) && Convert.ToInt32(((Profil)employee[j]).getPref()[k].getFin().ToString("HHmm")) >= Convert.ToInt32(blocs[i].getFin().ToString("HHmm")) && ((Profil)employee[j]).getHeuresMax() > ((Profil)employee[j]).getHeuresTravaillees() && ((Profil)employee[j]).getPref()[k].getDebut().DayOfWeek.Equals(blocs[i].getDebut().DayOfWeek) && !blocs[i].estDejaPresent(employee[j]))
                                 {
-                                    for (int l = 0; l < (gotkicked[j]).getPoste().Count; l++)
+                                    for (int l = 0; l < ((Profil)employee[j]).getPoste().Count; l++)
                                     {
-                                        if (blocs[i].estVoulue((gotkicked[j]).getPoste(l)))
-                                        {
-                                            blocs[i].addRessource((gotkicked[j]), (gotkicked[j]).getPoste(l));
-                                            MessageBox.Show("han?");
 
-                                            for (int n = 0; n < blocs[i].getRessourceVoulus().Count; n++)
-                                            {
-                                                if (blocs[i].getRessourceVoulus(n).nbVoulue < blocs[i].getRessourceVoulus(n).nbAffectee)
-                                                {
+                                      
 
-                                                    if (blocs[i].removeEmplNouv((Poste)blocs[i].getRessourceVoulus(n).voulue) != gotkicked[j])
-                                                        gotkickedagain.Add(gotkicked[j]);
-                                                    MessageBox.Show("criss le camp " + blocs[i].getRessourceVoulus(n).nbVoulue);
-                                                    n--;
-                                                }
-                                                coun++;
-
-
-                                            }
-                                            if (blocs[i].estDejaPresent(gotkicked[j]))
-                                                break;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                gotkicked = gotkickedagain;
-            }
-
-           
-
-
-
-            for (int i = 0; i < blocs.Count; i++)
-            {
-                for (int j = 0; j < employee.Count; j++)
-                {
-
-                    for (int k = 0; k < ((Profil)employee[j]).getDispo().Count; k++)
-                    {
-
-                        //   MessageBox.Show(" " + Convert.ToInt32(((Profil)employee[j]).getDispo()[k].getDebut().ToString("HHMM")) + " " + Convert.ToInt32(blocs[i].getDebut().ToString("HHMM")) + " " + Convert.ToInt32(((Profil)employee[j]).getDispo()[k].getFin().ToString("HHMM")) + " " + Convert.ToInt32(blocs[i].getFin().ToString("HHMM")) + " " + ((Profil)employee[j]).getHeuresMax() + " " + ((Profil)employee[j]).getHeuresTravaillees() + " " + ((Profil)employee[j]).getDispo()[k].getDebut().DayOfWeek + " " + (blocs[i].getDebut().DayOfWeek));
-                        //si l'heure de début et avant le début du bloc, et l'heure de fin est après la fin du bloc, et le jour de la semaine est le même et que l'employé n'as pas dépassé son quota d'heure, et que le bloc n'est pas plein
-                        if (Convert.ToInt32(((Profil)employee[j]).getDispo()[k].getDebut().ToString("HHmm")) <= Convert.ToInt32(blocs[i].getDebut().ToString("HHmm")) && Convert.ToInt32(((Profil)employee[j]).getDispo()[k].getFin().ToString("HHmm")) >= Convert.ToInt32(blocs[i].getFin().ToString("HHmm")) && ((Profil)employee[j]).getHeuresMax() > ((Profil)employee[j]).getHeuresTravaillees() && ((Profil)employee[j]).getDispo()[k].getDebut().DayOfWeek.Equals(blocs[i].getDebut().DayOfWeek) && !blocs[i].estDejaPresent(employee[j]))
-                        {
-                            // MessageBox.Show("han?");
-                            for (int l = 0; l < ((Profil)employee[j]).getPoste().Count; l++)
-                            {
-                                if (blocs[i].estVoulue(((Profil)employee[j]).getPoste(l)))
-                                {
-                                    for (int m = 0; m < blocs[i].getRessourceVoulus().Count; m++)
-                                    {
-                                        if (blocs[i].getRessourceVoulus(m).nbVoulue > blocs[i].getRessourceVoulus(m).nbAffectee && !blocs[i].estDejaPresent(employee[j]))
+                                        if (blocs[i].estVoulue(((Profil)employee[j]).getPoste(l)) && !blocs[i].estDejaPresent(employee[j]))
                                         {
                                             blocs[i].addRessource(((Profil)employee[j]), ((Profil)employee[j]).getPoste(l));
                                             MessageBox.Show("han?");
+                                            //pour sortir des boucles useless;
+                                            l = ((Profil)employee[j]).getPoste().Count;
+                                            k = ((Profil)employee.ElementAt(j)).getPref().Count;
+                                            if (((Profil)employee[j]).getHeuresMax() > ((Profil)employee[j]).getHeuresTravaillees())
+                                                i = blocs.Count;
+
+
                                         }
-                                        coun++;
                                     }
                                 }
                             }
+                        }
+                    }
+                }
+            }
 
 
+
+
+
+            for (int j = 0; j < employee.Count; j++)
+            {
+                if (((Profil)employee[j]).getHeuresMax() > ((Profil)employee[j]).getHeuresTravaillees())
+                {
+                    for (int i = 0; i < blocs.Count; i++)
+                    {
+                        if (!blocs[i].checkCompletion())
+                        {
+                            Console.WriteLine(blocs[i].getId() + " " + blocs[i].getDebut() + " " + blocs[i].getFin());
+
+
+                            for (int k = 0; k < ((Profil)employee.ElementAt(j)).getDispo().Count; k++)
+                            {
+                                //si l'heure de début et avant le début du bloc, et l'heure de fin est après la fin du bloc, et le jour de la semaine est le même et que l'employé n'as pas dépassé son quota d'heure
+                                    
+                                if (Convert.ToInt32(((Profil)employee[j]).getDispo()[k].getDebut().ToString("HHmm")) <= Convert.ToInt32(blocs[i].getDebut().ToString("HHmm")) && Convert.ToInt32(((Profil)employee[j]).getDispo()[k].getFin().ToString("HHmm")) >= Convert.ToInt32(blocs[i].getFin().ToString("HHmm")) && ((Profil)employee[j]).getHeuresMax() > ((Profil)employee[j]).getHeuresTravaillees() && ((Profil)employee[j]).getDispo()[k].getDebut().DayOfWeek.Equals(blocs[i].getDebut().DayOfWeek) && !blocs[i].estDejaPresent(employee[j]))
+                                {
+                                    for (int l = 0; l < ((Profil)employee[j]).getPoste().Count; l++)
+                                    {
+
+                                        Console.WriteLine("       " + ((Profil)employee[j]).getNom() + " " + (((Profil)employee[j]).getDispo()[k].getDebut()) + " " + (((Profil)employee[j]).getDispo()[k].getFin()) + " " + ((Profil)employee[j]).getHeuresMax() + " " + ((Profil)employee[j]).getHeuresTravaillees() + " ");
+                                        if (blocs[i].estVoulue(((Profil)employee[j]).getPoste(l)) && !blocs[i].estDejaPresent(employee[j]))
+                                        {
+                                            blocs[i].addRessource(((Profil)employee[j]), ((Profil)employee[j]).getPoste(l));
+                                            MessageBox.Show("han?");
+                                            //pour sortir des boucles useless;
+                                            l = ((Profil)employee[j]).getPoste().Count;
+                                            k = ((Profil)employee.ElementAt(j)).getDispo().Count;
+
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }

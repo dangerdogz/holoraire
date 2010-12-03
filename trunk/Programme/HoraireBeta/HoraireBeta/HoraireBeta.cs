@@ -17,6 +17,7 @@ namespace HoraireBeta
     public partial class HoraireBeta : Form
     {
         Boolean test = true;
+        Bloc presetSelected = null;
         AjouterPoste ajouterposte = new AjouterPoste();
         AjouterEquipe ajouterequipe = new AjouterEquipe();
         SelectDispo dispoWindow;
@@ -91,6 +92,8 @@ namespace HoraireBeta
             }
         }
 
+
+
         private void pGauche_Horaire_OnMouseEvent(object sender, MouseEventArgs e)
         {
 
@@ -108,9 +111,27 @@ namespace HoraireBeta
             switch (e.Button)
                 {
                 case MouseButtons.Left:
-                    grille.passeClique(e,"MouseDown");
+                        grille.passeClique(e, "MouseDown", presetSelected);
+                    break;
+                case MouseButtons.Right:
+                        presetSelected = null;
+                        listPreset.ClearSelected();
                     break;
                 }   
+
+
+        }
+
+        private void listPreset_MouseDown(object sender, MouseEventArgs e)
+        {
+            int index = listPreset.IndexFromPoint(e.Location.X, e.Location.Y);
+            if (listPreset.Items[index] != null) {
+                //MessageBox.Show(listPreset.GetItemText(listPreset.Items[index]));
+                if (loader.findBloc(Convert.ToInt32(listPreset.GetItemText(listPreset.Items[index])), loader.bloc) != null)
+                {
+                    presetSelected = loader.findBloc(Convert.ToInt32(listPreset.GetItemText(listPreset.Items[index])), loader.bloc);
+                }
+            }
 
 
         }
@@ -119,8 +140,9 @@ namespace HoraireBeta
         {
             switch (e.Button)
             {
-                case MouseButtons.Left:
-                    grille.passeClique(e,"MouseUp");
+                  
+                  case MouseButtons.Left:
+                   grille.passeClique(e,"MouseUp");
                    // updateInterfaceHoraire();
                     if (grille.selectionEnCours != null)
                     {
@@ -130,7 +152,6 @@ namespace HoraireBeta
                     }
                     break;
             }
-
             
         }
 
@@ -984,12 +1005,8 @@ namespace HoraireBeta
                 }
             }
             return null;
-        
-
-            
         }
         
-
 
         private void treeView_modemploye_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -1105,6 +1122,8 @@ namespace HoraireBeta
         {
             listEmploye.Items.Clear();
 
+<<<<<<< .mine
+=======
 
             Profil ressource = null;
             Chilkat.Xml xmlProfiles = new Chilkat.Xml();
@@ -1132,6 +1151,7 @@ namespace HoraireBeta
                // proc.deleteEmploye(nemploye, nom, prenom, courriel, telephone);
             }
 
+>>>>>>> .r394
         }
 
 void listEmploye_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -1170,6 +1190,24 @@ void listEmploye_MouseDoubleClick(object sender, MouseEventArgs e)
 
             }*/
 
+            
+        }
+        void listEmploye_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+<<<<<<< .mine
+            int index = this.listEmploye.IndexFromPoint(e.Location);
+
+            if (index != System.Windows.Forms.ListBox.NoMatches)
+            {
+
+                //MessageBox.Show(index.ToString());
+
+=======
+>>>>>>> .r394
+                //do your stuff here
+
+            }
 
         }
         public void fillPosteListBox(Bloc bloc)
@@ -1243,13 +1281,20 @@ void listEmploye_MouseDoubleClick(object sender, MouseEventArgs e)
         }
         public void fillPresetListBox()
         {
+           // MessageBox.Show("Cockshit");
             listPreset.Items.Clear();
             List<Bloc> blocs = loader.bloc;
             for (int i = 0; i < blocs.Count(); i++)
             {
-                if (blocs.ElementAt(i).getPreset())
+                //MessageBox.Show("Chat"+i);
+                if (((Bloc)blocs.ElementAt(i)).getPreset())
                 {
-                    listPreset.Items.Add(((Bloc)blocs.ElementAt(i)).getNom());
+                    listPreset.Items.Add(((Bloc)blocs.ElementAt(i)).getId() + " " + ((Bloc)blocs.ElementAt(i)).getNom());
+                    //MessageBox.Show(((Bloc)blocs.ElementAt(i)).getId() + " " + ((Bloc)blocs.ElementAt(i)).getNom());
+                }
+                else
+                {
+                    //MessageBox.Show(((Bloc)blocs.ElementAt(i)).getPreset().ToString());
                 }
             }
 
@@ -1262,7 +1307,7 @@ void listEmploye_MouseDoubleClick(object sender, MouseEventArgs e)
             if (index != System.Windows.Forms.ListBox.NoMatches)
             {
 
-                //MessageBox.Show(index.ToString());
+                MessageBox.Show(index.ToString());
 
                 //do your stuff here
 
@@ -1282,6 +1327,7 @@ void listEmploye_MouseDoubleClick(object sender, MouseEventArgs e)
             resetTree(RessourceTree.Nodes[0].Nodes);
             resetTree(RessourceTree.Nodes[1].Nodes);
             resetTree(RessourceTree.Nodes[2].Nodes);
+            fillPresetListBox();
             clearList();
             
 
@@ -1401,7 +1447,7 @@ void listEmploye_MouseDoubleClick(object sender, MouseEventArgs e)
                             {
                                 if (ressource == profil)
                                 {
-                                    writer.WriteLine(((Profil)profil).getNom() + " " + ((Profil)profil).getPrenom() + ", " + ((Profil)profil).getNumTelephone() + ", " + ((Profil)profil).getEmail());
+                                    writer.WriteLine(((Profil)profil).getNom() + " " + ((Profil)profil).getPrenom());
                                 }
                             }        
                         }

@@ -20,6 +20,7 @@ namespace HoraireBeta
         Profil profil;
         public bool isPref = false;
 
+
         //Id des blocs en mémoires
 
         public GrilleHoraire(Graphics grfx, Loader loader, DateTime date)
@@ -92,7 +93,6 @@ namespace HoraireBeta
         public void refresh()
         {
             gfx.Clear(Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))));
-            //MessageBox.Show("kill the niggers");
             activer();
         }
 
@@ -147,55 +147,89 @@ namespace HoraireBeta
 
         }
 
-        public void passeClique(MouseEventArgs e, String mouse)
+        public void passeClique(MouseEventArgs e, String mouse, Bloc preset = null)
         {
             if (mouse == "MouseDown")
             {
-                Boolean blocUnselected = false;
-
-                for (int i = 0; i < 7; i++)
+                if (preset != null)
                 {
-                    //Sélection du bon jours
-                    if (e.X > jours[i].getX() && e.X < jours[i].getXFin())
+                    for (int i = 0; i < 7; i++)
                     {
-                        //Jour cliquer
-                        jourCliquer = jours[i];
-
-
-                        //Sélection d'un bloc existant
-                        if (selectionEnCours != null)
+                        //Sélection du bon jours
+                        if (e.X > jours[i].getX() && e.X < jours[i].getXFin())
                         {
-                            selectionEnCours.unSelectIt();
-                            blocUnselected = true;
-                        }
-                        selectionEnCours = jours[i].selectionneUnBloc(e.Y);
-                        if (selectionEnCours != null)
-                        {
-                            selectionEnCours.selectIt();
-                            refresh();
+                            //Jour cliquer
+                            jourCliquer = jours[i];
 
-                        }
-                        //Si appuis dans le vide
-                        else
-                        {
-                            if (blocUnselected == false)
+                            //DateTime 1 heure plus tard
+                            DateTime tempDateFin = jourCliquer.getDate();
+
+                            if (jourCliquer.getHeureClique(e.Y) >= 0)
                             {
+                                if (jourCliquer.getHeureClique(e.Y) >= 0)
                                 {
-                                    //DateTime 1 heure plus tard
-                                    DateTime tempDateFin = jourCliquer.getDate();
-                                    
-                                    if (jourCliquer.getHeureClique(e.Y) >= 0)
+                                    //Création du bloc
+                                    //  refresh();
+                                    jourCliquer.addPreset(preset, jourCliquer.getX());
+                                    refresh();
+                                }
+                            }
+
+
+
+
+                        }
+                    }
+
+                }
+                else
+                {
+                    Boolean blocUnselected = false;
+
+                    for (int i = 0; i < 7; i++)
+                    {
+                        //Sélection du bon jours
+                        if (e.X > jours[i].getX() && e.X < jours[i].getXFin())
+                        {
+                            //Jour cliquer
+                            jourCliquer = jours[i];
+
+
+                            //Sélection d'un bloc existant
+                            if (selectionEnCours != null)
+                            {
+                                selectionEnCours.unSelectIt();
+                                blocUnselected = true;
+                            }
+                            selectionEnCours = jours[i].selectionneUnBloc(e.Y);
+                            if (selectionEnCours != null)
+                            {
+                                selectionEnCours.selectIt();
+                                refresh();
+
+                            }
+                            //Si appuis dans le vide
+                            else
+                            {
+                                if (blocUnselected == false)
+                                {
                                     {
+                                        //DateTime 1 heure plus tard
+                                        DateTime tempDateFin = jourCliquer.getDate();
+
                                         if (jourCliquer.getHeureClique(e.Y) >= 0)
                                         {
-                                            //Création du bloc
-                                          //  refresh();
-                                            jourCliquer.createBlock(jourCliquer.getX(), jourCliquer.getHeureClique(e.Y),
-                                                jourCliquer.getDate(), tempDateFin);
-                                            refresh();
+                                            if (jourCliquer.getHeureClique(e.Y) >= 0)
+                                            {
+                                                //Création du bloc
+                                                //  refresh();
+                                                jourCliquer.createBlock(jourCliquer.getX(), jourCliquer.getHeureClique(e.Y),
+                                                    jourCliquer.getDate(), tempDateFin);
+                                                refresh();
+                                            }
                                         }
+
                                     }
-                                   
                                 }
                             }
                         }
@@ -204,6 +238,10 @@ namespace HoraireBeta
 
 
             }//Fin du MouseUp
+            if (mouse == "MouseUp")
+            {
+                
+            }
 
             if (mouse == "DoubleClick")
             {

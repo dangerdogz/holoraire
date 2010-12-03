@@ -84,6 +84,7 @@ namespace HoraireBeta
 
         ~GrilleJour()
         { //Destructeur Décoratif! Made by Simon Brassard
+            
 
 
 
@@ -145,9 +146,7 @@ namespace HoraireBeta
                 else
                     if (loader == null && !laGrille.isPref)
                     {
-                       // MessageBox.Show("Fuckshit");
                         blocs = profil.getBlocFromDate(dateDuJour, false);
-                   // MessageBox.Show("Niggercunt");
                     }
 
             if (blocs != null)
@@ -236,7 +235,7 @@ namespace HoraireBeta
                                 //Affectation du nouveau Bloc
                                 blocs.ElementAt(i).selectIt();
                                 selectionEnCours = blocs.ElementAt(i);
-                                //MessageBox.Show("Block sélectionné");
+                                
                                 laGrille.refresh();
                                 }
                         }
@@ -278,7 +277,7 @@ namespace HoraireBeta
             DateTime debut = leBloc.getDebut();
             DateTime fin = leBloc.getFin();
 
-            ModificationBloc modifbloc = new ModificationBloc(hDebut, hFin, blocs);
+            ModificationBloc modifbloc = new ModificationBloc(hDebut, hFin,blocs);
             modifbloc.ShowDialog();
 
             if (modifbloc.isValide())
@@ -298,7 +297,6 @@ namespace HoraireBeta
                     Bloc leBloc2 = leBloc;
                     leBloc2.setDebut(tempDebut);
                     leBloc2.setFin(tempFin);
-                    MessageBox.Show("Heure de début : " + tempDebut+"\nHeure de fin : "+tempFin);
 
                     if (modifbloc.placementValide(leBloc2))
                     {
@@ -326,7 +324,6 @@ namespace HoraireBeta
                             }
 
                         }
-                        
                     }
                     else
                     {
@@ -369,7 +366,7 @@ namespace HoraireBeta
             string hDebut = heureDebut + "";
             string hFin = (heureDebut + 1) + "";
 
-            CreationBloc creationbloc = new CreationBloc(hDebut, hFin, blocs);
+            CreationBloc creationbloc = new CreationBloc(hDebut, hFin);
             creationbloc.ShowDialog();
 
             if (creationbloc.isValide())
@@ -384,7 +381,6 @@ namespace HoraireBeta
             DateTime tempDebut = new DateTime(debut.Year, debut.Month, debut.Day, dateDebut, debut.Minute, debut.Second);
             DateTime tempFin = new DateTime(fin.Year, fin.Month, fin.Day, dateFin, fin.Minute, fin.Second) - new TimeSpan(0, 0, 0, 1);
 
-            // MessageBox.Show(" Date Début : " + tempDebut + " et Date Fin : " + tempFin);
 
             //Affecte le bloc
 
@@ -395,7 +391,7 @@ namespace HoraireBeta
 
                             
 
-            if (creationbloc.placementValide(tempBloc))
+            if (placementValide(tempBloc))
             {
                 if (profil != null)
                 {
@@ -422,6 +418,55 @@ namespace HoraireBeta
 
         }
 
+         public bool placementValide(Bloc leBloc) {
+
+            //Variables
+            for (int i = 0; i < blocs.Count; i++)
+                {
+                //Sois le bloc ajouté enpiète sur la fin du bloc existant ou sur le debut du bloc existant
+                if ( (leBloc.getDebut() < blocs[i].getFin() && leBloc.getFin() > blocs[i].getFin()) 
+                    || (leBloc.getFin() > blocs[i].getDebut() && leBloc.getDebut() < blocs[i].getDebut()))
+                    {
+                    return false; //Bloc existant                 
+                    }
+            
+                }
+            return true; //Aucun accros
+        }
+
+        public void addPreset(Bloc bloc, int x)
+        {
+ 
+
+                int dateDebut = bloc.getDebut().Hour;
+                int dateFin = bloc.getFin().Hour;
+               
+
+
+                DateTime tempDebut = new DateTime(this.dateDuJour.Year, this.dateDuJour.Month, this.dateDuJour.Day, dateDebut, this.dateDuJour.Minute, this.dateDuJour.Second);
+                DateTime tempFin = new DateTime(this.dateFin.Year, this.dateFin.Month, this.dateFin.Day, dateFin, this.dateFin.Minute, this.dateFin.Second) - new TimeSpan(0, 0, 0, 1);
+
+                Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0, true);
+
+                tempBloc.setRessourceAffectes(bloc.getRessourceAffectes());
+                tempBloc.setRessourceVoulus(bloc.getListRessourceVoulus());
+                tempBloc.setId(bloc.getId());
+
+                
+
+                if (placementValide(tempBloc))
+                {
+                    //Ajout du block valide
+                    tempBloc.draw(width, grfx);
+                    loader.bloc.Add(tempBloc);                   
+                }
+                else
+                    MessageBox.Show("Placement invalide");
+
+            }
+
+        }
+
 
     }
 
@@ -429,5 +474,5 @@ namespace HoraireBeta
 
 
 
-}
+
 

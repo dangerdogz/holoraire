@@ -405,6 +405,14 @@ namespace HoraireBeta
 
         private void ajouter_button_Click(object sender, EventArgs e)
         {
+            CreateXml.CreateProfileXml();
+            Chilkat.Xml xmlPoste12 = new Chilkat.Xml();
+            xmlPoste12.LoadXmlFile("postes.xml");
+
+            treeView_postdispo.Nodes.Clear();
+            treeView_postechoisi.Nodes.Clear();
+            FillTree(treeView_postdispo.Nodes, xmlPoste12);
+
             mod = false;
             this.panelCentral_Employe.Controls.Remove(this.supprimer_button);
             this.panelCentral_Employe.Controls.Add(this.numemp_textbox);

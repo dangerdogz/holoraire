@@ -83,34 +83,45 @@ namespace HoraireBeta
             //Retirer lui-même du tableau
             int indexBloc = -1;
             int heureTempDebut;
+
+            MessageBox.Show("Heure temp "+tempHd);
             try
                 {
                 heureTempDebut = Int16.Parse(tempHd);
                 }
             catch (Exception)
                 {
-                
+                MessageBox.Show("Erreur de parse");
                 throw;
                 }
             
-            
+            //Trouve son index
             for (int i = 0; i < listBloc.Count; i++)
                 {
-                if (listBloc[i].getDebut().Hour.ToString() == tempHd)
+                    MessageBox.Show("Heure de départ : " + listBloc[i].getDebut().Hour);
+                if (listBloc[i].getDebut().Hour.Equals(heureTempDebut))
                     {
-                    indexBloc = i; 
+                    indexBloc = i;
+                    MessageBox.Show("Index du bloc :" + indexBloc);
                     break;
                     }
                 }
-
+            MessageBox.Show("Début : " + leBloc.getDebut().Hour + " Fin : " + leBloc.getFin().Hour);
 
             for (int i = 0; i < listBloc.Count; i++)
-            {
+            {/*
                 //Sois le bloc ajouté enpiète sur la fin du bloc existant ou sur le debut du bloc existant
-                if (((( heureTempDebut < listBloc[i].getFin().Hour && leBloc.getFin().Hour > listBloc[i].getFin().Hour)
-                    || (leBloc.getFin().Hour > listBloc[i].getDebut().Hour && heureTempDebut < listBloc[i].getDebut().Hour)
-                    || (heureTempDebut > listBloc[i].getDebut().Hour && leBloc.getFin().Hour < listBloc[i].getFin().Hour))) 
-                    && (indexBloc != i))//Différent de lui-même
+                if (((( leBloc.getDebut().Hour < listBloc[i].getFin().Hour && leBloc.getFin().Hour > listBloc[i].getFin().Hour)
+                    || (leBloc.getFin().Hour > listBloc[i].getDebut().Hour && leBloc.getDebut().Hour < listBloc[i].getDebut().Hour)
+                    || (leBloc.getDebut().Hour < listBloc[i].getDebut().Hour && leBloc.getFin().Hour > listBloc[i].getDebut().Hour))) 
+                    && (indexBloc != i))//Différent de lui-même*/
+                MessageBox.Show("Première condition : " + (leBloc.getDebut().Hour < listBloc[i].getFin().Hour && leBloc.getFin().Hour > listBloc[i].getDebut().Hour) + " \nDeuxième condition : " + (leBloc.getFin().Hour > listBloc[i].getDebut().Hour && leBloc.getDebut().Hour < listBloc[i].getDebut().Hour) + " \n Troisième condition : " + (leBloc.getDebut().Hour < listBloc[i].getDebut().Hour && leBloc.getFin().Hour > listBloc[i].getDebut().Hour) + " \n Index : " + (indexBloc != i));
+
+
+                if (((leBloc.getDebut().Hour < listBloc[i].getFin().Hour && leBloc.getFin().Hour > listBloc[i].getDebut().Hour)
+                    || (leBloc.getFin().Hour > listBloc[i].getDebut().Hour && leBloc.getDebut().Hour < listBloc[i].getDebut().Hour)
+                    || (leBloc.getDebut().Hour < listBloc[i].getDebut().Hour && leBloc.getFin().Hour > listBloc[i].getDebut().Hour))
+                    && (indexBloc != i))//Différent de lui-même*/
                     {
                     return false; //Bloc existant                 
                     }

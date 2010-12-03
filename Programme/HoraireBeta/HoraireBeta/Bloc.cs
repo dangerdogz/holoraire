@@ -486,7 +486,7 @@ namespace HoraireBeta
             }
             foreach (RessourceEntree lui in ressourcesVoulus)
             {
-                MessageBox.Show("Lol this");
+               
                 if (lui.voulue is Equipe)
                     proc.addRessource(id, 0, lui.voulue.getId(), lui.nbVoulue);
                 else

@@ -278,7 +278,7 @@ namespace HoraireBeta
             DateTime debut = leBloc.getDebut();
             DateTime fin = leBloc.getFin();
 
-            ModificationBloc modifbloc = new ModificationBloc(hDebut, hFin,blocs);
+            ModificationBloc modifbloc = new ModificationBloc(hDebut, hFin, blocs);
             modifbloc.ShowDialog();
 
             if (modifbloc.isValide())
@@ -298,6 +298,7 @@ namespace HoraireBeta
                     Bloc leBloc2 = leBloc;
                     leBloc2.setDebut(tempDebut);
                     leBloc2.setFin(tempFin);
+                    MessageBox.Show("Heure de début : " + tempDebut+"\nHeure de fin : "+tempFin);
 
                     if (modifbloc.placementValide(leBloc2))
                     {
@@ -325,6 +326,7 @@ namespace HoraireBeta
                             }
 
                         }
+                        
                     }
                     else
                     {

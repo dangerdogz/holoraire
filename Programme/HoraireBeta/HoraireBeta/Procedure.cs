@@ -304,7 +304,8 @@ namespace HoraireBeta
         public void deleteRessource(int idBlock)
         {
             String requete;
-            requete = "DELETE  FROM Ressource WHERE idBlock=" + idBlock + "";
+            requete = "DELETE FROM Ressource WHERE idBlock=" + idBlock + "";
+            getResult(requete);
         }
         public DataTable getRessource(int idBlock)
         {

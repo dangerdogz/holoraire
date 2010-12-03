@@ -163,7 +163,9 @@ namespace HoraireBeta
 
 
 
-                Bloc newBloc = new Bloc(DateTime.ParseExact(rsBloc.Rows[i]["debut"].ToString(), "yyyy-MM-dd HH:mm:ss", null), DateTime.ParseExact(rsBloc.Rows[i]["fin"].ToString(), "yyyy-MM-dd HH:mm:ss", null), Convert.ToInt32(rsBloc.Rows[i]["idType"].ToString()), Convert.ToInt32(rsBloc.Rows[i]["idBlock"].ToString()), (Boolean)(rsBloc.Rows[i]["preset"]));
+
+                   // MessageBox.Show((rsBloc.Rows[i]["preset"]).ToString());
+                    Bloc newBloc = new Bloc(DateTime.ParseExact(rsBloc.Rows[i]["debut"].ToString(), "yyyy-MM-dd HH:mm:ss", null), DateTime.ParseExact(rsBloc.Rows[i]["fin"].ToString(), "yyyy-MM-dd HH:mm:ss", null), Convert.ToInt32(rsBloc.Rows[i]["idType"].ToString()), Convert.ToInt32(rsBloc.Rows[i]["idBlock"].ToString()), true /*(Boolean)(rsBloc.Rows[i]["preset"])*/);
 
 
 
@@ -260,12 +262,26 @@ namespace HoraireBeta
         {
             int i = 0;
 
-            while (id != liste.ElementAt(i).getId())
+            for (i = 0; i < liste.Count; i++)
             {
-                i++;
+                if (liste.ElementAt(i).getId() == id)
+                    return liste.ElementAt(i);
+            }
+            return null;
+
+        }
+
+        public Bloc findBloc(int id, List<Bloc> liste)
+        {
+            int i = 0;
+
+            for (i = 0; i < liste.Count; i++)
+            {
+                if (liste.ElementAt(i).getId() == id)
+                    return liste.ElementAt(i);
             }
 
-            return liste.ElementAt(i);
+            return null;
 
         }
 

@@ -13,14 +13,12 @@ namespace HoraireBeta
     {
         string hd;
         string hf;
-        List<Bloc> listBloc;
         bool valide = false;
         bool preset = false;
 
-        public CreationBloc(string hd, string hf, List<Bloc> listBloc)
+        public CreationBloc(string hd, string hf)
         {
             InitializeComponent(hd,hf);
-            this.listBloc = listBloc;
         }
 
         public bool isValide() { return valide; }
@@ -74,21 +72,6 @@ namespace HoraireBeta
         }
 
         //Retourne vrai si le placement est valide
-        public bool placementValide(Bloc leBloc) {
-
-            //Variables
-            for (int i = 0; i < listBloc.Count; i++)
-                {
-                //Sois le bloc ajouté enpiète sur la fin du bloc existant ou sur le debut du bloc existant
-                if ( (leBloc.getDebut() < listBloc[i].getFin() && leBloc.getFin() > listBloc[i].getFin()) 
-                    || (leBloc.getFin() > listBloc[i].getDebut() && leBloc.getDebut() < listBloc[i].getDebut()))
-                    {
-                    return false; //Bloc existant                 
-                    }
-            
-                }
-            return true; //Aucun accros
-        }
 
         private void button_blocconfirm_Click(object sender, EventArgs e)
         {
@@ -96,6 +79,11 @@ namespace HoraireBeta
 
             if (checkBox_Preset.Checked)
                 preset = true;
+            else
+            {
+                if (!checkBox_Preset.Checked)
+                    preset = false;
+            }
 
             if (valideHeures())
                 {

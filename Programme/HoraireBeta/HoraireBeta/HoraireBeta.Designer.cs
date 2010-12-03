@@ -358,7 +358,8 @@ namespace HoraireBeta
             this.listPreset.Name = "listPreset";
             this.listPreset.Size = new System.Drawing.Size(218, 316);
             this.listPreset.TabIndex = 0;
-            this.listPreset.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listEmploye_MouseDoubleClick);
+            this.listPreset.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listPreset_MouseDoubleClick);
+            this.listPreset.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listPreset_MouseDown);
             // 
             // tab_Ressources
             // 

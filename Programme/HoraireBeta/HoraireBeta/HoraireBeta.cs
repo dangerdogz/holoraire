@@ -48,12 +48,7 @@ namespace HoraireBeta
 
         private void employe_Click(object sender, EventArgs e)
         {
-<<<<<<< .mine
-           
 
-=======
-            
->>>>>>> .r391
         }
         /*
         private void pCentral_Horaire_Paint(object sender, PaintEventArgs e)
@@ -852,7 +847,9 @@ namespace HoraireBeta
                         showPosteDialog.ShowDialog();
                         if (showPosteDialog.confirm)
                         {
-                            bloc.addRessourceVoulue(1, (Poste)res);
+                            bloc.addRessourceVoulue(Convert.ToInt32(showPosteDialog.nb), (Poste)res);
+                            //todo eille fadrait que ca edit un moment donné ca
+                            //faut passer un int a nbposte, pis savoir que t'es en mode édit qq part
                         }
                         showPosteDialog.Dispose();
                     }
@@ -976,21 +973,13 @@ namespace HoraireBeta
                 // FindNextRecord *will* return the current record if it
                 // matches the criteria. 
                 xml = xml.FindNextRecord("nom", nom + "*");
-<<<<<<< .mine
-              //  MessageBox.Show("robert");
-=======
-               
->>>>>>> .r391
+
                 if (xml != null)
                 {
                     // Add the company name to the listbox.
                     String id = null;
                     id = xml.GetChildContent("id");
-<<<<<<< .mine
-                 //   MessageBox.Show(id.ToString());
-=======
-                    
->>>>>>> .r391
+
                     return id;
                 }
             }
@@ -1116,7 +1105,7 @@ namespace HoraireBeta
         {
             listEmploye.Items.Clear();
 
-<<<<<<< .mine
+
             Profil ressource = null;
             Chilkat.Xml xmlProfiles = new Chilkat.Xml();
             xmlProfiles.LoadXmlFile("profiles.xml");
@@ -1141,25 +1130,17 @@ namespace HoraireBeta
                 String telephone = ressource.getNumTelephone();
                 DBConnect proc = new DBConnect();
                // proc.deleteEmploye(nemploye, nom, prenom, courriel, telephone);
-
-=======
->>>>>>> .r391
-                
-        
-
-
-
-<<<<<<< .mine
-=======
             }
 
         }
-        void listEmploye_MouseDoubleClick(object sender, MouseEventArgs e)
+
+void listEmploye_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 
+    /*
             int index = this.listEmploye.IndexFromPoint(e.Location);
 
->>>>>>> .r391
+
             if (index != System.Windows.Forms.ListBox.NoMatches)
             {
                 int idEmployeClicked = Convert.ToInt32(listEmploye.Items[index].ToString().Substring(0, 1));
@@ -1168,28 +1149,26 @@ namespace HoraireBeta
 
                 
             }
-<<<<<<< .mine
+
             else
             {
                // MessageBox.Show("lol");
             }
-=======
->>>>>>> .r391
+
             List<Ressource> ressources = bloc.getListRessourceAffecte();
             for (int i = 0; i < ressources.Count(); i++)
             {
 
-<<<<<<< .mine
+
                 // Add the employee name to the listbox.
                 if (ressources.ElementAt(i) is Profil)
                 {
                     listEmploye.Items.Add(((Profil)ressources.ElementAt(i)).getId() + " - " + ((Profil)ressources.ElementAt(i)).getNom() + " " + ((Profil)ressources.ElementAt(i)).getPrenom());
                 }
 
-=======
->>>>>>> .r391
 
-            }
+
+            }*/
 
 
         }

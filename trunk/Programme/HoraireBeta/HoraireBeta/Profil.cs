@@ -239,7 +239,7 @@ namespace HoraireBeta
                     proc.addPlage(dispo.getDebut().ToString("yyyy-MM-dd HH:mm:ss"), dispo.getFin().ToString("yyyy-MM-dd HH:mm:ss"), Loader.SemaineToInt(pref.getFin()));
                     dispo.setId(Convert.ToInt32(proc.getLastStuff("Plage").Rows[0]["idPlage"].ToString()));
                 }
-                proc.addProfilPreference(id, dispo.getId());
+                proc.addProfilDispo(id, dispo.getId());
             }
         }
 

@@ -175,10 +175,14 @@ namespace HoraireBeta
             requete = "SELECT nom FROM Poste WHERE idPoste = " + idPoste + "";
             return getResult(requete);
         }
-        public void addBlock(String debut, String fin, int idType)
+        public void addBlock(String debut, String fin, int idType, bool preset)
         {
+           int intPreset = 0;
+            if (preset)
+                intPreset = 1;
+
             String requete;
-            requete = "INSERT INTO Block(idType, debut, fin) VALUES(\"" + idType + "\",\"" + debut + "\",\"" + fin + "\")";
+            requete = "INSERT INTO Block(idType, debut, fin, preset) VALUES(\"" + idType + "\",\"" + debut + "\",\"" + fin + "\", " + intPreset + " )";
             getResult(requete);
            // MessageBox.Show(requete);
         }

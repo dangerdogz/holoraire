@@ -143,10 +143,7 @@ namespace HoraireBeta
             {
                 bloc.save();
             }
-            foreach (Ressource emp in employee)
-            {
-                ((Profil)emp).save();
-            }
+
 
             MessageBox.Show(coun+"");
             return valide;

@@ -419,7 +419,6 @@ namespace HoraireBeta
             String requete;
             requete = "INSERT INTO Poste_Profil(idPoste, idProfil) VALUES(" + idPoste + ", " + idProfil + ")";
             getResult(requete);
-           // MessageBox.Show(requete);
         }
         public void deletePosteProfil(int idProfil)
         {

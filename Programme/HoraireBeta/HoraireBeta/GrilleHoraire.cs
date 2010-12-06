@@ -193,6 +193,8 @@ namespace HoraireBeta
                         {
                             //Jour cliquer
                             jourCliquer = jours[i];
+                        }
+                    }
 
 
                             //Sélection d'un bloc existant
@@ -200,8 +202,9 @@ namespace HoraireBeta
                             {
                                 selectionEnCours.unSelectIt();
                                 blocUnselected = true;
+                                refresh();
                             }
-                            selectionEnCours = jours[i].selectionneUnBloc(e.Y);
+                            selectionEnCours = jourCliquer.selectionneUnBloc(e.Y);
                             if (selectionEnCours != null)
                             {
                                 selectionEnCours.selectIt();
@@ -211,28 +214,30 @@ namespace HoraireBeta
                             //Si appuis dans le vide
                             else
                             {
-                                if (blocUnselected == false)
-                                {
+                               
+                                    if (!blocUnselected)
                                     {
-                                        //DateTime 1 heure plus tard
-                                        DateTime tempDateFin = jourCliquer.getDate();
-
-                                        if (jourCliquer.getHeureClique(e.Y) >= 0)
                                         {
+                                            //DateTime 1 heure plus tard
+                                            DateTime tempDateFin = jourCliquer.getDate();
+
                                             if (jourCliquer.getHeureClique(e.Y) >= 0)
                                             {
-                                                //Création du bloc
-                                                //  refresh();
-                                                jourCliquer.createBlock(jourCliquer.getX(), jourCliquer.getHeureClique(e.Y),
-                                                    jourCliquer.getDate(), tempDateFin);
-                                                refresh();
+                                                if (jourCliquer.getHeureClique(e.Y) >= 0)
+                                                {
+                                                    //Création du bloc
+                                                    //  refresh();
+                                                    jourCliquer.createBlock(jourCliquer.getX(), jourCliquer.getHeureClique(e.Y),
+                                                        jourCliquer.getDate(), tempDateFin);
+                                                    refresh();
+                                                }
                                             }
-                                        }
 
+                                        }
                                     }
-                                }
-                            }
-                        }
+                                
+                            
+                        
                     }
                 }
 

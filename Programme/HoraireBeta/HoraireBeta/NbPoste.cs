@@ -28,11 +28,11 @@ namespace HoraireBeta
             InitializeComponent();
         }
 
-        public NbPoste(String nom, String nb)
+        public NbPoste(String nom, int nb)
         {
             InitializeComponent(); 
             setName(nom);
-            setNb(nb);
+            setNb(nb.ToString());
         }
 
         public void setName(string pname)

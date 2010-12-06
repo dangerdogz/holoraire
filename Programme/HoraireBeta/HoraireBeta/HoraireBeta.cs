@@ -112,6 +112,9 @@ namespace HoraireBeta
                 {
                 case MouseButtons.Left:
                         grille.passeClique(e, "MouseDown", presetSelected);
+                        listPoste.Items.Clear();
+                        listEmploye.Items.Clear();
+                        listEquipe.Items.Clear();
                     break;
                 case MouseButtons.Right:
                         presetSelected = null;
@@ -808,6 +811,7 @@ namespace HoraireBeta
         }
         private void Sauvegarder_button_Click(object sender, EventArgs e)
         {
+
             if (nom_textbox.Text == "" || prenom_textbox.Text == "" || numemp_textbox.Text == "")
             {
                 MessageBox.Show("Veuillez entrer un numéro d'employé, un nom et un prenom pour l'employé");
@@ -866,6 +870,7 @@ namespace HoraireBeta
 
         private void LinkBlocToRessource(Ressource res, Bloc bloc)
         {
+            NbPoste showPosteDialog;
             if (res is Profil)
                 bloc.addProfil((Profil)res);
             else
@@ -874,11 +879,29 @@ namespace HoraireBeta
                 else
                     if (res is Poste)
                     {
-                        NbPoste showPosteDialog = new NbPoste();
+                        if (bloc.estVoulue(res))
+                            showPosteDialog = new NbPoste(res.getNom(), bloc.getRessourceVoulus(res).nbVoulue);
+                        else
+                            showPosteDialog = new NbPoste();
+
                         showPosteDialog.ShowDialog();
                         if (showPosteDialog.confirm)
                         {
-                            bloc.addRessourceVoulue(Convert.ToInt32(showPosteDialog.nb), (Poste)res);
+                            
+                            if (!bloc.estVoulue(res))
+                                bloc.addRessourceVoulue(Convert.ToInt32(showPosteDialog.nb), (Poste)res);
+                            else
+                            {
+                                RessourceEntree holy = bloc.getRessourceVoulus(res);
+                                holy.nbVoulue = Convert.ToInt32(showPosteDialog.nb);
+                                bloc.getRessourceVoulus().RemoveAt(bloc.getiRessourceVoulus(res));
+                                bloc.addRessourceVoulue(holy);
+
+                            }
+                            //grille.refresh();
+                            //FillInterface();
+                            fillPosteListBox(bloc);
+                           // FillTree();
                             //todo eille fadrait que ca edit un moment donné ca
                             //faut passer un int a nbposte, pis savoir que t'es en mode édit qq part
                         }

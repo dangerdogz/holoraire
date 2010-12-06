@@ -425,7 +425,6 @@ namespace HoraireBeta
         {
             String requete;
             requete = "DELETE FROM Poste_Profil WHERE idProfil = " + idProfil + ";";
-            MessageBox.Show(requete);
             getResult(requete);
         }
         public DataTable getProfilPoste(int idProfil)

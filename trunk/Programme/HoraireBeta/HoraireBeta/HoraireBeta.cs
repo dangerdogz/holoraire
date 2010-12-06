@@ -1027,8 +1027,8 @@ namespace HoraireBeta
             Chilkat.Xml xmlPoste7 = new Chilkat.Xml();
             xmlPoste7.LoadXmlFile("postes.xml");
             treeView_postdispo.Nodes.Clear();
-            FillTree(treeView_postdispo.Nodes, xmlPoste7);
             treeView_postechoisi.Nodes.Clear();
+            FillTree(treeView_postdispo.Nodes, xmlPoste7);           
 
             String textInForm;
             textInForm = treeView_modemploye.SelectedNode.Text.ToString();

@@ -313,12 +313,17 @@ namespace HoraireBeta
                 xmlPoste10.LoadXmlFile("postes.xml");
                 Chilkat.Xml xmlPoste7 = new Chilkat.Xml();
                 xmlPoste7.LoadXmlFile("postes.xml");
+                Chilkat.Xml xmlPoste15 = new Chilkat.Xml();
+                xmlPoste15.LoadXmlFile("postes.xml");
+
                 
                 delposte.Dispose();
                 treeView_postgen.Nodes.Clear();
                 FillTree(treeView_postgen.Nodes, xmlPoste10);
                 treeView_postaaffectgauche.Nodes.Clear();
                 FillTree(treeView_postaaffectgauche.Nodes, xmlPoste7);
+                treeView_postdispo.Nodes.Clear();
+                FillTree(treeView_postdispo.Nodes, xmlPoste15);
             }
             else
             {
@@ -345,8 +350,13 @@ namespace HoraireBeta
                 xmlPoste5.LoadXmlFile("postes.xml");
                 Chilkat.Xml xmlPoste6 = new Chilkat.Xml();
                 xmlPoste6.LoadXmlFile("postes.xml");
+                Chilkat.Xml xmlPoste16 = new Chilkat.Xml();
+                xmlPoste16.LoadXmlFile("postes.xml");
+
                 treeView_postgen.Nodes.Clear();
                 treeView_postaaffectgauche.Nodes.Clear();
+                treeView_postdispo.Nodes.Clear();
+                FillTree(treeView_postdispo.Nodes, xmlPoste16);
                 FillTree(treeView_postgen.Nodes, xmlPoste5);
                 FillTree(treeView_postaaffectgauche.Nodes, xmlPoste6);
             }

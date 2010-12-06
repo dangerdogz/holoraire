@@ -13,13 +13,14 @@ namespace HoraireBeta
     {
         string hd;
         string hf;
+        bool preset;
         string tempHd;
         int commande = 0;
         List<Bloc> listBloc;
         bool valide = false;
-        public ModificationBloc(string hd, string hf, List<Bloc> listBloc)
+        public ModificationBloc(string hd, string hf, bool preset, List<Bloc> listBloc)
         {
-            InitializeComponent(hd, hf);
+            InitializeComponent(hd, hf, preset);
             this.listBloc = listBloc;
         }
 
@@ -56,6 +57,11 @@ namespace HoraireBeta
             return hf;
         }
 
+        public Boolean getPreset()
+        {
+            return preset;
+        }
+
         public bool valideHeures()
         {
 
@@ -84,29 +90,29 @@ namespace HoraireBeta
             int indexBloc = -1;
             int heureTempDebut;
 
-            MessageBox.Show("Heure temp "+tempHd);
+           // MessageBox.Show("Heure temp "+tempHd);
             try
                 {
                 heureTempDebut = Int16.Parse(tempHd);
                 }
             catch (Exception)
                 {
-                MessageBox.Show("Erreur de parse");
+               // MessageBox.Show("Erreur de parse");
                 throw;
                 }
             
             //Trouve son index
             for (int i = 0; i < listBloc.Count; i++)
                 {
-                    MessageBox.Show("Heure de départ : " + listBloc[i].getDebut().Hour);
+                  //  MessageBox.Show("Heure de départ : " + listBloc[i].getDebut().Hour);
                 if (listBloc[i].getDebut().Hour.Equals(heureTempDebut))
                     {
                     indexBloc = i;
-                    MessageBox.Show("Index du bloc :" + indexBloc);
+                  //  MessageBox.Show("Index du bloc :" + indexBloc);
                     break;
                     }
                 }
-            MessageBox.Show("Début : " + leBloc.getDebut().Hour + " Fin : " + leBloc.getFin().Hour);
+          //  MessageBox.Show("Début : " + leBloc.getDebut().Hour + " Fin : " + leBloc.getFin().Hour);
 
             for (int i = 0; i < listBloc.Count; i++)
             {/*
@@ -115,7 +121,7 @@ namespace HoraireBeta
                     || (leBloc.getFin().Hour > listBloc[i].getDebut().Hour && leBloc.getDebut().Hour < listBloc[i].getDebut().Hour)
                     || (leBloc.getDebut().Hour < listBloc[i].getDebut().Hour && leBloc.getFin().Hour > listBloc[i].getDebut().Hour))) 
                     && (indexBloc != i))//Différent de lui-même*/
-                MessageBox.Show("Première condition : " + (leBloc.getDebut().Hour < listBloc[i].getFin().Hour && leBloc.getFin().Hour > listBloc[i].getDebut().Hour) + " \nDeuxième condition : " + (leBloc.getFin().Hour > listBloc[i].getDebut().Hour && leBloc.getDebut().Hour < listBloc[i].getDebut().Hour) + " \n Troisième condition : " + (leBloc.getDebut().Hour < listBloc[i].getDebut().Hour && leBloc.getFin().Hour > listBloc[i].getDebut().Hour) + " \n Index : " + (indexBloc != i));
+                //MessageBox.Show("Première condition : " + (leBloc.getDebut().Hour < listBloc[i].getFin().Hour && leBloc.getFin().Hour > listBloc[i].getDebut().Hour) + " \nDeuxième condition : " + (leBloc.getFin().Hour > listBloc[i].getDebut().Hour && leBloc.getDebut().Hour < listBloc[i].getDebut().Hour) + " \n Troisième condition : " + (leBloc.getDebut().Hour < listBloc[i].getDebut().Hour && leBloc.getFin().Hour > listBloc[i].getDebut().Hour) + " \n Index : " + (indexBloc != i));
 
 
                 if (((leBloc.getDebut().Hour < listBloc[i].getFin().Hour && leBloc.getFin().Hour > listBloc[i].getDebut().Hour)
@@ -136,7 +142,16 @@ namespace HoraireBeta
             {
 
             }
+            if (checkBox_Preset.Checked)
+            {
+                preset = true;
 
+            }
+            else
+            {
+                if (!checkBox_Preset.Checked)
+                    preset = false;
+            }
             setHeures();
             commande = 0;
 

@@ -273,11 +273,12 @@ namespace HoraireBeta
         {
             string hDebut = leBloc.getDebut().Hour + "";
             string hFin = (leBloc.getFin().Hour + 1) + "";
+            bool preset = leBloc.getPreset();
 
             DateTime debut = leBloc.getDebut();
             DateTime fin = leBloc.getFin();
 
-            ModificationBloc modifbloc = new ModificationBloc(hDebut, hFin,blocs);
+            ModificationBloc modifbloc = new ModificationBloc(hDebut, hFin, preset, blocs);
             modifbloc.ShowDialog();
 
             if (modifbloc.isValide())
@@ -289,7 +290,7 @@ namespace HoraireBeta
 
                     int dateDebut = int.Parse(modifbloc.getHd());
                     int dateFin = int.Parse(modifbloc.getHf());
-
+       
                     DateTime tempDebut = new DateTime(debut.Year, debut.Month, debut.Day, dateDebut, debut.Minute, debut.Second);
                     DateTime tempFin = new DateTime(fin.Year, fin.Month, fin.Day, dateFin - 1, fin.Minute, fin.Second);
 
@@ -297,6 +298,7 @@ namespace HoraireBeta
                     Bloc leBloc2 = leBloc;
                     leBloc2.setDebut(tempDebut);
                     leBloc2.setFin(tempFin);
+                    leBloc2.setPreset(modifbloc.getPreset());
 
                     if (modifbloc.placementValide(leBloc2))
                     {

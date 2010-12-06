@@ -162,10 +162,16 @@ namespace HoraireBeta
             {
 
 
+                bool isPreset = false;
 
+                 
+               
+                if (Convert.ToInt32(rsBloc.Rows[i]["preset"]) == 1)
+                    isPreset = true;
 
-                   // MessageBox.Show((rsBloc.Rows[i]["preset"]).ToString());
-                    Bloc newBloc = new Bloc(DateTime.ParseExact(rsBloc.Rows[i]["debut"].ToString(), "yyyy-MM-dd HH:mm:ss", null), DateTime.ParseExact(rsBloc.Rows[i]["fin"].ToString(), "yyyy-MM-dd HH:mm:ss", null), Convert.ToInt32(rsBloc.Rows[i]["idType"].ToString()), Convert.ToInt32(rsBloc.Rows[i]["idBlock"].ToString()), true /*(Boolean)(rsBloc.Rows[i]["preset"])*/);
+   
+
+                Bloc newBloc = new Bloc(DateTime.ParseExact(rsBloc.Rows[i]["debut"].ToString(), "yyyy-MM-dd HH:mm:ss", null), DateTime.ParseExact(rsBloc.Rows[i]["fin"].ToString(), "yyyy-MM-dd HH:mm:ss", null), Convert.ToInt32(rsBloc.Rows[i]["idType"].ToString()), Convert.ToInt32(rsBloc.Rows[i]["idBlock"].ToString()), isPreset);
 
 
 

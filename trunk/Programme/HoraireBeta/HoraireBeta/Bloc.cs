@@ -351,7 +351,7 @@ namespace HoraireBeta
             }
 
                 oui = !estDejaPresent(ress);
-            }
+            
             return oui;
         }
 

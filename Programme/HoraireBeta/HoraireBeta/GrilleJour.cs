@@ -376,6 +376,7 @@ namespace HoraireBeta
             int dateDebut = int.Parse(creationbloc.getHd());
             int dateFin = int.Parse(creationbloc.getHf());
             bool isPreset = creationbloc.getPreset();
+          
 
 
             DateTime tempDebut = new DateTime(debut.Year, debut.Month, debut.Day, dateDebut, debut.Minute, debut.Second);
@@ -386,7 +387,7 @@ namespace HoraireBeta
 
 
 
-            Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0, ((bool)isPreset));
+            Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0, isPreset);
 
 
                             

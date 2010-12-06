@@ -77,8 +77,10 @@ namespace HoraireBeta
         {
             setHeures();
 
-            if (checkBox_Preset.Checked)
+            if (checkBox_Preset.Checked) {
                 preset = true;
+
+            }
             else
             {
                 if (!checkBox_Preset.Checked)

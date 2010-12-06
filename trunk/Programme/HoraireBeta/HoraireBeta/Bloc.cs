@@ -488,7 +488,7 @@ namespace HoraireBeta
             DBConnect proc = new DBConnect();
             if (this.id <= 0)
             {
-                proc.addBlock(debut.ToString("yyyy-MM-dd HH:mm:ss"), fin.ToString("yyyy-MM-dd HH:mm:ss"), typeBloc);
+                proc.addBlock(debut.ToString("yyyy-MM-dd HH:mm:ss"), fin.ToString("yyyy-MM-dd HH:mm:ss"), typeBloc, isPreset);
                 id = Convert.ToInt32(proc.getLastStuff("Block").Rows[0]["idBlock"].ToString());
             }
             else

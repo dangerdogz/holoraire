@@ -349,8 +349,8 @@ namespace HoraireBeta
                 if (ress == ((Poste)ressourcesVoulus[i].voulue))
                     oui = true;
             }
-
-                oui = !estDejaPresent(ress);
+            if (oui)
+             oui = !estDejaPresent(ress);
             
             return oui;
         }
@@ -428,6 +428,22 @@ namespace HoraireBeta
         public RessourceEntree getRessourceVoulus(int position)
         {
             return ressourcesVoulus[position];
+        }
+
+        public RessourceEntree getRessourceVoulus(Ressource cellela)
+        {
+            
+            int i=0;
+            while(ressourcesVoulus[i++].voulue!=cellela);
+            return ressourcesVoulus[--i];
+        }
+
+        public int getiRessourceVoulus(Ressource cellela)
+        {
+
+            int i = 0;
+            while (ressourcesVoulus[i++].voulue != cellela) ;
+            return --i;
         }
 
         public List<RessourceEntree> getRessourceVoulus()

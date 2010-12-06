@@ -38,7 +38,7 @@ namespace HoraireBeta
             l.LoadEquipe();
             l.loadBloc();
             l.loadErreurs();
-            l.bloc.ElementAt(0).addRessourceVoulue(1, l.posteCharge.ElementAt(0));
+
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

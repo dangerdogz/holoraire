@@ -336,32 +336,38 @@ namespace HoraireBeta
 
         private void popPostWindow()
         {
-            
             AjouterPoste ajouterposte = new AjouterPoste();
             ajouterposte.ShowDialog();
             bool saveannul;
             saveannul = ajouterposte.getannul();
             if (saveannul == false)
             {
-                loader.posteCharge.Add(new Poste(ajouterposte.getpName(), ajouterposte.getpDesc()));
+                if (ajouterposte.getpName().ToString() == "")
+                {
+                    MessageBox.Show("Poste non ajouté, nom manquant");
+                }
+                else
+                {
+                    loader.posteCharge.Add(new Poste(ajouterposte.getpName(), ajouterposte.getpDesc()));
 
-                ajouterposte.save();
+                    ajouterposte.save();
 
-                CreateXml.CreateProfileXml();
-                ajouterposte.Dispose();
-                Chilkat.Xml xmlPoste5 = new Chilkat.Xml();
-                xmlPoste5.LoadXmlFile("postes.xml");
-                Chilkat.Xml xmlPoste6 = new Chilkat.Xml();
-                xmlPoste6.LoadXmlFile("postes.xml");
-                Chilkat.Xml xmlPoste16 = new Chilkat.Xml();
-                xmlPoste16.LoadXmlFile("postes.xml");
+                    CreateXml.CreateProfileXml();
+                    ajouterposte.Dispose();
+                    Chilkat.Xml xmlPoste5 = new Chilkat.Xml();
+                    xmlPoste5.LoadXmlFile("postes.xml");
+                    Chilkat.Xml xmlPoste6 = new Chilkat.Xml();
+                    xmlPoste6.LoadXmlFile("postes.xml");
+                    Chilkat.Xml xmlPoste16 = new Chilkat.Xml();
+                    xmlPoste16.LoadXmlFile("postes.xml");
 
-                treeView_postgen.Nodes.Clear();
-                treeView_postaaffectgauche.Nodes.Clear();
-                treeView_postdispo.Nodes.Clear();
-                FillTree(treeView_postdispo.Nodes, xmlPoste16);
-                FillTree(treeView_postgen.Nodes, xmlPoste5);
-                FillTree(treeView_postaaffectgauche.Nodes, xmlPoste6);
+                    treeView_postgen.Nodes.Clear();
+                    treeView_postaaffectgauche.Nodes.Clear();
+                    treeView_postdispo.Nodes.Clear();
+                    FillTree(treeView_postdispo.Nodes, xmlPoste16);
+                    FillTree(treeView_postgen.Nodes, xmlPoste5);
+                    FillTree(treeView_postaaffectgauche.Nodes, xmlPoste6);
+                }
             }
         }
 
@@ -373,21 +379,25 @@ namespace HoraireBeta
             saveannul = ajouterequipe.getannul();
             if (saveannul == false)
             {
-                loader.equipe.Add(new Equipe(-1, ajouterequipe.geteName(), ajouterequipe.geteDesc()));
+                if (ajouterequipe.geteName().ToString() == "")
+                {
+                    MessageBox.Show("Equipe non ajouté, nom manquant");
+                }
+                else
+                {
+                    loader.equipe.Add(new Equipe(-1, ajouterequipe.geteName(), ajouterequipe.geteDesc()));
 
-                ajouterequipe.save();
+                    ajouterequipe.save();
 
-                CreateXml.CreateProfileXml();
-                ajouterequipe.Dispose();
-                Chilkat.Xml xmlEquipe5 = new Chilkat.Xml();
-                xmlEquipe5.LoadXmlFile("teams.xml");
-                treeView_equipe.Nodes.Clear();
-                FillTree(treeView_equipe.Nodes, xmlEquipe5);
-            }
-            
+                    CreateXml.CreateProfileXml();
+                    ajouterequipe.Dispose();
+                    Chilkat.Xml xmlEquipe5 = new Chilkat.Xml();
+                    xmlEquipe5.LoadXmlFile("teams.xml");
+                    treeView_equipe.Nodes.Clear();
+                    FillTree(treeView_equipe.Nodes, xmlEquipe5);
+                }
+            }   
         }
-
-
 
         private void numemp_textbox_TextChanged(object sender, EventArgs e)
         {

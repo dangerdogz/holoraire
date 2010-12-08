@@ -499,24 +499,26 @@ namespace HoraireBeta
             return oui;
         }
 
-        public void save()
+        public void save(Boolean removeP = false)
         {
             DBConnect proc = new DBConnect();
-            if (this.id <= 0)
+            if (this.id <= 0 || (this.isPreset && removeP))
             {
                 proc.addBlock(debut.ToString("yyyy-MM-dd HH:mm:ss"), fin.ToString("yyyy-MM-dd HH:mm:ss"), typeBloc, isPreset);
                 id = Convert.ToInt32(proc.getLastStuff("Block").Rows[0]["idBlock"].ToString());
+                isPreset = false;
+
             }
             else
             {
-                proc.modifyBlock(debut.ToString("yyyy-MM-dd HH:mm:ss"), fin.ToString("yyyy-MM-dd HH:mm:ss"), id);
+                proc.modifyBlock(debut.ToString("yyyy-MM-dd HH:mm:ss"), fin.ToString("yyyy-MM-dd HH:mm:ss"), id, isPreset);
 
                 proc.deleteRessource(id);
 
             }
             foreach (RessourceEntree lui in ressourcesVoulus)
             {
-                MessageBox.Show("Lol this");
+               
                 if (lui.voulue is Equipe)
                     proc.addRessource(id, 0, lui.voulue.getId(), lui.nbVoulue);
                 else
@@ -541,6 +543,9 @@ namespace HoraireBeta
             SolidBrush brush = new SolidBrush(Color.Cyan);
             SolidBrush fontBrush = new SolidBrush(Color.Black);
             SolidBrush selectedBrush = new SolidBrush((Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(246)))), ((int)(((byte)(134)))))));
+
+            
+
 
             if (isSelected == true)
             {

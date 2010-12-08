@@ -160,6 +160,8 @@ namespace HoraireBeta
                 this.Hide();
                 valide = true;
                 }
+
+
         }
 
         private void supprimerClick(object sender, EventArgs e)

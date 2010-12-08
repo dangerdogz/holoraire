@@ -836,7 +836,7 @@ namespace HoraireBeta
         }
         private void Sauvegarder_button_Click(object sender, EventArgs e)
         {
-
+            bool exception = false;
             if (nom_textbox.Text == "" || prenom_textbox.Text == "" || numemp_textbox.Text == "")
             {
                 MessageBox.Show("Veuillez entrer un numéro d'employé, un nom et un prenom pour l'employé");
@@ -844,32 +844,47 @@ namespace HoraireBeta
             else
             {
             Profil profil = profilSelected;
-            profil.setId(Convert.ToInt32(numemp_textbox.Text));
-            profil.setNom(nom_textbox.Text);
-            profil.setPrenom(prenom_textbox.Text);
-            profil.setEmail(courriel_textbox.Text);
-            profil.setNumTelephone(telephone_textbox.Text);
-            profil.setAnciennete(0);
-
-            //new Profil(Convert.ToInt32(numemp_textbox.Text), prenom_textbox.Text, nom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0, 0);
-            for (int cul = 0; cul < treeView_postechoisi.Nodes.Count; cul++)
+            try
             {
-                int i = 0;
-                while (treeView_postechoisi.Nodes[cul].Text != ((Poste)(loader.posteCharge[i++])).getNom()) ;
-                profil.setPoste((Poste)(loader.posteCharge[--i]));
-                
+                profil.setId(Convert.ToInt32(numemp_textbox.Text));
             }
-            loader.profilCharge.Add(profil);
+            catch (Exception ex)
+            {
+                exception = true;
+                MessageBox.Show("Vous avez entrer un nombre invalide ou des caractères non autorisé pour le numéro d'employé, veuillez en choisir un autre");
+            }
+            if (exception != true)
+            {
+                profil.setNom(nom_textbox.Text);
+                profil.setPrenom(prenom_textbox.Text);
+                profil.setEmail(courriel_textbox.Text);
+                profil.setNumTelephone(telephone_textbox.Text);
+                profil.setAnciennete(0);
 
-            
-            profil.save(mod);
+                //new Profil(Convert.ToInt32(numemp_textbox.Text), prenom_textbox.Text, nom_textbox.Text, courriel_textbox.Text, telephone_textbox.Text, 0, 0);
+                for (int cul = 0; cul < treeView_postechoisi.Nodes.Count; cul++)
+                {
+                    int i = 0;
+                    while (treeView_postechoisi.Nodes[cul].Text != ((Poste)(loader.posteCharge[i++])).getNom()) ;
+                    profil.setPoste((Poste)(loader.posteCharge[--i]));
+
+                }
+                loader.profilCharge.Add(profil);
+
+
+                profil.save(mod);
+                MessageBox.Show("Sauvegarde réussie!");
+            }
+            else
+            {
+                MessageBox.Show("Sauvegarde échoué");
+            }
 
             numemp_textbox.Text = "";
             nom_textbox.Text = "";
             prenom_textbox.Text = "";
             courriel_textbox.Text = "";
             telephone_textbox.Text = "";
-            MessageBox.Show("Sauvegarde réussie!");
             profilSelected = new Profil();
             }
 

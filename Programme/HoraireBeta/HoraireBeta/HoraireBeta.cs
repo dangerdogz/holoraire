@@ -468,7 +468,6 @@ namespace HoraireBeta
                     {
                         System.Windows.Forms.TreeNode name;
                         name = new System.Windows.Forms.TreeNode(this.treeView_postechoisi.SelectedNode.Text);
-                        //NEGGA
                         this.treeView_postdispo.Nodes.Add(name);
                         this.treeView_postechoisi.SelectedNode.Remove();
                     }
@@ -487,7 +486,6 @@ namespace HoraireBeta
                 {
                     System.Windows.Forms.TreeNode name;
                     name = new System.Windows.Forms.TreeNode(this.treeView_postdispo.SelectedNode.Text);
-                    //NEGGA
                     this.treeView_postechoisi.Nodes.Add(name);
                     this.treeView_postdispo.SelectedNode.Remove();
                 }
@@ -506,7 +504,6 @@ namespace HoraireBeta
                 {
                     System.Windows.Forms.TreeNode name;
                     name = new System.Windows.Forms.TreeNode(this.treeView_postaaffectdroite.SelectedNode.Text);
-                    //NEGGA2
                     this.treeView_postaaffectgauche.Nodes.Add(name);
                     this.treeView_postaaffectdroite.SelectedNode.Remove();
                 }
@@ -526,7 +523,6 @@ namespace HoraireBeta
                 {
                     System.Windows.Forms.TreeNode name;
                     name = new System.Windows.Forms.TreeNode(this.treeView_postaaffectgauche.SelectedNode.Text);
-                    //NEGGA2
                     this.treeView_postaaffectdroite.Nodes.Add(name);
                     this.treeView_postaaffectgauche.SelectedNode.Remove();
                 }

@@ -127,13 +127,21 @@ namespace HoraireBeta
 
         private void listPreset_MouseDown(object sender, MouseEventArgs e)
         {
-            int index = listPreset.IndexFromPoint(e.Location.X, e.Location.Y);
-            if (listPreset.Items[index] != null) {
-                //MessageBox.Show(listPreset.GetItemText(listPreset.Items[index]));
-                if (loader.findBloc(Convert.ToInt32(listPreset.GetItemText(listPreset.Items[index])), loader.bloc) != null)
+            try
+            {
+                int index = listPreset.IndexFromPoint(e.Location.X, e.Location.Y);
+                if (listPreset.Items[index] != null)
                 {
-                    presetSelected = loader.findBloc(Convert.ToInt32(listPreset.GetItemText(listPreset.Items[index])), loader.bloc);
+                    //MessageBox.Show(listPreset.GetItemText(listPreset.Items[index]));
+                    if (loader.findBloc(Convert.ToInt32(listPreset.GetItemText(listPreset.Items[index])), loader.bloc) != null)
+                    {
+                        presetSelected = loader.findBloc(Convert.ToInt32(listPreset.GetItemText(listPreset.Items[index])), loader.bloc);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                
             }
 
 

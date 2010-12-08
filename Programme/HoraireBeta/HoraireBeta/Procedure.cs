@@ -169,6 +169,12 @@ namespace HoraireBeta
             requete = "SELECT * FROM Poste WHERE idPoste = "+idPoste+"";
             return getResult(requete);
         }
+        public DataTable getAide(int id)
+        {
+            String requete;
+            requete = "SELECT * FROM Aide WHERE idAide = " + id + "";
+            return getResult(requete);
+        }
         public DataTable getPoste2(int idPoste)
         {
             String requete;

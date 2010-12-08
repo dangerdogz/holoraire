@@ -1234,8 +1234,26 @@ namespace HoraireBeta
         }
         private void supprimer_button_Click(object sender, EventArgs e)
         {
+            DBConnect proc = new DBConnect();
+            int idprofil = Convert.ToInt32(numemp_textbox.Text.ToString());
+            String nom = nom_textbox.Text.ToString();
+            String prenom = prenom_textbox.Text.ToString();
+            String email = courriel_textbox.Text.ToString();
+            String telephone = telephone_textbox.Text.ToString();
 
+            proc.deleteEmploye(idprofil, nom, prenom, email, telephone);
+            numemp_textbox.Text = "";
+            nom_textbox.Text = "";
+            prenom_textbox.Text = "";
+            courriel_textbox.Text = "";
+            telephone_textbox.Text = "";
             
+            CreateXml.CreateProfileXml();
+            Chilkat.Xml xmlProfiles7 = new Chilkat.Xml();
+            xmlProfiles7.LoadXmlFile("profiles.xml");
+
+            treeView_modemploye.Nodes.Clear();
+            FillTree(treeView_modemploye.Nodes, xmlProfiles7);
         }
         public void fillEmployeListBox(Bloc bloc)
         {

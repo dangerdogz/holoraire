@@ -137,6 +137,7 @@ namespace HoraireBeta
                     {
                         presetSelected = loader.findBloc(Convert.ToInt32(listPreset.GetItemText(listPreset.Items[index])), loader.bloc);
                     }
+                    
                 }
             }
             catch (Exception ex)
@@ -154,6 +155,7 @@ namespace HoraireBeta
                   
                   case MouseButtons.Left:
                    grille.passeClique(e,"MouseUp");
+                   fillPresetListBox();
                    // updateInterfaceHoraire();
                     if (grille.selectionEnCours != null)
                     {
@@ -926,8 +928,9 @@ namespace HoraireBeta
 
         }
 
-        private void LinkBlocToRessource(Ressource res, Bloc bloc)
+        private Boolean LinkBlocToRessource(Ressource res, Bloc bloc)
         {
+            bool retourne = true;
             NbPoste showPosteDialog;
             if (res is Profil)
                 bloc.addProfil((Profil)res);
@@ -945,15 +948,26 @@ namespace HoraireBeta
                         showPosteDialog.ShowDialog();
                         if (showPosteDialog.confirm)
                         {
-                            
+
                             if (!bloc.estVoulue(res))
+                            {
+                                if (Convert.ToInt32(showPosteDialog.nb) > 0)
                                 bloc.addRessourceVoulue(Convert.ToInt32(showPosteDialog.nb), (Poste)res);
+                            }
                             else
                             {
-                                RessourceEntree holy = bloc.getRessourceVoulus(res);
-                                holy.nbVoulue = Convert.ToInt32(showPosteDialog.nb);
-                                bloc.getRessourceVoulus().RemoveAt(bloc.getiRessourceVoulus(res));
-                                bloc.addRessourceVoulue(holy);
+                                if (Convert.ToInt32(showPosteDialog.nb) <= 0)
+                                {
+                                    bloc.removeRessourceVoulu(bloc.getRessourceVoulus(res));
+                                    retourne = false;
+                                }
+                                else
+                                {
+                                    RessourceEntree holy = bloc.getRessourceVoulus(res);
+                                    holy.nbVoulue = Convert.ToInt32(showPosteDialog.nb);
+                                    bloc.getRessourceVoulus().RemoveAt(bloc.getiRessourceVoulus(res));
+                                    bloc.addRessourceVoulue(holy);
+                                }
 
                             }
                             //grille.refresh();
@@ -983,6 +997,7 @@ namespace HoraireBeta
                             }
                         }
                     }
+            return retourne;
         }
 
 
@@ -1055,24 +1070,37 @@ namespace HoraireBeta
                     }
                 }
 
+                if (ressource != null)
+                {
+                    if (e.Node.BackColor != Color.Cyan && !(ressource is Poste))
+                    {
 
-                if (e.Node.BackColor != Color.Cyan)
-                {
-         
-                    if (ressource != null)
+                            LinkBlocToRessource(ressource, grille.selectionEnCours);
+                            e.Node.BackColor = Color.Cyan;
+                        
+                    }
+                    else
                     {
-                        LinkBlocToRessource(ressource, grille.selectionEnCours);
-                        e.Node.BackColor = Color.Cyan;
+
+                        if (ressource is Poste)
+                        {
+                            if (LinkBlocToRessource(ressource, grille.selectionEnCours))
+                                e.Node.BackColor = Color.Cyan;
+                            else
+                            {
+                                e.Node.BackColor = Color.White;
+                            }
+
+                        }
+                        else
+                        {
+
+                            UnlinkBlocToRessource(ressource, grille.selectionEnCours);
+                            e.Node.BackColor = Color.White;
+                        }
                     }
                 }
-                else
-                {
-                    if (ressource != null)
-                    {
-                        UnlinkBlocToRessource(ressource, grille.selectionEnCours);
-                        e.Node.BackColor = Color.White;
-                    }
-                }
+
             }
         }
 

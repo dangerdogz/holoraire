@@ -462,49 +462,78 @@ namespace HoraireBeta
 
         private void posteaoccuper_gauche_Click(object sender, EventArgs e)
         {
-            if (this.treeView_postechoisi.SelectedNode.IsSelected == true)
+            try
+                {
+                    if (this.treeView_postechoisi.SelectedNode.IsSelected == true)
+                    {
+                        System.Windows.Forms.TreeNode name;
+                        name = new System.Windows.Forms.TreeNode(this.treeView_postechoisi.SelectedNode.Text);
+                        //NEGGA
+                        this.treeView_postdispo.Nodes.Add(name);
+                        this.treeView_postechoisi.SelectedNode.Remove();
+                    }
+                }
+            catch (Exception ex)
             {
-                System.Windows.Forms.TreeNode name;
-                name = new System.Windows.Forms.TreeNode(this.treeView_postechoisi.SelectedNode.Text);
-                //NEGGA
-                this.treeView_postdispo.Nodes.Add(name);
-                this.treeView_postechoisi.SelectedNode.Remove();
+                MessageBox.Show("Veuillez sélectionner un poste dans les poste choisis pour le transferer dans les postes disponibles");
             }
         }
 
         private void buttondroit_Click(object sender, EventArgs e)
         {
-            if (this.treeView_postdispo.SelectedNode.IsSelected == true)
+            try
             {
-                System.Windows.Forms.TreeNode name;
-                name = new System.Windows.Forms.TreeNode(this.treeView_postdispo.SelectedNode.Text);
-                //NEGGA
-                this.treeView_postechoisi.Nodes.Add(name);
-                this.treeView_postdispo.SelectedNode.Remove();
+                if (this.treeView_postdispo.SelectedNode.IsSelected == true)
+                {
+                    System.Windows.Forms.TreeNode name;
+                    name = new System.Windows.Forms.TreeNode(this.treeView_postdispo.SelectedNode.Text);
+                    //NEGGA
+                    this.treeView_postechoisi.Nodes.Add(name);
+                    this.treeView_postdispo.SelectedNode.Remove();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Veuillez sélectionner un poste dans les poste disponibles pour le transferer dans les postes choisis");
             }
         }
 
         private void postaaffectgauche_Click(object sender, EventArgs e)
         {
-            if (this.treeView_postaaffectdroite.SelectedNode.IsSelected == true)
+            try
             {
-                System.Windows.Forms.TreeNode name;
-                name = new System.Windows.Forms.TreeNode(this.treeView_postaaffectdroite.SelectedNode.Text);
-                //NEGGA2
-                this.treeView_postaaffectgauche.Nodes.Add(name);
-                this.treeView_postaaffectdroite.SelectedNode.Remove();
+                if (this.treeView_postaaffectdroite.SelectedNode.IsSelected == true)
+                {
+                    System.Windows.Forms.TreeNode name;
+                    name = new System.Windows.Forms.TreeNode(this.treeView_postaaffectdroite.SelectedNode.Text);
+                    //NEGGA2
+                    this.treeView_postaaffectgauche.Nodes.Add(name);
+                    this.treeView_postaaffectdroite.SelectedNode.Remove();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Veuillez sélectionner un poste à affecter dans la liste des postes disponibles");
+            }
+            
         }
 
         private void postaaffectdroit_Click(object sender, EventArgs e)
         {
-            if (this.treeView_postaaffectgauche.SelectedNode.IsSelected == true)
+            try
             {
-                System.Windows.Forms.TreeNode name;
-                name = new System.Windows.Forms.TreeNode(this.treeView_postaaffectgauche.SelectedNode.Text);
-                //NEGGA2
-                this.treeView_postaaffectdroite.Nodes.Add(name);
-                this.treeView_postaaffectgauche.SelectedNode.Remove();
+                if (this.treeView_postaaffectgauche.SelectedNode.IsSelected == true)
+                {
+                    System.Windows.Forms.TreeNode name;
+                    name = new System.Windows.Forms.TreeNode(this.treeView_postaaffectgauche.SelectedNode.Text);
+                    //NEGGA2
+                    this.treeView_postaaffectdroite.Nodes.Add(name);
+                    this.treeView_postaaffectgauche.SelectedNode.Remove();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Veuillez sélectionner un postes affecté pour le transferer dans les postes disponibles");
             }
         }
 

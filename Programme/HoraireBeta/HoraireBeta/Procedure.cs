@@ -192,10 +192,14 @@ namespace HoraireBeta
             requete = "DELETE FROM Block WHERE idBlock = "+idBlock+"";
             getResult(requete);
         }
-        public void modifyBlock(String debut, String fin, int idBlock)
+        public void modifyBlock(String debut, String fin, int idBlock, bool preset)
         {
+            int intPreset = 0;
+            if (preset)
+                intPreset = 1;
+
             String requete;
-            requete = "UPDATE Block SET debut = \""+debut+"\",fin=\""+fin+"\" WHERE idBlock="+idBlock+"";
+            requete = "UPDATE Block SET debut = \"" + debut + "\",fin=\"" + fin + "\", preset=" + intPreset + " WHERE idBlock=" + idBlock + "";
             getResult(requete);
         }
         public DataTable getBlock(int idBlock)

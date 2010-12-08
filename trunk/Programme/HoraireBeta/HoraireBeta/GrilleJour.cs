@@ -305,6 +305,7 @@ namespace HoraireBeta
                        
                         if (loader != null && loader.modifierBloc(leBloc, leBloc2))
                         { //Ajout du bloc confirmé 
+
                         } //
                         else
                         {
@@ -315,11 +316,13 @@ namespace HoraireBeta
                                 
                                 if (profil != null && laGrille.isPref && profil.modifierBloc(leBloc, leBloc2, true))
                                 { //lolnigger
+
                                 }
                                 else
                                 {
                                     if (profil != null && !laGrille.isPref && profil.modifierBloc(leBloc, leBloc2, false))
                                     { //lolnigger
+
                                     }
                                 }
 
@@ -428,7 +431,8 @@ namespace HoraireBeta
                 {
                 //Sois le bloc ajouté enpiète sur la fin du bloc existant ou sur le debut du bloc existant
                 if ( (leBloc.getDebut() < blocs[i].getFin() && leBloc.getFin() > blocs[i].getFin()) 
-                    || (leBloc.getFin() > blocs[i].getDebut() && leBloc.getDebut() < blocs[i].getDebut()))
+                    || (leBloc.getFin() > blocs[i].getDebut() && leBloc.getDebut() < blocs[i].getDebut())
+                    || (leBloc.getFin() == blocs[i].getFin() || leBloc.getDebut() == blocs[i].getDebut()))
                     {
                     return false; //Bloc existant                 
                     }
@@ -441,13 +445,14 @@ namespace HoraireBeta
         {
  
 
-                int dateDebut = bloc.getDebut().Hour;
-                int dateFin = bloc.getFin().Hour;
+                TimeSpan dateDebut = new TimeSpan(bloc.getDebut().Hour, bloc.getDebut().Minute, bloc.getDebut().Second);
+                TimeSpan dateFin = new TimeSpan(bloc.getFin().Hour, bloc.getFin().Minute, bloc.getFin().Second);
                
 
 
-                DateTime tempDebut = new DateTime(this.dateDuJour.Year, this.dateDuJour.Month, this.dateDuJour.Day, dateDebut, this.dateDuJour.Minute, this.dateDuJour.Second);
-                DateTime tempFin = new DateTime(this.dateFin.Year, this.dateFin.Month, this.dateFin.Day, dateFin, this.dateFin.Minute, this.dateFin.Second) - new TimeSpan(0, 0, 0, 1);
+                DateTime tempDebut = new DateTime(this.dateDuJour.Year, this.dateDuJour.Month, this.dateDuJour.Day)+dateDebut;
+                DateTime tempFin = new DateTime(this.dateFin.Year, this.dateFin.Month, this.dateFin.Day) +dateFin;
+                
 
                 Bloc tempBloc = new Bloc(tempDebut, tempFin, 0, 0, true);
 
@@ -461,7 +466,8 @@ namespace HoraireBeta
                 {
                     //Ajout du block valide
                     tempBloc.draw(width, grfx);
-                    loader.bloc.Add(tempBloc);                   
+                    loader.bloc.Add(tempBloc);
+                    tempBloc.save(true);
                 }
                 else
                     MessageBox.Show("Placement invalide");

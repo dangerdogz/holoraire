@@ -911,9 +911,13 @@ namespace HoraireBeta
             CreateXml.CreateProfileXml();
             Chilkat.Xml xmlPoste11 = new Chilkat.Xml();
             xmlPoste11.LoadXmlFile("postes.xml");
+            Chilkat.Xml xmlProfiles99 = new Chilkat.Xml();
+            xmlProfiles99.LoadXmlFile("profiles.xml");
 
             treeView_postdispo.Nodes.Clear();
             treeView_postechoisi.Nodes.Clear();
+            treeView_modemploye.Nodes.Clear();
+            FillTree(treeView_modemploye.Nodes, xmlProfiles99);
             FillTree(treeView_postdispo.Nodes, xmlPoste11);
 
         }

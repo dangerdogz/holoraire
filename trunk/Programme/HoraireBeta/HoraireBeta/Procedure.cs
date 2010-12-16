@@ -409,6 +409,7 @@ namespace HoraireBeta
             requete = "SELECT * FROM Team_Profil";
             return getResult(requete);
         }
+
         public DataTable getPosteProfil(int idPoste)
         {
             String requete;
@@ -488,6 +489,66 @@ namespace HoraireBeta
             requete = "DELETE  FROM Profil_Preference WHERE idProfil = " + idProfil + "";
             getResult(requete);
         }
+
+        //Procédure de l'aide
+        //************************************************//
+        public DataTable getMenu_Aide()
+        {
+            String requete;
+            requete = "select * from Aide where Niveau = 5";
+            return getResult(requete);
+        }
+
+        public DataTable getJonction() 
+        {
+            String requete;
+            requete = "select * from Jonction_Aide;";
+            return getResult(requete);
+
+        }
+
+        public DataTable getTitre_Aide(int index)
+        {
+            String requete;
+            requete = "select * from Aide where idAide=" + index + ";";
+            return getResult(requete);        
+        }
+
+        public DataTable getMinLevel() 
+        {
+            String requete;
+            requete = "select idAide,min(Niveau) as min from Aide;";
+            return getResult(requete); 
+        
+        }
+
+        public DataTable getMaxLevel()
+        {
+            String requete;
+            requete = "select max(Niveau) from Aide;";
+            return getResult(requete);
+
+        }
+
+       
+
+        public DataTable getText_Aide(string index)
+        {
+            String requete;
+            requete = "select Description from Aide where Titre=\""+index+"\"";
+            return getResult(requete);
+        }
+
+        public DataTable getEnfant_Jonc(int index)
+        {
+            String requete;
+            requete = "select idEnfant from Jonction_Aide where idParent = " + index + ";";
+            return getResult(requete);
+        }
+
+       
+
+
 
     }
 }
